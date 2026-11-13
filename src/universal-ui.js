@@ -44,24 +44,45 @@ function outputResult(r){return `${r.item} · ${r.quality} · seed ${r.seed}\n${
 function record(){if(!maybeEngine())return;try{const o={op:$('#ob-op').value,quality:$('#ob-quality').value,lines:getFields()};
  if(!o.lines.length)throw Error('No numerical attributes entered');observations.push(o);renderObs();saveProject();$('#seed-status').textContent=`${observations.length} observations saved. Search when you have at least one normal (unmodified) observation.`;
  }catch(e){$('#seed-status').textContent=e.message;}}
-function scan(){if(!maybeEngine())return;const first=observations[0];if(!first){$('#seed-status').textContent='Save a complete normal observation first.';return;}
- let hypotheses;try{hypotheses=generateRecoveryHypotheses(engine,item,first);}catch(e){$('#seed-status').textContent=e.message;return;}
- if(hypotheses.length>2){$('#seed-status').textContent=`${hypotheses.length} possible affix order/tier interpretations; scanning all would be expensive. Please enter more complete numeric stats or use known seed.`;return;}
- let i=0,all=[];const status=$('#seed-status');
- const next=()=>{if(i>=hypotheses.length){const uniques=[...new Set(all)];candidates=uniques;
- if(uniques.length===1){let s=uniques[0];for(const o of observations.slice(1)){const r=engine.apply(item,s,o.op);s=r.seed;}
- $('#seed').value=s;status.textContent=`Unique compatible seed: ${s}. Confirm predictions before using materials.`;
- }else status.textContent=`${uniques.length} candidates remain. Record a further operation before spending materials.`;saveProject();return;}
- const hyp=hypotheses[i++];if(hyp.constraints.length>32){status.textContent='Too many formula constraints for this scan build.';return;}
+function scan(){
+ if(!maybeEngine())return;
+ const first=observations[0],status=$('#seed-status');
+ if(!first){status.textContent='Save a complete normal observation first.';return;}
+ if(worker){status.textContent='A seed scan is already running. Press Cancel to stop it.';return;}
+ let hypotheses;
+ try{hypotheses=generateRecoveryHypotheses(engine,item,first);}
+ catch(e){status.textContent=e.message;return;}
+ if(hypotheses.length>32){status.textContent=`${hypotheses.length} different affix interpretations: this build supports 32 at once. No game operation required to resolve this app limitation.`;return;}
+ if(hypotheses.some(h=>h.constraints.length>32)){status.textContent='Too many formula constraints for this build.';return;}
+ status.textContent=`Searching ${hypotheses.length} interpretations together. This may be compute-intensive on your device; do not spend in-game materials.`;
  worker=new Worker(new URL('./seed-worker.js',import.meta.url),{type:'module'});
- worker.onmessage=e=>{const d=e.data;if(d.type==='progress')status.textContent=`Scanning ${i}/${hypotheses.length}: ${(d.checked/d.total*100).toFixed(1)}% · ${d.found} numeric matches`;
-  if(d.type==='complete'){const verified=d.seeds.filter(s=>verifyHypothesis(engine,item,s,hyp));for(const seed of verified){let s=seed,ok=true;
-   for(const o of observations.slice(1)){const r=engine.apply(item,s,o.op);
-    if(r.quality!==o.quality||!o.lines.every(l=>r.lines.some(v=>v.attr===l.attr&&v.stem===l.stem&&Math.abs(v.value-l.value)<1.05))){ok=false;break;}s=r.seed;
-   }if(ok)all.push(seed);
-  }worker.terminate();worker=null;next();}
-  if(d.type==='error'){status.textContent=d.message;worker.terminate();worker=null;}};
- worker.onerror=e=>{status.textContent=e.message;worker.terminate();worker=null;};worker.postMessage({type:'solve',constraints:hyp.constraints});};next();
+ worker.onmessage=e=>{const d=e.data;
+  if(d.type==='progress')status.textContent=`Searching ${hypotheses.length} interpretations: ${(d.checked/d.total*100).toFixed(1)}% · ${d.found} preliminary numerical matches`;
+  if(d.type==='complete'){
+   const matching=[];
+   for(const seed of new Set(d.seeds)){
+    if(!hypotheses.some(h=>verifyHypothesis(engine,item,seed,h)))continue;
+    let s=seed,valid=true;
+    for(const o of observations.slice(1)){
+     const r=engine.apply(item,s,o.op);
+     if(r.quality!==o.quality||!o.lines.every(l=>r.lines.some(v=>v.attr===l.attr&&v.stem===l.stem&&Math.abs(v.value-l.value)<1.05))){valid=false;break;}
+     s=r.seed;
+    }
+    if(valid)matching.push({initial:seed,current:s});
+   }
+   candidates=[...new Set(matching.map(m=>m.current))];
+   if(candidates.length===1){
+    $('#seed').value=candidates[0];
+    status.textContent=`One compatible current seed: ${candidates[0]}. Experimental: verify the next prediction before committing materials.`;
+   }else if(candidates.length){
+    status.textContent=`${candidates.length} compatible current seeds remain; more observations may be needed. Do not treat this as a confirmed recipe.`;
+   }else status.textContent='No seed matches the supplied observation. Check quality, exact values, item selection, and Mystic edits. Do not spend materials.';
+   saveProject();worker.terminate();worker=null;
+  }
+  if(d.type==='error'){status.textContent=d.message;worker.terminate();worker=null;}
+ };
+ worker.onerror=e=>{status.textContent=e.message;worker.terminate();worker=null;};
+ worker.postMessage({type:'solve',hypotheses:hypotheses.map(h=>h.constraints),armor:!!item.armor});
 }
 function preview(){try{if(!maybeEngine())return;const seed=currentSeed();if(seed===null)throw Error(T('missing'));
  const r=engine.reforge(item,seed);$('#recipe-status').textContent=`Next reforge (simulated)\n${outputResult(r)}`;$('#steps').replaceChildren();
