@@ -1,0 +1,18 @@
+{
+  "name": "Nephalem Lab",
+  "short_name": "Nephalem Lab",
+  "description": "Diablo III console seed recovery and Kanai Cube recipe planning",
+  "start_url": "./universal.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0e14",
+  "theme_color": "#11151e",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

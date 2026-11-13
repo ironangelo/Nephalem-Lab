@@ -1,0 +1,41 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'cl.ironangelo.nephalemlab'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'cl.ironangelo.nephalemlab'
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName '0.2.0-research'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.13.0'
+}
+
+// The Android package includes the exact web app committed to the repository.
+// This avoids maintaining a second copy of the simulation logic.
+final appRoot = rootProject.projectDir.parentFile
+final syncWeb = tasks.register('syncWebAssets', Sync) {
+    from(appRoot) {
+        include 'index.html', 'universal.html', 'style.css', 'manifest.webmanifest', 'service-worker.js'
+        include 'assets/**', 'config/**', 'solver/**', 'src/**'
+    }
+    into layout.projectDirectory.dir('src/main/assets')
+}
+tasks.named('preBuild').configure { dependsOn(syncWeb) }

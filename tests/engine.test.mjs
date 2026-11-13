@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {applyOperation,makeValues,constraintsFromObservation,matchObservation} from '../src/engine.js';
+import {findRoute} from '../src/planner.js';
+import {SAMPLE_156,SAMPLE_165} from '../src/storage.js';
+// Confirmed by user on Nintendo Switch 2, November 13 2026.
+assert.equal(applyOperation(3035692732,'R').seed,4015360194);
+assert.equal(applyOperation(3035692732,'R').power,165);
+const p=applyOperation(3035692732,'R');
+assert.equal(matchObservation(p,SAMPLE_165),true);
+assert.deepEqual(constraintsFromObservation(SAMPLE_156),[{m:51,r:6},{m:85,r:7},{m:4,r:0},{m:3,r:0},{m:20,r:1}]);
+const steps=[...'RSSRSSSSSRR'].reduce((o,op)=>{const x=applyOperation(o.seed,op);o.chain.push(x);o.seed=x.seed;return o},{seed:4015360194,chain:[]}).chain;
+assert.equal(steps.length,11);
+assert.equal(steps[4].quality,'sanctified');
+assert.deepEqual(steps[4].keys,['Int','CriticalChance','Sockets','DR','KillLife']);
+assert.equal(steps.at(-1).quality,'primal');
+assert.equal(steps.at(-1).power,200);
+assert.deepEqual(steps.at(-1).keys,['Int','CriticalChance','Sockets','CriticalD','PoisonResist']);
+assert.equal(steps.at(-1).seed,2122496372);
+const route=findRoute(4015360194,{maxR:4,maxS:12,maxSteps:15,allowedOperations:['R','S']});
+assert.equal(route.found,true);
+assert.equal(route.materials.souls<=200,true);
+assert.equal(route.steps.at(-1).quality,'primal');
+console.log('✓ CoE 156→165, restricciones inversas, paso 5 y primal final, ruta viable');

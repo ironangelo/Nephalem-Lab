@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#11151e"><meta name="description" content="Nephalem Lab — reverse seed discovery and cost-aware Diablo III cube recipe planning for console players.">
+ <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="./assets/icon.svg"><link rel="stylesheet" href="./style.css">
+ <title>Nephalem Lab</title>
+</head>
+<body>
+ <div id="app">
+  <header class="topbar">
+   <div class="brand"><img src="./assets/icon.svg" class="logo" alt=""><span><strong>NEPHALEM <em>LAB</em></strong><small data-t="tagline">Make the RNG work for you.</small></span></div>
+   <div class="top-right"><span class="eyebrow only-wide" data-t="experimental">Research preview · Console/offline</span><label class="language-picker"><span data-t="language">Language</span><select id="language" aria-label="Language"><option value="en">English</option><option value="es">Español</option><option value="pt">Português</option></select></label></div>
+  </header>
+  <main class="container">
+   <div class="hero-panel"><span class="overline">DIABLO III · KANAI'S CUBE</span><h1>Nephalem <span>Lab</span></h1><p data-t="lead">Enter the actual results of consecutive cube operations. Each new observation narrows the possible seeds.</p><div class="button-row"><a class="button primary" href="./universal.html" style="text-decoration:none;display:inline-flex;align-items:center">Open Universal Lab ↗</a></div><div class="hero-chips"><span class="chip"><span class="signal"></span><span data-t="experimental">Research preview · Console/offline</span></span><span class="chip">v0.1 · CoE / INT</span></div></div>
+   <section class="card mode-card"><div class="section-head"><div><span class="overline">01 / CONFIGURATION</span><h2 data-t="season">Game mode</h2></div><span id="rules-pill" class="rule-pill"></span></div>
+    <div class="setting-grid"><label><span data-t="season">Game mode</span><select id="mode"><option value="seasonal" data-t="seasonal">Current seasonal</option><option value="nonseasonal" data-t="nonseasonal">Non-seasonal</option></select></label><label><span data-t="hero">Hero class</span><select id="hero"><option value="Wizard">Wizard</option><option value="WitchDoctor">Witch Doctor</option><option value="Necromancer">Necromancer</option></select></label><label><span data-t="object">Item</span><select id="item"><option value="Convention of Elements">Convention of Elements</option></select></label></div>
+    <div id="season-alert" class="alert hidden" role="status"></div>
+   </section>
+   <section class="card"><div class="section-head"><div><span class="overline">02 / REVERSE ENGINEERING</span><h2 data-t="title">Existing item seed recovery</h2></div><span class="subtle-accent">32 BIT · MWC</span></div>
+    <p class="muted" data-t="supported">First supported item: Convention of Elements on Intelligence classes.</p>
+    <div class="toolbar"><button class="button secondary" id="load-demo" data-t="demo">Load confirmed CoE experiment</button><button class="button quiet" id="clear" data-t="clear">Clear observations</button></div>
+    <div class="form-header"><h3 data-t="add">Add observation</h3><small class="muted">R · S</small></div>
+    <form id="obs-form"><div class="field-grid">
+     <label><span data-t="quality">Quality</span><select name="quality"><option value="normal" data-t="normal">Normal legendary</option><option value="ancient" data-t="ancient">Ancient</option><option value="primal" data-t="primal">Primal</option><option value="sanctified" data-t="sanctified">Sanctified</option></select></label>
+     <label><span data-t="operation">Operation since previous observation</span><select name="op"><option value="R" data-t="reforge">Reforge Legendary</option><option value="S" data-t="sanctify">Sanctify</option></select></label>
+     <label><span data-t="power">Legendary power (%)</span><input name="power" type="number" min="150" max="200" step="1" value="156" required></label>
+     <label><span data-t="main">Intelligence</span><input name="main" type="number" min="350" max="650" step="1" value="423" required></label>
+     <label><span data-t="critical">Critical Hit Chance (%)</span><input name="critical" type="number" min="4.5" max="8" step="0.5" value="4.5" required></label>
+     <label><span data-t="primary">Variable primary affix</span><select name="primary" id="primary-affix"></select></label>
+     <label><span data-t="primaryValue">Primary value</span><input name="primaryValue" type="number" step="any" value="5" required></label>
+     <label><span data-t="secondary">Variable secondary affix</span><select name="secondary" id="secondary-affix"></select></label>
+     <label><span data-t="secondaryValue">Secondary value</span><input name="secondaryValue" type="number" step="any" value="142" required></label>
+    </div><div class="button-row"><button type="submit" class="button secondary"><span aria-hidden="true">＋</span> <span data-t="add">Add observation</span></button></div></form>
+    <div id="observations" class="observation-list"></div>
+    <div class="button-row solve-row"><button class="button primary" id="solve"><span aria-hidden="true">◇</span><span data-t="solve">Find compatible seeds</span></button><button class="button quiet hidden" id="cancel" data-t="cancel">Cancel search</button></div>
+    <div id="progress" class="hidden"><div class="progress-heading"><span data-t="searching">Scanning 32-bit space</span><span id="progress-label">0%</span></div><progress id="progress-bar" value="0" max="100"></progress></div>
+    <div id="solver-result" class="result-box" aria-live="polite"></div>
+    <details class="manual-entry"><summary data-t="manual">Or enter a known seed</summary><div class="inline-fields"><label><span data-t="startSeed">Current seed (32-bit)</span><input id="manual-seed" type="text" inputmode="numeric" placeholder="4015360194"></label><button id="apply-seed" class="button secondary" data-t="useSeed">Use known seed</button></div></details>
+   </section>
+   <section class="card"><div class="section-head"><div><span class="overline">03 / KANAI'S CUBE</span><h2 data-t="plan">Recipe planner</h2></div><span class="subtle-accent">SHORTEST ROUTE</span></div>
+    <div class="field-grid planner-grid"><label class="full"><span data-t="goal">Target affixes</span><select id="goal"><option value="double-crit-cdr" data-t="goalA">Critical Chance + Critical Damage + Cooldown Reduction + Socket</option><option value="double-crit-int" data-t="goalB">Critical Chance + Critical Damage + Intelligence + Socket</option><option value="cdr-int" data-t="goalC">Critical Chance + Cooldown Reduction + Intelligence + Socket</option></select></label>
+     <label><span data-t="reforgeCost">Reforge cost weight</span><input id="cost-r" type="number" value="9" min="1" max="1000"></label>
+     <label id="s-cost-wrap"><span data-t="sanctifyCost">Sanctify cost weight</span><input id="cost-s" type="number" value="1" min="1" max="1000"></label>
+     <label><span data-t="maxR">Max reforges</span><input id="max-r" type="number" value="5" min="1" max="12"></label>
+     <label id="max-s-wrap"><span data-t="maxS">Max sanctifications</span><input id="max-s" type="number" value="24" min="0" max="200"></label>
+    </div><div class="button-row"><button class="button primary" id="find-route" disabled data-t="find">Find cheapest route</button><button class="button quiet" id="export" data-t="export">Export experiment JSON</button></div>
+    <div id="plan-result" class="plan-box"></div>
+    <p class="safety"><span aria-hidden="true">⚠</span> <span data-t="important">Never follow a recipe if one observed step differs.</span></p>
+   </section>
+   <footer><p data-t="notes">Prediction is based on a community reverse-engineered model, not official Blizzard code.</p><p><a href="https://github.com/FNGarvin/d3recipes" target="_blank" rel="noopener noreferrer">D3Recipes · FNGarvin</a> · <a href="https://news.blizzard.com/en-us/article/24301510/season-40-lights-calling-preview" target="_blank" rel="noopener noreferrer">Blizzard Season 40</a> · <span data-t="version">Research preview 0.1</span></p></footer>
+  </main>
+ </div>
+ <script type="module" src="./src/main.js"></script>
+</body>
+</html>

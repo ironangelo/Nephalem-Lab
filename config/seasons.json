@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "currentSeason": 40,
+  "verifiedOn": "2026-11-13",
+  "staleAfterDays": 45,
+  "source": "https://news.blizzard.com/en-us/article/24301510/season-40-lights-calling-preview",
+  "seasons": {
+    "27": {"name":"Light's Calling", "sanctify":true, "source":"https://news.blizzard.com/en-us/article/23816413/season-27-lights-calling-preview"},
+    "34": {"name":"Light's Calling", "sanctify":true, "source":"https://www.icy-veins.com/d3/season-34-angelic-crucibles-effects-and-mechanics"},
+    "40": {"name":"Light's Calling", "sanctify":true, "source":"https://news.blizzard.com/en-us/article/24301510/season-40-lights-calling-preview"}
+  }
+}

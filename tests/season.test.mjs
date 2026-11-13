@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import {seasonRules,fallbackManifest} from '../src/season.js';
+import {findRoute} from '../src/planner.js';
+import {statName,itemName,tr} from '../src/i18n.js';
+const DATE=new Date('2026-11-13T21:00:00Z');
+assert.deepEqual(seasonRules(fallbackManifest,{now:DATE}).allowed,['R','S']);
+assert.deepEqual(seasonRules(fallbackManifest,{mode:'nonseasonal',now:DATE}).allowed,['R']);
+assert.deepEqual(seasonRules(fallbackManifest,{now:new Date('2027-02-01')}).allowed,['R']);
+assert.deepEqual(seasonRules(fallbackManifest,{season:41,now:DATE}).allowed,['R']);
+assert.equal(statName('en','CriticalD'),'Critical Hit Damage');
+assert.equal(statName('es','CriticalD'),'Daño de golpe crítico');
+assert.equal(statName('pt','CriticalD'),'Dano de Acerto Crítico');
+assert.equal(itemName('es','Convention of Elements'),'Convención de los elementos');
+assert.equal(itemName('en','Unknown Item'),'Unknown Item');
+assert.match(tr('en','goalA'),/Critical Damage/);
+// No path may use S in nonseasonal mode.
+const noSeason=findRoute(4015360194,{maxR:2,maxS:10,maxSteps:12,maxNodes:400,allowedOperations:['R']});
+if(noSeason.found)assert.equal(noSeason.path.includes('S'),false);
+const yesSeason=findRoute(4015360194,{maxR:4,maxS:12,maxSteps:15,allowedOperations:['R','S']});
+assert.equal(yesSeason.found,true);
+assert.equal(yesSeason.steps.at(-1).quality,'primal');
+console.log('✓ Season 40 enables S, nonseasonal/stale/unknown disable S, multilingual labels');
