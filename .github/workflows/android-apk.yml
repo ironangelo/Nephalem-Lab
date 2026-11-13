@@ -24,6 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      # Always bundle the current native seed solver, not the committed fallback binary.
       - run: npm run build:wasm
       - run: npm test
       - uses: actions/setup-java@v4
