@@ -4,10 +4,11 @@ import {searchUniversalRoute} from './universal-planner.js';
 import {validSeeds,advanceCandidates,matchesObservation} from './candidate-analysis.js';
 import {parseSocketCount} from './observation-fields.js';
 import {resolveObservationAttribute,requiredOperationQuality,assertObservationQuality} from './observation-model.js';
+import {parseObservationText} from './observation-import.js';
 import {loadManifest,seasonRules} from './season.js';
 const $=x=>document.querySelector(x),safe=x=>String(x).replace(/[&<>"']/g,a=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[a]));
 const words={en:{heading:'Universal Item Lab',intro:'Item-based simulation for all character classes, with seed recovery research and verifiable recipes.',warning:'Experimental: a reconstruction must be unique and a recipe must be checked step by step before spending materials.',setup:'1. Game and item',observe:'3. Recover an existing item seed',observed:'Enter the visible affixes, including socket count (e.g. 3 on a chest). Socket count is saved but is not a numeric seed constraint. Do not enter Mystic-modified rolls as natural.',plan:'2. Target and recipe',planHelp:'Choose target affixes (Ctrl/long press to select several). One legal Mystic swap may complete the recipe.',mode:'Mode',class:'Character class',item:'Item (English database names)',seed:'Current seed if known',add:'+ Add affix',save:'Save observation',search:'Recover seeds',cancel:'Cancel',goals:'Target affixes',mystic:'Allow one Mystic swap',crafted:'Allow crafted primal (ashes)',maxr:'Maximum reforges',maxs:'Maximum sanctifications',next:'Predict next reforge',route:'Find recipe',ready:'Ready',load:'Loading complete D3Recipes database…',none:'Enter an item first.',missing:'Enter a current seed or recover it before planning.',notEnough:'No unique seed: more consecutive observations may be required.',normal:'Normal (not ancient/primal)',ancient:'Ancient',primal:'Primal',sanctified:'Sanctified',quality:'First observation quality',step:'Expected result',result:'Predicted route',source:'Source'},es:{heading:'Laboratorio universal de objetos',intro:'Simulación basada en datos para todas las clases, reconstrucción de seeds y recetas verificables.',warning:'Experimental: exige una seed única y verifica cada paso antes de gastar materiales.',setup:'1. Juego y objeto',observe:'3. Recuperar la seed del objeto',observed:'Ingresa los afijos visibles, incluidos los engarces (por ejemplo, 3 en una pechera). Se guardan, pero su cantidad no identifica la seed. No ingreses atributos modificados en la Mística como naturales.',plan:'2. Objetivo y receta',planHelp:'Elige los afijos objetivo (Ctrl o pulsación larga para varios). La Mística puede reemplazar legalmente uno.',mode:'Modo',class:'Clase',item:'Objeto (nombres de la base en inglés)',seed:'Seed actual, si la conoces',add:'+ Agregar afijo',save:'Guardar observación',search:'Reconstruir seeds',cancel:'Cancelar',goals:'Afijos deseados',mystic:'Permitir un cambio de Mística',crafted:'Permitir primal fabricado (cenizas)',maxr:'Máximo de reforjas',maxs:'Máximo de santificaciones',next:'Predecir próxima reforja',route:'Buscar receta',ready:'Listo',load:'Cargando base completa de D3Recipes…',none:'Elige un objeto primero.',missing:'Ingresa o reconstruye una seed antes de planificar.',notEnough:'Seed no única: podrían hacer falta otras observaciones consecutivas.',normal:'Normal (no ancestral/primal)',ancient:'Ancestral',primal:'Primal',sanctified:'Santificado',quality:'Calidad de primera observación',step:'Resultado esperado',result:'Ruta prevista',source:'Fuente'},pt:{heading:'Laboratório universal de itens',intro:'Simulação para todas as classes, recuperação de sementes e receitas verificáveis.',warning:'Experimental: exija uma semente única e confira cada etapa antes de gastar materiais.',setup:'1. Jogo e item',observe:'3. Recuperar semente do item',observed:'Informe os atributos visíveis, incluindo a quantidade de encaixes (por exemplo, 3 no peitoral). É registrada, mas não identifica a semente. Não use atributos modificados pela Mística como naturais.',plan:'2. Objetivo e receita',planHelp:'Escolha atributos-alvo (Ctrl ou toque longo para vários). Uma troca válida na Mística é permitida.',mode:'Modo',class:'Classe',item:'Item (nomes em inglês)',seed:'Semente atual, se conhecida',add:'+ Adicionar atributo',save:'Salvar observação',search:'Recuperar sementes',cancel:'Cancelar',goals:'Atributos desejados',mystic:'Permitir troca da Mística',crafted:'Permitir primal fabricado (cinzas)',maxr:'Máximo de reforjas',maxs:'Máximo de santificações',next:'Prever próxima reforja',route:'Buscar receita',ready:'Pronto',load:'Carregando base completa do D3Recipes…',none:'Escolha um item primeiro.',missing:'Informe ou recupere uma semente antes de planejar.',notEnough:'Semente não única: outras observações consecutivas podem ser necessárias.',normal:'Normal (não ancestral/primal)',ancient:'Ancestral',primal:'Primal',sanctified:'Santificado',quality:'Qualidade da primeira observação',step:'Resultado esperado',result:'Rota prevista',source:'Fonte'}};
-let data,manifest,engine,item=null,rootItemId=null,observations=[],candidates=[],worker=null,analysisWorker=null,lang='en',persistenceError=null;const T=x=>words[lang][x]||words.en[x]||x;
+let data,manifest,engine,item=null,rootItemId=null,observations=[],candidates=[],worker=null,analysisWorker=null,filterWorker=null,lang='en',persistenceError=null;const T=x=>words[lang][x]||words.en[x]||x;
 const extraWords={
  en:{aTitle:'4. Candidate analysis · no in-game materials',aHelp:'Keep compatible seeds, compare the possible results of each currently available Cube recipe, and search for a limited shared path. Results are conditional, not guaranteed.',aAction:'Analyze candidates',aBackup:'Prepare backup',aRestore:'Restore backup',aStatus:'No seed candidates saved yet.',aCancel:'Cancel analysis'},
  es:{aTitle:'4. Análisis de seeds candidatas · sin gastar materiales',aHelp:'Guarda las semillas compatibles, compara los resultados de cada receta disponible actualmente y busca una ruta común limitada. Las predicciones son condicionales, no garantizadas.',aAction:'Analizar candidatas',aBackup:'Preparar respaldo',aRestore:'Restaurar respaldo',aStatus:'Aún no hay semillas candidatas guardadas.',aCancel:'Cancelar análisis'},
@@ -15,6 +16,7 @@ const extraWords={
 };
 const TA=x=>extraWords[lang]?.[x]||extraWords.en[x]||x;
 function projectKey(){return `nephalem-universal-v3-${engine?.hero}-${rootItemId??item?.id}`;}
+function observationDraftKey(){return `nephalem-observation-draft-v1-${engine?.hero}-${rootItemId??item?.id}`;}
 function capturePreferences(){return {mode:$('#mode').value,allowMystic:$('#allow-mystic').checked,allowConvert:$('#allow-convert').checked,maxC:Number($('#max-c').value),allowCrafted:$('#allow-crafted').checked,maxR:Number($('#max-r').value),maxS:Number($('#max-s').value)};}
 function restorePreferences(p){if(!p||typeof p!=='object')return;
  if(['seasonal','nonseasonal'].includes(p.mode))$('#mode').value=p.mode;
@@ -68,6 +70,8 @@ function rebuildObservationFields(){
 }
 function resetItem(){
  if(analysisWorker){analysisWorker.terminate();analysisWorker=null;}
+ if(filterWorker){filterWorker.terminate();filterWorker=null;}
+ const saveBtn=$('#save-observation');if(saveBtn)saveBtn.disabled=false;
  const hero=Number($('#class').value)||0;engine=new UniversalEngine(data,hero,true);
  if(!maybeEngine()){$('#source-status').textContent=T('none');return;}
  rootItemId=item.id;
@@ -89,7 +93,7 @@ function resetItem(){
   else $('#seed').value='';
  }
  $('#source-status').textContent=`${item.name} · ID ${item.id} · ${engine.candidateAffixes(item).length} candidate affix records`;
- rebuildObservationFields();renderObs();renderCandidateStatus();$('#candidate-results').textContent='';
+ rebuildObservationFields();restoreObservationDraft();renderObs();renderCandidateStatus();$('#candidate-results').textContent='';
 }
 function addRow(initial='',attrInitial=null){if(!maybeEngine()||!observationItem())return;
  const family=observationAffixFamilies(engine,observationItem());const options=family.map(s=>({key:s,txt:niceStem(s)}));
@@ -109,10 +113,49 @@ function getFields(){
    if(!engine.candidateAffixes(observedItem).some(a=>a.is_socket))throw Error('This item does not support a socket affix.');
    lines.push(parseSocketCount(raw));continue;
   }
-  const attr=resolveObservationAttribute(engine,observedItem,family,el.dataset.attr||null);
+  const known=observations.slice().reverse().filter(o=>o.itemId===observedItem.id).flatMap(o=>o.lines).find(l=>l.stem===family&&Number.isInteger(l.attr))?.attr;
+  const attr=resolveObservationAttribute(engine,observedItem,family,el.dataset.attr||known||null);
   lines.push({stem:family,attr,value:Number(raw)});
  }
  return lines;
+}
+function announceObservation(message,{error=false,working=false}={}){
+ const el=$('#observation-feedback');
+ if(el){el.textContent=message;el.classList.remove('u-hidden');el.style.borderLeft=error?'3px solid #e88b84':working?'3px solid #e8b665':'3px solid #7ccf9d';}
+ $('#seed-status').textContent=message;
+ if(error&&el)el.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function saveObservationDraft(){
+ if(!engine||!item)return;
+ try{
+  const draft={itemId:item.id,hero:engine.hero,count:observations.length,op:$('#ob-op').value,quality:$('#ob-quality').value,
+   rows:[...document.querySelectorAll('.u-stat-row')].map(el=>({family:el.querySelector('select').value,value:el.querySelector('input').value,attr:el.dataset.attr||null}))};
+  localStorage.setItem(observationDraftKey(),JSON.stringify(draft));
+ }catch(e){announceObservation('Could not save observation draft: '+String(e?.message||e),{error:true});}
+}
+function restoreObservationDraft(){
+ try{
+  const draft=JSON.parse(localStorage.getItem(observationDraftKey())||'null');
+  if(!draft||draft.itemId!==item.id||draft.hero!==engine.hero||draft.count!==observations.length)return;
+  if(['R','S','C','P'].includes(draft.op)){$('#ob-op').value=draft.op;$('#ob-op').dispatchEvent(new Event('change'));}
+  if(draft.op==='R'&&['normal','ancient','primal'].includes(draft.quality))$('#ob-quality').value=draft.quality;
+  $('#stats').replaceChildren();
+  for(const row of draft.rows||[]){
+   if(!observationAffixFamilies(engine,observationItem()).includes(row.family)&&row.family!=='Power')continue;
+   addRow(row.family,row.attr??null);$('#stats').lastElementChild.querySelector('input').value=row.value;
+  }
+ }catch{}
+}
+function clearObservationDraft(){try{localStorage.removeItem(observationDraftKey());}catch{}}
+function importObservation(){
+ try{
+  if(!maybeEngine())throw Error('Choose an item first.');
+  const available=observationAffixFamilies(engine,observationItem()),rows=parseObservationText($('#observed-paste').value,available);
+  $('#stats').replaceChildren();
+  for(const row of rows){addRow(row.family);$('#stats').lastElementChild.querySelector('input').value=String(row.value);}
+  saveObservationDraft();
+  announceObservation(`Loaded ${rows.length} attribute values. Check the selected operation and quality, then press Save observation.`);
+ }catch(e){announceObservation(String(e?.message||e),{error:true});}
 }
 function renderObs(){const el=$('#observations-list');el.innerHTML=observations.map((o,i)=>`<div class="u-dark">${i+1}. ${o.op}, ${o.quality}: ${o.lines.map(x=>`${safe(niceStem(x.stem))} ${x.value}`).join(' · ')}</div>`).join('');}
 function season(){return seasonRules(manifest,{mode:$('#mode').value});}
@@ -129,25 +172,51 @@ function saveProject(){
  }catch(e){persistenceError=String(e?.message||e);renderCandidateStatus();}
 }
 function outputResult(r){return `${r.item} · ${r.quality} · seed ${r.seed}\n${r.lines.map(l=>`${niceStem(l.stem)}: ${Number(l.value.toFixed(6))}`).join(' · ')}${r.affixes.some(a=>a.socket)?' · Socket':''}`;}
-function record(){if(!maybeEngine())return;try{const o={op:$('#ob-op').value,quality:$('#ob-quality').value,itemId:observationItem()?.id,lines:getFields()};
- if(!o.lines.length||o.lines.every(l=>l.stem==='Sockets'))throw Error('Enter the actual numerical attributes, not only socket count.');
- assertObservationQuality(o.op,o.quality);
- if(!observations.length&&o.quality!=='normal')throw Error('Initial seed recovery requires a normal, unmodified item.');
-  if(o.op==='C'&&o.quality!=='normal')throw Error('Convert Set Item always creates a normal set item.');
-  if(o.op==='C'&&!candidates.length)throw Error('Recover the current item seeds before converting it, so the item chain stays connected.');
- if(candidates.length&&observations.length){
-  if(!confirm(`This will advance and filter ${candidates.length} stored seeds using operation ${o.op}. Only continue if you ACTUALLY performed that operation in the game.`))return;
-  const remaining=advanceCandidates(engine,item,candidates,o.op,o);
-  if(!remaining.length){$('#seed-status').textContent='No candidates match this observed result. Original candidates are preserved. Recheck the resulting piece, quality, exact stats and model before proceeding.';return;}
-  candidates=remaining;
+function finishObservation(o,seeds=null){
+ if(seeds!==null){
+  if(!Array.isArray(seeds)||!seeds.length){announceObservation('No candidate seed matches this observed result. Your original 36,435 candidates are preserved. Check the tooltip or simulator before doing anything else.',{error:true});return;}
+  candidates=validSeeds(seeds);
   $('#seed').value=candidates.length===1?candidates[0]:'';
-  $('#seed-status').textContent=`${candidates.length} seeds remain after the verified ${o.op} result. Continue only after checking predictions in game.`;
- }else $('#seed-status').textContent='Observation saved. Recover candidate seeds when ready.';
+ }
  observations.push(o);
-  if(o.op==='C'&&o.itemId&&o.itemId!==item.id){item=engine.item(o.itemId);$('#item').value=item.name;rebuildObservationFields();}
-  renderObs();saveProject();renderCandidateStatus();
+ if(o.op==='C'&&o.itemId&&o.itemId!==item.id){item=engine.item(o.itemId);$('#item').value=item.name;}
+ renderObs();saveProject();renderCandidateStatus();clearObservationDraft();rebuildObservationFields();
  $('#candidate-results').textContent='';
- }catch(e){$('#seed-status').textContent=e.message;}}
+ announceObservation(seeds!==null?`Observation #${observations.length} saved: ${candidates.length} candidate seeds remain. Do not spend materials until a prediction is verified.`:'Observation saved. Recover candidate seeds when ready.');
+}
+function record(){
+ if(filterWorker){announceObservation('Filtering is already in progress. Your candidates and entries are safe.',{working:true});return;}
+ try{
+  if(!maybeEngine())throw Error('Select a recognized item.');
+  const o={op:$('#ob-op').value,quality:$('#ob-quality').value,itemId:observationItem()?.id,lines:getFields()};
+  if(!o.lines.length||o.lines.every(l=>l.stem==='Sockets'))throw Error('Enter numeric values, not only socket count.');
+  assertObservationQuality(o.op,o.quality);
+  if(!observations.length&&o.quality!=='normal')throw Error('Initial seed recovery requires a normal, unmodified item.');
+  if(o.op==='C'&&!candidates.length)throw Error('Recover current candidates before converting the set piece.');
+  if(!candidates.length||!observations.length){finishObservation(o);return;}
+  if(!confirm(`Filter ${candidates.length} saved candidates using the REAL ${o.op} result? Only confirm if you actually performed this operation in Diablo III.`))return;
+  saveObservationDraft();
+  announceObservation(`Comparing ${candidates.length} candidate seeds in a background worker. No materials or new scan required…`,{working:true});
+  const button=$('#save-observation');button.disabled=true;
+  filterWorker=new Worker(new URL('./candidate-worker.js',import.meta.url),{type:'module'});
+  filterWorker.onmessage=e=>{
+   const d=e.data;
+   if(d.type==='progress'){announceObservation(d.message,{working:true});return;}
+   if(d.type==='filtered'){
+    filterWorker.terminate();filterWorker=null;button.disabled=false;
+    finishObservation(o,d.seeds);
+   }else if(d.type==='error'){
+    filterWorker.terminate();filterWorker=null;button.disabled=false;
+    announceObservation('Filtering failed: '+d.message+'. Candidate list preserved.',{error:true});
+   }
+  };
+  filterWorker.onerror=e=>{
+   filterWorker?.terminate();filterWorker=null;button.disabled=false;
+   announceObservation('Background calculation failed: '+String(e.message||e.type)+'. Candidate list preserved.',{error:true});
+  };
+  filterWorker.postMessage({type:'filter',gameData:data,hero:engine.hero,itemId:item.id,op:o.op,observation:o,seeds:validSeeds(candidates)});
+ }catch(e){$('#save-observation').disabled=false;announceObservation('Cannot save: '+String(e?.message||e)+'. Your seeds and entered values were not deleted.',{error:true});}
+}
 function scan(){if(!maybeEngine())return;const first=observations[0];if(!first){$('#seed-status').textContent='Save a complete normal observation first.';return;}
  if(candidates.length){$('#seed-status').textContent=`${candidates.length} candidates already saved. No need to repeat the 32-bit scan; analyze them or enter a genuine next observation.`;return;}
  if(rootItemId!==item.id){$('#seed-status').textContent='The item changed after conversion. Restore the previous candidate list instead of treating this as a new initial object.';return;}
@@ -288,7 +357,11 @@ async function boot(){lang=localStorage.getItem('nephalem-lang')||'en';$('#lang'
   $('#target-item').addEventListener('change',()=>{resetGoalFields();saveProject();});$('#goals').addEventListener('change',saveProject);
  for(const id of ['#mode','#allow-mystic','#allow-convert','#max-c','#allow-crafted','#max-r','#max-s'])$(id).addEventListener('change',saveProject);
  $('#lang').addEventListener('change',e=>{lang=e.target.value;localStorage.setItem('nephalem-lang',lang);translate();if(item){renderCandidateStatus();}});
- $('#add-stat').onclick=()=>addRow();$('#save-observation').onclick=record;$('#search-seed').onclick=scan;
+ $('#add-stat').onclick=()=>{addRow();saveObservationDraft();};$('#save-observation').onclick=record;$('#search-seed').onclick=scan;
+ $('#import-observation').onclick=importObservation;
+ $('#base-fields').addEventListener('change',saveObservationDraft);
+ $('#stats').addEventListener('change',saveObservationDraft);
+ $('#stats').addEventListener('input',saveObservationDraft);
  $('#cancel-seed').onclick=()=>{worker?.terminate();worker=null;$('#seed-status').textContent='Cancelled';};
  $('#preview').onclick=preview;$('#route').onclick=plan;
  $('#analyze-candidates').onclick=startCandidateAnalysis;
