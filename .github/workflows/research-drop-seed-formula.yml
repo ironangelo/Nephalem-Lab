@@ -1,0 +1,16 @@
+name: Research original Diablo III drop seed formula (no APK)
+on:
+  push:
+    branches: [research/drop-seed-formula]
+  workflow_dispatch:
+jobs:
+  drop-seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test original-drop stat-value RNG hypotheses against all three actual snapshots
+        run: node research/drop-values-model.mjs
