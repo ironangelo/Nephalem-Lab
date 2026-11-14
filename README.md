@@ -1,4 +1,12 @@
-# Nephalem Lab (research preview v0.3.2)
+# Nephalem Lab (research preview v0.3.3)
+
+## v0.3.3 — high-candidate recovery fix
+
+- Corrected the previous 10,000-seed validation cap that interrupted local persistence and the analysis UI after larger scans (e.g., 36,435 candidates).
+- Candidate lists up to the existing 120,000 seed-solver limit can now be saved and backed up. A storage error is explicitly reported rather than silently blocking candidate analysis.
+- The shared-route enumeration is safely skipped above 5,000 compatible seeds; the operation comparison can still use the full saved list. Do not mistake a skipped route for an unsuccessful route.
+- Data that was only held in memory by a previous build cannot be recovered after that browser session is closed. Avoid spending in-game materials simply to reduce candidate count.
+
 
 An **unofficial** Diablo III console item-seed and Kanai's Cube research tool.
 
