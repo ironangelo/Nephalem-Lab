@@ -1,0 +1,22 @@
+name: Exhaustive dropped-item high32 RNG experiment
+on:
+  push:
+    branches: [research/drop-seed-formula]
+  workflow_dispatch:
+jobs:
+  exhaustive-high32:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile numeric constraints from actual original screenshot
+        run: node research/export-drop-constraints.mjs
+      - name: Compile optimized 64-bit MWC inverse scanner
+        run: gcc -O3 -fopenmp -o /tmp/drop-high32 research/drop-high32-scan.c
+      - name: Search every high32 value for 7 candidate drop-generation models
+        run: OMP_NUM_THREADS=4 /tmp/drop-high32 /tmp/firebird-hypotheses.txt /tmp/firebird-high-hits.tsv
+      - name: Verify exact initial tooltip and check original drop affix generation
+        run: node research/verify-drop-high32.mjs
