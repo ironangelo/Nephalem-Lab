@@ -1,5 +1,7 @@
 # Nephalem Lab (research preview v0.4.1)
 
+
+> **Resultado real confirmado, 2026-11-14:** el usuario completó en Nintendo Switch 2 la ruta de 12 operaciones `SSSSCSSCCSSR` desde su Firebird's Breast de 443 INT. La fotografía tomada tras el último paso muestra exactamente los afijos finales previstos para el Primal natural. Ver [evidencia y límites](research/FIREBIRD_SOULSTONE_ROUTE.md). Las seeds siguen siendo inferidas, no extraídas de la memoria del juego.
 > **Bitácora en español:** [CONTINUIDAD_ES.md](CONTINUIDAD_ES.md) — resumen del CoE, Firebird, semillas de drops, pruebas, y ruta hacia el Primal con todos los resultados.
 
 > **Research continuity (2026-11-14):** Start at [CONTINUITY.md](CONTINUITY.md). It preserves the actual CoE and Firebird's Breast observations, independently checked MWC/RNG mathematics, single-Reforge drop seed recovery, the 12-step Soulstone Primal route, checkpoint screenshots as transcribed evidence, code branches, test runs and important unresolved questions. Detailed references: [experiment chronology](research/COE_AND_FIREBIRD_EXPERIMENTS.md) · [seed/drop mathematics](research/SEED_MODEL_AND_DROP_RECOVERY.md) · [Firebird route with all stats](research/FIREBIRD_SOULSTONE_ROUTE.md). **Documentation only; no APK changes.**
