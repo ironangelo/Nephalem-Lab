@@ -102,7 +102,7 @@ Para comparar **todos los afijos visibles de cada paso, incluidos los secundario
 - [COE_AND_FIREBIRD_EXPERIMENTS.md](research/COE_AND_FIREBIRD_EXPERIMENTS.md) — crónica detallada de ambos experimentos.
 - [SEED_MODEL_AND_DROP_RECOVERY.md](research/SEED_MODEL_AND_DROP_RECOVERY.md) — teoría, fórmula, escáneres completos, diferencias entre drop/R/S/C.
 - [FIREBIRD_SOULSTONE_ROUTE.md](research/FIREBIRD_SOULSTONE_ROUTE.md) — receta completa y números de cada estado.
-- [EXPERIMENT_VECTORS_2026-11-14.json](research/EXPERIMENT_VECTORS_2026-11-14.json) — datos estructurados para futuras pruebas automáticas, incluidos SHA-256 de las dos fotos más recientes.
+- [EXPERIMENT_VECTORS_2026-11-14.json](research/EXPERIMENT_VECTORS_2026-11-14.json) — datos estructurados para futuras pruebas automáticas, incluidos los SHA-256 de las seis fotografías relevantes de Firebird.
 - [Ramas de investigación](https://github.com/ironangelo/Nephalem-Lab/branches) — los algoritmos experimentales están separados del APK y de \`main\`.
 
 **Fotos:** los valores están transcritos en estos registros; los archivos binarios de las fotos originales de la conversación **todavía no están subidos al repositorio**. No confundir un hash de imagen documentado con una copia de imagen archivada.
