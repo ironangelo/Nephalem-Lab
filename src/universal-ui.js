@@ -172,7 +172,7 @@ function scan(){if(!maybeEngine())return;const first=observations[0];if(!first){
    }
    const unique=[...new Set(verified.map(x=>x.current))];candidates=unique;
    if(unique.length===1){$('#seed').value=unique[0];status.textContent=`One compatible seed: ${unique[0]}. Verify a future prediction before using a costly recipe.`;}
-   else if(unique.length)status.textContent=`${unique.length} compatible seeds remain; an additional observation would help. Do not spend materials merely to bypass an app error.`;
+   else if(unique.length)status.textContent=`${unique.length} compatible seeds remain. Next: use Section 4 > Analyze candidates, then Prepare backup before any real Cube operation. Do not spend materials merely to bypass an app error.`;
    else status.textContent='No seed matches all the supplied observations. Check exact values, quality, Mystic edits and item class; do not spend materials.';
    saveProject();renderCandidateStatus();worker.terminate();worker=null;
   }
@@ -235,6 +235,19 @@ function prepareCandidateBackup(){
  $('#candidate-results').textContent='Backup prepared below. Copy and save the text elsewhere before uninstalling the app.';
  $('#candidate-backup').focus();$('#candidate-backup').select();
 }
+async function copyCandidateBackup(){
+ if(!candidates.length){$('#candidate-results').textContent='No candidates available to back up.';return;}
+ prepareCandidateBackup();
+ const field=$('#candidate-backup'),payload=field.value;
+ try{
+  if(navigator.clipboard?.writeText)await navigator.clipboard.writeText(payload);
+  else if(!document.execCommand('copy'))throw Error('Clipboard API unavailable');
+  $('#candidate-results').textContent=`Copied ${candidates.length} candidates. Paste the entire text into a note or file outside Nephalem Lab before updating.`;
+ }catch(e){
+  field.focus();field.select();
+  $('#candidate-results').textContent='Automatic copy unavailable. The backup is selected: use Android Copy from the text selection toolbar, then paste into a note outside the app.';
+ }
+}
 function restoreCandidateBackup(){
  try{
   const input=JSON.parse($('#candidate-backup').value);
@@ -281,6 +294,7 @@ async function boot(){lang=localStorage.getItem('nephalem-lang')||'en';$('#lang'
  $('#analyze-candidates').onclick=startCandidateAnalysis;
  $('#cancel-analysis').onclick=()=>{if(analysisWorker){analysisWorker.terminate();analysisWorker=null;$('#candidate-results').textContent='Candidate analysis cancelled.';}};
  $('#backup-candidates').onclick=prepareCandidateBackup;
+ $('#copy-backup').onclick=copyCandidateBackup;
  $('#restore-candidates').onclick=restoreCandidateBackup;
  if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
 }
