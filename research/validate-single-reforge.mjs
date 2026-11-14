@@ -10,14 +10,17 @@ const stat=(stem,value)=>{
 const B={quality:'normal',itemId:it.id,lines:[stat('Int',456),stat('Vit',484),stat('LightningResist',149),stat('Thorns',5366),stat('Skill_Wizard_ExplosiveBlast',13)]};
 const raw=fs.readFileSync('/tmp/one-reforge-preimages.tsv','utf8').trim();
 const rows=raw?raw.split('\n').map(x=>x.trim().split(',').map(Number)):[];
-const full=[],partial=[];
+const full=[],partial=[];let otherQualities=0;
 for(const [parent,child]of rows){
  const r=e.reforge(it,parent);
- if(r.seed!==child)throw Error('C scanner does not match model');
+ // The inverse scanner assumes six MWC draws, which only applies to
+ // normal-quality Firebird reforges. Ancient/primal consume extra draws.
+ if(r.quality!=='normal'){otherQualities++;continue;}
+ if(r.seed!==child)throw Error('C scanner does not match normal-quality model');
  const res={parent,child,quality:r.quality,seed:r.seed,affixes:r.affixes.map(x=>x.stem),values:r.lines.map(x=>[x.stem,x.value])};
  if(matchesObservation(r,B))full.push(res);
  else if(r.quality==='normal')partial.push(res);
 }
-console.log('ONE_REAL_REFORGE_INVERSE_RESULT',JSON.stringify({possibleParentsFromBStats:rows.length,exactParents:full.length,exact:full.slice(0,50),otherNormal:partial.length}));
+console.log('ONE_REAL_REFORGE_INVERSE_RESULT',JSON.stringify({possibleParentsFromBStats:rows.length,exactParents:full.length,exact:full.slice(0,50),otherNormal:partial.length,otherQualities}));
 console.log('CHECK_EXPECTED_OLD_SEED',JSON.stringify({knownAseed:3525123180,found:full.some(x=>x.parent===3525123180)}));
 console.log('SINGLE_REFORGE_RESEARCH_FINISHED');
