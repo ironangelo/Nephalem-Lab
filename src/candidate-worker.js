@@ -14,16 +14,22 @@ self.onmessage=({data})=>{
    if(!['R','S','C','P'].includes(op))throw Error('Unsupported game operation.');
    if(!observation||!Array.isArray(observation.lines))throw Error('Invalid observation.');
    const survivors=[],total=seeds.length;
+   const diagnostic={matchingQuality:0,matchingFamilies:0,scanned:total};
    self.postMessage({type:'progress',message:`Comparing ${total} candidate seeds against the real ${op} result…`});
    for(let i=0;i<total;i++){
     try{
      const result=engine.apply(item,seeds[i],op);
+     if(result.quality===observation.quality){
+      diagnostic.matchingQuality++;
+      const visible=new Set([...result.lines.map(l=>l.stem),...result.affixes.map(a=>a.stem)]);
+      if(observation.lines.every(l=>visible.has(l.stem)))diagnostic.matchingFamilies++;
+     }
      if(matchesObservation(result,observation))survivors.push(result.seed);
     }catch{}
     if((i+1)%512===0||i+1===total)
      self.postMessage({type:'progress',message:`Verified ${i+1} / ${total} modeled candidates…`});
    }
-   self.postMessage({type:'filtered',seeds:validSeeds(survivors),checked:total});
+   self.postMessage({type:'filtered',seeds:validSeeds(survivors),checked:total,diagnostic});
    return;
   }
   const {targetItemId,seeds,allowed,goals,allowConvert,allowCrafted}=data,target=engine.item(targetItemId||itemId);
