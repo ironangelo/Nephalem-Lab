@@ -34,7 +34,7 @@ function constraint(fx,value){const s=symbolicFormula(fx);if(!s)return null;
 const perm=a=>a.length<=1?[a]:a.flatMap((x,i)=>perm([...a.slice(0,i),...a.slice(i+1)]).map(v=>[x,...v]));
 const original=e.candidateAffixes(it),selectedByStem=new Map();
 for(const a of original){
- const idx=e.idIndex.get(a.id),next=e.affixes[e.variant(idx,1)];
+ const idx=e.idIndex.get(a.id),next=e.affixes[e.variant(idx,2)];
  const s=affixStem(a.label),lst=selectedByStem.get(s)||[];
  if(!lst.some(x=>x.id===next.id))lst.push(next);
  selectedByStem.set(s,lst);
