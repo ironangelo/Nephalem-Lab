@@ -227,6 +227,19 @@
         "from": "HealthGlobeBonus",
         "to": "DefenseMelee",
         "maximumDamageReductionPercent": 7
+      },
+      "userConfirmedFullRoute": {
+        "observed": "actual user explicit confirmation",
+        "date": "2026-11-14",
+        "route": "SSSSCSSCCSSR",
+        "numberOfSteps": 12,
+        "confirmedAllStepsPerformed": true,
+        "confirmedPhotoTakenImmediatelyAfterFinalOperation": true,
+        "verbatimSpanish": "Sí, exactamente al terminar el último paso",
+        "finalVisibleAffixesExactlyMatchPrediction": true,
+        "intermediateIndividualPhotoValidation": false,
+        "hiddenSeedWasDirectlyReadFromConsole": false,
+        "claim": "A real end-to-end validation of the planned 12-operation route and photographed final visible affixes, supported by user testimony and final game photo. It does not directly certify hidden memory state or independently photograph each intermediate checkpoint."
       }
     }
   },
