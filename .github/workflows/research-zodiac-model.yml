@@ -1,0 +1,19 @@
+name: Audit Obsidian Ring of the Zodiac fixed and Primal affixes
+on:
+  push:
+    branches: [research/zodiac-drop-seed]
+    paths:
+      - '.github/workflows/research-zodiac-model.yml'
+      - 'research/zodiac-model-audit.mjs'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify Zodiac fixed stats and natural Primal outcomes
+        run: node research/zodiac-model-audit.mjs
