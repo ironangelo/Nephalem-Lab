@@ -118,7 +118,7 @@ Para comparar **todos los afijos visibles de cada paso, incluidos los secundario
 **Sin nuevas operaciones, sin APK y sin gastar materiales para escribir esta continuidad.**
 
 
-## Nuevo caso (2026-11-14): Firebird's Eye de Kadala — pendiente de una operación real
+## Nuevo caso (2026-11-14): Firebird's Eye de Kadala — Convert real confirmado, seed recuperada
 
 **Evidencia inicial (fotografía real):** fuente arcana `Firebird's Eye`, obtenida de Kadala, **nunca reforjada ni santificada**, con daño 346–425, +19% daño de habilidades de fuego, +705 INT, +686 VIT, +152 experiencia por muerte, +11 poder arcano máximo y +10% daño Magic Missile. La calidad exacta (normal/Ancient) no está establecida por la etiqueta visible. La seed interna de este drop **NO fue recuperada** desde la foto.
 
@@ -133,4 +133,13 @@ El multiplicador `2319347213 = 0x8A3E6E0D` es el inverso multiplicativo de `0x6A
 
 **Prueba computacional separada:** se hizo un Convert sintético de Firebird's Eye con una seed temporal conocida y luego se ocultó esa seed; se recuperaron **24** posibles seeds del resultado por su descripción numérica y **una sola precursora exacta** al invertir C y verificar todos los afijos y valores. Caso sintético `3525123180 --C--> Firebird's Breast 3286999478` con regreso correcto a `3525123180`. **¡La prueba NO identifica la seed de la Eye real del usuario!** Ver https://github.com/ironangelo/Nephalem-Lab/actions/runs/43613931345 y código en https://github.com/ironangelo/Nephalem-Lab/tree/research/firebird-eye-kadala.
 
-**Siguiente paso propuesto, aún NO confirmado como ejecutado:** convertir **una sola vez** la Firebird's Eye actual usando `Convert Set Item`, fotografiar **toda** la descripción de la nueva pieza (nombre, stats primarios/secundarios, huecos y calidad), recuperar la seed del resultado y luego la de origen mediante la fórmula inversa; recién entonces buscar una ruta mínima al Eye Primal natural. Una sola conversión puede resultar insuficiente si los stats de su objeto convertido no identifican una seed única. **No inventar una receta ni seed antes de esa prueba.**
+**ACTUALIZACIÓN — CONVERSIÓN REAL EJECUTADA Y FOTOGRAFIADA:** `Firebird's Eye` de Kadala se convirtió UNA VEZ en **Firebird's Down**, 704 Armor, 425 INT, 490 VIT, 148 resistencia al fuego, 2621 espinas, 2 huecos y +10% Magic Missile. Invertimos exhaustivamente las 2³² seeds: **12 hipótesis de orden de afijos, 123 seeds numéricamente compatibles, una sola precursora al reproducir completa la conversión**. Seeds INFERIDAS: **Eye origen 4016194486 → C → Down actual 930643368**. Test real: https://github.com/ironangelo/Nephalem-Lab/actions/runs/43615140781. Rust original verificó el mismo estado y **las rutas siguientes**: https://github.com/ironangelo/Nephalem-Lab/actions/runs/43615878705.
+
+**Rutas Primal NATURAL CALCULADAS, todavía NO ejecutadas por el usuario:**
+- **Menos pasos, sin Mística:** `RCSSSRSSR`, 9 operaciones desde **Down actual**: 3 R, 1 C, 5 S = 160 Forgotten Souls, 10 Death's Breaths, 15 materiales de cada acto, 5 Crucibles. Firebird's Eye Primal final modelada: **1000 INT / 4 APoC / 10% CHC / 20% Fuego / 14 máximo arcano / 2,59% prob. cegar al golpear**, sin miedo ni retroceso. Seed final inferida **1318732109**.
+- **Menos Souls y contratos (un paso más y requiere Mística):** `SSSSSRCSCR`, 10 operaciones: 2 R, 2 C, 6 S = 120 Souls, 20 DB, 10 materiales de cada acto, 6 Crucibles. Primal final **1000 INT / 4 APoC / 20% Fuego / 14 máximo arcano / 15% Hydra / 35% oro**; cambiar Hydra → **10% CHC** con Mística. Seed final inferida **1980719662**.
+- **Menos Crucibles:** `CCCSSRCCSR`, 10 operaciones, 3 Crucibles, 2 R, 5 C, 150 Souls, 50 DB y 10 materiales de cada acto; Mystic de Arcane Torrent → CHC.
+
+La documentación completa y todos los checkpoints están en [FIREBIRD_EYE_KADALA_SEED_AND_ROUTES.md](research/FIREBIRD_EYE_KADALA_SEED_AND_ROUTES.md). Los costos parten de los **pantalones actuales**: no cuentan los 10 Souls +10 DB gastados en la única conversión REAL anterior. La regla de Sanctify de último secundario reemplazado se aplica a pantalones santificados de seis afijos. No se predice la identidad del poder naranja ni el daño base de la fuente Eye.
+
+**Estado de ejecución:** la conversión inicial sí ocurrió en la Switch 2. **No hay todavía ninguna operación real posterior sobre esos pantalones.** El próximo paso dependerá de si el usuario elige la ruta corta (R) o la ahorradora de Souls (S); verificar la siguiente fotografía antes de avanzar.
