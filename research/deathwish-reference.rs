@@ -15,7 +15,8 @@ fn main(){
   "legendaryPower":os.iter().find(|x|x.aff.is_none()).map(|x|x.value)
  }));
  for path in ["SRRSSRSSSSSSSSSSSSSSSRR","RRSRRRSRSSRSRSSR","SSSSSSSSRSSSSSSSSRSSRSR"]{
-  let mut sim=Sim::new(data.clone(),wizard,true),seed=46826983u32;
+  let mut sim=Sim::new(data.clone(),wizard,true);
+  let mut seed=46826983u32;
   for (n,op) in path.chars().enumerate(){
    let (aff,anc,primal,next)=match op{
     'R'=>{let x=sim.reforge(idx,seed);(x.affixes,x.ancient,x.primal,x.child_seed)},
