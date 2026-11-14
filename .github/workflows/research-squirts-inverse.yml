@@ -1,0 +1,19 @@
+name: Squirt normal Reforge inverse hypotheses
+on:
+  push:
+    branches: [research/squirts-two-drops-seed]
+    paths:
+      - 'research/squirts-real-inverse.mjs'
+      - '.github/workflows/research-squirts-inverse.yml'
+  workflow_dispatch:
+jobs:
+  inverse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Derive observed normal Squirt constraints
+        run: node research/squirts-real-inverse.mjs
