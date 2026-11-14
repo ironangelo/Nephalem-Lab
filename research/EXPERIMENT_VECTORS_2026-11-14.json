@@ -385,5 +385,141 @@
         "Hidden seeds inferred and never directly read from game memory"
       ]
     }
+  },
+  "deathwishUnknownDrop": {
+    "source": "unknown: Kadala or Greater Rift; user does not recall exact origin",
+    "character": "Wizard",
+    "original": {
+      "observed": "actual photograph",
+      "DPS": 2306.1,
+      "powerPercent": 250,
+      "damageRange": [
+        1166,
+        1382
+      ],
+      "intelligence": 652,
+      "vitality": 726,
+      "attackSpeedPercent": 6,
+      "lifeAfterKill": 7904,
+      "inferredSeed": 1184690904
+    },
+    "firstRealReforge": {
+      "operation": "R",
+      "alreadyPerformed": true,
+      "observed": "actual photograph",
+      "quality": "normal",
+      "DPS": 2111.9,
+      "powerPercent": 253,
+      "fireDamageRange": [
+        1096,
+        1361
+      ],
+      "internalFireDamageRolls": [
+        1096,
+        265
+      ],
+      "intelligence": 715,
+      "vitality": 701,
+      "areaDamagePercent": 18,
+      "displayedStunPercent": 1.6,
+      "actualInferredInternalStunPercent": 1.56,
+      "inferredCurrentSeed": 46826983,
+      "screenshot": {
+        "uploadName": "image-1794681598531.jpg",
+        "sha256": "95e7d55321599a4f4f34a919ea03f7886d8aa6935247cb251243775579b5dbb1",
+        "archivedInGitHub": false
+      },
+      "recovery": {
+        "allResultSeedsExhausted": 4294967296,
+        "compatibleResultSeeds": 1,
+        "allPredecessorSeedsExhausted": 4294967296,
+        "compatiblePredecessors": 1,
+        "roundingCorrection": "1.56% internal stun is rendered as 1.6% by console",
+        "independentlyRustValidated": true,
+        "run": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43628361826",
+        "referenceRun": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43629140525"
+      }
+    },
+    "target": {
+      "item": "Deathwish",
+      "quality": "natural Primal",
+      "powerPercent": 325,
+      "element": "ColdD or LightningD preferred",
+      "damagePercent": 10,
+      "cooldownReductionPercent": 10,
+      "damageToElitesPercent": 8,
+      "avoidSecondaries": [
+        "Fear on Hit",
+        "Knockback on Hit"
+      ],
+      "maximumOneMystic": true,
+      "weaponSocketViaRamaladniOption": true
+    },
+    "searchedRoutes": {
+      "fullBudgetProof": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43628886291",
+      "referenceProof": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43629310015",
+      "planOptions": [
+        {
+          "path": "SRRSSRSSSSSSSSSSSSSSSRR",
+          "ops": 23,
+          "reforges": 5,
+          "crucibles": 18,
+          "forgottenSouls": 250,
+          "materialsPerAct": 25,
+          "element": "LightningD",
+          "modeledFinalSeed": 1326569675,
+          "mystic": "Intelligence -> +8% Damage to Elites",
+          "quality": "simulated natural Primal, not yet executed"
+        },
+        {
+          "path": "SRRSRRSSSSSSSSSRRR",
+          "ops": 18,
+          "reforges": 7,
+          "crucibles": 11,
+          "forgottenSouls": 350,
+          "materialsPerAct": 35,
+          "element": "ColdD",
+          "modeledFinalSeed": 170084482,
+          "mystic": "Intelligence -> +10% CDR",
+          "quality": "simulated natural Primal, not yet executed"
+        },
+        {
+          "path": "SSSSSSSSRSSSSSSSSRSSRSR",
+          "ops": 23,
+          "reforges": 4,
+          "crucibles": 19,
+          "forgottenSouls": 200,
+          "materialsPerAct": 20,
+          "element": "HolyD (not preferred)",
+          "modeledFinalSeed": 3288043744,
+          "mystic": "Intelligence -> +8% Damage to Elites",
+          "quality": "simulated natural Primal, not yet executed"
+        }
+      ],
+      "shareFourFirstSteps": "SRRS",
+      "firstSExpected": {
+        "seed": 2773532829,
+        "quality": "sanctified",
+        "powerPercent": 325,
+        "element": "HolyD",
+        "damageRange": [
+          1560,
+          1940
+        ],
+        "intelligence": 1000,
+        "vitality": 1000,
+        "cooldownReductionPercent": 10,
+        "knockbackRawPercent": 2.59,
+        "orangePower": "random; cannot be predicted"
+      },
+      "detailedCheckpointDocument": "research/DEATHWISH_PRIMAL_CHECKPOINTS.md",
+      "actualFutureRouteExecutionConfirmed": false
+    },
+    "caveats": [
+      "original 250% drop stats did not identify seed without one Reforge",
+      "original seed inferred, not directly read from console memory",
+      "success of independent original Rust does not guarantee actual future Cube actions, check every step",
+      "exact displayed DPS for Primal not simulated"
+    ]
   }
 }
