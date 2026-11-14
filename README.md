@@ -1,4 +1,4 @@
-# Nephalem Lab (research preview v0.2)
+# Nephalem Lab (research preview v0.3.1)
 
 An **unofficial** Diablo III console item-seed and Kanai's Cube research tool.
 
@@ -65,3 +65,23 @@ D3Recipes item database fetch. This is a **debug APK**, not Play Store-signed.
 The debug APK build must complete successfully before an installable APK exists.
 For security, install only from the repository you control. The app does not modify
 Diablo III or connect to Blizzard accounts.
+
+## Candidate analysis (v0.3)
+
+- **Candidate seeds persist locally** by item ID and hero class; a JSON copy/paste backup supports reinstalls or phone changes. An older app build did **not** save the 387 Firebird's Pinions seeds, so that 32-bit search must run **once more** after upgrading.
+- After recovering multiple seeds, use **Analyze candidates** on `universal.html`. It simulates enabled operations for every retained seed, groups their *visible* tooltip outcomes, and compares expected/worst-case remaining candidates. These results are **conditional** on the inverse-model candidates, not certified game-state seeds.
+- The information-efficiency ranking uses subjective relative weights (R=9, S=1, C=3, P=30), **not directly comparable material prices**. Never assume a cheap set conversion preserves the original item; it normally changes the set piece.
+- **Current seasonal S** is available only if the season manifest says it is verified. Sanctified powers are not predicted; sanctified items are **not natural primals**.
+- With target affixes selected, a **bounded** shared-path search explores at most 4 operations and 70 states. Failure does not imply no route exists, and an apparent shared route needs independent in-game confirmation.
+- When entering a newly observed real R/S/P result, the saved candidate list is filtered and advanced without rescanning the 32-bit space. Record the **actual** operation and complete exact stats; never create a fake observation from a simulation. Set conversion now supports selecting and recording the new set piece and preserving the same candidate chain across conversions; it cannot directly produce Ancient/Primal.
+- Initial Firebird's Pinions target defaults to Int + Vit + Cooldown Reduction + Resource Cost Reduction as a convenient experiment; confirm the exact desired build affixes before spending materials.
+
+## Target-aware seed recovery and mixed set conversion (v0.3.1)
+
+- Select the desired **final item and affix families before** beginning seed recovery. Those goals remain in the project while the current set piece changes.
+- Candidate analysis ranks observable outcomes by approximate information gain **and limited goal-oriented lookahead**. Rankings are heuristic (not probabilities or absolute material prices); use actual resource budgets to decide whether to perform any recipe.
+- **Convert Set Item** (C) costs **10 Forgotten Souls + 10 Death's Breaths**, requires at least three pieces in the set, and cannot itself give Ancient/Primal. It can be used between steps (for example C-C-R) if a future step returns to the selected final piece.
+- After a real conversion, use `Resulting set piece` in the observation form and enter its actual stats. The candidate seeds advance and filter **without a new full seed search**, and the current item changes while the target remains fixed. If there is no match, the previous candidates are not overwritten.
+- A common path is reported only if **every retained candidate** reaches the **exact target item** and natural primal quality with the requested affix families; Mystic refinement is not assumed in the shared-candidate shortcut. Candidate seeds are still experimental until independently confirmed.
+- For a known single seed, the Dijkstra planner supports mixed R/S/C routes and includes C's materials in its displayed cost.
+- The Android APK is version 0.3.1 research (`versionCode 3`). Existing v0.2 candidate lists were never saved; rerun the full scan once on the updated build, then use backup and restore.
