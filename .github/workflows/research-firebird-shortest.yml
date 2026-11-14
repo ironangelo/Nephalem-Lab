@@ -1,0 +1,16 @@
+name: Find shortest natural Firebird Primal route
+on:
+  push:
+    branches: [research/firebird-soulstone-primal-route]
+  workflow_dispatch:
+jobs:
+  shortest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Breadth-first search on R S C to strict Soulstone affixes
+        run: node --max-old-space-size=6000 research/firebird-shortest-steps.mjs
