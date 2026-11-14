@@ -9,7 +9,7 @@ const OPS={
  C:{souls:10,actMaterialsEach:0,crucibles:0,deathBreaths:10,ashes:0,weight:3},
  P:{souls:0,actMaterialsEach:0,crucibles:0,deathBreaths:0,ashes:100,weight:30}
 };
-export function validSeeds(values,{max=10000}={}){
+export function validSeeds(values,{max=120000}={}){
  if(!Array.isArray(values)||values.length>max)throw Error('Invalid candidate list size');
  return [...new Set(values.map(Number))].filter(x=>Number.isInteger(x)&&x>=0&&x<=4294967295);
 }
@@ -102,8 +102,9 @@ export function analyzeCandidateActions(engine,item,candidates,{
  */
 export function findSharedNaturalPrimalRoute(engine,item,candidates,{
  goals=[],targetItem=item,allowed=['R'],maxSteps=5,maxNodes=100,allowConvert=true}={}){
- const seeds=validSeeds(candidates,{max:5000}),start=engine.item(item),target=engine.item(targetItem);
+ const seeds=validSeeds(candidates),start=engine.item(item),target=engine.item(targetItem);
  if(!start||!target)throw Error('Unrecognized current or desired item.');
+ if(seeds.length>5000)return {found:false,skipped:true,reason:`Shared-route search skipped for ${seeds.length} candidates (safe limit: 5000). All seeds remain available for diagnostics; narrow them using verified in-game observations before searching a common route.`};
  if(!goals.length)return {found:false,skipped:true,reason:'Select target affixes to search for a shared path.'};
  const ops=allowedDiagnosticOperations(engine,start,allowed,{allowConvert,allowCrafted:false});
  if(!ops.includes('R'))return {found:false,skipped:true,reason:'No natural primal-producing operation is enabled.'};
