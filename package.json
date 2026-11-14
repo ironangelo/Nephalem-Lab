@@ -6,7 +6,8 @@
   "description": "Experimental universal Diablo III console item seed research and seasonal Kanai Cube recipe planning",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "serve": "npx --yes http-server . -c-1 -p 8080"
+    "serve": "npx --yes http-server . -c-1 -p 8080",
+    "build:wasm": "clang --target=wasm32 -O3 -nostdlib -fno-builtin -Wl,--no-entry -Wl,--export-memory -Wl,--initial-memory=262144 -o solver/scan.wasm solver/scan.c"
   },
   "engines": {
     "node": ">=20"
