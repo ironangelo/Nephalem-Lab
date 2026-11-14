@@ -67,3 +67,39 @@ Why not recommend S first? One Sanctify alone is unable to identify the parent s
 After receiving the real R screenshot, use \`research/deathwish-weapon-inversion.mjs\` and exhaustive MWC inverse to recover a unique parent/current seed if possible, then search \`R/S\` paths ending on a **natural Primal** with **325% power / max damage / cold-or-lightning / Damage% / CDR / elite% with ≤1 Mystic**. Optimize weighted materials AND number of steps (different objectives), confirm all state transitions against original D3Recipes Rust before asking the user to execute a route, and provide a checkable per-step visible-stat list. If resulting gear is Ancient or Primal and the normal scanner cannot solve it, extend the model rather than falsely reporting a seed.
 
 The current screenshot has no evidence of a user Mystic reroll, but preserve any future reroll flags when comparing.
+
+
+## ACTUAL REAL REFORGE VERIFIED AND SEEDS RECOVERED — 2026-11-14
+
+The user completed exactly **one real Reforge Legendary** on the original unknown-drop Deathwish. Normal Deathwish photographed with 2111.9 DPS (not modeled), **+1096–1361 Fire Damage** (internally 1096 and 265), **715 Intelligence**, **701 Vitality**, **1.6% chance to Stun on Hit**, **18% Area Damage**, legendary power **253%**.
+
+**Vital UI rounding discovery:** the game's displayed **1.6% Stun** actually rolled **1.56% (0.0156)**. The initial inverse demanded exact 0.016 and incorrectly returned zero candidates. An exhaustive partial-constraint diagnosis identified this mismatch. Inverting with correct displayed-decimal rounding across all 2^32 post-operation seeds found EXACTLY ONE candidate; a second exhaustive 2^32 predecessor search found exactly one source seed; full forward Reforge replay matched every affix and raw value.
+
+- **Original drop persistent seed inferred: 1184690904**
+- **One real R -> current normal Deathwish seed inferred: 46826983**
+- Source quality normal, full output power 2.53, Int715, FireD(1096,265), Area .18, Vit701, Stun .0156.
+- [Complete real inverse run](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43628361826).
+- [Independent original D3Recipes Rust validates exact same screenshot transition](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43629140525).
+- Photo: image-1794681598531.jpg, SHA-256: 95e7d55321599a4f4f34a919ea03f7886d8aa6935247cb251243775579b5dbb1 (binary image only in conversation).
+
+The seeds are mathematical inference, not directly read from hardware. **Do not tell the user to repeat the initial 50-Forgotten-Soul Reforge.** The sword to modify now is specifically the 253% normal Deathwish whose modeled seed is 46826983.
+
+## Natural Primal recipe comparison, from the current 253% sword
+
+The Soulstone console Firebird Twister sword target: **325% legendary power**, high damage, +10% weapon Damage, +10% Cooldown Reduction, **+8% Damage vs Elites** (Primal max in reference), Cold or Lightning damage element (worth an extra Elemental Exposure stack), avoid Fear and Knockback on hit. A weapon has fixed Intelligence and elemental damage and two other primary slots. Thus a natural Primal with two desired offensive primary affixes can become perfect via a single legal Mystic reroll of Intelligence into the third. Ramaladni's Gift can add a socket separately without consuming a primary.
+
+| Predicted operation sequence from seed 46826983 | Ops | R | S | Souls | Bounty each act | Element | Mystic |
+| --- | ---: | ---: | ---: | ---: | ---: | --- | --- |
+| SSSSSSSSRSSSSSSSSRSSRSR | 23 | 4 | 19 | 200 | 20 | Holy (not preferred) | INT -> +8% Elite |
+| **SRRSSRSSSSSSSSSSSSSSSRR** | **23** | **5** | **18** | **250** | **25** | **Lightning** | INT -> +8% Elite |
+| SRRSRRSSSSSSSSSRRR | 18 | 7 | 11 | 350 | 35 | Cold | INT -> +10% CDR |
+| RSRRSSSRRSSSRRSSR | 17 | 8 | 9 | 400 | 40 | Lightning | INT -> +8% Elite |
+| RRSRRRSRSSRSRSSR | 16 | 9 | 7 | 450 | 45 | Lightning | INT -> +10% CDR |
+
+**These are not yet performed in the game.** The 23-operation 5R/18S result is a natural Primal Deathwish with 325% power, 1560–1940 Lightning damage, 1000 INT (Mystic to +8% Elite), +10% Damage, +10% CDR, 2.59% chance Slow on Hit, final seed inferred 1326569675. Original Rust confirmed each of the 23 operations and the original 253% Reforge. The original damage range number and final DPS are NOT themselves simulated; raw two-number damage affix is modeled. Other material routes remain simulation-based.
+
+The resource trade-off matters: the lower-Souls preferred-element 5R/18S candidate saves 100 Souls vs the 7R/11S 18-step option but consumes 7 more Angelic Crucibles. The 200 Souls Holy route is cheaper in Souls but loses the desirable Cold/Lightning element (Soulstone says the extra 5% damage is helpful, not prioritized above other stats).
+
+Exhaustively enumerated every path in three bounded grids: R <= 4 / S <= 30 (no strict Cold/Lightning hit), R <= 6 / S <= 18 (5R18S first strict), R <= 8 / S <= 12 (7R11S and 8R9S strict variants). [Reproducible exhaustive search](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43628886291). These bounds do not prove absolute global optimality.
+
+**Before recommending additional game operations:** choose and explicitly present a route with costs; after selection, provide checkable per-step complete stats and confirm each game screenshot. Never skip the Sanctify random orange-power caveat, and never treat sanctified quality as a natural Primal.
