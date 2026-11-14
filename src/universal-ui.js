@@ -172,9 +172,9 @@ function saveProject(){
  }catch(e){persistenceError=String(e?.message||e);renderCandidateStatus();}
 }
 function outputResult(r){return `${r.item} · ${r.quality} · seed ${r.seed}\n${r.lines.map(l=>`${niceStem(l.stem)}: ${Number(l.value.toFixed(6))}`).join(' · ')}${r.affixes.some(a=>a.socket)?' · Socket':''}`;}
-function finishObservation(o,seeds=null){
+function finishObservation(o,seeds=null,diagnostic=null){
  if(seeds!==null){
-  if(!Array.isArray(seeds)||!seeds.length){announceObservation('No candidate seed matches this observed result. Your original 36,435 candidates are preserved. Check the tooltip or simulator before doing anything else.',{error:true});return;}
+  if(!Array.isArray(seeds)||!seeds.length){const detail=diagnostic?` Modeled candidates of correct quality: ${diagnostic.matchingQuality}/${diagnostic.scanned}; correct affix families: ${diagnostic.matchingFamilies}/${diagnostic.scanned}.`:'';announceObservation('No candidate seed matches this observed result. Your full original candidate list remains untouched.'+detail+' Do not perform any more Cube actions until we investigate.',{error:true});return;}
   candidates=validSeeds(seeds);
   $('#seed').value=candidates.length===1?candidates[0]:'';
  }
@@ -204,7 +204,7 @@ function record(){
    if(d.type==='progress'){announceObservation(d.message,{working:true});return;}
    if(d.type==='filtered'){
     filterWorker.terminate();filterWorker=null;button.disabled=false;
-    finishObservation(o,d.seeds);
+    finishObservation(o,d.seeds,d.diagnostic);
    }else if(d.type==='error'){
     filterWorker.terminate();filterWorker=null;button.disabled=false;
     announceObservation('Filtering failed: '+d.message+'. Candidate list preserved.',{error:true});
@@ -362,7 +362,10 @@ async function boot(){lang=localStorage.getItem('nephalem-lang')||'en';$('#lang'
  $('#base-fields').addEventListener('change',saveObservationDraft);
  $('#stats').addEventListener('change',saveObservationDraft);
  $('#stats').addEventListener('input',saveObservationDraft);
- $('#cancel-seed').onclick=()=>{worker?.terminate();worker=null;$('#seed-status').textContent='Cancelled';};
+ $('#cancel-seed').onclick=()=>{
+  if(filterWorker){filterWorker.terminate();filterWorker=null;$('#save-observation').disabled=false;announceObservation('Observation filtering cancelled. Your saved seeds and form draft are unchanged.');return;}
+  worker?.terminate();worker=null;announceObservation('Seed scan cancelled.');
+ };
  $('#preview').onclick=preview;$('#route').onclick=plan;
  $('#analyze-candidates').onclick=startCandidateAnalysis;
  $('#cancel-analysis').onclick=()=>{if(analysisWorker){analysisWorker.terminate();analysisWorker=null;$('#candidate-results').textContent='Candidate analysis cancelled.';}};
