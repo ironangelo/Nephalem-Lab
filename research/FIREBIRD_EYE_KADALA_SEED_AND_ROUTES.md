@@ -1,6 +1,6 @@
 # Firebird's Eye: recuperar seed de Kadala usando un Convert Set Item real
 
-**Fecha:** 2026-11-14. **Personaje:** Wizard. **Motor:** D3Recipes @ `49fe28467db9ebbd096694d1408528b2c9ce5ea3`. **Estado:** una conversión real verificada por fotografía y cálculo de seeds, rutas Primal todavía no ejecutadas en Switch 2.
+**Fecha:** 2026-11-14. **Personaje:** Wizard. **Motor:** D3Recipes @ `49fe28467db9ebbd096694d1408528b2c9ce5ea3`. **Estado actualizado:** el usuario eligió la ruta económica `SSSSSRCSCR`, confirmó que **funcionó** y que **realizó el cambio con la Mística**; la fotografía muestra exactamente los afijos finales previstos. Las seeds son inferidas, no leídas de la Switch 2.
 
 ## Evidencia de la pieza original
 
@@ -88,3 +88,24 @@ Los **9 pasos** de A, los **10 de B** y los **10 de C** fueron ejecutados tanto 
 - No existen fotos reales de los próximos pasos: **SON PREDICCIONES PENDIENTES DE VALIDACIÓN**. Si hay cualquier diferencia en el siguiente paso, **no avanzar**.
 - La búsqueda de ruta fue limitada y optimizada con pesos de materiales; no prueba un mínimo universal para todas las cantidades de recursos o todas las semillas del juego. La ruta A fue la primera de longitud 9 hallada en búsqueda por amplitud; la B fue la menor ponderación de materiales entre los casos explorados.
 - Preferir la ruta A si priman **menos operaciones y cero Mística**; preferir B si priman **menos Forgotten Souls/contratos**. La ruta C favorece **ahorro de Crucibles** pero usa muchos más Death's Breaths.
+
+## VALIDACIÓN REAL POSTERIOR — ÉXITO DE LA RUTA ECONÓMICA (2026-11-14)
+
+Después de elegir explícitamente **la ruta que ahorra Forgotten Souls `SSSSSRCSCR`**, el usuario compartió una fotografía de la **Firebird's Eye final** y escribió textualmente: **«Funciono!! E hice el reroll stat con mystic!!»**. La fotografía del juego muestra el marco rojo de Primal, el indicador azul de atributo modificado por la Mística al lado de CHC y los siguientes valores exactos:
+
+| Atributo fotografiado | Valor real | Comparación |
+| --- | ---: | --- |
+| Daño de objeto base | +485–600 | Visible en captura, **no simulado** por el motor |
+| Daño de habilidades de fuego | +20% | Predicho |
+| Inteligencia | +1.000 | Predicho |
+| Probabilidad de crítico | +10,0% **(reroll azul Mística)** | Predicho tras cambiar Hydra +15% |
+| Poder arcano por crítico | +4 | Predicho |
+| Oro de monstruos | +35% | Predicho |
+| Poder arcano máximo | +14 | Predicho |
+
+La **coincidencia de todos los afijos finales es exacta** con la ruta económica calculada por el motor JS y el Rust original; esto constituye una segunda **validación de resultado Primal en Switch 2** desde un objeto inicialmente obtenido como botín de Kadala, esta vez con seed recuperada a partir de **una sola conversión de conjunto**. El usuario confirma éxito y el reroll final; no tenemos fotografías individuales de cada uno de los diez pasos, así que su ejecución individual no está independientemente documentada. El objeto final se fotografía **después de la Mística**: no es una evidencia directa de la forma anterior con Hydra +15%, que sigue siendo el estado predicho por simulador.
+
+- **Cadena inferida:** Eye de Kadala `4016194486` --Convert observado--> Down `930643368` --`SSSSSRCSCR` (usuario confirma resultado)--> Eye Primal modelo seed `1980719662` --Mística Hydra→CHC--> Eye Primal optimizado.
+- **Fotografía:** `image-1794676452913.jpg`, SHA-256 `780fd785701d0f8d79f7f31c619e82faee6963c4cebf1b73f0fd362db290f51f`. El binario permanece en la conversación y **no está subido a GitHub**.
+- **Costo de la ruta tras la conversión inicial:** 120 Forgotten Souls + 20 Death's Breaths + 10 contratos de cada acto + 6 Crucibles, más materiales variables de la Mística. Estos son costos de las operaciones calculadas, no gastos de inventario observados.
+- **Importante:** la Firebird's Eye ya cumple su objetivo. **No volver a reforjar, santificar ni convertir esa pieza** para intentar mejorarla. Conservar este vector como caso de éxito experimental y seguir investigando la generación de drops originales por separado.
