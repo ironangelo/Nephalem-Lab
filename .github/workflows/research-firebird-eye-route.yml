@@ -1,0 +1,16 @@
+name: Find Firebird Eye Soulstone natural Primal routes from real Kadala seed
+on:
+  push:
+    branches: [research/firebird-eye-kadala]
+  workflow_dispatch:
+jobs:
+  search-eye:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Optimize one-Mystic natural Primal path from Firebird Down seed 930643368
+        run: node --max-old-space-size=5500 research/firebird-eye-primal-soulstone.mjs
