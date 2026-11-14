@@ -90,3 +90,47 @@ for(const seed of before){
  }
 }
 console.log('SUMMARY',JSON.stringify({sourceCandidates:before.size,destinationCandidates:after.size,transitions}));
+
+/* Independent third checkpoint:
+ * Original pre-reforge Firebird 416 INT / 10% Life / 198 Experience /
+ * +2 Pickup Radius / 11% Explosive Blast -> 456 INT -> 443 INT.
+ */
+const earlier={quality:'normal',itemId:it.id,lines:[
+ get('Int',416),get('Life',10),get('Experience',198),
+ get('GoldPickUpRadius',2),get('Skill_Wizard_ExplosiveBlast',11)]};
+const earlierHypos=hypothesisSpace(earlier);
+const earliest=new Set();
+const targetMiddleSeed=2645309652;
+let earlyQuality=0,earlyAffixFamilies=0,earlyExact=0;
+const firstFamilies=input.lines.map(l=>l.stem),total=4294967296,batch=6000000;
+for(let offset=0;offset<earlierHypos.length;offset+=32){
+ const group=earlierHypos.slice(offset,offset+32),numerical=new Set();
+ w.set_hyp_count(group.length);w.set_pre_steps(it.armor?2:1);
+ for(const [j,h] of group.entries()){
+  w.set_hyp_length(j,h.constraints.length);
+  h.constraints.forEach(({m,r},k)=>w.set_hyp_constraint(j,k,m,r));
+ }
+ for(let begin=0;begin<total;begin+=batch){
+  const n=w.scan_multi(begin,Math.min(batch,total-begin));
+  if(w.was_overflow())throw Error('Overflow on earliest');
+  for(let k=0;k<n;k++)numerical.add(w.result_at(k)>>>0);
+ }
+ for(const seed of numerical){
+  if(earliest.has(seed)||!group.some(h=>verifyHypothesis(e,it,seed,h)))continue;
+  earliest.add(seed);
+  const v=e.reforge(it,seed);
+  if(v.quality==='normal'){
+   earlyQuality++;
+   const visible=new Set([...v.affixes.map(a=>a.stem),...v.lines.map(a=>a.stem)]);
+   if(firstFamilies.every(f=>visible.has(f)))earlyAffixFamilies++;
+  }
+  if(matchesObservation(v,input)){
+   earlyExact++;
+   console.log('EARLIER_TO_456',JSON.stringify({seed,childSeed:v.seed,exactMiddleSeed:v.seed===targetMiddleSeed,previousR:v.affixes.map(a=>a.stem),values:v.lines.map(({stem,value})=>({stem,value})),third:matchesObservation(e.reforge(it,v.seed),next)}));
+  }
+ }
+ console.log('EARLIER_GROUP_FINISHED',offset,earliest.size,earlyExact);
+}
+console.log('TRIPLE_CHAIN',JSON.stringify({earlierCandidates:earliest.size,quality:earlyQuality,families:earlyAffixFamilies,exactMiddle:earlyExact,targetMiddleSeed}));
+const selected=hyps.filter(h=>verifyHypothesis(e,it,targetMiddleSeed,h));
+console.log('VALIDATED_456_HYPOTHESES',JSON.stringify(selected.map(h=>({affixes:h.affixIds.map(id=>e.affixes[e.idIndex.get(id)].label),lines:e.values(it,targetMiddleSeed,h.affixIds.map(id=>e.idIndex.get(id)),false)}))));
