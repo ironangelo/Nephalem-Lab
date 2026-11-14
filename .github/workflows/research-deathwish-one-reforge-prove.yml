@@ -1,0 +1,23 @@
+name: Prove one Reforge can recover original Deathwish seed
+on:
+  push:
+    branches: [research/deathwish-kadala-drop]
+  workflow_dispatch:
+jobs:
+  one-reforge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run build:wasm
+      - name: Exhaustively invert all 32-bit child seeds from complete synthetic R tooltip
+        run: node research/deathwish-synthetic-reforge-recover.mjs
+      - name: Compile preimage scanner
+        run: gcc -O3 -fopenmp -o /tmp/invert-one research/deathwish-invert-6-draws.c
+      - name: Recover predecessors via exact 6-draw MWC inverse (2^32 exhaustive)
+        run: OMP_NUM_THREADS=4 /tmp/invert-one /tmp/one-reforge-result-seeds.txt /tmp/one-reforge-preimages.tsv
+      - name: Validate recovered original source seed
+        run: node research/deathwish-synthetic-reforge-verify.mjs
