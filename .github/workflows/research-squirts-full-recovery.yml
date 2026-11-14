@@ -1,0 +1,30 @@
+name: Recover real Squirt's Necklace stored seed from normal Reforge
+on:
+  push:
+    branches: [research/squirts-two-drops-seed]
+    paths:
+      - '.github/workflows/research-squirts-full-recovery.yml'
+  workflow_dispatch:
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Produce full numeric inversion hypotheses
+        run: node research/squirts-real-inverse.mjs
+      - name: Scan all 2^32 resulting item seeds
+        run: |
+          gcc -std=c11 -O3 -march=native research/squirts-child-seed-scan.c -o /tmp/squirts-child-seed-scan
+          /tmp/squirts-child-seed-scan
+      - name: Verify all child-seed hits against exact affix formulas
+        run: node research/squirts-verify-child.mjs
+      - name: Scan all 2^32 possible original drop seeds
+        run: |
+          gcc -std=c11 -O3 -march=native research/squirts-parent-seed-scan.c -o /tmp/squirts-parent-seed-scan
+          /tmp/squirts-parent-seed-scan
+      - name: Replay full Reforge and verify all observed stats and affixes
+        run: node research/squirts-verify-parent.mjs
