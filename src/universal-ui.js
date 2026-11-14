@@ -160,6 +160,57 @@ function importObservation(){
 function renderObs(){const el=$('#observations-list');el.innerHTML=observations.map((o,i)=>`<div class="u-dark">${i+1}. ${o.op}, ${o.quality}: ${o.lines.map(x=>`${safe(niceStem(x.stem))} ${x.value}`).join(' · ')}</div>`).join('');}
 function season(){return seasonRules(manifest,{mode:$('#mode').value});}
 function currentSeed(){const n=$('#seed').value.trim();return n!==''&&Number.isInteger(Number(n))&&Number(n)>=0&&Number(n)<=4294967295?Number(n):null;}
+function archivedProjectKey(){return `nephalem-reset-archive-v1-${engine?.hero}-${rootItemId??item?.id}`;}
+function resetObservationFields(){
+ if(!item||!engine)return;
+ if(filterWorker){filterWorker.terminate();filterWorker=null;$('#save-observation').disabled=false;}
+ clearObservationDraft();
+ rebuildObservationFields();
+ $('#observed-paste').value='';
+ announceObservation('Input fields cleared. Saved observations and all candidate seeds are unchanged.');
+}
+function startFreshExperiment(){
+ if(!engine||!item)return;
+ const source=engine.item(rootItemId);
+ if(!source){announceObservation('Cannot reset: original item is unknown.',{error:true});return;}
+ if(!confirm(`Start a new experiment for ${source.name}? The current project will first be archived locally for Undo. Your saved candidate seeds and observations will not be used by the new experiment.`))return;
+ try{
+  saveProject();
+  const key=projectKey(),snapshot=localStorage.getItem(key);
+  if(!snapshot)throw Error('A current saved project was not found. No reset performed.');
+  const parsed=JSON.parse(snapshot);
+  if(parsed.itemId!==rootItemId||parsed.hero!==engine.hero||!Array.isArray(parsed.candidates)||!Array.isArray(parsed.observations))
+   throw Error('Saved project is incomplete. No reset performed.');
+  // Local archive is written and checked before any deletion of user data.
+  localStorage.setItem(archivedProjectKey(),snapshot);
+  if(localStorage.getItem(archivedProjectKey())!==snapshot)throw Error('Archive verification failed. No reset performed.');
+  localStorage.removeItem(key);
+  localStorage.removeItem('nephalem-universal-example');
+  clearObservationDraft();
+  $('#item').value=source.name;
+  $('#observed-paste').value='';
+  resetItem();
+  announceObservation(`Started a fresh ${source.name} experiment. Original ${parsed.candidates.length} candidates and ${parsed.observations.length} observations remain in the local Undo archive. No game operation is required to undo.`);
+ }catch(e){announceObservation('Reset cancelled safely: '+String(e?.message||e),{error:true});}
+}
+function undoFreshExperiment(){
+ if(!engine||!item)return;
+ try{
+  const archived=localStorage.getItem(archivedProjectKey());
+  if(!archived)throw Error('No archived experiment found for the selected item and character.');
+  const parsed=JSON.parse(archived);
+  if(parsed.itemId!==rootItemId||parsed.hero!==engine.hero||!Array.isArray(parsed.candidates)||!Array.isArray(parsed.observations))
+   throw Error('The archived project is invalid; nothing was overwritten.');
+  if(!confirm(`Restore archived experiment with ${parsed.candidates.length} candidates and ${parsed.observations.length} observations? This will replace the current working experiment for this item.`))return;
+  const current=localStorage.getItem(projectKey());
+  // Keep an additional copy of any active project before replacing it.
+  if(current)localStorage.setItem(`${archivedProjectKey()}-pre-undo`,current);
+  localStorage.setItem(projectKey(),archived);
+  $('#item').value=engine.item(rootItemId).name;
+  resetItem();
+  announceObservation(`Restored ${candidates.length} saved candidates and ${observations.length} observations. No new 32-bit scan needed.`);
+ }catch(e){announceObservation('Could not undo reset: '+String(e?.message||e),{error:true});}
+}
 function saveProject(){
  if(!item||!engine)return;
  try{const snapshot={schema:3,item:engine.item(rootItemId)?.name,itemId:rootItemId,currentItemId:item.id,hero:engine.hero,
@@ -372,6 +423,9 @@ async function boot(){lang=localStorage.getItem('nephalem-lang')||'en';$('#lang'
  $('#backup-candidates').onclick=prepareCandidateBackup;
  $('#copy-backup').onclick=copyCandidateBackup;
  $('#restore-candidates').onclick=restoreCandidateBackup;
+ $('#clear-entry').onclick=resetObservationFields;
+ $('#new-experiment').onclick=startFreshExperiment;
+ $('#undo-experiment').onclick=undoFreshExperiment;
  if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
 }
 boot();
