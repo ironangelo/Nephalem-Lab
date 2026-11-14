@@ -4,7 +4,7 @@
  * Does NOT change the user's app or spend any materials.
  */
 import fs from 'node:fs';
-import {UniversalEngine,loadGameData,affixStem} from '../src/universal-engine.js';
+import {UniversalEngine,loadGameData,affixStem,Rng} from '../src/universal-engine.js';
 import {generateRecoveryHypotheses,verifyHypothesis,observationAffixFamilies} from '../src/universal-recovery.js';
 import {validSeeds,matchesObservation} from '../src/candidate-analysis.js';
 const d=await loadGameData(),e=new UniversalEngine(d,'Wizard',true),it=e.item("Firebird's Breast");
@@ -102,6 +102,11 @@ const earlierHypos=hypothesisSpace(earlier);
 const earliest=new Set();
 const targetMiddleSeed=2645309652;
 let earlyQuality=0,earlyAffixFamilies=0,earlyExact=0;
+let chainProximity=Array.from({length:64},()=>0),chainCandidates=[];
+const classCounts=Array.from({length:d.classes.length},()=>({quality:0,exact:0,childSeed:0})),
+ classEngines=d.classes.map((_,i)=>new UniversalEngine(d,i,true));
+let previousSuffixMatch=0;
+
 const firstFamilies=input.lines.map(l=>l.stem),total=4294967296,batch=6000000;
 for(let offset=0;offset<earlierHypos.length;offset+=32){
  const group=earlierHypos.slice(offset,offset+32),numerical=new Set();
@@ -119,6 +124,25 @@ for(let offset=0;offset<earlierHypos.length;offset+=32){
   if(earliest.has(seed)||!group.some(h=>verifyHypothesis(e,it,seed,h)))continue;
   earliest.add(seed);
   const v=e.reforge(it,seed);
+  // Independent seed transition test: check every possible draw-index (not just
+  // D3Recipes' expected index) for the target middle-item seed.
+  const rng=new Rng(seed);
+  for(let n=1;n<=64;n++){
+   const x=rng.draw();
+   if(x===targetMiddleSeed){
+    chainProximity[n-1]++;
+    chainCandidates.push({origin:seed,drawingIndex:n,expected:targetMiddleSeed});
+   }
+  }
+  for(let ci=0;ci<classEngines.length;ci++){
+    const pred=classEngines[ci].reforge(it,seed);
+    if(pred.quality===input.quality)classCounts[ci].quality++;
+    if(matchesObservation(pred,input)){
+      classCounts[ci].exact++;
+      console.log('CROSS_CLASS_MATCH',JSON.stringify({origin:seed,hero:d.classes[ci],result:pred}));
+    }
+    if(pred.seed===targetMiddleSeed)classCounts[ci].childSeed++;
+  }
   if(v.quality==='normal'){
    earlyQuality++;
    const visible=new Set([...v.affixes.map(a=>a.stem),...v.lines.map(a=>a.stem)]);
@@ -132,5 +156,11 @@ for(let offset=0;offset<earlierHypos.length;offset+=32){
  console.log('EARLIER_GROUP_FINISHED',offset,earliest.size,earlyExact);
 }
 console.log('TRIPLE_CHAIN',JSON.stringify({earlierCandidates:earliest.size,quality:earlyQuality,families:earlyAffixFamilies,exactMiddle:earlyExact,targetMiddleSeed}));
+console.log('DRAWS_PREIMAGE_ANALYSIS',JSON.stringify({
+ chainProximity:chainProximity.map((n,i)=>({draw:i+1,n})).filter(x=>x.n>0),
+ chainCandidates:chainCandidates.slice(0,30),
+ classCounts:d.classes.map((name,i)=>({name,...classCounts[i]}))
+}));
+
 const selected=hyps.filter(h=>verifyHypothesis(e,it,targetMiddleSeed,h));
 console.log('VALIDATED_456_HYPOTHESES',JSON.stringify(selected.map(h=>({affixes:h.affixIds.map(id=>e.affixes[e.idIndex.get(id)].label),lines:e.values(it,targetMiddleSeed,h.affixIds.map(id=>e.idIndex.get(id)),false)}))));
