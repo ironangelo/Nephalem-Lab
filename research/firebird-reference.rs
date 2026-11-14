@@ -6,7 +6,7 @@ fn main(){
  let wizard=d.classes.iter().position(|c|c=="Wizard").unwrap();
  let it=d.items.iter().position(|i|i.name=="Firebird's Breast").unwrap();
  let mut sim=Sim::new(d.clone(),wizard,true);
- let seeds:[u32;7]=[376089158,1818121089,2114793458,2928563961,3125153708,3493351128,2645309652];
+ let seeds:[u32;8]=[376089158,1818121089,2114793458,2928563961,3125153708,3493351128,2645309652,3525123180];
  for seed in seeds {
    let result=sim.reforge(it,seed);
    let lines=sim.values(it,result.child_seed,&result.affixes);
