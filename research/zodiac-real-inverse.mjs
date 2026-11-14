@@ -39,6 +39,19 @@ for(const a of original){
  if(!lst.some(x=>x.id===next.id))lst.push(next);
  selectedByStem.set(s,lst);
 }
+// Only variants actually selected by the fixed-group ring roller at level 70.
+const reachable=new Set();let ancientSampleCount=0;
+for(let x=0;x<120000;x++){
+ const r=e.reforge(it,x);
+ if(r.quality!=='ancient')continue;
+ ancientSampleCount++;
+ for(const aff of r.affixes)reachable.add(aff.id);
+}
+for(const [stem,variants] of selectedByStem){
+ selectedByStem.set(stem,variants.filter(a=>reachable.has(a.id)));
+}
+console.log('ZODIAC_REACHABLE_ANCIENT_TIERS',JSON.stringify({ancientSampleCount,
+  observedFamilies:['CooldownReduction','Haste','CriticalChance','ResourceCostReduction','LightningResist'].map(stem=>({stem,ids:selectedByStem.get(stem)?.map(a=>a.id)}))}));
 function makeObs(result){
  const groups=result.affixes.map(a=>({
   stem:a.stem,
