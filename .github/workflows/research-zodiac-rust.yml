@@ -1,0 +1,25 @@
+name: Rust verify exact natural Zodiac Primal routes
+on:
+  push:
+    branches: [research/zodiac-drop-seed]
+    paths:
+      - '.github/workflows/research-zodiac-rust.yml'
+      - 'research/zodiac-rust-verify-second-and-routes.rs'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clone pinned upstream D3Recipes revision
+        run: |
+          git clone --depth 1 https://github.com/FNGarvin/d3recipes.git reference
+          cd reference
+          git fetch --depth 1 origin 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+          git checkout 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+      - name: Verify R2 recorded tooltip and all alternative route checkpoints
+        run: |
+          cp research/zodiac-rust-verify-second-and-routes.rs reference/core/examples/zodiac_verifier.rs
+          cd reference/core
+          cargo run --release --example zodiac_verifier
