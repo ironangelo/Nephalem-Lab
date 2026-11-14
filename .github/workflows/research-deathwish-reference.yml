@@ -1,0 +1,22 @@
+name: Verify actual Deathwish and target route in upstream Rust
+on:
+  push:
+    branches: [research/deathwish-kadala-drop]
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clone pinned D3Recipes revision
+        run: |
+          git clone --depth 1 https://github.com/FNGarvin/d3recipes.git reference
+          cd reference
+          git fetch --depth 1 origin 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+          git checkout 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+      - name: Replay actual source drop Reforge and natural primal route in Rust
+        run: |
+          cp research/deathwish-reference.rs reference/core/examples/deathwish_ref.rs
+          cd reference/core
+          cargo run --release --example deathwish_ref
