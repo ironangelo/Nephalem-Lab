@@ -105,3 +105,21 @@ Exhaustively enumerated every path in three bounded grids: R <= 4 / S <= 30 (no 
 **Before recommending additional game operations:** choose and explicitly present a route with costs; after selection, provide checkable per-step complete stats and confirm each game screenshot. Never skip the Sanctify random orange-power caveat, and never treat sanctified quality as a natural Primal.
 
 **Tablas exactas de todos los pasos (dos rutas, resultados, seeds):** [DEATHWISH_PRIMAL_CHECKPOINTS.md](research/DEATHWISH_PRIMAL_CHECKPOINTS.md), verificadas paso a paso por el Rust original. Solo la primera foto de Reforge es real; las secuencias finales son predicciones aún no jugadas.
+
+
+## ACTUALIZACIÓN — DEATHWISH PRIMAL NATURAL CONSEGUIDA EN SWITCH 2 (2026-11-14)
+
+**El usuario completó la ruta de RAYO elegida `SRRSSRSSSSSSSSSSSSSSSRR` hasta el último Reforge**, y compartió una fotografía real del **Deathwish Primal natural**. Es el tercer objeto Firebird objetivo conseguido con receta de seed (después de la pechera y la fuente). Coinciden exactamente los afijos finales previstos por el Rust original:
+
+- **3.126,2 DPS visibles** (no calculados por el motor); **+1.560–1.940 daño de RAYO**.
+- **+10% daño del arma**.
+- **+1.000 Inteligencia**: **todavía SIN cambiar con la Mística** en esta fotografía.
+- **+10,0% reducción de tiempos de reutilización (CDR)**.
+- **2,6% probabilidad de ralentizar al golpear** (redondeo en tooltip).
+- **325% poder legendario**.
+- Borde **Primal natural rojo**, sin poder naranja santificado.
+- Seed final **inferida/modelada** `1326569675`, nunca leída directamente desde el hardware.
+
+**Fotografía:** archivo de conversación `image-1794684825055.jpg`, SHA-256 `c9a9260b2dc33ba9683eec8ec2e237882f2e74fd3259ffcf6f7b8ece1b4b7df6` (NO subida como binario a GitHub). **Estado nuevo: ruta completada, NO repetir R/S**. La pregunta pendiente del usuario es el reroll final: para replicar exactamente Soulstone, **Mística: cambiar +1.000 Inteligencia por +8% daño contra élites**, conservando +10% daño arma, +10% CDR, daño de rayo y 325% poder. El reroll todavía NO ha sido confirmado como ejecutado. Como decisión de optimización alternativa, Soulstone menciona que en parangón relativamente bajo (<2000) podría ser mejor mantener la Inteligencia; no confundir esto con el objetivo de copiar fielmente los afijos. **Añadir hueco después con Ramaladni's Gift, si se dispone**, sin gastar ranura primaria.
+
+**La validación real final respaldada por fotografía confirma la ruta y todos sus afijos finales, no implica que todas las operaciones intermedias tengan fotografía independiente ni que conozcamos la seed interna por lectura de memoria.**
