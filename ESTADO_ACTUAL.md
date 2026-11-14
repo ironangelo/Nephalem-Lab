@@ -72,3 +72,25 @@ La ruta de rayo elegida gastó **250 Souls fijas y 18 Crucibles**, pero dejó pe
 - [Deathwish: 23 checkpoints en Rust](research/DEATHWISH_PRIMAL_CHECKPOINTS.md).
 - [Lecciones de la Mística y optimización futura](research/MYSTIC_COST_AND_ROUTE_SELECTION.md).
 - [Datos estructurados de todos los experimentos](research/EXPERIMENT_VECTORS_2026-11-14.json).
+
+## Squirt's Necklace: drop n.º 2 y seed recuperada (14-11-2026)
+
+**Situación real en Switch 2:** de los dos Squirt's Necklace de drop (Kadala/GR sin precisar), se eligió el n.º 2 (+80–146 daño, frío20%, INT711, CHD60%, oro79%, EXP200) y se hizo **UNA Reforge Legendary**. Foto resultante: Squirt **normal**, frío19%, INT641, velocidad ataque7%, CHD81%, oro74%, EXP168; ninguna Mística aplicada. **No hay operaciones adicionales confirmadas**, no confundir con simulaciones.
+
+**Recuperación única:** 2^32 child seeds →164 candidatos numéricos; 2^32 seeds precursoras (5 avances RNG) →163 candidatos; validación completa de Reforge → **1 coincidencia**: seed drop inferida `3668729561` → R → **seed actual inferida `800657787`**. Validada con JS y Rust original D3Recipes. Evidencia: [CI recuperación](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43646271445) / [CI Rust](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43646726072).
+
+**Objetivo Soulstone Firebird Twister:** natural Primal Squirt, socket, CHD100%, daño de Fuego20%, CHC10% tras Mística de INT; secundario deseado CC duration reduction40% si sale natural.
+
+**Rutas calculadas y verificadas en Rust, NO ejecutadas en Switch:**
+
+| Prioridad | Desde seed 800657787 | Pasos | Forgotten Souls | Crucibles | Bounty por acto | Seed final | Secundario |
+|---|---|---:|---:|---:|---:|---:|---|
+| Pocas operaciones | `RSSRSRRSSR` | 10 | 250 | 5 | 25 | `3229700730` | Resistencia física210 |
+| **Menos Souls hallada** | `SSSSSRSSRSSSSSSRSSSR` | 20 | **200** | 16 | 20 | `142853246` | Vida por muerte11590 |
+| Secundario ideal Soulstone | `RSSSSSSSSSSSRSSSSSRSSSSSRR` | 26 | 250 | 21 | 25 | `3185476752` | CC reduction40% |
+
+Para las tres rutas: Primal natural con fuego20%, socket1, CHD100%; INT1000 se puede encantar a CHC10% al final. La búsqueda es acotada, no mínimo matemático global. **El poder naranja de Sanctify reemplaza al último secundario cuando salen seis afijos**, por lo que éste puede faltar en la foto sin invalidar el checkpoint. Antes de continuar, verificar la primera operación en consola y DETENERSE si no coincide.
+
+**Checkpoint ruta menos Souls:** paso #1 S desde la seed actual: Squirt santificado, oro80%, INT1000, CHD100%, socket1, VIT1000 y poder naranja aleatorio; el último secundario frío resist210 puede quedar reemplazado. Child seed inferida `398322324`. Paso #20 R final: Primal natural oro80%, INT1000, CHD100%, socket1, fuego20%, vida por muerte11590; seed `142853246`. Solo entonces usar Myriam INT→CHC10%. Ruta rápida empieza con un R normal, poder1, oro77%, INT666, CHD93%, ataque7%, socket1 y resist frío143, child seed `4119545052`.
+
+**Archivo exhaustivo con los checkpoints de las tres recetas:** [research/SQUIRT_REAL_DROP_PRIMAL_ROUTE_2026-11-14.md](https://github.com/ironangelo/Nephalem-Lab/blob/research/squirts-two-drops-seed/research/SQUIRT_REAL_DROP_PRIMAL_ROUTE_2026-11-14.md). Código vive en rama aislada `research/squirts-two-drops-seed`. El segundo Squirt original, con INT630, CHD55%, vida15%, socket1 y reducción control34%, se conserva intacto.
