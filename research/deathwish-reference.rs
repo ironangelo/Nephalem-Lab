@@ -14,7 +14,7 @@ fn main(){
   "values":os.iter().filter_map(|x|x.aff.map(|i|serde_json::json!([data.affixes[i].stem,x.value]))).collect::<Vec<_>>(),
   "legendaryPower":os.iter().find(|x|x.aff.is_none()).map(|x|x.value)
  }));
- for path in ["SRRSSRSSSSSSSSSSSSSSSRR","RRSRRRSRSSRSRSSR","SSSSSSSSRSSSSSSSSRSSRSR"]{
+ for path in ["SRRSSRSSSSSSSSSSSSSSSRR","RRSRRRSRSSRSRSSR","SSSSSSSSRSSSSSSSSRSSRSR","SRRSRRSSSSSSSSSRRR","RSRRSSSRRSSSRRSSR"]{
   let mut sim=Sim::new(data.clone(),wizard,true);
   let mut seed=46826983u32;
   for (n,op) in path.chars().enumerate(){
