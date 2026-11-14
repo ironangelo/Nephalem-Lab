@@ -1,0 +1,17 @@
+name: Exhaustive original Deathwish drop photograph inverse test
+on:
+  push:
+    branches: [research/deathwish-kadala-drop]
+  workflow_dispatch:
+jobs:
+  test-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run build:wasm
+      - name: Search all 2^32 value seeds for screenshot's seven numerical rolls
+        run: node research/deathwish-original-photo-scan.mjs
