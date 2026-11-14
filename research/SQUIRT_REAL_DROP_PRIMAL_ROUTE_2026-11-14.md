@@ -1,6 +1,6 @@
 # Squirt's Necklace: Drop n.º 2, seed recuperada, rutas Primal — 14-11-2026
 
-> **ESTADO VIGENTE: RUTA ECONÓMICA DE 20 PASOS, PASO #1 S CONFIRMADO EN SWITCH 2.** Primero se hizo una Reforge real desde el drop; después se aplicó **1 Angelic Crucible real**, que coincidió con el primer checkpoint. NO ejecutar nuevamente paso #1. Pasos #2–#20 siguen pendientes de confirmar en consola.
+> **ESTADO VIGENTE: ¡RUTA ECONÓMICA DE 20 PASOS COMPLETADA! PRIMAL ANCIENT NATURAL CONFIRMADO EN SWITCH 2 (14-11-2026).** Se confirmó en foto el paso #1 S y el resultado final #20 R. No se aportaron fotos independientes de cada operación intermedia: no darlas por observadas. **PENDIENTE ÚNICAMENTE Myriam: INT 1000 → CHC 10%. NO volver a reforjar ni santificar esta pieza.**
 
 ## Evidencia real
 
@@ -122,6 +122,27 @@ Nota: no garantizamos óptimo global; búsqueda limitada y ponderada en 1.200.00
 | 26 | R | primal | `3185476752` | Socket (no numérico); Gold 0.8; Int 1000; CriticalD 1; DamageBonusFire 0.2; CCReduction 0.4 |
 
 
+## VALIDACIÓN REAL FINAL: Squirt's Necklace Primal Ancient natural conseguido (14-11-2026)
+
+**Fotografía del usuario en Switch 2:** `image-1794696009104.jpg` (conversación actual). Tooltip dice literalmente **"Primal Ancient Legendary Amulet"** (marco rojo, no santificado), tras la receta económica de 20 operaciones `SSSSSRSSRSSSSSSRSSSR`.
+
+| Afijo o estado | Predicho por motor | Foto real final | Estado |
+|---|---|---|---|
+| Calidad | Primal Ancient natural | Primal Ancient Legendary Amulet | Coincide |
+| Fuego habilidades | +20% | +20% Fire skill damage | Coincide |
+| Inteligencia (disponible para Mística) | +1000 | +1000 | Coincide |
+| Daño crítico | +100% | +100% | Coincide |
+| Gold from Monsters | +80% | +80% | Coincide |
+| Sockets | 1 | Sockets (1) | Coincide |
+| Vida por muerte secundario | 11.590 | **11.584** | Diferencia de 6; registrar y revisar modelo de fórmula/precisión/atributos |
+
+- **Seed final inferida del modelo:** `142853246`, NO leída desde Switch. El resultado real respalda clase Primal, familia de afijos y valores relevantes, con una diferencia pequeña de 6 unidades en vida por muerte (no ocultarla, ni declarar igualdad numérica perfecta).
+- Previa identificación: drop #2 → 1 Reforge diagnóstico; seed actual inferida `800657787`; luego primera S confirmada, y foto final tras el resto de la receta.
+- **Costo estimado de la ruta de 20 pasos ejecutada:** 4 Reforges (200 Forgotten Souls + 20 materiales de cada acto) y 16 Angelic Crucibles. Aparte, 1 Reforge diagnóstico (50 Forgotten Souls + 5 materiales de cada acto). No confundir estos totales.
+- **Aún NO CONFIRMADA la Mística.** Próxima acción: sustituir INT 1000 por CHC 10% mediante Myriam. Puede necesitar varios intentos; conservar siempre 20% fuego y 100% CHD, socket, etc. Objetivo final primarios Fuego20% + CHC10% + CHD100% + socket1. El secundario es vida por muerte, NO reducción de efectos de control; no afirmar un 100% idéntico al óptimo de secundarios de Soulstone.
+- **No recomendar volver a reforjar/santificar este Squirt.** Las otras rutas listadas aquí son experimentos alternativos históricos desde seed `800657787` y no se pueden iniciar desde el estado actual después de haber consumido esa seed.
+- La foto #1 (primer Crucible) y esta foto final son observaciones; **los pasos #2 a #19 no tienen verificaciones fotográficas individuales almacenadas**. La confirmación del final es suficiente para registrar éxito de ruta, pero no prueba visual independiente de todos los checkpoints.
+
 ## VALIDACIÓN REAL: paso 1 de la ruta económica terminado (14-11-2026)
 
 **Foto de usuario:** `image-1794694749540.jpg` (adjunta en conversación). Es **la misma pieza n.º 2** tras aplicar el primer Crucible, después del diagnóstico Reforge.
@@ -137,14 +158,14 @@ Nota: no garantizamos óptimo global; búsqueda limitada y ponderada en 1.200.00
 
 **Seed actual INFERIDA tras operación real #1:** `398322324`. No fue leída de memoria, sino derivada del modelo y respaldada por la coincidencia visual.
 
-**PRÓXIMA ACCIÓN SOLAMENTE: #2 S (otro Angelic Crucible sobre el mismo Squirt santificado).** Debería generar:
+**HISTÓRICO, YA SUPERADO POR RESULTADO FINAL: #2 S (otro Angelic Crucible sobre el mismo Squirt santificado).** Debería generar:
 - Squirt santificado.
 - +80% Gold, +1000 INT, +100% CHD, **1 socket**, **+20% Lightning skill damage**.
 - Power naranja aleatorio; Experience260 como último secundario calculado puede quedar reemplazado/oculto por dicho power.
 - **Seed de salida inferida:** `3763178701`.
 - Si no sale Lightning20 o difiere otro primario fijo, DETENER y analizar antes de ejecutar paso #3.
 
-**Receta completa**: `SSSSSRSSRSSSSSSRSSSR`. Paso real #1 = **S COMPLETADO**; #2 al #20 pendientes. **Costo restante si se mantiene la ruta:** 15 Crucibles, 4 Reforges, 200 Souls y 20 materiales por acto; más Mística final INT→CHC10%.
+**Receta completa**: `SSSSSRSSRSSSSSSRSSSR`. Paso real #1 confirmado en foto; resultado final #20 **Primal confirmado en foto**; pasos intermedios sin imágenes individuales. **Costo originalmente restante tras el paso #1 (ya gastado para llegar al final):** 15 Crucibles, 4 Reforges, 200 Souls y 20 materiales por acto. Ahora solo pendiente Mística final INT→CHC10%.
 
 ## Si se usa la ruta económica de 20 pasos
 
