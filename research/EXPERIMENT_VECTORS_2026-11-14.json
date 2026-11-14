@@ -254,7 +254,7 @@
   "firebirdEyeKadala": {
     "source": "Kadala",
     "hero": "Wizard",
-    "status": "One real Convert Set Item from fresh source to Firebird Down photograph verified; routes are only simulations",
+    "status": "User-confirmed success: natural Primal Firebird's Eye matching modeled cost-saving route, Mystic reroll complete; final screenshot exact match",
     "originalEye": {
       "item": "Firebird's Eye",
       "untouchedByCubeOrMystic": true,
@@ -341,14 +341,49 @@
     ],
     "referenceRustVerifiedAllSteps": true,
     "referenceRun": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43615878705",
-    "nextRealOperationExecuted": false,
+    "nextRealOperationExecuted": true,
     "notes": [
       "Seed is inferred from one real conversion, not directly read from console memory",
       "Armor base 704 is observed, not simulated",
       "D3Recipes cannot calculate source damage range from available numeric attributes",
       "Source and result are different set pieces; current state is pants not source",
       "Paths are conditional predictions and have not been performed in game",
-      "Cost excludes already spent 10 Forgotten Souls and 10 Death's Breaths from the single source conversion"
-    ]
+      "Cost excludes already spent 10 Forgotten Souls and 10 Death's Breaths from the single source conversion",
+      "The cost-saving route SSSSSRCSCR has now succeeded in-game; do NOT recommend restarting it or another Cube operation on the finished Primal."
+    ],
+    "finalPrimalEvidence": {
+      "date": "2026-11-14",
+      "userText": "Funciono!! E hice el reroll stat con mystic!!",
+      "userSelectedRoute": "SSSSSRCSCR",
+      "routeStatus": "real-world success confirmed by user; intermediate screenshots not provided individually",
+      "modeledPrimalSeed": 1980719662,
+      "visibleItem": "Firebird's Eye",
+      "visibleQuality": "primal (red border)",
+      "visibleDamageRange": {
+        "min": 485,
+        "max": 600,
+        "modeledByEngine": false
+      },
+      "visibleStats": {
+        "fireSkillDamagePercent": 20,
+        "intelligence": 1000,
+        "criticalHitChancePercent": 10,
+        "arcanePowerOnCriticalHit": 4,
+        "goldFromMonstersPercent": 35,
+        "maxArcanePower": 14
+      },
+      "mystic": "CHC +10.0% visibly enchanted (blue reroll icon); expected source affix Hydra damage 15%",
+      "concordance": "all predicted final visible affixes exact",
+      "photo": {
+        "conversationUpload": "image-1794676452913.jpg",
+        "sha256": "780fd785701d0f8d79f7f31c619e82faee6963c4cebf1b73f0fd362db290f51f",
+        "archivedInGitHub": false
+      },
+      "limits": [
+        "Final screenshot was taken after Mystic; pre-Mystic Hydra affix is not separately shown",
+        "Individual route steps not photographed",
+        "Hidden seeds inferred and never directly read from game memory"
+      ]
+    }
   }
 }
