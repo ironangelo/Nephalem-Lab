@@ -1,0 +1,29 @@
+name: Cost-optimized natural Primal Zodiac search from recovered seed
+on:
+  push:
+    branches: [research/zodiac-drop-seed]
+    paths:
+      - '.github/workflows/research-zodiac-primal-search.yml'
+      - 'research/zodiac-natural-primal-search.mjs'
+  workflow_dispatch:
+jobs:
+  search:
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [fewest-steps, balanced, souls-first, crucible-first]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Optimize Zodiac Primal recipes with correct Soulstone stats and optional CC reduction
+        env:
+          MODE: ${{ matrix.mode }}
+          MAX_NODES: '800000'
+          MAX_STEPS: '29'
+          MAX_REFORGES: '8'
+          MAX_SANCTIFIES: '29'
+        run: node --max-old-space-size=5100 research/zodiac-natural-primal-search.mjs
