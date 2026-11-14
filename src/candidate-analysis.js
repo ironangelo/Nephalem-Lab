@@ -14,7 +14,7 @@ export function validSeeds(values,{max=120000}={}){
  return [...new Set(values.map(Number))].filter(x=>Number.isInteger(x)&&x>=0&&x<=4294967295);
 }
 export const operationCosts=op=>({...OPS[op]});
-const shownNumber=v=>!Number.isFinite(v)?'unknown':Math.abs(v)<1?Number(v.toFixed(3)):Number(v.toFixed(0));
+const shownNumber=v=>!Number.isFinite(v)?'unknown':Number(v.toFixed(3));
 export function visibleResultSignature(r){
  const affixes=r.affixes.map(a=>`${a.stem}:${a.kind}`).sort();
  const stats=r.lines.map(l=>`${l.attr}:${l.stem}:${shownNumber(l.value)}`).sort();
@@ -27,7 +27,7 @@ export function matchesObservation(r,o){
   if(isSocketLine(l))return validSocketCount(l.value)&&r.affixes.some(a=>a.socket||a.stem==='Sockets');
   return r.lines.some(v=>v.attr===l.attr&&v.stem===l.stem&&
    [Number(l.value),Number(l.value)/100,Number(l.value)/1000].some(w=>
-    Math.abs(v.value-w)<(Math.abs(v.value)>=1?.55:.00051)));
+    Math.abs(v.value-w)<(Number.isInteger(Number(l.value))&&Math.abs(v.value)>=1?.50051:.0051)));
  });
 }
 export function advanceCandidates(engine,item,seeds,op,observation){
