@@ -1,0 +1,22 @@
+name: Exhaustive Deathwish resource bounded R-S recipe comparison
+on:
+  push:
+    branches: [research/deathwish-kadala-drop]
+  workflow_dispatch:
+jobs:
+  grid:
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [souls-min, balanced, short]
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Enumerate every recipe within bounded Souls and Crucible budgets
+        env:
+          MODE: ${{ matrix.mode }}
+        run: node --max-old-space-size=5000 research/deathwish-exhaustive-material-grid.mjs
