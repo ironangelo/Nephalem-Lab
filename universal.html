@@ -10,6 +10,7 @@
 <textarea id="observed-paste" rows="4" style="width:100%;box-sizing:border-box" placeholder="Intelligence: 456&#10;Vitality: 484&#10;Lightning Resistance: 149"></textarea>
 <div class="u-toolbar"><button class="button secondary" id="import-observation">Fill observation from text</button></div>
 </details>
+<div class="u-toolbar"><button class="button secondary" id="clear-entry" type="button">Clear this input form (keeps seeds)</button></div>
 <div class="u-status u-hidden" id="observation-feedback" role="status" aria-live="assertive"></div>
 <div class="u-toolbar"><button class="button secondary" id="add-stat">+ Add stat</button><button class="button secondary" id="save-observation">Save observation</button><button class="button primary" id="search-seed">Search candidate seeds</button><button class="button quiet" id="cancel-seed">Cancel</button></div><div class="u-status" id="seed-status" aria-live="polite">Enter an item to begin.</div><div id="observations-list" class="u-small"></div></section>
 <section class="u-panel" id="candidate-panel"><h2 id="candidate-title">4. Candidate analysis · no in-game materials</h2>
@@ -21,6 +22,10 @@
 <p class="u-small">Keep this backup somewhere outside the app before reinstalling. You only need to repeat a 32-bit scan once after upgrading from a build that did not save candidate seeds.</p>
 <div class="u-toolbar"><button class="button secondary" id="backup-candidates" disabled>Prepare backup</button><button class="button secondary" id="copy-backup">Copy backup text</button><button class="button secondary" id="restore-candidates">Restore backup</button></div>
 <textarea id="candidate-backup" rows="3" style="width:100%;box-sizing:border-box;min-height:76px" placeholder="Paste a candidate backup JSON here, or prepare one to copy."></textarea>
+</details>
+<details class="u-dark" id="reset-controls"><summary>Start a new experiment / undo reset</summary>
+<p class="u-small">Reset the current item and character only. A verified local archive of the previous observations and seed candidates is created first. Save a JSON backup outside the app before updating or clearing Android app storage.</p>
+<div class="u-toolbar"><button class="button secondary" type="button" id="new-experiment">Start fresh (archive old project)</button><button class="button secondary" type="button" id="undo-experiment">Undo last reset</button></div>
 </details>
 </section>
 <footer class="u-footer" id="footer">Rules and affix data: <a href="https://github.com/FNGarvin/d3recipes">FNGarvin / D3Recipes</a>. Unofficial research tool. Blizzard and Diablo are trademarks of Blizzard Entertainment. <a href="./index.html">CoE proof-of-concept</a>.</footer></main><script type="module" src="./src/universal-ui.js"></script></body></html>
