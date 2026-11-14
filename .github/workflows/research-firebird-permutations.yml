@@ -1,0 +1,17 @@
+name: Test all Firebird affix orders and 456 to 443 transition
+on:
+  push:
+    branches: [research/firebird-permutation-recovery]
+  workflow_dispatch:
+jobs:
+  firebird-permutations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run build:wasm
+      - name: Invert all valid value orders and test exact reforge
+        run: node research/permutation-firebird.mjs
