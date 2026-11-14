@@ -155,3 +155,20 @@ Valores visibles de la foto, todos coincidentes con la predicción: **+485–600
 **Evidencia:** foto `image-1794676452913.jpg`, SHA-256 `780fd785701d0f8d79f7f31c619e82faee6963c4cebf1b73f0fd362db290f51f` (el binario no se ha cargado a GitHub). Ver [bitácora de Firebird's Eye actualizada](research/FIREBIRD_EYE_KADALA_SEED_AND_ROUTES.md) y [vectores del experimento](research/EXPERIMENT_VECTORS_2026-11-14.json).
 
 **ESTADO AL RETOMAR:** la Firebird's Eye de Kadala ya llegó a Primal con todos los afijos recomendados y el reroll realizado. **No sugerir más R, S, C ni otro reroll sobre esta pieza.** Es el segundo caso real exitoso del método junto con la pechera Firebird's Breast. Sigue pendiente descubrir la fórmula general de drop directo desde una foto sin transmutación conocida.
+
+
+## NUEVO DESAFÍO — Deathwish de drop (2026-11-14) — AÚN SIN OPERACIONES
+
+Nueva espada legendaria **Deathwish** que el usuario obtuvo como drop (no recuerda si GR o Kadala). Foto de la Switch 2, **2.306,1 DPS**, daño adicional **+1.166–1.382**, **652 INT**, **726 VIT**, **+6% velocidad de ataque**, **+7.904 vida por muerte** y **poder legendario 250%**. Origen exacto no confirmado, sin operación de Cubo realizada todavía.
+
+**Objetivo Soulstone Firebird Twister:** Deathwish Primal natural con poder legendario **325%** máximo, daño base alto, **+10% daño del arma, +10% CDR, daño contra élites**, preferiblemente daño elemental de **frío o rayo** (Elemental Exposure), sin miedo ni retroceso al golpear. El esquema de atributos obliga a considerar **un cambio legal final con la Mística**, probablemente INT→% daño a élites si ya aparecen Damage% y CDR.
+
+**Descubrimiento técnico importante:** el modelo genérico de recuperación no agrupaba los **dos valores de daño físico/elemental de la espada** dentro de un único afijo, por eso sus hipótesis fallaban con armas incluso en escenarios sintéticos. Nuevo recuperador experimental \`research/deathwish-weapon-inversion.mjs\` en la rama \`research/deathwish-kadala-drop\`: **8 Deathwish simuladas de calidad normal recuperaron correctamente las hipótesis de valores verdaderas** ([CI](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43621783913)). **No se modificó APK ni motor de producción.**
+
+**Prueba exhaustiva desde la foto del drop, sin transmutación:** 8 hipótesis del orden/afijos; se probaron las **2³² seeds** y **cero** reprodujeron todos los siete valores bajo \`values(item,seed)\` del modelo Reforge ([CI](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43621890671)). Como con Firebird's Breast original, no se puede inferir la seed persistente desde la fotografía con ese modelo; NO significa que la foto esté mal.
+
+**Comparación de materiales:** no permite Convert Set Item porque Deathwish no pertenece a un set. **Sanctify sola es ambigua**, ya que maximiza números: 120.000 pruebas de seeds distintas dieron solo 4.805 combinaciones de familias de afijos visibles. Una prueba completa con un **Reforge normal sintético** (seed fuente 8, resultado numérico seed 302004969) logró recuperarla desde el resultado observado en dos búsquedas exhaustivas 2³²: **1 resultado y 1 precursor, seed 8 original** ([CI](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43622045160)). NO se ha probado con Deathwish real aún.
+
+**Próximo experimento sugerido, todavía NO realizado:** un solo **Reforge Legendary** sobre la espada original sin modificar (50 Forgotten Souls y 5 materiales de cada acto), fotografiar resultado completo, detenerse. Desde esa observación buscar una seed única; con la seed actual resultante optimizar rutas usando R/S hacia un Primal natural Soulstone, haciendo énfasis en costo, pocos pasos y un único cambio de Mística. El resultado puede ser normal/Ancient/Primal y necesitar otro modelo si sale Ancient. **NO inventar seed ni receta final sin haber visto esa fotografía.**
+
+**Informe técnico:** [DEATHWISH_DROP_SEED_AND_PRIMAL_PLAN.md](research/DEATHWISH_DROP_SEED_AND_PRIMAL_PLAN.md). **Estado al retomar:** Deathwish todavía no reforjada, no santificada y sin seed identificada.
