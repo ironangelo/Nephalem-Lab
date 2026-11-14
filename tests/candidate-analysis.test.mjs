@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
  validSeeds,visibleResultSignature,analyzeCandidateActions,findSharedNaturalPrimalRoute,
- allowedDiagnosticOperations,advanceCandidates
+ allowedDiagnosticOperations,advanceCandidates,matchesObservation
 } from '../src/candidate-analysis.js';
 const sample={name:'Test Shoulders',id:2,set_id:42};
 const engine={
@@ -33,6 +33,16 @@ test('skips unsafe shared-route enumeration without discarding compatible candid
  assert.match(result.reason,/36435 candidates/);
 });
 
+test('different decimal tooltip numbers never collapse into one visible outcome',()=>{
+ const base=engine.apply(sample,7,'R');
+ const changed={...base,lines:base.lines.map((x,i)=>i===0?{...x,value:650.5}:x)};
+ assert.notEqual(visibleResultSignature(base),visibleResultSignature(changed));
+});
+test('observed decimals must match closely, not within half a point',()=>{
+ const base={quality:'normal',itemId:2,affixes:[],lines:[{attr:100,stem:'Power',value:1.65}]};
+ assert.equal(matchesObservation(base,{quality:'normal',itemId:2,lines:[{attr:100,stem:'Power',value:1.65}]}),true);
+ assert.equal(matchesObservation(base,{quality:'normal',itemId:2,lines:[{attr:100,stem:'Power',value:1.25}]}),false);
+});
 test('groups identical visible results regardless of hidden seed',()=>{
  const a=engine.apply(sample,1,'R'),b={...a,seed:99,from:88};
  assert.equal(visibleResultSignature(a),visibleResultSignature(b));
