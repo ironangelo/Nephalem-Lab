@@ -1,0 +1,24 @@
+name: Reconstruct drop seed from ONE observed Reforge
+on:
+  push:
+    branches: [research/single-reforge-drop-recovery]
+  workflow_dispatch:
+jobs:
+  one-reforge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compile numeric inverse solver
+        run: npm run build:wasm
+      - name: Extract all seeds compatible with B's real tooltip
+        run: node research/single-reforge-seeds.mjs
+      - name: Compile exhaustive inverse of the six-draw Reforge transition
+        run: gcc -O3 -fopenmp -o /tmp/invert-one research/invert-single-reforge.c
+      - name: Find all drop seeds that can lead to one observed Reforge result
+        run: OMP_NUM_THREADS=4 /tmp/invert-one /tmp/one-reforge-result-seeds.txt /tmp/one-reforge-preimages.tsv
+      - name: Verify complete affix and number exactness for every predecessor
+        run: node research/validate-single-reforge.mjs
