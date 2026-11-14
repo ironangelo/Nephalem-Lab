@@ -145,3 +145,13 @@ La documentación completa y todos los checkpoints están en [FIREBIRD_EYE_KADAL
 **Estado de ejecución:** la conversión inicial sí ocurrió en la Switch 2. **No hay todavía ninguna operación real posterior sobre esos pantalones.**
 
 **Selección explícita posterior del usuario:** prefiere la ruta que ahorra **Forgotten Souls**, por tanto queda elegida **`SSSSSRCSCR`** (10 operaciones desde Firebird's Down seed inferida `930643368`, 120 Forgotten Souls, 20 Death's Breaths, 10 materiales por acto, 6 Crucibles y Mística final Hydra → CHC). Solicitó el formato de lista interactiva marcable para seguir cada paso. **Todavía no ha confirmado la primera santificación de esta ruta**; no marcar operaciones realizadas ni confundir la conversión anterior con el paso 1. El próximo paso dependerá de si el usuario elige la ruta corta (R) o la ahorradora de Souls (S); verificar la siguiente fotografía antes de avanzar.
+
+## SEGUNDO ÉXITO REAL — Firebird's Eye de Kadala Primal (2026-11-14)
+
+**¡Funciona también la ruta que ahorra Forgotten Souls!** Tras elegir explícitamente la secuencia `SSSSSRCSCR` desde Firebird's Down (seed inferida 930643368), el usuario informó **«Funciono!! E hice el reroll stat con mystic!!»** y compartió una foto de su Firebird's Eye con borde Primal rojo y el símbolo azul de atributo cambiado por la Mística al lado de CHC.
+
+Valores visibles de la foto, todos coincidentes con la predicción: **+485–600 daño** (daño base observado, NO simulado); **+20% daño de fuego**; **+1000 Inteligencia**; **+10,0% probabilidad de crítico** (reroll); **críticos otorgan 4 poder arcano**; **+35% oro de monstruos**; **+14 poder arcano máximo**. Resultado **Primal alcanzado y Mística completada**. La predicción previa a la Mística era +15% daño de Hydra, cambiado por +10% CHC; no existe fotografía individual del estado previo a la Mística. La seed final modelo sigue siendo **1980719662**, no leída directamente de la Switch.
+
+**Evidencia:** foto `image-1794676452913.jpg`, SHA-256 `780fd785701d0f8d79f7f31c619e82faee6963c4cebf1b73f0fd362db290f51f` (el binario no se ha cargado a GitHub). Ver [bitácora de Firebird's Eye actualizada](research/FIREBIRD_EYE_KADALA_SEED_AND_ROUTES.md) y [vectores del experimento](research/EXPERIMENT_VECTORS_2026-11-14.json).
+
+**ESTADO AL RETOMAR:** la Firebird's Eye de Kadala ya llegó a Primal con todos los afijos recomendados y el reroll realizado. **No sugerir más R, S, C ni otro reroll sobre esta pieza.** Es el segundo caso real exitoso del método junto con la pechera Firebird's Breast. Sigue pendiente descubrir la fórmula general de drop directo desde una foto sin transmutación conocida.
