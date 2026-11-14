@@ -3,6 +3,7 @@ import {observationAffixFamilies,generateRecoveryHypotheses,verifyHypothesis} fr
 import {searchUniversalRoute} from './universal-planner.js';
 import {validSeeds,advanceCandidates,matchesObservation} from './candidate-analysis.js';
 import {parseSocketCount} from './observation-fields.js';
+import {resolveObservationAttribute,requiredOperationQuality,assertObservationQuality} from './observation-model.js';
 import {loadManifest,seasonRules} from './season.js';
 const $=x=>document.querySelector(x),safe=x=>String(x).replace(/[&<>"']/g,a=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[a]));
 const words={en:{heading:'Universal Item Lab',intro:'Item-based simulation for all character classes, with seed recovery research and verifiable recipes.',warning:'Experimental: a reconstruction must be unique and a recipe must be checked step by step before spending materials.',setup:'1. Game and item',observe:'3. Recover an existing item seed',observed:'Enter the visible affixes, including socket count (e.g. 3 on a chest). Socket count is saved but is not a numeric seed constraint. Do not enter Mystic-modified rolls as natural.',plan:'2. Target and recipe',planHelp:'Choose target affixes (Ctrl/long press to select several). One legal Mystic swap may complete the recipe.',mode:'Mode',class:'Character class',item:'Item (English database names)',seed:'Current seed if known',add:'+ Add affix',save:'Save observation',search:'Recover seeds',cancel:'Cancel',goals:'Target affixes',mystic:'Allow one Mystic swap',crafted:'Allow crafted primal (ashes)',maxr:'Maximum reforges',maxs:'Maximum sanctifications',next:'Predict next reforge',route:'Find recipe',ready:'Ready',load:'Loading complete D3Recipes database…',none:'Enter an item first.',missing:'Enter a current seed or recover it before planning.',notEnough:'No unique seed: more consecutive observations may be required.',normal:'Normal (not ancient/primal)',ancient:'Ancient',primal:'Primal',sanctified:'Sanctified',quality:'First observation quality',step:'Expected result',result:'Predicted route',source:'Source'},es:{heading:'Laboratorio universal de objetos',intro:'Simulación basada en datos para todas las clases, reconstrucción de seeds y recetas verificables.',warning:'Experimental: exige una seed única y verifica cada paso antes de gastar materiales.',setup:'1. Juego y objeto',observe:'3. Recuperar la seed del objeto',observed:'Ingresa los afijos visibles, incluidos los engarces (por ejemplo, 3 en una pechera). Se guardan, pero su cantidad no identifica la seed. No ingreses atributos modificados en la Mística como naturales.',plan:'2. Objetivo y receta',planHelp:'Elige los afijos objetivo (Ctrl o pulsación larga para varios). La Mística puede reemplazar legalmente uno.',mode:'Modo',class:'Clase',item:'Objeto (nombres de la base en inglés)',seed:'Seed actual, si la conoces',add:'+ Agregar afijo',save:'Guardar observación',search:'Reconstruir seeds',cancel:'Cancelar',goals:'Afijos deseados',mystic:'Permitir un cambio de Mística',crafted:'Permitir primal fabricado (cenizas)',maxr:'Máximo de reforjas',maxs:'Máximo de santificaciones',next:'Predecir próxima reforja',route:'Buscar receta',ready:'Listo',load:'Cargando base completa de D3Recipes…',none:'Elige un objeto primero.',missing:'Ingresa o reconstruye una seed antes de planificar.',notEnough:'Seed no única: podrían hacer falta otras observaciones consecutivas.',normal:'Normal (no ancestral/primal)',ancient:'Ancestral',primal:'Primal',sanctified:'Santificado',quality:'Calidad de primera observación',step:'Resultado esperado',result:'Ruta prevista',source:'Fuente'},pt:{heading:'Laboratório universal de itens',intro:'Simulação para todas as classes, recuperação de sementes e receitas verificáveis.',warning:'Experimental: exija uma semente única e confira cada etapa antes de gastar materiais.',setup:'1. Jogo e item',observe:'3. Recuperar semente do item',observed:'Informe os atributos visíveis, incluindo a quantidade de encaixes (por exemplo, 3 no peitoral). É registrada, mas não identifica a semente. Não use atributos modificados pela Mística como naturais.',plan:'2. Objetivo e receita',planHelp:'Escolha atributos-alvo (Ctrl ou toque longo para vários). Uma troca válida na Mística é permitida.',mode:'Modo',class:'Classe',item:'Item (nomes em inglês)',seed:'Semente atual, se conhecida',add:'+ Adicionar atributo',save:'Salvar observação',search:'Recuperar sementes',cancel:'Cancelar',goals:'Atributos desejados',mystic:'Permitir troca da Mística',crafted:'Permitir primal fabricado (cinzas)',maxr:'Máximo de reforjas',maxs:'Máximo de santificações',next:'Prever próxima reforja',route:'Buscar receita',ready:'Pronto',load:'Carregando base completa do D3Recipes…',none:'Escolha um item primeiro.',missing:'Informe ou recupere uma semente antes de planejar.',notEnough:'Semente não única: outras observações consecutivas podem ser necessárias.',normal:'Normal (não ancestral/primal)',ancient:'Ancestral',primal:'Primal',sanctified:'Santificado',quality:'Qualidade da primeira observação',step:'Resultado esperado',result:'Rota prevista',source:'Fonte'}};
@@ -14,6 +15,12 @@ const extraWords={
 };
 const TA=x=>extraWords[lang]?.[x]||extraWords.en[x]||x;
 function projectKey(){return `nephalem-universal-v3-${engine?.hero}-${rootItemId??item?.id}`;}
+function capturePreferences(){return {mode:$('#mode').value,allowMystic:$('#allow-mystic').checked,allowConvert:$('#allow-convert').checked,maxC:Number($('#max-c').value),allowCrafted:$('#allow-crafted').checked,maxR:Number($('#max-r').value),maxS:Number($('#max-s').value)};}
+function restorePreferences(p){if(!p||typeof p!=='object')return;
+ if(['seasonal','nonseasonal'].includes(p.mode))$('#mode').value=p.mode;
+ for(const [key,id] of [['allowMystic','#allow-mystic'],['allowConvert','#allow-convert'],['allowCrafted','#allow-crafted']])if(typeof p[key]==='boolean')$(id).checked=p[key];
+ for(const [key,id,limit] of [['maxC','#max-c',12],['maxR','#max-r',20],['maxS','#max-s',100]])if(Number.isInteger(p[key])&&p[key]>=0&&p[key]<=limit)$(id).value=p[key];
+}
 function renderCandidateStatus(){
  const el=$('#candidate-status');if(!el)return;
  el.textContent=persistenceError?`WARNING: ${candidates.length} candidates are only in memory; automatic saving failed (${persistenceError}). Use Prepare backup before closing or refreshing.`:(candidates.length?`${candidates.length} compatible seeds stored on this device. Predictions remain unconfirmed until checked in-game.`:TA('aStatus'));
@@ -46,11 +53,13 @@ function observationItem(){
  return $('#ob-op')?.value==='C'?engine.item($('#ob-result-item')?.value):item;
 }
 function rebuildObservationFields(){
- $('#base-fields').innerHTML=`<div class="u-toolbar"><label>${T('quality')}<select id="ob-quality">${['normal','ancient','primal','sanctified'].map(q=>`<option value="${q}">${T(q)}</option>`).join('')}</select></label><label>Operation from previous observation<select id="ob-op"><option value="R">Reforge Legendary</option><option value="S">Sanctify</option><option value="P">Improve Legendary</option><option value="C">Convert Set Item</option></select></label><label id="result-item-box" class="u-hidden">Resulting set piece<select id="ob-result-item"></select></label></div>`;
+ $('#base-fields').innerHTML=`<div class="u-toolbar"><label>${T('quality')}<select id="ob-quality">${['normal','ancient','primal','sanctified','crafted'].map(q=>`<option value="${q}">${T(q)}</option>`).join('')}</select></label><label>Operation from previous observation<select id="ob-op"><option value="R">Reforge Legendary</option><option value="S">Sanctify</option><option value="P">Improve Legendary</option><option value="C">Convert Set Item</option></select></label><label id="result-item-box" class="u-hidden">Resulting set piece<select id="ob-result-item"></select></label></div>`;
  const fill=()=>{
-  const active=$('#ob-op').value==='C';
+  const op=$('#ob-op').value,active=op==='C';
   $('#result-item-box').classList.toggle('u-hidden',!active);
-  if(active){const members=resultSetMembers();$('#ob-result-item').innerHTML=members.map(i=>`<option value="${i.name.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}">${safe(i.name)}</option>`).join('');$('#ob-quality').value='normal';}
+  if(active){const members=resultSetMembers();$('#ob-result-item').innerHTML='<option value="">Select actual set piece from the game</option>'+members.map(i=>`<option value="${i.name.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}">${safe(i.name)}</option>`).join('');}
+  $('#ob-quality').value=requiredOperationQuality(op)||'normal';
+  $('#ob-quality').disabled=op!=='R';
   $('#stats').replaceChildren();const obj=observationItem();for(const [attr] of obj?.formulas||[])addRow('Power',attr);
  };
  $('#ob-op').addEventListener('change',fill);
@@ -71,6 +80,7 @@ function resetItem(){
   $('#seed').value=stored.seed??(candidates.length===1?candidates[0]:'');
   $('#target-item').value=engine.item(stored.targetItemId)?.name||engine.item(rootItemId).name;
   resetGoalFields(stored.goals||[]);
+  restorePreferences(stored.preferences);
  }else{
   $('#target-item').value=item.name;
   const defaults=item.name==="Firebird's Pinions"?['Int','Vit','CooldownReduction','ResourceCostReduction']:[];
@@ -81,30 +91,36 @@ function resetItem(){
  $('#source-status').textContent=`${item.name} · ID ${item.id} · ${engine.candidateAffixes(item).length} candidate affix records`;
  rebuildObservationFields();renderObs();renderCandidateStatus();$('#candidate-results').textContent='';
 }
-function addRow(initial='',attrInitial=null){if(!maybeEngine())return;
+function addRow(initial='',attrInitial=null){if(!maybeEngine()||!observationItem())return;
  const family=observationAffixFamilies(engine,observationItem());const options=family.map(s=>({key:s,txt:niceStem(s)}));
  const el=document.createElement('div');el.className='u-stat-row';el.innerHTML=`<label>Attribute <select class="u-family"><option value="Power">Legendary power</option>${options.map(x=>`<option value="${safe(x.key)}">${safe(x.txt)}</option>`).join('')}</select></label><label>Value<input class="u-value" type="number" step="any" placeholder="Exact value"></label><button type="button" aria-label="Remove">×</button>`;
  $('#stats').appendChild(el);const select=el.querySelector('select');select.value=initial||options[0]?.key||'Power';
  el.querySelector('button').onclick=()=>el.remove();el.dataset.attr=attrInitial===null?'':String(attrInitial);
+  select.onchange=()=>{el.dataset.attr='';};
 }
-function getFields(){const lines=[];for(const el of document.querySelectorAll('.u-stat-row')){
- const stem=el.querySelector('select').value,value=Number(el.querySelector('input').value);if(!el.querySelector('input').value.trim())continue;
- let attr=el.dataset.attr?Number(el.dataset.attr):null;
- if(stem==='Sockets'){
-  if(!engine.candidateAffixes(observationItem()).some(a=>a.is_socket))throw Error('This item does not have a socket affix.');
-  lines.push(parseSocketCount(el.querySelector('input').value));continue;
+function getFields(){
+ const observedItem=observationItem();
+ if(!observedItem)throw Error('Select the exact set piece that appeared after conversion.');
+ const lines=[];
+ for(const el of document.querySelectorAll('.u-stat-row')){
+  const family=el.querySelector('select').value,raw=el.querySelector('input').value.trim();
+  if(!raw)continue;
+  if(family==='Sockets'){
+   if(!engine.candidateAffixes(observedItem).some(a=>a.is_socket))throw Error('This item does not support a socket affix.');
+   lines.push(parseSocketCount(raw));continue;
+  }
+  const attr=resolveObservationAttribute(engine,observedItem,family,el.dataset.attr||null);
+  lines.push({stem:family,attr,value:Number(raw)});
  }
- if(attr===null){const a=engine.candidateAffixes(observationItem()).find(a=>a.label.split(' ')[0]===stem||a.label.startsWith(stem+' '));attr=a?.formulas?.[0]?.[0];}
- if(stem==='Power')attr=observationItem()?.formulas?.[0]?.[0];if(attr===undefined||attr===null)throw Error(`Cannot identify numerical attribute for ${stem}.`);
- lines.push({stem,attr,value});
- }return lines;}
+ return lines;
+}
 function renderObs(){const el=$('#observations-list');el.innerHTML=observations.map((o,i)=>`<div class="u-dark">${i+1}. ${o.op}, ${o.quality}: ${o.lines.map(x=>`${safe(niceStem(x.stem))} ${x.value}`).join(' · ')}</div>`).join('');}
 function season(){return seasonRules(manifest,{mode:$('#mode').value});}
 function currentSeed(){const n=$('#seed').value.trim();return n!==''&&Number.isInteger(Number(n))&&Number(n)>=0&&Number(n)<=4294967295?Number(n):null;}
 function saveProject(){
  if(!item||!engine)return;
  try{const snapshot={schema:3,item:engine.item(rootItemId)?.name,itemId:rootItemId,currentItemId:item.id,hero:engine.hero,
-  targetItemId:target()?.id,goals:[...$('#goals').selectedOptions].map(o=>o.value),
+  targetItemId:target()?.id,goals:[...$('#goals').selectedOptions].map(o=>o.value),preferences:capturePreferences(),
   observations,candidates:validSeeds(candidates),seed:currentSeed(),savedAt:new Date().toISOString()};
   localStorage.setItem(projectKey(),JSON.stringify(snapshot));
   localStorage.setItem('nephalem-last-root-v3',JSON.stringify({rootItemId,hero:engine.hero}));
@@ -114,7 +130,9 @@ function saveProject(){
 }
 function outputResult(r){return `${r.item} · ${r.quality} · seed ${r.seed}\n${r.lines.map(l=>`${niceStem(l.stem)}: ${Number(l.value.toFixed(6))}`).join(' · ')}${r.affixes.some(a=>a.socket)?' · Socket':''}`;}
 function record(){if(!maybeEngine())return;try{const o={op:$('#ob-op').value,quality:$('#ob-quality').value,itemId:observationItem()?.id,lines:getFields()};
- if(!o.lines.length)throw Error('No numerical attributes entered');
+ if(!o.lines.length||o.lines.every(l=>l.stem==='Sockets'))throw Error('Enter the actual numerical attributes, not only socket count.');
+ assertObservationQuality(o.op,o.quality);
+ if(!observations.length&&o.quality!=='normal')throw Error('Initial seed recovery requires a normal, unmodified item.');
   if(o.op==='C'&&o.quality!=='normal')throw Error('Convert Set Item always creates a normal set item.');
   if(o.op==='C'&&!candidates.length)throw Error('Recover the current item seeds before converting it, so the item chain stays connected.');
  if(candidates.length&&observations.length){
@@ -186,7 +204,7 @@ function showCandidateAnalysis(data){
   block.appendChild(top);container.appendChild(block);
  }
  const conclusion=document.createElement('div');conclusion.className='u-notice';
- conclusion.textContent=shared.found?`A CONDITIONAL common natural-primal path (possibly with set conversions) was found: ${shared.path}. All ${shared.allCandidates} modeled candidates meet the selected affix families at the end. Predictions may have different intermediate results and still need an in-game validation; do not treat as guaranteed.`:`Shared recipe: ${shared.reason}. The app only searched a bounded range; this is not proof no recipe exists.`;
+ conclusion.textContent=shared.skipped?`No shared route search was attempted: ${shared.reason}`:shared.found?`A CONDITIONAL common natural-primal path (possibly with set conversions) was found: ${shared.path}. All ${shared.allCandidates} modeled candidates meet the selected affix families at the end. Predictions may have different intermediate results and still need an in-game validation; do not treat as guaranteed.`:`Shared recipe: ${shared.reason}. The app only searched a bounded range; this is not proof no recipe exists.`;
  container.appendChild(conclusion);
  const disclaimer=document.createElement('p');disclaimer.className='u-small';
  disclaimer.textContent=summary.note;container.appendChild(disclaimer);
@@ -212,7 +230,7 @@ function startCandidateAnalysis(){
 function prepareCandidateBackup(){
  if(!item||!candidates.length)return;
  const backup={schema:3,itemId:rootItemId,currentItemId:item.id,item:engine.item(rootItemId)?.name,hero:engine.hero,
-  observations,candidates:validSeeds(candidates),seed:currentSeed(),targetItemId:target()?.id,goals:[...$('#goals').selectedOptions].map(o=>o.value)};
+  observations,candidates:validSeeds(candidates),seed:currentSeed(),targetItemId:target()?.id,goals:[...$('#goals').selectedOptions].map(o=>o.value),preferences:capturePreferences()};
  $('#candidate-backup').value=JSON.stringify(backup);
  $('#candidate-results').textContent='Backup prepared below. Copy and save the text elsewhere before uninstalling the app.';
  $('#candidate-backup').focus();$('#candidate-backup').select();
@@ -228,6 +246,7 @@ function restoreCandidateBackup(){
   observations=input.observations;candidates=filtered;
   if(input.currentItemId&&engine.item(input.currentItemId)){item=engine.item(input.currentItemId);$('#item').value=item.name;rebuildObservationFields();}
    if(input.targetItemId&&engine.item(input.targetItemId)){$('#target-item').value=engine.item(input.targetItemId).name;resetGoalFields(input.goals||[]);}
+  restorePreferences(input.preferences);
   $('#seed').value=candidates.length===1?candidates[0]:'';
   renderObs();renderCandidateStatus();saveProject();
   $('#candidate-results').textContent=`Restored ${candidates.length} candidates and ${observations.length} observations for ${item.name}.`;
@@ -254,6 +273,7 @@ async function boot(){lang=localStorage.getItem('nephalem-lang')||'en';$('#lang'
  }catch(e){$('#source-status').textContent=`Database error: ${e.message}`;return;}
  $('#item').addEventListener('change',resetItem);$('#class').addEventListener('change',resetItem);
   $('#target-item').addEventListener('change',()=>{resetGoalFields();saveProject();});$('#goals').addEventListener('change',saveProject);
+ for(const id of ['#mode','#allow-mystic','#allow-convert','#max-c','#allow-crafted','#max-r','#max-s'])$(id).addEventListener('change',saveProject);
  $('#lang').addEventListener('change',e=>{lang=e.target.value;localStorage.setItem('nephalem-lang',lang);translate();if(item){renderCandidateStatus();}});
  $('#add-stat').onclick=()=>addRow();$('#save-observation').onclick=record;$('#search-seed').onclick=scan;
  $('#cancel-seed').onclick=()=>{worker?.terminate();worker=null;$('#seed-status').textContent='Cancelled';};
