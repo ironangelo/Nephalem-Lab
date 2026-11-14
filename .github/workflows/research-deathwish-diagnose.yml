@@ -1,0 +1,16 @@
+name: Diagnose real Deathwish Reforge stat-by-stat inverse mismatch
+on:
+  push:
+    branches: [research/deathwish-kadala-drop]
+  workflow_dispatch:
+jobs:
+  partial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run build:wasm
+      - run: node research/deathwish-partial-diagnostics.mjs
