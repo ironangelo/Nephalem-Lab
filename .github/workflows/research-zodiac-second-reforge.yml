@@ -1,0 +1,19 @@
+name: Identify Zodiac second observed Reforge exact seed
+on:
+  push:
+    branches: [research/zodiac-drop-seed]
+    paths:
+      - '.github/workflows/research-zodiac-second-reforge.yml'
+      - 'research/zodiac-second-reforge-match.mjs'
+  workflow_dispatch:
+jobs:
+  identify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Match second real Zodiac Reforge from 5331 previously computed candidates
+        run: node research/zodiac-second-reforge-match.mjs
