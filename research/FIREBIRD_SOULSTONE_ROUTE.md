@@ -4,7 +4,7 @@
 **Target:** Firebird's Breast for Soulstone Firebird Twister; prefer INT + VIT + Life% + sockets with secondary elemental resist and melee/ranged reduction (one Mystic roll can replace one unwanted affix).  
 **Source item:** photographed Firebird's Breast **C**, normal, INT 443, VIT 476, Life 11%, Poison Resist 149, Pickup Radius +1 yd, 3 sockets, Armor 738.  
 **Source modeled seed:** \`3835143639\`; inferred from two real Reforges, not hardware-read.  
-**Status:** 12-step model completely agrees between JS and upstream Rust; first real Sanctify matched in-game; newest user screenshot **exactly matches predicted final tooltip**, although intermediate actual operation history was not separately supplied in this record.  
+**Status: END-TO-END IN-GAME SUCCESS (user-confirmed 2026-11-14).** All 12 steps of `SSSSCSSCCSSR` were performed on Nintendo Switch 2, as the user confirmed when asked directly. Final screenshot **exactly matches all predicted visible affixes**. Model independently agrees between JS and upstream Rust on all 12 transitions. Intermediate steps were not independently photographed one by one, and hidden seeds were not memory-read.  
 
 Read [CONTINUITY.md](../CONTINUITY.md) and [technical seed model](SEED_MODEL_AND_DROP_RECOVERY.md) for evidence limits.
 
@@ -68,7 +68,7 @@ Complete original Rust replay: [run 43608386485](https://github.com/ironangelo/N
       Sockets = 3  [item-specific displayed count]
 
 - One actual user screenshot of step #1 has displayed INT 650 / VIT 650 / PoisonResist 210 / Blizzard 15% / Sockets 3 + Arcane Orb orange power. It omits XP 260, as required by the Sanctify replacement rule, **thus it is a verified visible-attribute match**.
-- **Latest user screenshot (2026-11-14)** shows 759 displayed Armor, INT 650 / VIT 650 / Life 15% / FireResist 210 / HealthGlobeBonus 38,625 / Sockets 3. It is an **exact visible-stat match for the target model result** and the user said the experiment worked. It does *not* by itself reveal the 12 intermediate real operations nor readable internal seed. Record both positive evidence and limits.
+- **Latest user screenshot (2026-11-14)** shows 759 displayed Armor, INT 650 / VIT 650 / Life 15% / FireResist 210 / HealthGlobeBonus 38,625 / Sockets 3. It is an **exact visible-stat match for the target model result**. **The user subsequently confirmed that they executed the entire `SSSSCSSCCSSR` route and took this photograph immediately after the last operation** (direct answer: «Sí, exactamente al terminar el último paso»). Therefore this is a **real, end-to-end confirmation of the route and final visible stats**, not merely an unperformed simulation. Caveats: intermediate screenshots are not individually available; the exact seeds were not read from console memory; the cropped final photo alone does not provide a fully legible textual quality label.
 
 ## 4. Other valid model routes (before Mystic)
 
@@ -88,7 +88,7 @@ Note: some comparisons may treat extra legendary / sanctified powers or Mystic e
 
 ## 5. How to resume safely
 
-- First check whether the newest pictured item is **already** the target natural Primal. It matches all target affixes; its exact game-quality label and operation history may need confirmation. **Do not instruct another Sanctify on it just because the documentation is read from the top.**
+- **The 12-step sequence has already been completed and confirmed by the user. Do not repeat it or perform additional Sanctify/Convert/Reforge operations.** The final screenshot matches all the Primal target's visible stats. If a textual quality label is needed, verify separately; keep the original item intact.
 - If the route is in progress, reconcile against the **exact next row**, including item identity after C. Record each real result before advancing.
 - It is **expected** that the last internal secondary selected by \`S\` is absent; instead an orange seasonal power appears. Other affixes must still match.
 - If all observed stats match and actual quality is confirmed natural Primal, the only remaining intended operation is optional **Mystic** to replace globes with melee reduction. Do **not** use Improve Legendary / Primalize on a natural Primal just to adjust its stats.
