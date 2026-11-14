@@ -210,3 +210,21 @@ El usuario hizo **el primer paso S** sobre la Deathwish normal de 253% (seed inf
 **Selección expresa del usuario:** «Exacto! Dio eso! Usemos la que recomienda 100% soulstone con el daño rayo». Queda elegida la secuencia **`SRRSSRSSSSSSSSSSSSSSSRR`**, resultado final **Deathwish Primal natural con daño de RAYO**, +325% legendario, +10% daño arma, +10% CDR, un cambio final de Mística **INT→+8% daño élites**, y Ramaladni opcional para hueco. **Costo TOTAL desde la Deathwish normal 253%:** 250 Forgotten Souls, 25 contratos por acto, 18 Crucibles y Mística. Como **S #1 está hecho**, pendiente: 5 R (250 Souls, 25 contratos por acto), **17 Crucibles**, **22 pasos**; solo se gastó un Crucible del costo de la ruta. No sugerir otra Sanctify ahora.
 
 **Próximo paso #2 = R (Reforge Legendary):** Deathwish normal con **280% poder**, **+1127–1360 daño Sagrado**, **629 INT**, **665 VIT**, **2,06% de miedo al golpear** (redondea posiblemente **2,1%**), y afijo de hueco. Seed resultante **inferida 1237898586**. Después de cada operación, **detenerse y verificar foto antes de avanzar**. No confundir que los pasos intermedios tengan miedo/retroceso con el Primal final, que no los tiene. [Todos los checkpoints de la secuencia](research/DEATHWISH_PRIMAL_CHECKPOINTS.md).
+
+
+## ACTUALIZACIÓN — DEATHWISH PRIMAL NATURAL CONSEGUIDA EN SWITCH 2 (2026-11-14)
+
+**El usuario completó la ruta de RAYO elegida `SRRSSRSSSSSSSSSSSSSSSRR` hasta el último Reforge**, y compartió una fotografía real del **Deathwish Primal natural**. Es el tercer objeto Firebird objetivo conseguido con receta de seed (después de la pechera y la fuente). Coinciden exactamente los afijos finales previstos por el Rust original:
+
+- **3.126,2 DPS visibles** (no calculados por el motor); **+1.560–1.940 daño de RAYO**.
+- **+10% daño del arma**.
+- **+1.000 Inteligencia**: **todavía SIN cambiar con la Mística** en esta fotografía.
+- **+10,0% reducción de tiempos de reutilización (CDR)**.
+- **2,6% probabilidad de ralentizar al golpear** (redondeo en tooltip).
+- **325% poder legendario**.
+- Borde **Primal natural rojo**, sin poder naranja santificado.
+- Seed final **inferida/modelada** `1326569675`, nunca leída directamente desde el hardware.
+
+**Fotografía:** archivo de conversación `image-1794684825055.jpg`, SHA-256 `c9a9260b2dc33ba9683eec8ec2e237882f2e74fd3259ffcf6f7b8ece1b4b7df6` (NO subida como binario a GitHub). **Estado nuevo: ruta completada, NO repetir R/S**. La pregunta pendiente del usuario es el reroll final: para replicar exactamente Soulstone, **Mística: cambiar +1.000 Inteligencia por +8% daño contra élites**, conservando +10% daño arma, +10% CDR, daño de rayo y 325% poder. El reroll todavía NO ha sido confirmado como ejecutado. Como decisión de optimización alternativa, Soulstone menciona que en parangón relativamente bajo (<2000) podría ser mejor mantener la Inteligencia; no confundir esto con el objetivo de copiar fielmente los afijos. **Añadir hueco después con Ramaladni's Gift, si se dispone**, sin gastar ranura primaria.
+
+**La validación real final respaldada por fotografía confirma la ruta y todos sus afijos finales, no implica que todas las operaciones intermedias tengan fotografía independiente ni que conozcamos la seed interna por lectura de memoria.**
