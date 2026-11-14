@@ -1,0 +1,211 @@
+{
+  "schema": "nephalem-lab-research-vectors/1",
+  "documentedAt": "2026-11-14",
+  "game": "Diablo III console / Nintendo Switch 2",
+  "upstreamReference": "FNGarvin/d3recipes@49fe28467db9ebbd096694d1408528b2c9ce5ea3",
+  "provenanceGuide": {
+    "actual": "Visible in user photograph or explicitly reported as performed on Switch 2",
+    "model": "Reproducibly calculated by reference Rust and/or JS, not read from game",
+    "inferred": "Hidden seed deduced through an inverse algorithm; not directly observed",
+    "unresolved": "Unverified relationship or missing observation"
+  },
+  "coe": {
+    "class": "Wizard",
+    "original": {
+      "observed": "actual",
+      "item": "Convention of Elements",
+      "powerPercent": 190,
+      "stats": {
+        "Strength": 455,
+        "CriticalChancePercent": 5,
+        "CooldownReductionPercent": 8,
+        "PoisonResist": 151,
+        "Sockets": 1
+      }
+    },
+    "afterFirstReforge": {
+      "observed": "actual",
+      "item": "Convention of Elements",
+      "powerPercent": 156,
+      "stats": {
+        "Intelligence": 423,
+        "CriticalChancePercent": 4.5,
+        "AttackSpeedPercent": 5,
+        "FireResist": 142,
+        "Sockets": 1
+      },
+      "modeledCurrentSeed": 3035692732
+    },
+    "afterSecondReforge": {
+      "observed": "actual",
+      "item": "Convention of Elements",
+      "powerPercent": 165,
+      "stats": {
+        "Intelligence": 433,
+        "Vitality": 425,
+        "CriticalChancePercent": 4.5,
+        "LightningResist": 144,
+        "Sockets": 1
+      },
+      "modeledCurrentSeed": 4015360194
+    },
+    "simulationContinuation": {
+      "status": "model only unless separate console evidence",
+      "ops": "RSSRSSSSSRR",
+      "expectedEndSeed": 2122496372,
+      "expectedEndQuality": "primal",
+      "expectedEndPowerPercent": 200,
+      "expectedEndAffixes": [
+        "Int",
+        "CriticalChance",
+        "Sockets",
+        "CriticalD",
+        "PoisonResist"
+      ]
+    },
+    "references": [
+      "src/storage.js",
+      "tests/engine.test.mjs",
+      "src/engine.js",
+      "assets/coe-sample-4081.csv"
+    ]
+  },
+  "firebird": {
+    "class": "Wizard",
+    "item": "Firebird's Breast",
+    "kind": "Chest",
+    "originalSource": "unknown: either Kadala, Greater Rift or Nephalem Rift",
+    "originalA": {
+      "observed": "actual",
+      "armor": 668,
+      "quality": "normal",
+      "Intelligence": 416,
+      "LifePercent": 10,
+      "ExperiencePerKill": 198,
+      "PickupRadiusYards": 2,
+      "ExplosiveBlastDamagePercent": 11,
+      "Sockets": 3,
+      "inferredCurrentSeed": 3525123180
+    },
+    "afterReforgeB": {
+      "observed": "actual",
+      "armor": 752,
+      "quality": "normal",
+      "Intelligence": 456,
+      "Vitality": 484,
+      "LightningResist": 149,
+      "Thorns": 5366,
+      "ExplosiveBlastDamagePercent": 13,
+      "Sockets": 3,
+      "inferredCurrentSeed": 2645309652
+    },
+    "afterReforgeC": {
+      "observed": "actual",
+      "armor": 738,
+      "quality": "normal",
+      "Intelligence": 443,
+      "Vitality": 476,
+      "LifePercent": 11,
+      "PoisonResist": 149,
+      "PickupRadiusYards": 1,
+      "Sockets": 3,
+      "inferredCurrentSeed": 3835143639
+    },
+    "modeledRelations": [
+      {
+        "fromSeed": 3525123180,
+        "operation": "R",
+        "draws": 6,
+        "toSeed": 2645309652,
+        "status": "verified model vs real B screenshot and upstream Rust"
+      },
+      {
+        "fromSeed": 2645309652,
+        "operation": "R",
+        "draws": 6,
+        "toSeed": 3835143639,
+        "status": "verified model vs real C screenshot and upstream Rust"
+      }
+    ],
+    "singleReforgeInverse": {
+      "resultTooltipSeedCandidates": 24,
+      "parentPreimagesAfter6Draws": 25,
+      "exactParentAfterFullReforge": 3525123180,
+      "numberOfExactParents": 1,
+      "run": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43563886534"
+    },
+    "sourceDropInference": {
+      "status": "unresolved",
+      "warning": "A's original values DO NOT match values(item,3525123180) under tested reforge-oriented model; regular Rift/Kadala source formula is not established"
+    },
+    "firstSanctify": {
+      "observed": "actual",
+      "sourceModeledSeed": 3835143639,
+      "modeledChildSeed": 2170510334,
+      "item": "Firebird's Breast",
+      "quality": "sanctified",
+      "armor": 759,
+      "visibleStats": {
+        "Intelligence": 650,
+        "Vitality": 650,
+        "BlizzardDamagePercent": 15,
+        "PoisonResist": 210,
+        "Sockets": 3
+      },
+      "orangePower": "Arcane Orb periodically creates orbiting charges",
+      "internallySelectedButReplaced": {
+        "ExperiencePerKill": 260
+      },
+      "photograph": {
+        "originalUploadName": "image-1794669994815.jpg",
+        "sha256": "b272534f2294fea40fda260648f551621210c873e319f155115592c2191c5426",
+        "archivedInGitHub": false
+      }
+    },
+    "targetPrimal": {
+      "path": "SSSSCSSCCSSR",
+      "modelReferenceRun": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43608386485",
+      "modeledChildSeed": 1415768159,
+      "quality": "natural primal (model); screenshot does not legibly show textual quality label",
+      "expectedVisibleStats": {
+        "Intelligence": 650,
+        "Vitality": 650,
+        "LifePercent": 15,
+        "FireResist": 210,
+        "HealthGlobeBonus": 38625,
+        "Sockets": 3
+      },
+      "userLatestScreenshot": {
+        "observed": "actual",
+        "visibleArmor": 759,
+        "visibleStats": {
+          "Intelligence": 650,
+          "Vitality": 650,
+          "LifePercent": 15,
+          "FireResist": 210,
+          "HealthGlobeBonus": 38625,
+          "Sockets": 3
+        },
+        "matchesModeledFinalVisibleStats": true,
+        "userReportsSuccess": true,
+        "intermediateOpsActuallyPerformedNotDocumented": true,
+        "originalUploadName": "image-1794670642263.jpg",
+        "sha256": "2675a1c4e63923623c99e15ae96ab4ce94283f9ceb6040f5e6dc7036a99eb82d",
+        "archivedInGitHub": false
+      },
+      "mysticTarget": {
+        "from": "HealthGlobeBonus",
+        "to": "DefenseMelee",
+        "maximumDamageReductionPercent": 7
+      }
+    }
+  },
+  "restrictions": [
+    "No APK updates during research logging",
+    "Do not confuse S with natural Primal",
+    "Do not treat simulation as game proof",
+    "Do not claim that base Armor was predicted",
+    "Stop route at any unexplained game discrepancy",
+    "Respect carried item identity after Convert Set Item"
+  ]
+}
