@@ -103,3 +103,5 @@ The resource trade-off matters: the lower-Souls preferred-element 5R/18S candida
 Exhaustively enumerated every path in three bounded grids: R <= 4 / S <= 30 (no strict Cold/Lightning hit), R <= 6 / S <= 18 (5R18S first strict), R <= 8 / S <= 12 (7R11S and 8R9S strict variants). [Reproducible exhaustive search](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43628886291). These bounds do not prove absolute global optimality.
 
 **Before recommending additional game operations:** choose and explicitly present a route with costs; after selection, provide checkable per-step complete stats and confirm each game screenshot. Never skip the Sanctify random orange-power caveat, and never treat sanctified quality as a natural Primal.
+
+**Tablas exactas de todos los pasos (dos rutas, resultados, seeds):** [DEATHWISH_PRIMAL_CHECKPOINTS.md](research/DEATHWISH_PRIMAL_CHECKPOINTS.md), verificadas paso a paso por el Rust original. Solo la primera foto de Reforge es real; las secuencias finales son predicciones aún no jugadas.
