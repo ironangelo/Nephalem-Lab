@@ -1,0 +1,17 @@
+name: Manual Firebird seed reconstruction
+on:
+  push:
+    branches: [research/firebird-manual]
+  workflow_dispatch:
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run build:wasm
+      - name: Solve Firebird current item from actual screenshot
+        run: node research/firebird.mjs
