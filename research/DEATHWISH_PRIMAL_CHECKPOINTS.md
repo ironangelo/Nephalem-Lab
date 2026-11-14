@@ -1,6 +1,8 @@
 # Deathwish — puntos de control reales calculados con Rust original
 
-**2026-11-14.** Motor: FNGarvin/d3recipes, revisión fija 49fe28467db9ebbd096694d1408528b2c9ce5ea3. Simulaciones verificadas con [GitHub Actions](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43629310015). **Todavía no ejecutadas en Switch 2**; no confundir estas predicciones con fotografías reales. El usuario realizó solo el Reforge diagnóstico inicial: Drop Deathwish seed 1184690904 → Reforge normal Deathwish seed 46826983 (253% poder).
+**ACTUALIZACIÓN REAL, 2026-11-14:** **EL PASO #1 DE LA RUTA ECONÓMICA DE RAYO YA SE HIZO**. El usuario confirmó «Exacto! Dio eso! Usemos la que recomienda 100% soulstone con el daño rayo» y fotografió Deathwish santificada, +1560–1940 **daño Sagrado**, +1000 INT, +1000 VIT, +10% CDR, 2,6% retroceso al golpear, poder legendario 325%, poder naranja Magic Missile dispara 10 proyectiles y adquiere Seeker, DPS visible 2842.0 (no modelado). Foto: `image-1794683016876.jpg`, SHA-256 `9c943d268215ab8301244c78d36ac1067874adc647747b26e75ca50cf4bb153b`. Los **22 pasos restantes todavía NO se realizaron**. **Ruta ELEGIDA: `SRRSSRSSSSSSSSSSSSSSSRR`**, 250 Souls, 18 Crucibles, 23 pasos desde la Deathwish post-Reforge. Próximo paso: **#2 R**, Deathwish **NORMAL**, 280% poder, daño Sagrado **1127–1360**, INT **629**, VIT **665**, **2,06% miedo al golpear** (puede aparecer como **2,1%**), hueco(s) no determinado. **Detenerse si los valores no coinciden.** El efecto naranja de Magic Missile en #1 es aleatorio y no fue simulado.
+
+**2026-11-14.** Motor: FNGarvin/d3recipes, revisión fija 49fe28467db9ebbd096694d1408528b2c9ce5ea3. Simulaciones verificadas con [GitHub Actions](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43629310015). **Salvo el paso #1, validado por fotografía real, los pasos siguientes siguen sin ejecutarse en Switch 2**; no confundir las predicciones posteriores con observaciones reales. El usuario realizó el Reforge diagnóstico inicial y el primer Crucible real de esta ruta: Drop seed inferida 1184690904 → Reforge normal seed 46826983 (253%) → Crucible santificado, seed inferida 2773532829 (325%).
 
 **Leyenda:** R = Reforge Legendary; S = Angelic Crucible (santificar). Calidad *primal* solo cuando último R la produce. En los pasos S aparece además **un poder naranja aleatorio no predecible**; la selección tiene cinco afijos para esta arma, por lo que no se elimina automáticamente el último secundario como ocurrió en la pechera de seis afijos. No predecimos DPS total, y los porcentajes de estados internos como 2,59% pueden verse redondeados (2,6%) en la Switch.
 
@@ -61,7 +63,7 @@
 
 ## Reglas para usar las tablas
 
-1. Los dos caminos **comparten los primeros cuatro pasos SRRS**, así que no se necesita decidir entre ellos para comprobar el primer Crucible.
+1. El usuario **ya eligió la ruta de RAYO y 250 almas** (`SRRSSRSSSSSSSSSSSSSSSRR`). Ambos caminos comparten inicialmente `SRRS`, pero no cambiar de itinerario sin indicarlo. El primer Crucible ya está realizado y fotografiado; seguir con el paso #2 Reforge.
 2. **Primer resultado esperado en ambos:** santificado, 325% poder legendario, daño Sagrado +1560–1940, INT1000, VIT1000, CDR10%, 2,59% probabilidad de retroceso al golpear (posible 2,6% en pantalla), poder naranja estacional aleatorio, seed modelada 2773532829.
 3. Tener temporalmente *retroceso* o *miedo* es normal en pasos intermedios; **el Primal final de ambos caminos no tiene esos afijos**.
 4. Si alguna fotografía no coincide con la fila correspondiente (salvo redondeo de porcentajes o poder naranja aleatorio), detenerse sin hacer la siguiente operación.
