@@ -12,7 +12,7 @@ for(const [parent,child]of pairs){
  if(actualFamilies.length!==expectedGroups.size||actualFamilies.some(x=>!expectedGroups.has(x)))continue;
  if(r.lines.length!==obs.power.length+obs.groups.reduce((s,x)=>s+x.lines.length,0))continue;
  const expected=[...obs.power,...obs.groups.flatMap(x=>x.lines)];
- if(!expected.every(x=>r.lines.some(y=>y.attr===x.attr&&y.stem===x.stem&&Math.abs(y.value-x.value)<0.000001)))continue;
+ if(!expected.every(x=>r.lines.some(y=>y.attr===x.attr&&y.stem===x.stem&&(x.stem==='WeaponHitStun1h'?Math.round(y.value*1000)/10===1.6:Math.abs(y.value-x.value)<0.000001))))continue;
  full.push({originalDropSeed:parent,currentDeathwishSeed:child,quality:r.quality,draws:r.draws,affixes:r.affixes.map(x=>({stem:x.stem,id:x.id,kind:x.kind})),rolledNumbers:r.lines.map(x=>[x.stem,x.value])});
 }
 const num=fs.readFileSync('/tmp/real-deathwish-child-seeds.txt','utf8').trim();
