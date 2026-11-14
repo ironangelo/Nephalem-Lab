@@ -1,5 +1,7 @@
 # CONTINUIDAD — Investigación de seeds de Diablo III (Switch 2)
 
+> **ESTADO ACTUAL PRIORITARIO (14-11-2026):** [Abrir ESTADO_ACTUAL.md](ESTADO_ACTUAL.md). Se completaron **TRES Primals reales** (Firebird's Breast, Firebird's Eye y Deathwish). La Deathwish **YA terminó su ruta de 23 pasos** y su Primal de rayo está fotografiado, pero **la Mística NO ha dado +8% daño contra élites**; el usuario seleccionó +1000 INT para encantar y gastó **30 Forgotten Souls**, sin éxito. Cualquier instrucción antigua que diga «siguiente Reforge», «faltan 22 pasos» o «Mística sin comenzar» está **obsoleta**. Solo continuar con el mismo afijo INT en Myriam cuando decida intentarlo; **nunca otro R/S en esa espada**. [Lecciones del costo de Mística](research/MYSTIC_COST_AND_ROUTE_SELECTION.md).
+
 **Última actualización: 14 de noviembre de 2026 — ruta Primal completa confirmada en Switch 2 por el usuario.**  
 **Repositorio:** \`ironangelo/Nephalem-Lab\` · **Personaje de los experimentos:** Wizard.  
 **Esta es la bitácora para retomar el proyecto sin perder descubrimientos. No modifica el APK.**
@@ -228,3 +230,15 @@ El usuario hizo **el primer paso S** sobre la Deathwish normal de 253% (seed inf
 **Fotografía:** archivo de conversación `image-1794684825055.jpg`, SHA-256 `c9a9260b2dc33ba9683eec8ec2e237882f2e74fd3259ffcf6f7b8ece1b4b7df6` (NO subida como binario a GitHub). **Estado nuevo: ruta completada, NO repetir R/S**. La pregunta pendiente del usuario es el reroll final: para replicar exactamente Soulstone, **Mística: cambiar +1.000 Inteligencia por +8% daño contra élites**, conservando +10% daño arma, +10% CDR, daño de rayo y 325% poder. El reroll todavía NO ha sido confirmado como ejecutado. Como decisión de optimización alternativa, Soulstone menciona que en parangón relativamente bajo (<2000) podría ser mejor mantener la Inteligencia; no confundir esto con el objetivo de copiar fielmente los afijos. **Añadir hueco después con Ramaladni's Gift, si se dispone**, sin gastar ranura primaria.
 
 **La validación real final respaldada por fotografía confirma la ruta y todos sus afijos finales, no implica que todas las operaciones intermedias tengan fotografía independiente ni que conozcamos la seed interna por lectura de memoria.**
+
+## ACTUALIZACIÓN FINAL — MÍSTICA DE DEATHWISH Y NUEVA REGLA DE RUTAS (14-11-2026)
+
+**La secuencia de 23 pasos de la Deathwish YA FUE COMPLETADA** y su Primal natural de rayo está confirmado por fotografía. El objetivo de los afijos del Cubo se cumplió: poder 325%, rayo +1560–1940, daño arma +10%, CDR +10%, INT +1000, ralentización 2,6%. **La Mística sigue pendiente**, no repetir el Cubo.
+
+Una fotografía posterior muestra la pantalla de Myriam «Possible Replacement Properties for: +1000 Intelligence». En las opciones figura claramente **+8% Damage to Elite enemies**, así que es legal cambiar INT por ese afijo. El símbolo azul aparece junto al INT, lo que indica que **INT ya quedó seleccionado como atributo encantado**. El usuario declara haber gastado **30 Forgotten Souls** intentando obtener +8% élites **sin conseguirlo**. No son necesariamente 30 intentos, y no conocemos la probabilidad real de obtenerlo. Si el afijo no aparece, mantener INT +1000 y usar esa Deathwish tal cual; no sustituir otro atributo.
+
+**Hallazgo estratégico a conservar:** la ruta elegida de rayo **SRRSSRSSSSSSSSSSSSSSSRR** (23 pasos, 250 Souls, 18 Crucibles) dejaba para Myriam el afijo difícil **+8% contra élites**. También teníamos la ruta alternativa **RRSRRRSRSSRSRSSR** (16 pasos, 450 Souls, 7 Crucibles), que generaba **RAYO Y +8% élites natural** y habría dejado **CDR +10% para Myriam**. Asimismo existía **SRRSRRSSSSSSSSSRRR** (18 pasos, frío, 350 Souls, 11 Crucibles, élites natural y Mística CDR). **Ya no pueden aplicarse retroactivamente a la Deathwish actual**. Debimos mostrar el riesgo de Mística al comparar recetas, no solo Souls del Cubo.
+
+**Pendiente de implementar en Nephalem Lab:** un comparador que describa el afijo exacto pendiente para Mística, su legalidad, su rareza según datos verificables y el costo esperado total, además de los materiales/operaciones del Cubo. No inventar probabilidades ni afirmar que esto está ya integrado en el APK. Documentación: [ESTADO_ACTUAL.md](ESTADO_ACTUAL.md) y [MYSTIC_COST_AND_ROUTE_SELECTION.md](research/MYSTIC_COST_AND_ROUTE_SELECTION.md).
+
+**Estado del proyecto:** tres Primal objetivo obtenidos, fuente Firebird's Eye con Mística terminada, Deathwish con afijo INT encantado pero aún +8% élites sin salir; seed drop directa desde foto sin ninguna operación todavía desconocida. Las seeds siguen siendo **inferidas**, no leídas del hardware. El CoE continúa como experimento de Reforges y ruta Primal simulada, no confirmado como cuarto Primal.
