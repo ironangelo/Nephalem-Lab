@@ -39,6 +39,7 @@ function stem(label){let s=label.replace(/^(1xx_|21x_|P6_|X1_)/,'');const out=[]
 }
 const ALIASES={Int:'Intelligence',Dex:'Dexterity',Str:'Strength',Vit:'Vitality',CriticalChance:'Critical Hit Chance',CriticalD:'Critical Hit Damage',CooldownReduction:'Cooldown Reduction',Sockets:'Socket',Haste:'Attack Speed',KillLife:'Life after Each Kill',DR:'Armor',HitLife:'Life per Hit',HealthGlobeBonus:'Health Globe Bonus',ResistAll:'All Resistance',ResourceCostReduction:'Resource Cost Reduction'};
 export const niceStem=s=>ALIASES[s]||s.replace(/([a-z])([A-Z])/g,'$1 $2');
+export const affixStem=stem;
 export const loadGameData=async({url='https://raw.githubusercontent.com/FNGarvin/d3recipes/49fe28467db9ebbd096694d1408528b2c9ce5ea3/web/data.json'}={})=>{
  let text;
  try{const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw Error(`HTTP ${r.status}`);text=await r.text();
