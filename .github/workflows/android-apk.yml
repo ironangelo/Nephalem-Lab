@@ -9,6 +9,8 @@ on:
       - 'assets/**'
       - 'config/**'
       - 'solver/**'
+      - 'package.json'
+      - 'tests/**'
       - 'universal.html'
       - 'index.html'
       - 'style.css'
