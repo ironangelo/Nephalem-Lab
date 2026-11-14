@@ -1,0 +1,27 @@
+name: Independent Rust verification for real Kadala Eye Primal paths
+on:
+  push:
+    branches: [research/firebird-eye-kadala]
+  workflow_dispatch:
+jobs:
+  verify-rust:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Trace all checkpoints in JS
+        run: node research/firebird-eye-route-trace.mjs
+      - name: Clone exact upstream D3Recipes reference
+        run: |
+          git clone --depth 1 https://github.com/FNGarvin/d3recipes.git reference
+          cd reference
+          git fetch --depth 1 origin 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+          git checkout 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+      - name: Run full 3-path simulation independently in upstream Rust
+        run: |
+          cp research/firebird-eye-reference.rs reference/core/examples/kadala_eye_ref.rs
+          cd reference/core
+          cargo run --release --example kadala_eye_ref
