@@ -1,0 +1,28 @@
+name: Full inverse of real Zodiac first Ancient Reforge
+on:
+  push:
+    branches: [research/zodiac-drop-seed]
+    paths:
+      - '.github/workflows/research-zodiac-full-recovery.yml'
+  workflow_dispatch:
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build Ancient Zodiac numerical hypotheses
+        run: node research/zodiac-real-inverse.mjs
+      - name: Exhaustive 2^32 Zodiac Ancient numeric child scan
+        run: |
+          gcc -O3 -march=native -std=c11 research/zodiac-scan-child.c -o /tmp/scan-child
+          /tmp/scan-child
+      - name: Exhaustive 2^32 real Ancient Reforge precursor scan
+        run: |
+          gcc -O3 -march=native -std=c11 research/zodiac-invert-ancient-parent.c -o /tmp/scan-parent
+          /tmp/scan-parent
+      - name: Reproduce all actual Reforge affixes and analyze next-step information gain
+        run: node --max-old-space-size=5000 research/zodiac-verify-recovery.mjs
