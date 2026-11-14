@@ -4,6 +4,7 @@ on:
     branches: [research/zodiac-drop-seed]
     paths:
       - '.github/workflows/research-zodiac-full-recovery.yml'
+      - 'research/zodiac-real-inverse.mjs'
   workflow_dispatch:
 jobs:
   recover:
