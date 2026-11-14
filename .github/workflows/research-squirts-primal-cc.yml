@@ -1,0 +1,27 @@
+name: Search Primal Squirt with natural CC Reduction
+on:
+  push:
+    branches: [research/squirts-two-drops-seed]
+    paths:
+      - '.github/workflows/research-squirts-primal-cc.yml'
+  workflow_dispatch:
+jobs:
+  search:
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [balanced, souls-first]
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Search optional CC secondary from unique real seed
+        env:
+          START_SEED: '800657787'
+          MODE: ${{ matrix.mode }}
+          MAX_NODES: '900000'
+          MAX_STEPS: '28'
+        run: node --max-old-space-size=5000 research/squirts-primal-cc-search.mjs
