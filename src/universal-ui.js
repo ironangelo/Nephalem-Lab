@@ -99,7 +99,7 @@ function addRow(initial='',attrInitial=null){if(!maybeEngine()||!observationItem
  const family=observationAffixFamilies(engine,observationItem());const options=family.map(s=>({key:s,txt:niceStem(s)}));
  const el=document.createElement('div');el.className='u-stat-row';el.innerHTML=`<label>Attribute <select class="u-family"><option value="Power">Legendary power</option>${options.map(x=>`<option value="${safe(x.key)}">${safe(x.txt)}</option>`).join('')}</select></label><label>Value<input class="u-value" type="number" step="any" placeholder="Exact value"></label><button type="button" aria-label="Remove">×</button>`;
  $('#stats').appendChild(el);const select=el.querySelector('select');select.value=initial||options[0]?.key||'Power';
- el.querySelector('button').onclick=()=>el.remove();el.dataset.attr=attrInitial===null?'':String(attrInitial);
+ el.querySelector('button').onclick=()=>{el.remove();saveObservationDraft();};el.dataset.attr=attrInitial===null?'':String(attrInitial);
   select.onchange=()=>{el.dataset.attr='';};
 }
 function getFields(){
@@ -194,7 +194,7 @@ function record(){
   if(!observations.length&&o.quality!=='normal')throw Error('Initial seed recovery requires a normal, unmodified item.');
   if(o.op==='C'&&!candidates.length)throw Error('Recover current candidates before converting the set piece.');
   if(!candidates.length||!observations.length){finishObservation(o);return;}
-  if(!confirm(`Filter ${candidates.length} saved candidates using the REAL ${o.op} result? Only confirm if you actually performed this operation in Diablo III.`))return;
+  if(!confirm(`Filter ${candidates.length} saved candidates using the REAL ${o.op} result? Only confirm if you actually performed this operation in Diablo III.`)){announceObservation('Operation not confirmed. Nothing was changed; your candidate list and form remain intact.');return;}
   saveObservationDraft();
   announceObservation(`Comparing ${candidates.length} candidate seeds in a background worker. No materials or new scan required…`,{working:true});
   const button=$('#save-observation');button.disabled=true;
