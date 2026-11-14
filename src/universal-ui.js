@@ -5,6 +5,7 @@ import {validSeeds,advanceCandidates,matchesObservation} from './candidate-analy
 import {parseSocketCount} from './observation-fields.js';
 import {resolveObservationAttribute,requiredOperationQuality,assertObservationQuality} from './observation-model.js';
 import {parseObservationText} from './observation-import.js';
+import {archiveAndClearExperiment,restoreArchivedExperiment} from './experiment-reset.js';
 import {loadManifest,seasonRules} from './season.js';
 const $=x=>document.querySelector(x),safe=x=>String(x).replace(/[&<>"']/g,a=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[a]));
 const words={en:{heading:'Universal Item Lab',intro:'Item-based simulation for all character classes, with seed recovery research and verifiable recipes.',warning:'Experimental: a reconstruction must be unique and a recipe must be checked step by step before spending materials.',setup:'1. Game and item',observe:'3. Recover an existing item seed',observed:'Enter the visible affixes, including socket count (e.g. 3 on a chest). Socket count is saved but is not a numeric seed constraint. Do not enter Mystic-modified rolls as natural.',plan:'2. Target and recipe',planHelp:'Choose target affixes (Ctrl/long press to select several). One legal Mystic swap may complete the recipe.',mode:'Mode',class:'Character class',item:'Item (English database names)',seed:'Current seed if known',add:'+ Add affix',save:'Save observation',search:'Recover seeds',cancel:'Cancel',goals:'Target affixes',mystic:'Allow one Mystic swap',crafted:'Allow crafted primal (ashes)',maxr:'Maximum reforges',maxs:'Maximum sanctifications',next:'Predict next reforge',route:'Find recipe',ready:'Ready',load:'Loading complete D3Recipes database…',none:'Enter an item first.',missing:'Enter a current seed or recover it before planning.',notEnough:'No unique seed: more consecutive observations may be required.',normal:'Normal (not ancient/primal)',ancient:'Ancient',primal:'Primal',sanctified:'Sanctified',quality:'First observation quality',step:'Expected result',result:'Predicted route',source:'Source'},es:{heading:'Laboratorio universal de objetos',intro:'Simulación basada en datos para todas las clases, reconstrucción de seeds y recetas verificables.',warning:'Experimental: exige una seed única y verifica cada paso antes de gastar materiales.',setup:'1. Juego y objeto',observe:'3. Recuperar la seed del objeto',observed:'Ingresa los afijos visibles, incluidos los engarces (por ejemplo, 3 en una pechera). Se guardan, pero su cantidad no identifica la seed. No ingreses atributos modificados en la Mística como naturales.',plan:'2. Objetivo y receta',planHelp:'Elige los afijos objetivo (Ctrl o pulsación larga para varios). La Mística puede reemplazar legalmente uno.',mode:'Modo',class:'Clase',item:'Objeto (nombres de la base en inglés)',seed:'Seed actual, si la conoces',add:'+ Agregar afijo',save:'Guardar observación',search:'Reconstruir seeds',cancel:'Cancelar',goals:'Afijos deseados',mystic:'Permitir un cambio de Mística',crafted:'Permitir primal fabricado (cenizas)',maxr:'Máximo de reforjas',maxs:'Máximo de santificaciones',next:'Predecir próxima reforja',route:'Buscar receta',ready:'Listo',load:'Cargando base completa de D3Recipes…',none:'Elige un objeto primero.',missing:'Ingresa o reconstruye una seed antes de planificar.',notEnough:'Seed no única: podrían hacer falta otras observaciones consecutivas.',normal:'Normal (no ancestral/primal)',ancient:'Ancestral',primal:'Primal',sanctified:'Santificado',quality:'Calidad de primera observación',step:'Resultado esperado',result:'Ruta prevista',source:'Fuente'},pt:{heading:'Laboratório universal de itens',intro:'Simulação para todas as classes, recuperação de sementes e receitas verificáveis.',warning:'Experimental: exija uma semente única e confira cada etapa antes de gastar materiais.',setup:'1. Jogo e item',observe:'3. Recuperar semente do item',observed:'Informe os atributos visíveis, incluindo a quantidade de encaixes (por exemplo, 3 no peitoral). É registrada, mas não identifica a semente. Não use atributos modificados pela Mística como naturais.',plan:'2. Objetivo e receita',planHelp:'Escolha atributos-alvo (Ctrl ou toque longo para vários). Uma troca válida na Mística é permitida.',mode:'Modo',class:'Classe',item:'Item (nomes em inglês)',seed:'Semente atual, se conhecida',add:'+ Adicionar atributo',save:'Salvar observação',search:'Recuperar sementes',cancel:'Cancelar',goals:'Atributos desejados',mystic:'Permitir troca da Mística',crafted:'Permitir primal fabricado (cinzas)',maxr:'Máximo de reforjas',maxs:'Máximo de santificações',next:'Prever próxima reforja',route:'Buscar receita',ready:'Pronto',load:'Carregando base completa do D3Recipes…',none:'Escolha um item primeiro.',missing:'Informe ou recupere uma semente antes de planejar.',notEnough:'Semente não única: outras observações consecutivas podem ser necessárias.',normal:'Normal (não ancestral/primal)',ancient:'Ancestral',primal:'Primal',sanctified:'Santificado',quality:'Qualidade da primeira observação',step:'Resultado esperado',result:'Rota prevista',source:'Fonte'}};
@@ -176,39 +177,32 @@ function startFreshExperiment(){
  if(!confirm(`Start a new experiment for ${source.name}? The current project will first be archived locally for Undo. Your saved candidate seeds and observations will not be used by the new experiment.`))return;
  try{
   saveProject();
-  const key=projectKey(),snapshot=localStorage.getItem(key);
-  if(!snapshot)throw Error('A current saved project was not found. No reset performed.');
-  const parsed=JSON.parse(snapshot);
-  if(parsed.itemId!==rootItemId||parsed.hero!==engine.hero||!Array.isArray(parsed.candidates)||!Array.isArray(parsed.observations))
-   throw Error('Saved project is incomplete. No reset performed.');
-  // Local archive is written and checked before any deletion of user data.
-  localStorage.setItem(archivedProjectKey(),snapshot);
-  if(localStorage.getItem(archivedProjectKey())!==snapshot)throw Error('Archive verification failed. No reset performed.');
-  localStorage.removeItem(key);
-  localStorage.removeItem('nephalem-universal-example');
-  clearObservationDraft();
+  const counts=archiveAndClearExperiment(localStorage,{
+   projectKey:projectKey(),archiveKey:archivedProjectKey(),
+   draftKey:observationDraftKey(),legacyKey:'nephalem-universal-example',
+   hero:engine.hero,itemId:rootItemId,expectedCandidates:candidates.length,expectedObservations:observations.length
+  });
   $('#item').value=source.name;
   $('#observed-paste').value='';
   resetItem();
-  announceObservation(`Started a fresh ${source.name} experiment. Original ${parsed.candidates.length} candidates and ${parsed.observations.length} observations remain in the local Undo archive. No game operation is required to undo.`);
+  announceObservation(`Started a fresh ${source.name} experiment. Previous ${counts.candidates} candidates and ${counts.observations} observations are in the local Undo archive. Save an external JSON backup before uninstalling.`);
  }catch(e){announceObservation('Reset cancelled safely: '+String(e?.message||e),{error:true});}
 }
 function undoFreshExperiment(){
  if(!engine||!item)return;
  try{
   const archived=localStorage.getItem(archivedProjectKey());
-  if(!archived)throw Error('No archived experiment found for the selected item and character.');
+  if(!archived)throw Error('No archived experiment found for this item and character.');
   const parsed=JSON.parse(archived);
-  if(parsed.itemId!==rootItemId||parsed.hero!==engine.hero||!Array.isArray(parsed.candidates)||!Array.isArray(parsed.observations))
-   throw Error('The archived project is invalid; nothing was overwritten.');
-  if(!confirm(`Restore archived experiment with ${parsed.candidates.length} candidates and ${parsed.observations.length} observations? This will replace the current working experiment for this item.`))return;
-  const current=localStorage.getItem(projectKey());
-  // Keep an additional copy of any active project before replacing it.
-  if(current)localStorage.setItem(`${archivedProjectKey()}-pre-undo`,current);
-  localStorage.setItem(projectKey(),archived);
+  if(!Array.isArray(parsed.candidates)||!Array.isArray(parsed.observations))throw Error('The archive is invalid.');
+  if(!confirm(`Restore archived experiment with ${parsed.candidates.length} candidates and ${parsed.observations.length} observations? This replaces the current working experiment for this item.`))return;
+  const counts=restoreArchivedExperiment(localStorage,{
+   projectKey:projectKey(),archiveKey:archivedProjectKey(),
+   previousKey:`${archivedProjectKey()}-pre-undo`,hero:engine.hero,itemId:rootItemId
+  });
   $('#item').value=engine.item(rootItemId).name;
   resetItem();
-  announceObservation(`Restored ${candidates.length} saved candidates and ${observations.length} observations. No new 32-bit scan needed.`);
+  announceObservation(`Restored ${counts.candidates} candidates and ${counts.observations} observations. No new 32-bit scan needed.`);
  }catch(e){announceObservation('Could not undo reset: '+String(e?.message||e),{error:true});}
 }
 function saveProject(){
