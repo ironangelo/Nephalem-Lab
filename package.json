@@ -1,6 +1,6 @@
 {
   "name": "nephalem-lab",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": true,
   "type": "module",
   "description": "Experimental universal Diablo III console item seed research and seasonal Kanai Cube recipe planning",
