@@ -1,4 +1,18 @@
-# Nephalem Lab (research preview v0.3.4)
+# Nephalem Lab (research preview v0.4.0)
+
+## v0.4.0 — consolidated end-to-end safety audit
+
+- Fixed a tooltip form bug where changing an initially prefilled attribute could keep the wrong numerical attribute ID. The app now fails clearly on ambiguous multi-attribute affixes.
+- Convert Set Item now requires selecting the *actual* set piece seen in game; Sanctify and Improve Legendary are recorded with their own actual quality types (sanctified/crafted). Users must validate the real item before proceeding.
+- The project and clipboard backup retain original item, current piece, goals, hero class, seasonal mode, allowed-operation choices and budget limits, including after a conversion.
+- Tightened decimal observation matching and outcome distinction. A skipped expensive route search is no longer described as a negative result.
+- Added guided recovery next steps and an explicit clipboard-copy button for candidate backups, with a fallback for Android WebView.
+- Turned off automatic GitHub Pages deployment. Android APK releases and continuous tests do not require Pages to be enabled.
+- Added regression coverage for attribute selection, operation quality, seed tracking after conversion, UI persistence contracts and decimal comparisons.
+
+**Safety:** this is still a research prototype. The modeled RNG and inverse constraints are not independently confirmed for every Switch 2 item. Back up the complete candidate JSON before updating your debug APK or doing any irreversible Cube operation. If a real outcome differs from the prediction, stop rather than spending more materials.
+
+
 
 ## v0.3.4 — save converted item chain
 
