@@ -181,3 +181,6 @@ export class UniversalEngine{
  }
  apply(query,seed,op){return op==='R'?this.reforge(query,seed):op==='S'||op==='P'?this.primalRoll(query,seed,op):op==='C'?this.convert(query,seed):(()=>{throw Error('Unknown operation')})();}
 }
+
+// Research branch only: expose the bytecode formula evaluator for drop-seed tests.
+export {specsFormula};
