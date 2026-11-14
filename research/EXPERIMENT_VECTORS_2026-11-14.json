@@ -513,7 +513,51 @@
         "orangePower": "random; cannot be predicted"
       },
       "detailedCheckpointDocument": "research/DEATHWISH_PRIMAL_CHECKPOINTS.md",
-      "actualFutureRouteExecutionConfirmed": false
+      "actualFutureRouteExecutionConfirmed": false,
+      "userSelectedPath": "SRRSSRSSSSSSSSSSSSSSSRR",
+      "userSelectedGoal": "exact Soulstone Cold/Lightning requirement; choose Lightning damage and lower Forgotten Souls, 5 R + 18 S",
+      "firstSActual": {
+        "confirmed": true,
+        "photo": "image-1794683016876.jpg",
+        "sha256": "9c943d268215ab8301244c78d36ac1067874adc647747b26e75ca50cf4bb153b",
+        "photoArchivedInGitHub": false,
+        "observed": {
+          "item": "Deathwish",
+          "quality": "sanctified",
+          "DPS": 2842,
+          "element": "HolyD",
+          "damage": [
+            1560,
+            1940
+          ],
+          "intelligence": 1000,
+          "vitality": 1000,
+          "knockbackOnHitDisplayedPercent": 2.6,
+          "cooldownReductionPercent": 10,
+          "legendaryPowerPercent": 325,
+          "orangePower": "Magic Missile fires 10 missiles and gains Seeker rune"
+        },
+        "predictedChildSeed": 2773532829,
+        "userConfirmedExactMatch": true
+      },
+      "completedRouteSteps": 1,
+      "remainingRouteSteps": 22,
+      "nextAction": {
+        "step": 2,
+        "operation": "R",
+        "item": "Deathwish",
+        "expectedQuality": "normal",
+        "expectedPowerPercent": 280,
+        "expectedDamageElement": "HolyD",
+        "expectedDamageRange": [
+          1127,
+          1360
+        ],
+        "expectedINT": 629,
+        "expectedVIT": 665,
+        "expectedFearDisplayedPercentApprox": 2.1,
+        "predictedChildSeed": 1237898586
+      }
     },
     "caveats": [
       "original 250% drop stats did not identify seed without one Reforge",
