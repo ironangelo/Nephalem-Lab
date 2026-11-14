@@ -60,7 +60,7 @@ function makeObs(result){
  return {power:result.lines.filter(x=>x.stem==='Power').map(x=>({stem:'Power',attr:x.attr,value:x.value})),groups};
 }
 const attrFor=stemName=>{
- const a=original.find(z=>affixStem(z.label)===stemName && z.formulas.length===1);
+ const a=selectedByStem.get(stemName)?.find(z=>z.formulas.length===1);
  if(!a)throw Error('Missing stem '+stemName);
  return a.formulas[0][0];
 };
