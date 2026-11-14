@@ -1,6 +1,12 @@
-# Nephalem Lab (research preview v0.3.1)
+# Nephalem Lab (research preview v0.3.2)
 
 An **unofficial** Diablo III console item-seed and Kanai's Cube research tool.
+
+## v0.3.2 — heading order and sockets
+
+- Headings follow their physical order: 1 Game and item; 2 Target and recipe; 3 Seed recovery; 4 Candidate analysis, in English, Spanish and Portuguese.
+- Socket counts, including **Sockets (3)** for Firebird's Breast, can now be recorded. Counts are not numerical seed-roll constraints; the analysis can only confirm the presence of a socket affix, not its exact count. No additional game materials are needed for this change.
+- Stored item observations and compatible seeds use the same storage schema as v0.3.1. Create a backup before updating if data matters.
 
 ## Current release
 

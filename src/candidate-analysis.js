@@ -2,6 +2,7 @@
  * Numerical candidates are not proof of a true game seed. All conclusions
  * remain conditional until confirmed with an independent console observation.
  */
+import {isSocketLine,validSocketCount} from './observation-fields.js';
 const OPS={
  R:{souls:50,actMaterialsEach:5,crucibles:0,deathBreaths:0,ashes:0,weight:9},
  S:{souls:0,actMaterialsEach:0,crucibles:1,deathBreaths:0,ashes:0,weight:1},
@@ -22,9 +23,12 @@ export function visibleResultSignature(r){
 export function matchesObservation(r,o){
  if(!r||!o||r.quality!==o.quality)return false;
  if(o.itemId!==undefined&&o.itemId!==null&&r.itemId!==o.itemId)return false;
- return (o.lines||[]).every(l=>r.lines.some(v=>v.attr===l.attr&&v.stem===l.stem&&
-  [Number(l.value),Number(l.value)/100,Number(l.value)/1000].some(w=>
-   Math.abs(v.value-w)<(Math.abs(v.value)>=1?.55:.00051))));
+ return (o.lines||[]).every(l=>{
+  if(isSocketLine(l))return validSocketCount(l.value)&&r.affixes.some(a=>a.socket||a.stem==='Sockets');
+  return r.lines.some(v=>v.attr===l.attr&&v.stem===l.stem&&
+   [Number(l.value),Number(l.value)/100,Number(l.value)/1000].some(w=>
+    Math.abs(v.value-w)<(Math.abs(v.value)>=1?.55:.00051)));
+ });
 }
 export function advanceCandidates(engine,item,seeds,op,observation){
  if(!['R','S','P','C'].includes(op))throw Error('Unsupported operation');
