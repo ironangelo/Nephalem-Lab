@@ -249,7 +249,9 @@
     "Do not treat simulation as game proof",
     "Do not claim that base Armor was predicted",
     "Stop route at any unexplained game discrepancy",
-    "Respect carried item identity after Convert Set Item"
+    "Respect carried item identity after Convert Set Item",
+    "Record actual current game state as distinct from the modeled future recipe; current Deathwish has finished 23-step natural Primal route but Mystic Elite8% has NOT been obtained.",
+    "When comparing recipe prices, report which affix the Mystic must roll, not merely fixed Cube materials; unknown Mystic RNG weights must not be invented."
   ],
   "firebirdEyeKadala": {
     "source": "Kadala",
@@ -469,7 +471,10 @@
           "element": "LightningD",
           "modeledFinalSeed": 1326569675,
           "mystic": "Intelligence -> +8% Damage to Elites",
-          "quality": "simulated natural Primal, not yet executed"
+          "quality": "real natural Primal attained on Switch 2, user/photo-confirmed on 2026-11-14",
+          "mysticStatus": "Started rerolling Intelligence; +8% Damage to Elites still NOT obtained after user reports 30 Forgotten Souls spent",
+          "realPathConfirmedByUser": true,
+          "finalScreenshotVisibleMatch": true
         },
         {
           "path": "SRRSRRSSSSSSSSSRRR",
@@ -513,7 +518,7 @@
         "orangePower": "random; cannot be predicted"
       },
       "detailedCheckpointDocument": "research/DEATHWISH_PRIMAL_CHECKPOINTS.md",
-      "actualFutureRouteExecutionConfirmed": false,
+      "actualFutureRouteExecutionConfirmed": true,
       "userSelectedPath": "SRRSSRSSSSSSSSSSSSSSSRR",
       "userSelectedGoal": "exact Soulstone Cold/Lightning requirement; choose Lightning damage and lower Forgotten Souls, 5 R + 18 S",
       "firstSActual": {
@@ -540,23 +545,76 @@
         "predictedChildSeed": 2773532829,
         "userConfirmedExactMatch": true
       },
-      "completedRouteSteps": 1,
-      "remainingRouteSteps": 22,
+      "completedRouteSteps": 23,
+      "remainingRouteSteps": 0,
       "nextAction": {
-        "step": 2,
-        "operation": "R",
-        "item": "Deathwish",
-        "expectedQuality": "normal",
-        "expectedPowerPercent": 280,
-        "expectedDamageElement": "HolyD",
-        "expectedDamageRange": [
-          1127,
-          1360
+        "operation": "Mystic: continue rerolling already enchanted Intelligence, if desired",
+        "currentStat": "Intelligence +1000 (blue enchanted marker)",
+        "desiredStat": "+8% Damage to Elite enemies",
+        "desiredLegal": true,
+        "desiredObtained": false,
+        "cubeOperationsRemaining": 0,
+        "doNotRerollWithCube": true,
+        "optional": "Ramaladni's Gift for socket; not confirmed"
+      },
+      "naturalEliteAlternatives": [
+        {
+          "path": "RRSRRRSRSSRSRSSR",
+          "ops": 16,
+          "reforges": 9,
+          "crucibles": 7,
+          "forgottenSouls": 450,
+          "materialsPerAct": 45,
+          "element": "LightningD",
+          "eliteDamage8PercentNaturally": true,
+          "mystic": "INT -> Cooldown Reduction +10%",
+          "status": "simulated from earlier seed 46826983, cannot switch from finished current Primal"
+        },
+        {
+          "path": "SRRSRRSSSSSSSSSRRR",
+          "ops": 18,
+          "reforges": 7,
+          "crucibles": 11,
+          "forgottenSouls": 350,
+          "materialsPerAct": 35,
+          "element": "ColdD",
+          "eliteDamage8PercentNaturally": true,
+          "mystic": "INT -> Cooldown Reduction +10%",
+          "status": "simulated from earlier seed 46826983, cannot switch from finished current Primal"
+        }
+      ],
+      "ninthStepUserReached": {
+        "operationNumber": 9,
+        "realUserReported": true,
+        "quality": "sanctified",
+        "element": "LightningD",
+        "powerPercent": 325,
+        "damagePercent": 10,
+        "cooldownReductionPercent": 10,
+        "reasonToContinue": "Sanctified item not a natural Primal; user wished to reserve one sanctified equipment slot"
+      },
+      "completedPrimalActual": {
+        "observed": "actual screenshot and user-reported full route completion",
+        "quality": "natural Primal",
+        "powerPercent": 325,
+        "element": "LightningD",
+        "damageRange": [
+          1560,
+          1940
         ],
-        "expectedINT": 629,
-        "expectedVIT": 665,
-        "expectedFearDisplayedPercentApprox": 2.1,
-        "predictedChildSeed": 1237898586
+        "damagePercent": 10,
+        "intelligence": 1000,
+        "cooldownReductionPercent": 10,
+        "chanceToSlowOnHitDisplayedPercent": 2.6,
+        "displayedDps": 3126.2,
+        "displayedDpsCalculatedBySimulator": false,
+        "photo": {
+          "conversationFileName": "image-1794684825055.jpg",
+          "sha256": "c9a9260b2dc33ba9683eec8ec2e237882f2e74fd3259ffcf6f7b8ece1b4b7df6",
+          "archivedInGitHub": false
+        },
+        "modeledHiddenSeed": 1326569675,
+        "actualHiddenSeedReadFromHardware": false
       }
     },
     "caveats": [
@@ -564,6 +622,36 @@
       "original seed inferred, not directly read from console memory",
       "success of independent original Rust does not guarantee actual future Cube actions, check every step",
       "exact displayed DPS for Primal not simulated"
-    ]
+    ],
+    "currentStatus": {
+      "date": "2026-11-14",
+      "item": "Deathwish",
+      "routeCompleted": true,
+      "naturalPrimalObtained": true,
+      "mysticStarted": true,
+      "mysticCurrentStat": "Intelligence +1000",
+      "mysticStatLocked": "Intelligence",
+      "desiredReplacement": "+8% Damage to Elite enemies",
+      "desiredReplacementLegalByGameTooltip": true,
+      "desiredReplacementObtained": false,
+      "userReportedForgottenSoulsSpentOnMystic": 30,
+      "numberOfMysticAttempts": "not reported; do not infer from material amount",
+      "remainingCubeSteps": 0,
+      "avoidFutureCubeOperations": true,
+      "optionalRamaladniGiftSocket": "not confirmed",
+      "source": "user statement and Mystic Possible Replacement Properties screenshot"
+    },
+    "researchLesson": {
+      "key": "Minimize cost and risk of Mystic independently from Cube costs",
+      "userOutcome": "rare +8% damage to elites is legal but did not appear after 30 forgotten souls spent",
+      "simulatedAlternativeLightningNaturalElite": "RRSRRRSRSSRSRSSR",
+      "alternativeOps": 16,
+      "alternativeSouls": 450,
+      "alternativeCrucibles": 7,
+      "alternativeMystic": "INT -> +10% CDR",
+      "pendingImplementation": true,
+      "doNotInventMysticProbability": true,
+      "document": "research/MYSTIC_COST_AND_ROUTE_SELECTION.md"
+    }
   }
 }
