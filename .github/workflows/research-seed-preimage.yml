@@ -1,0 +1,15 @@
+name: Exhaustive MWC child seed preimage test
+on:
+  push:
+    branches: [research/firebird-childseed-preimage]
+  workflow_dispatch:
+jobs:
+  seed-preimage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile full 32-bit preimage scanner
+        run: gcc -O3 -march=x86-64 -fopenmp -o /tmp/seed-preimage research/seed-preimage.c
+      - name: Exhaustively find predecessor states for Firebird B and C
+        run: OMP_NUM_THREADS=4 /tmp/seed-preimage
