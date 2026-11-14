@@ -1,0 +1,26 @@
+name: Verify exact Firebird Soulstone route against reference Rust
+on:
+  push:
+    branches: [research/firebird-soulstone-primal-route]
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node research/trace-soulstone-firebird.mjs
+      - name: Download exact original D3Recipes revision
+        run: |
+          git clone --depth 1 https://github.com/FNGarvin/d3recipes.git reference
+          cd reference
+          git fetch --depth 1 origin 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+          git checkout 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+      - name: Compile and execute original reference Rust simulator
+        run: |
+          cp research/soulstone-reference.rs reference/core/examples/soulstone_ref.rs
+          cd reference/core
+          cargo run --release --example soulstone_ref
