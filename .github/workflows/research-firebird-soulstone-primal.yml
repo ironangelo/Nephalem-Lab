@@ -1,0 +1,16 @@
+name: Search Soulstone Firebird natural Primal from 443 INT
+on:
+  push:
+    branches: [research/firebird-soulstone-primal-route]
+  workflow_dispatch:
+jobs:
+  simulate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exhaustively compare budgeted reforges, sanctifications, set conversions
+        run: node --max-old-space-size=5000 research/firebird-soulstone-primal-route.mjs
