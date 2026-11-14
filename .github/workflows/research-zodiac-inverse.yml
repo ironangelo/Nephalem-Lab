@@ -1,0 +1,19 @@
+name: Zodiac original Reforge inverse hypotheses
+on:
+  push:
+    branches: [research/zodiac-drop-seed]
+    paths:
+      - '.github/workflows/research-zodiac-inverse.yml'
+      - 'research/zodiac-real-inverse.mjs'
+  workflow_dispatch:
+jobs:
+  inverse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Derive Zodiac observed numeric constraints
+        run: node research/zodiac-real-inverse.mjs
