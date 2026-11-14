@@ -11,7 +11,7 @@ test('Save observation displays progress and errors above its buttons',()=>{
   assert.ok(ui.includes(needle),needle);
 });
 test('drafts, canceled operations and conflicting real results do not erase the original candidates',()=>{
- for(const needle of ["function observationDraftKey(","saveObservationDraft()","restoreObservationDraft()","function clearObservationDraft()","Filtering cancelled","if(!Array.isArray(seeds)||!seeds.length)","return;"])
+ for(const needle of ["function observationDraftKey(","saveObservationDraft()","restoreObservationDraft()","function clearObservationDraft()","filtering cancelled","if(!Array.isArray(seeds)||!seeds.length)","return;"])
   assert.ok(ui.includes(needle),needle);
  assert.ok(worker.includes("type:'filtered'"));
  assert.ok(worker.includes('matchingQuality'));
