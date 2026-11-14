@@ -1,0 +1,17 @@
+name: Recover real Kadala Firebird Eye seed from one Convert photo
+on:
+  push:
+    branches: [research/firebird-eye-kadala]
+  workflow_dispatch:
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run build:wasm
+      - name: Exhaustive full 2^32 inversion from observed converted Firebird Down
+        run: node research/firebird-eye-real-convert-recovery.mjs
