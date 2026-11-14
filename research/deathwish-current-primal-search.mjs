@@ -14,7 +14,7 @@
 import {UniversalEngine,loadGameData,affixStem} from '../src/universal-engine.js';
 const d=await loadGameData(),e=new UniversalEngine(d,'Wizard',true),it=e.item('Deathwish');
 const START=1326569675,GOOD=['Damage','CooldownReduction','DamageVsElite'];
-const allowedDamage=['ColdD','LightningD'];
+const allowedDamage=['LightningD'];
 const badSeconds=['WeaponHitFear1h','WeaponHitKnockback1h'];
 const optionSet=new Map(GOOD.map(s=>[s,e.candidateAffixes(it).filter(a=>affixStem(a.label)===s)]));
 console.log('DEATHWISH_TARGET',JSON.stringify({seed:START,item:it.name,desired:GOOD,damageTypes:allowedDamage,possible:Object.fromEntries([...optionSet].map(([s,a])=>[s,a.map(z=>({label:z.label,kind:z.pick_kind,id:z.id}))]))}));
@@ -25,6 +25,7 @@ function goal(r){
  const hit=GOOD.filter(s=>have.has(s)),missing=GOOD.filter(s=>!have.has(s));
  const damage=stems.find(s=>s.endsWith('D')||s==='MinMaxDam')||'none';
  const idealElement=allowedDamage.includes(damage);
+ if(!idealElement)return null; // Lightning ONLY (cold/arcane/physical rejected)
  if(!have.has('Int')||hit.length<2)return null;
  if(missing.length!==1||missing[0]!=='CooldownReduction')return null; // require natural Damage+Elite, only CDR for Mystic
  const removing=r.affixes.find(a=>a.stem==='Int');
@@ -51,7 +52,7 @@ class Heap{
 }
 const MODE=process.env.MODE||'balanced';
 const WEIGHTS=MODE==='min-steps'?{R:1,S:1}:MODE==='souls-first'?{R:20,S:1}:{R:9,S:1};
-const MAX=Number(process.env.MAX_NODES||'600000'),MAX_STEPS=Number(process.env.MAX_STEPS||'23');
+const MAX=2500000,MAX_STEPS=35;
 const q=new Heap(),seen=new Map(),best={},samples=[];
 q.push({seed:START,path:'',cost:0,r:0,s:0});
 let expanded=0,primalCount=0,possibleCount=0,blockedByMax=0;
@@ -69,7 +70,7 @@ while(q.size&&expanded<MAX){
  if(node.path.length>=MAX_STEPS)continue;
  for(const op of ['R','S']){
   const rr=node.r+(op==='R'),ss=node.s+(op==='S');
-  if(rr>12||ss>30)continue;
+  if(rr>12||ss>35)continue;
   let result=e.apply(it,node.seed,op);
   const path=node.path+op,cost=node.cost+WEIGHTS[op];
   const next={seed:result.seed,path,cost,r:rr,s:ss};
