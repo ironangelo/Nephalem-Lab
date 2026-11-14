@@ -69,3 +69,20 @@
 - [research/firebird-soulstone-primal-route](https://github.com/ironangelo/Nephalem-Lab/tree/research/firebird-soulstone-primal-route)
 
 **Research principle:** clearly label observations vs model output vs inferred seed vs untested hypothesis. Keep everything reproducible. Preserve model revision, item ID, hero class, quality, initial seed, operation sequence, and full stats in every subsequent experiment.
+
+## Second in-game Primal success — Kadala Firebird's Eye (2026-11-14)
+
+The user took an untouched **Firebird's Eye obtained from Kadala** (346–425 base damage, fire +19%, INT705, VIT686, XP152, +11 max Arcane Power, Magic Missile +10%) and performed **one real Convert Set Item**, resulting in photographed normal **Firebird's Down** (Armor704, INT425, VIT490, Fire Resist148, Thorns2621, 2 sockets, Magic Missile10%). Exhaustive 32-bit inverse search yielded a **unique modeled predecessor**: original Eye seed `4016194486` --C--> current Down seed `930643368` ([run](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43615140781)).
+
+The user then **chose the low-Forgotten-Souls route `SSSSSRCSCR`**, modeled as six Sanctify, two Reforge and two Convert Set (120 Forgotten Souls, 20 Death's Breaths, 10 bounty materials per act, 6 Crucibles, Mystic extra). **On 2026-11-14 they reported “Funciono!! E hice el reroll stat con mystic!!”** and photographed the completed **red-border Primal Firebird's Eye**, exactly matching the modeled final post-Mystic affixes:
+
+- +20% fire skill damage;
+- +1000 Intelligence;
+- **+10.0% critical-hit chance** with visible blue Mystic reroll indicator (modeled before reroll: Hydra damage +15%);
+- critical hits grant **4 Arcane Power**;
+- +35% gold from monsters;
+- +14 maximum Arcane Power.
+
+The displayed source damage **+485–600** is an observed screenshot property, **not numerically simulated** by D3Recipes. The final modeled hidden seed is `1980719662`; inferred, not memory-read. The individual ten step intermediate states were not independently photographed in this record, but the final photo and explicit success report establish a **second end-to-end console success** of the seed-recovery + planned-Primal-route approach. **Do not recommend any further Cube/Mystic operation on this finished item.**
+
+[Detailed validated Firebird Eye research and route](research/FIREBIRD_EYE_KADALA_SEED_AND_ROUTES.md) · [machine-readable evidence and photo hash](research/EXPERIMENT_VECTORS_2026-11-14.json) · [independent upstream Rust verification](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43615878705).
