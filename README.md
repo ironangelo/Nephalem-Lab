@@ -1,4 +1,12 @@
-# Nephalem Lab (research preview v0.3.3)
+# Nephalem Lab (research preview v0.3.4)
+
+## v0.3.4 — save converted item chain
+
+- A verified Convert Set Item result now filters compatible seeds, advances to the actual resulting set piece, and keeps the original target for subsequent planning.
+- Project persistence now stores root item, current item, target, selected affixes and last-opened root to preserve a multi-piece chain across restarts.
+- Observations that contradict every candidate no longer erase the original candidate list. Recheck exact stats and predictions instead of spending materials.
+- Back up candidates externally before upgrading debug APKs; debug signing and Android local data survival across reinstalls are not guaranteed.
+
 
 ## v0.3.3 — high-candidate recovery fix
 
