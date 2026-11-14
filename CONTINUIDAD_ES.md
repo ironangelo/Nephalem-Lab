@@ -172,3 +172,30 @@ Nueva espada legendaria **Deathwish** que el usuario obtuvo como drop (no recuer
 **Próximo experimento sugerido, todavía NO realizado:** un solo **Reforge Legendary** sobre la espada original sin modificar (50 Forgotten Souls y 5 materiales de cada acto), fotografiar resultado completo, detenerse. Desde esa observación buscar una seed única; con la seed actual resultante optimizar rutas usando R/S hacia un Primal natural Soulstone, haciendo énfasis en costo, pocos pasos y un único cambio de Mística. El resultado puede ser normal/Ancient/Primal y necesitar otro modelo si sale Ancient. **NO inventar seed ni receta final sin haber visto esa fotografía.**
 
 **Informe técnico:** [DEATHWISH_DROP_SEED_AND_PRIMAL_PLAN.md](research/DEATHWISH_DROP_SEED_AND_PRIMAL_PLAN.md). **Estado al retomar:** Deathwish todavía no reforjada, no santificada y sin seed identificada.
+
+
+### Deathwish: Reforge REAL completado, seed recuperada y alternativas Primal (2026-11-14)
+
+**Actualización de la sección de Deathwish anterior:** el usuario **ya efectuó el Reforge diagnóstico una sola vez**. Foto real de Kanai: Deathwish normal con **253% poder legendario**, +1096–1361 **Fuego**, 715 INT, 701 VIT, 18% daño de área y 1,6% probabilidad de aturdir; 2111,9 DPS. **NO pedir otro Reforge diagnóstico.**
+
+**Descubrimiento matemático del redondeo:** el atributo mostrado como **1,6% aturdir** representa una tirada interna **1,56%**; usar 1,60% exacto hacía fallar el escáner. Corregido el redondeo, los dos barridos exhaustivos de 2³² seeds dieron una única pareja que reproduce exactamente todos los valores, afijos, calidad y transición:
+
+- **Drop original: seed inferida 1184690904.**
+- **Deathwish ACTUAL después de ese Reforge real: seed inferida 46826983.**
+- [Análisis completo con inversor corregido](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43628361826); [reproducción independiente con Rust original](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43629140525). Las seeds siguen siendo inferidas, no extraídas de memoria.
+
+**Búsqueda de rutas Primal NATURAL desde la espada actual (aún NO ejecutadas):**
+
+| Objetivo | Secuencia | Operaciones | Almas olvidadas | Crucibles |
+| --- | --- | ---: | ---: | ---: |
+| Mínimo de Souls encontrado, fuego/frío/rayo no estricto | SSSSSSSSRSSSSSSSSRSSRSR | 23 | **200** | 19 |
+| **Daño de RAYO, todos los requisitos de Soulstone, mejor ahorro Souls** | **SRRSSRSSSSSSSSSSSSSSSRR** | **23** | **250** | **18** |
+| Daño de FRÍO, menos pasos | SRRSRRSSSSSSSSSRRR | 18 | 350 | 11 |
+| Daño de RAYO | RSRRSSSRRSSSRRSSR | 17 | 400 | 9 |
+| Daño de RAYO, mínimo de pasos encontrado | RRSRRRSRSSRSRSSR | 16 | 450 | 7 |
+
+Las cantidades de materiales de contratos son 5 por acto por cada R. En la ruta de 23 pasos/250 Souls, el resultado final simulado y validado por Rust original es: Primal Deathwish, **325% poder**, daño **+1560–1940 Rayo** (tiradas internas 1560 y 380), **+1000 INT** (para cambiar con Mística a **+8% daño a élites**), **+10% daño del arma**, **+10% CDR**, secundario **2,59% ralentizar al golpear**. Semilla final inferida **1326569675**. Añadir hueco con regalo de Ramaladni si corresponde. [Comparación exhaustiva por presupuestos](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43628886291).
+
+La opción de **200 Souls** da daño **Sagrado**, no el Frío/Rayo opcional de Soulstone; este último añade una acumulación de Elemental Exposure (aprox. +5% daño). **No hay una receta globalmente única más barata en recursos incomparables**: 250 Souls/18 Crucibles vs 350 Souls/11 Crucibles es una decisión. La búsqueda solo demuestra óptimos dentro de los límites explorados.
+
+**ESTADO ACTUAL:** la espada es la Deathwish **normal de 253% y seed inferida 46826983**. La próxima operación de la ruta final **todavía no está hecha**. **No empezar ninguna secuencia diferente ni realizar la Mística hasta escoger una ruta y comprobar cada paso.** [Documento completo](research/DEATHWISH_DROP_SEED_AND_PRIMAL_PLAN.md).
