@@ -1,7 +1,7 @@
 name: Deploy GitHub Pages
 on:
-  push:
-    branches: [main]
+  # The web site is optional; the Android APK is the supported release channel.
+  # Do not fail every change when repository GitHub Pages is not enabled.
   workflow_dispatch:
 permissions:
   contents: read
