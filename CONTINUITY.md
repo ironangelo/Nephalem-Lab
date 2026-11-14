@@ -1,5 +1,7 @@
 # CONTINUITY — Nephalem Lab / Diablo III console seed research
 
+> **Versión de continuidad en español:** [CONTINUIDAD_ES.md](CONTINUIDAD_ES.md).
+
 **Authoritative research handoff. Last updated 2026-11-14.**  
 **Owner:** ironangelo/Nephalem-Lab · **Platform:** Diablo III on Nintendo Switch 2 (user observations) · **Hero:** Wizard.  
 **Status:** active experimental reverse engineering; **not** a finished universal seed cracker.  
