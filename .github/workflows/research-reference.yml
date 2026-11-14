@@ -1,0 +1,18 @@
+name: Compare independent D3Recipes Rust engine
+on:
+  push:
+    branches: [research/firebird-456-to-443]
+  workflow_dispatch:
+jobs:
+  compare-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download exact FNGarvin D3Recipes source revision
+        run: git clone --depth 1 https://github.com/FNGarvin/d3recipes.git reference && cd reference && git fetch --depth 1 origin 49fe28467db9ebbd096694d1408528b2c9ce5ea3 && git checkout 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+      - name: Compile and execute reference Rust simulator
+        run: |
+          cp research/firebird-reference.rs reference/core/examples/firebird_ref.rs
+          cd reference/core
+          cargo run --release --example firebird_ref
