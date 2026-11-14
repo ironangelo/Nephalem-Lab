@@ -1,6 +1,6 @@
 # CONTINUIDAD — Investigación de seeds de Diablo III (Switch 2)
 
-**Última actualización: 14 de noviembre de 2026.**  
+**Última actualización: 14 de noviembre de 2026 — ruta Primal completa confirmada en Switch 2 por el usuario.**  
 **Repositorio:** \`ironangelo/Nephalem-Lab\` · **Personaje de los experimentos:** Wizard.  
 **Esta es la bitácora para retomar el proyecto sin perder descubrimientos. No modifica el APK.**
 
@@ -92,7 +92,7 @@ El Primal final predicho tiene:
 - **650 INT; 650 VIT; +15% Vida; 3 huecos; +210 resistencia fuego; +38.625 vida de pociones/esferas.**
 - En la **Mística**, cambiar +38.625 vida de esferas por **hasta 7% de reducción de daño cuerpo a cuerpo**, dejando todo lo demás intacto.
 
-**Tu fotografía más reciente coincide exactamente con todos esos atributos visibles** (y muestra **759 Armor**), y dijiste que funcionó. Es un resultado visual muy fuerte. No debemos afirmar que conocemos la seed directamente, ni inventar los pasos intermedios que todavía no quedaron documentados individualmente; la foto recortada no muestra una etiqueta textual completa de calidad Primal. [Verificación del camino con el Rust original](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43608386485).
+**CONFIRMACIÓN POSTERIOR DEL USUARIO (2026-11-14):** al preguntarle expresamente si la última fotografía se obtuvo **justo después de completar las 12 operaciones `SSSSCSSCCSSR`**, respondió: **«Sí, exactamente al terminar el último paso»**. Por tanto, la ruta completa se ejecutó realmente en la Switch 2 en ese orden y el objeto final fotografiado coincide **en todos los afijos visibles** con el Primal natural predicho (también muestra **759 Armor**, que el simulador NO calcula). **Este es un éxito real de predicción de extremo a extremo**, respaldado por el testimonio sobre las 12 operaciones y las fotografías del primer Sanctify y resultado final. No significa que hayamos leído las seeds internas ni que cada uno de los once estados intermedios haya sido fotografiado por separado. La calidad Primal de la operación R final está respaldada por el relato de la ruta; la foto recortada no presenta una etiqueta textual completa de calidad. [Verificación del camino con el Rust original](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43608386485).
 
 Para comparar **todos los afijos visibles de cada paso, incluidos los secundarios reemplazados** abre [FIREBIRD_SOULSTONE_ROUTE.md](research/FIREBIRD_SOULSTONE_ROUTE.md).
 
@@ -112,7 +112,7 @@ Para comparar **todos los afijos visibles de cada paso, incluidos los secundario
 1. **Validar otro tipo de pieza** con una sola transformación conocida para comprobar si la recuperación 24 → 25 → 1 también se repite.
 2. Investigar la **seed original de drops/Kadala** desde foto sin operación: todavía requiere descubrir la relación exacta entre estado de 64 bits, selección de afijos y seed interna persistente.
 3. Modelar la **armadura base visible** como restricción adicional; hasta ahora no se calculó matemáticamente.
-4. No tocar nuevamente una pieza que ya cumpla el objetivo. Verificar siempre la **calidad real en el juego** y la posible modificación final con la Mística.
+4. **El usuario confirmó haber terminado ya las 12 operaciones**: no proponer repetir S/S/C/R. Conservar la pieza final, comprobar la etiqueta de calidad si hace falta y, solo si corresponde, hacer el cambio opcional con la Mística.
 5. Conservar resultados contradictorios como pruebas para mejorar el modelo. No borrarlos ni inventar resultados por conveniencia.
 
 **Sin nuevas operaciones, sin APK y sin gastar materiales para escribir esta continuidad.**
