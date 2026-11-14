@@ -1,0 +1,24 @@
+name: Search natural Primal Deathwish from actual verified drop seed
+on:
+  push:
+    branches: [research/deathwish-kadala-drop]
+  workflow_dispatch:
+jobs:
+  optimize:
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [min-steps, balanced, souls-first]
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Search R and S trajectories from current Deathwish seed
+        env:
+          MODE: ${{ matrix.mode }}
+          MAX_NODES: 600000
+          MAX_STEPS: 24
+        run: node --max-old-space-size=5000 research/deathwish-natural-primal-routes.mjs
