@@ -1,6 +1,6 @@
 # Squirt's Necklace: Drop n.º 2, seed recuperada, rutas Primal — 14-11-2026
 
-> **ESTADO VIGENTE: SOLO PRIMER REFORGE REAL COMPLETADO. NO se ejecutó ninguna ruta Primal nueva en Switch 2.** Todas las operaciones S/R posteriores son predicción reprodu­cida en simulador Javascript y Rust; antes de continuar cada ruta comparar primero el checkpoint inicial con la consola.
+> **ESTADO VIGENTE: RUTA ECONÓMICA DE 20 PASOS, PASO #1 S CONFIRMADO EN SWITCH 2.** Primero se hizo una Reforge real desde el drop; después se aplicó **1 Angelic Crucible real**, que coincidió con el primer checkpoint. NO ejecutar nuevamente paso #1. Pasos #2–#20 siguen pendientes de confirmar en consola.
 
 ## Evidencia real
 
@@ -121,9 +121,34 @@ Nota: no garantizamos óptimo global; búsqueda limitada y ponderada en 1.200.00
 | 25 | R | normal | `1692526671` | Gold 0.8; Int 731; CriticalD 0.65; Regen 7255; DR 579; HealthGlobeBonus 21553 |
 | 26 | R | primal | `3185476752` | Socket (no numérico); Gold 0.8; Int 1000; CriticalD 1; DamageBonusFire 0.2; CCReduction 0.4 |
 
+
+## VALIDACIÓN REAL: paso 1 de la ruta económica terminado (14-11-2026)
+
+**Foto de usuario:** `image-1794694749540.jpg` (adjunta en conversación). Es **la misma pieza n.º 2** tras aplicar el primer Crucible, después del diagnóstico Reforge.
+
+**Predicción vs resultado visible (coincidencia):**
+- INT 1000 = 1000 (foto)
+- VIT 1000 = 1000 (foto)
+- Critical Hit Damage 100% = 100% (foto)
+- Gold from Monsters 80% = 80% (foto)
+- Sanctified Squirt (borde azul/blanco) = Sanctified en la foto
+- Poder naranja aleatorio: **Arcane Orb** (spawn orbiting charges); no se predice ni afecta validación de afijos
+- El socket está representado gráficamente en el icono, pero la línea de socket no aparece en la porción fotografiada; secundario de ColdResist210 predicho como reemplazable por el poder naranja no aparece, tal como admite la regla de seis afijos.
+
+**Seed actual INFERIDA tras operación real #1:** `398322324`. No fue leída de memoria, sino derivada del modelo y respaldada por la coincidencia visual.
+
+**PRÓXIMA ACCIÓN SOLAMENTE: #2 S (otro Angelic Crucible sobre el mismo Squirt santificado).** Debería generar:
+- Squirt santificado.
+- +80% Gold, +1000 INT, +100% CHD, **1 socket**, **+20% Lightning skill damage**.
+- Power naranja aleatorio; Experience260 como último secundario calculado puede quedar reemplazado/oculto por dicho power.
+- **Seed de salida inferida:** `3763178701`.
+- Si no sale Lightning20 o difiere otro primario fijo, DETENER y analizar antes de ejecutar paso #3.
+
+**Receta completa**: `SSSSSRSSRSSSSSSRSSSR`. Paso real #1 = **S COMPLETADO**; #2 al #20 pendientes. **Costo restante si se mantiene la ruta:** 15 Crucibles, 4 Reforges, 200 Souls y 20 materiales por acto; más Mística final INT→CHC10%.
+
 ## Si se usa la ruta económica de 20 pasos
 
-- **Primer paso: S**. La foto debería mostrar Squirt santificado, +80% oro, +1000 INT, +100% CHD, **1 socket**, +1000 VIT, más el poder naranja estacional; el secundario de +210 resistencia frío se simula internamente pero puede desaparecer de la pantalla al ser reemplazado por el poder naranja. **Seed child inferida: 398322324.**
+- **Primer paso: S COMPLETADO REALMENTE**. La foto confirmó Squirt santificado, +80% oro, +1000 INT, +100% CHD, **1 socket**, +1000 VIT, más el poder naranja estacional; el secundario de +210 resistencia frío se simula internamente pero puede desaparecer de la pantalla al ser reemplazado por el poder naranja. **Seed child inferida: 398322324.**
 - Si coincide (ignorando el poder naranja aleatorio y el último secundario oculto), continuar al segundo S. **Detener inmediatamente ante cualquier diferencia no explicable**.
 - Paso final #20 es **R**: Primal natural, +80% oro, +1000 INT, +100% CHD, socket1, +20% fuego natural, +11590 vida por muerte. Seed final `142853246`.
 - Solo después, encantar **INT1000 → CHC10%**. No gastar Mística antes del último paso.
