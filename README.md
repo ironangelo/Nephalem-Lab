@@ -1,4 +1,19 @@
-# Nephalem Lab (research preview v0.4.0)
+# Nephalem Lab (research preview v0.4.1)
+
+## v0.4.1 — reliable Save observation and preservation of candidate seeds
+
+**Root cause of the silent Save observation button in the Android APK:** the WebView did not register a `WebChromeClient`, so JavaScript `confirm()` automatically returned false before the second observation could be saved. The Android host now registers it and the app shows explicit confirmation or cancellation feedback.
+
+- Candidate filtering after a verified next Cube operation runs in a background Worker with progress, instead of blocking Android UI.
+- Incompatible observations or worker errors never overwrite the previously recovered candidates. Diagnostics distinguish the number of same-quality outcomes and same-affix-family outcomes.
+- Typed observation rows are saved as an item-specific draft as the user edits; canceling filtering or correcting a value does not require re-entry.
+- The observation form has a visible feedback area above the Save button plus a safe one-paste import for values transcribed from a real screenshot.
+- Before installing a new debug APK, externally back up the full candidate JSON. GitHub Actions debug APK signing is not guaranteed to permit in-place upgrades; use Restore backup after reinstallation if needed.
+- Regression tests protect the WebChromeClient configuration, one-paste importer, background-filter UI and candidate-list continuity.
+
+**How to continue a previously reforged Firebird's Breast:** in the existing app, use Candidate backup / restore > Prepare backup > Copy backup text and paste the entire JSON into a note *outside the app*. On the new APK, restore that backup if needed, select R / Normal, and paste the exact attributes into the one-paste box. Save, confirm the operation in the Android dialog, and read the survivor count. Do not reforge again or rerun the 32-bit scan.
+
+
 
 ## v0.4.0 — consolidated end-to-end safety audit
 
