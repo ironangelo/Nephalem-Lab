@@ -1,0 +1,15 @@
+name: Firebird Eye Kadala exact set-convert seed mathematics
+on:
+  push:
+    branches: [research/firebird-eye-kadala]
+  workflow_dispatch:
+jobs:
+  analyze-kadala-eye:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node research/firebird-eye-kadala-analysis.mjs
