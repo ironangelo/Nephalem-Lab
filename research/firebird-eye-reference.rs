@@ -4,7 +4,7 @@ fn main(){
  let root=std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("..");
  let data=Rc::new(Data::from_json(&std::fs::read_to_string(root.join("web/data.json")).unwrap()).unwrap());
  let wizard=data.classes.iter().position(|c|c=="Wizard").unwrap();
- let sim=Sim::new(data.clone(),wizard,true);
+ let mut sim=Sim::new(data.clone(),wizard,true);
  let original=data.items.iter().position(|i|i.name=="Firebird's Eye").unwrap();
  let first=sim.convert(original,4016194486u32);
  println!("RUST_SOURCE_CONVERT {}",serde_json::json!({"source":"Firebird's Eye","seedFrom":4016194486u32,"to":data.items[first.target].name,"seedTo":first.child_seed,
