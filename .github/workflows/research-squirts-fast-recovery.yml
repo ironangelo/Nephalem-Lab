@@ -1,0 +1,32 @@
+name: Recover Squirt's Necklace seed optimized
+on:
+  push:
+    branches: [research/squirts-two-drops-seed]
+    paths:
+      - '.github/workflows/research-squirts-fast-recovery.yml'
+  workflow_dispatch:
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Derive numeric hypotheses and Reforge draw counts
+        run: |
+          node research/squirts-real-inverse.mjs
+          node research/squirts-normal-draws.mjs
+      - name: Full 32-bit post-Reforge seed scan
+        run: |
+          gcc -std=c11 -O3 -march=native research/squirts-child-seed-scan.c -o /tmp/scan-child
+          /tmp/scan-child
+      - name: Verify child seed values
+        run: node research/squirts-verify-child.mjs
+      - name: Optimized full 32-bit precursor scan
+        run: |
+          gcc -std=c11 -O3 -march=native research/squirts-fast-parent-seed-scan.c -o /tmp/scan-parent
+          /tmp/scan-parent
+      - name: Verify actual item and all affixes
+        run: node research/squirts-verify-parent.mjs
