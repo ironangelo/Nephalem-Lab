@@ -1,4 +1,6 @@
 # Deathwish original drop -> Firebird Twister Soulstone Primal
+> **ESTADO VIGENTE — 14-11-2026:** La Deathwish **YA ES PRIMAL NATURAL** y la ruta de rayo **SRRSSRSSSSSSSSSSSSSSSRR** fue ejecutada completamente en Switch 2. La Mística **ya seleccionó INT como afijo encantado**, pero el usuario **todavía no obtuvo +8% contra élites** tras gastar **30 Forgotten Souls**. Cualquier indicación histórica de «hacer primero un Reforge», «realizar el paso 2», «la ruta no se ha ejecutado» o «empezar la Mística» está **obsoleta**. **NO hacer más Reforge/Sanctify**. [Estado actual](../ESTADO_ACTUAL.md) · [Lección sobre el costo real de Mística](MYSTIC_COST_AND_ROUTE_SELECTION.md).
+
 
 **Dated:** 2026-11-14. **State:** initial screenshot and off-game experiments completed; **no in-game operation on this specific Deathwish has been reported yet**. **Research only**; no APK changed.
 
@@ -123,3 +125,12 @@ Exhaustively enumerated every path in three bounded grids: R <= 4 / S <= 30 (no 
 **Fotografía:** archivo de conversación `image-1794684825055.jpg`, SHA-256 `c9a9260b2dc33ba9683eec8ec2e237882f2e74fd3259ffcf6f7b8ece1b4b7df6` (NO subida como binario a GitHub). **Estado nuevo: ruta completada, NO repetir R/S**. La pregunta pendiente del usuario es el reroll final: para replicar exactamente Soulstone, **Mística: cambiar +1.000 Inteligencia por +8% daño contra élites**, conservando +10% daño arma, +10% CDR, daño de rayo y 325% poder. El reroll todavía NO ha sido confirmado como ejecutado. Como decisión de optimización alternativa, Soulstone menciona que en parangón relativamente bajo (<2000) podría ser mejor mantener la Inteligencia; no confundir esto con el objetivo de copiar fielmente los afijos. **Añadir hueco después con Ramaladni's Gift, si se dispone**, sin gastar ranura primaria.
 
 **La validación real final respaldada por fotografía confirma la ruta y todos sus afijos finales, no implica que todas las operaciones intermedias tengan fotografía independiente ni que conozcamos la seed interna por lectura de memoria.**
+
+
+## ACTUALIZACIÓN FINAL — MÍSTICA AÚN PENDIENTE, PROBLEMA DE OPTIMIZACIÓN (14-11-2026)
+
+La foto de la Mística, posterior al Primal de rayo, confirma que **+8% Damage to Elite enemies aparece en las Possible Replacement Properties para +1000 Intelligence**, por lo que el afijo es legal. **+1000 INT tiene el símbolo azul de afijo encantado**. El usuario informa haber gastado **30 Forgotten Souls sin obtener +8% daño contra élites**. INT1000 se conserva. **La Mística no se ha completado**; no inferir 30 intentos a partir de 30 Souls.
+
+Aprendizaje: antes del camino de 23 operaciones existía otra ruta **RRSRRRSRSSRSRSSR**, con **RAYO, élites +8% natural, Damage10%**, 16 operaciones, 9 R, 7 S, 450 Souls del Cubo y la necesidad de cambiar **INT→CDR10%**. Existía también **SRRSRRSSSSSSSSSRRR**, frío, 18 operaciones, 350 Souls, élites8% natural y Mística INT→CDR10%. La ruta ejecutada de 250 Souls dejó el raro atributo élites para Myriam. **No se puede volver atrás a esas seeds con la misma espada actual sin destruir lo conseguido.** Debimos comparar costo y dificultad del afijo pendiente de la Mística, no solo costo de R/S.
+
+**Estado actual:** Deathwish Primal natural poder325% / rayo1560–1940 / daño arma10% / CDR10% / INT1000 / ralentizar2,6% / DPS3126.2. Seed final **inferida1326569675**. Sólo queda, **opcionalmente**, seguir intentando el reroll de **ese mismo INT → élites8%**, conservar INT si no sale, y considerar Ramaladni para hueco (sin confirmación de uso). **No recomendar más R/S**. [Estado prioritario](../ESTADO_ACTUAL.md) · [especificación futura del optimizador](MYSTIC_COST_AND_ROUTE_SELECTION.md).
