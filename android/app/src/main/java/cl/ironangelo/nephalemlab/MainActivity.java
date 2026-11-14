@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import androidx.webkit.WebViewAssetLoader;
 import androidx.webkit.WebViewClientCompat;
@@ -28,6 +29,9 @@ public class MainActivity extends Activity {
         settings.setAllowFileAccess(false);
         settings.setAllowContentAccess(false);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
+        // JS confirm() is cancelled automatically when no WebChromeClient is installed.
+        // Without this, Save observation silently stops before candidate filtering.
+        webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClientCompat() {
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
