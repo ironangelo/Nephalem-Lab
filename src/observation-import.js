@@ -28,14 +28,15 @@ export function parseObservationText(text,offeredFamilies){
  const lookup=(label)=>{
   const key=norm(label);
   if(byName.has(key))return byName.get(key);
-  for(const alias of aliases[key]||[])if(byName.has(alias))return byName.get(alias);
-  // The skill family can be represented by longer game-data names.
+  // When a shorthand matches multiple catalog families, refuse to guess even
+  // if one has a familiar alias: the real item result must remain unambiguous.
   if(['explosive','explosiveblast','explosiveblastdamage'].includes(key)){
    const skill=offeredFamilies.filter(x=>norm(x).startsWith('skillwizardexplos')||
     norm(x)==='explosiveblast');
-   if(skill.length===1)return skill[0];
    if(skill.length>1)throw Error('Several Explosive Blast skills are available. Choose the exact one manually.');
+   if(skill.length===1)return skill[0];
   }
+  for(const alias of aliases[key]||[])if(byName.has(alias))return byName.get(alias);
   return null;
  };
 
