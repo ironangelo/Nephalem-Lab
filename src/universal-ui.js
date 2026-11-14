@@ -103,9 +103,11 @@ function season(){return seasonRules(manifest,{mode:$('#mode').value});}
 function currentSeed(){const n=$('#seed').value.trim();return n!==''&&Number.isInteger(Number(n))&&Number(n)>=0&&Number(n)<=4294967295?Number(n):null;}
 function saveProject(){
  if(!item||!engine)return;
- try{const snapshot={schema:3,item:item.name,itemId:item.id,hero:engine.hero,
+ try{const snapshot={schema:3,item:engine.item(rootItemId)?.name,itemId:rootItemId,currentItemId:item.id,hero:engine.hero,
+  targetItemId:target()?.id,goals:[...$('#goals').selectedOptions].map(o=>o.value),
   observations,candidates:validSeeds(candidates),seed:currentSeed(),savedAt:new Date().toISOString()};
   localStorage.setItem(projectKey(),JSON.stringify(snapshot));
+  localStorage.setItem('nephalem-last-root-v3',JSON.stringify({rootItemId,hero:engine.hero}));
   localStorage.setItem('nephalem-universal-example',JSON.stringify({item:item.name,hero:engine.hero,observations,seed:currentSeed()}));
   persistenceError=null;
  }catch(e){persistenceError=String(e?.message||e);renderCandidateStatus();}
@@ -117,10 +119,11 @@ function record(){if(!maybeEngine())return;try{const o={op:$('#ob-op').value,qua
   if(o.op==='C'&&!candidates.length)throw Error('Recover the current item seeds before converting it, so the item chain stays connected.');
  if(candidates.length&&observations.length){
   if(!confirm(`This will advance and filter ${candidates.length} stored seeds using operation ${o.op}. Only continue if you ACTUALLY performed that operation in the game.`))return;
-  if(o.op==='C')throw Error('Set conversion changes the item. Export your candidates and select the resulting piece before continuing.');
-  candidates=advanceCandidates(engine,item,candidates,o.op,o);
+  const remaining=advanceCandidates(engine,item,candidates,o.op,o);
+  if(!remaining.length){$('#seed-status').textContent='No candidates match this observed result. Original candidates are preserved. Recheck the resulting piece, quality, exact stats and model before proceeding.';return;}
+  candidates=remaining;
   $('#seed').value=candidates.length===1?candidates[0]:'';
-  $('#seed-status').textContent=candidates.length?`${candidates.length} seeds remain after the verified ${o.op} result.`:'No candidates survived the observation. Recheck the result and the simulator before spending any more materials.';
+  $('#seed-status').textContent=`${candidates.length} seeds remain after the verified ${o.op} result. Continue only after checking predictions in game.`;
  }else $('#seed-status').textContent='Observation saved. Recover candidate seeds when ready.';
  observations.push(o);
   if(o.op==='C'&&o.itemId&&o.itemId!==item.id){item=engine.item(o.itemId);$('#item').value=item.name;rebuildObservationFields();}
