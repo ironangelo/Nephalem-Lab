@@ -1,0 +1,23 @@
+name: Recover actual Deathwish 253 percent one-Reforge seed
+on:
+  push:
+    branches: [research/deathwish-kadala-drop]
+  workflow_dispatch:
+jobs:
+  actual-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run build:wasm
+      - name: Scan all 2^32 result seeds for actual photographed Deathwish
+        run: node research/deathwish-real-reforge-recover.mjs
+      - name: Compile full inverse MWC parent scanner
+        run: gcc -O3 -fopenmp -o /tmp/invert-one research/deathwish-invert-6-draws.c
+      - name: Scan all 2^32 original parent seeds through 6-draw MWC
+        run: OMP_NUM_THREADS=4 /tmp/invert-one /tmp/real-deathwish-child-seeds.txt /tmp/real-deathwish-preimages.tsv
+      - name: Certify exact affix families and every numerical value by forward replay
+        run: node research/deathwish-real-reforge-verify.mjs
