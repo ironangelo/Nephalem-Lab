@@ -1,0 +1,19 @@
+name: Audit Squirt seed recovery target
+on:
+  push:
+    branches: [research/squirts-two-drops-seed]
+    paths:
+      - '.github/workflows/research-squirts-audit.yml'
+      - 'research/squirts-seed-audit.mjs'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Inspect Squirt item rules in reference database
+        run: node research/squirts-seed-audit.mjs
