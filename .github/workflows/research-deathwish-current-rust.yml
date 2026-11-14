@@ -1,0 +1,25 @@
+name: Rust-check current Deathwish Lightning elite primal
+on:
+  push:
+    branches: [research/deathwish-current-seed-1326569675]
+    paths:
+      - '.github/workflows/research-deathwish-current-rust.yml'
+      - 'research/deathwish-current-primal-verify.rs'
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clone pinned D3Recipes revision
+        run: |
+          git clone --depth 1 https://github.com/FNGarvin/d3recipes.git reference
+          cd reference
+          git fetch --depth 1 origin 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+          git checkout 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+      - name: Independently verify 31 step current seed route in Rust
+        run: |
+          cp research/deathwish-current-primal-verify.rs reference/core/examples/deathwish_current_primal.rs
+          cd reference/core
+          cargo run --release --example deathwish_current_primal
