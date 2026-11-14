@@ -1,4 +1,6 @@
 # Deathwish — puntos de control reales calculados con Rust original
+> **ESTADO ACTUAL — RUTA COMPLETA REAL:** los 23 pasos **YA SE TERMINARON EN SWITCH 2** y hay foto del Primal final. El paso de Mística **también comenzó**: se seleccionó +1000 INT como atributo encantado y **+8% daño élites está disponible, pero NO ha salido** tras consumir 30 Forgotten Souls reportadas. Los pasos de esta tabla son **historial**, no instrucciones pendientes. **NO ejecutar más R/S sobre este Deathwish.** [Situación vigente](../ESTADO_ACTUAL.md) · [riesgo de Myriam](MYSTIC_COST_AND_ROUTE_SELECTION.md).
+
 
 **ACTUALIZACIÓN REAL, 2026-11-14:** **EL PASO #1 DE LA RUTA ECONÓMICA DE RAYO YA SE HIZO**. El usuario confirmó «Exacto! Dio eso! Usemos la que recomienda 100% soulstone con el daño rayo» y fotografió Deathwish santificada, +1560–1940 **daño Sagrado**, +1000 INT, +1000 VIT, +10% CDR, 2,6% retroceso al golpear, poder legendario 325%, poder naranja Magic Missile dispara 10 proyectiles y adquiere Seeker, DPS visible 2842.0 (no modelado). Foto: `image-1794683016876.jpg`, SHA-256 `9c943d268215ab8301244c78d36ac1067874adc647747b26e75ca50cf4bb153b`. Los **22 pasos restantes todavía NO se realizaron**. **Ruta ELEGIDA: `SRRSSRSSSSSSSSSSSSSSSRR`**, 250 Souls, 18 Crucibles, 23 pasos desde la Deathwish post-Reforge. Próximo paso: **#2 R**, Deathwish **NORMAL**, 280% poder, daño Sagrado **1127–1360**, INT **629**, VIT **665**, **2,06% miedo al golpear** (puede aparecer como **2,1%**), hueco(s) no determinado. **Detenerse si los valores no coinciden.** El efecto naranja de Magic Missile en #1 es aleatorio y no fue simulado.
 
@@ -87,3 +89,12 @@
 **Fotografía:** archivo de conversación `image-1794684825055.jpg`, SHA-256 `c9a9260b2dc33ba9683eec8ec2e237882f2e74fd3259ffcf6f7b8ece1b4b7df6` (NO subida como binario a GitHub). **Estado nuevo: ruta completada, NO repetir R/S**. La pregunta pendiente del usuario es el reroll final: para replicar exactamente Soulstone, **Mística: cambiar +1.000 Inteligencia por +8% daño contra élites**, conservando +10% daño arma, +10% CDR, daño de rayo y 325% poder. El reroll todavía NO ha sido confirmado como ejecutado. Como decisión de optimización alternativa, Soulstone menciona que en parangón relativamente bajo (<2000) podría ser mejor mantener la Inteligencia; no confundir esto con el objetivo de copiar fielmente los afijos. **Añadir hueco después con Ramaladni's Gift, si se dispone**, sin gastar ranura primaria.
 
 **La validación real final respaldada por fotografía confirma la ruta y todos sus afijos finales, no implica que todas las operaciones intermedias tengan fotografía independiente ni que conozcamos la seed interna por lectura de memoria.**
+
+
+## Seguimiento POSTERIOR al paso #23 — Myriam (14-11-2026)
+
+**Completo en el juego:** 23/23 operaciones. Foto Deathwish **Primal natural** con daño de rayo1560–1940, 325% poder, +10% daño arma, CDR10%, INT1000 y ralentizar2,6%, DPS3126.2 (observado, no simulado). No se debe repetir ningún paso.
+
+**Mística:** la pantalla muestra que al encantar **INT +1000** se puede obtener **+8% Damage to Elite enemies**. **+1000 INT ya está marcado como stat encantada**; la espada mantiene INT. Después de gastar **30 Forgotten Souls** el usuario reporta que el +8% aún no aparece. El atributo es **legal**, no está bloqueado. Solo seguir encantando INT si quiere; no cambiar otro afijo ni usar Reforge/Sanctify.
+
+**Lección para el buscador de rutas:** la opción de 16 pasos **RRSRRRSRSSRSRSSR** también terminaba con **rayo y élites8% natural**, Mística INT→CDR10%; requería 450 Souls pero sólo 7 Crucibles. La alternativa de 18 pasos **SRRSRRSSSSSSSSSRRR** (frío, 350 Souls, 11 Crucibles) también tenía élites8% natural. Faltó poner en primer plano el costo/riesgo de Myriam al elegir la opción de 250 Souls. [Análisis y mejoras propuestas](MYSTIC_COST_AND_ROUTE_SELECTION.md).
