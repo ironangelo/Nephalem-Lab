@@ -199,3 +199,5 @@ Las cantidades de materiales de contratos son 5 por acto por cada R. En la ruta 
 La opción de **200 Souls** da daño **Sagrado**, no el Frío/Rayo opcional de Soulstone; este último añade una acumulación de Elemental Exposure (aprox. +5% daño). **No hay una receta globalmente única más barata en recursos incomparables**: 250 Souls/18 Crucibles vs 350 Souls/11 Crucibles es una decisión. La búsqueda solo demuestra óptimos dentro de los límites explorados.
 
 **ESTADO ACTUAL:** la espada es la Deathwish **normal de 253% y seed inferida 46826983**. La próxima operación de la ruta final **todavía no está hecha**. **No empezar ninguna secuencia diferente ni realizar la Mística hasta escoger una ruta y comprobar cada paso.** [Documento completo](research/DEATHWISH_DROP_SEED_AND_PRIMAL_PLAN.md).
+
+**Tablas exactas de todos los pasos (dos rutas, resultados, seeds):** [DEATHWISH_PRIMAL_CHECKPOINTS.md](research/DEATHWISH_PRIMAL_CHECKPOINTS.md), verificadas paso a paso por el Rust original. Solo la primera foto de Reforge es real; las secuencias finales son predicciones aún no jugadas.
