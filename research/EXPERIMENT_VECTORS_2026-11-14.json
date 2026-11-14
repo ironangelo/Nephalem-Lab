@@ -85,7 +85,15 @@
       "PickupRadiusYards": 2,
       "ExplosiveBlastDamagePercent": 11,
       "Sockets": 3,
-      "inferredCurrentSeed": 3525123180
+      "inferredCurrentSeed": 3525123180,
+      "photographs": [
+        {
+          "originalUploadName": "image-1794632538125.jpg",
+          "sha256": "e13f051d7247fa10c008fc6531bd17086e26d6f7b7e25d6ea427b5e837ef499b",
+          "caption": "Photographed original dropped item, 416 INT, 668 displayed Armor",
+          "archivedInGitHub": false
+        }
+      ]
     },
     "afterReforgeB": {
       "observed": "actual",
@@ -97,7 +105,21 @@
       "Thorns": 5366,
       "ExplosiveBlastDamagePercent": 13,
       "Sockets": 3,
-      "inferredCurrentSeed": 2645309652
+      "inferredCurrentSeed": 2645309652,
+      "photographs": [
+        {
+          "originalUploadName": "image-1794626263958.jpg",
+          "sha256": "b125937ea3daf1b44ea727ff6d6ef5b21c4e93e72cb5d546a8fdcb5e0dbc7fa2",
+          "caption": "First view B, 456 INT, 752 displayed Armor",
+          "archivedInGitHub": false
+        },
+        {
+          "originalUploadName": "image-1794631171835.jpg",
+          "sha256": "1e1e9fe24e1d6517a948346f3240f47fc831a6ffd8086927ce07bf18cb18da05",
+          "caption": "Second view B, 456 INT, 752 displayed Armor",
+          "archivedInGitHub": false
+        }
+      ]
     },
     "afterReforgeC": {
       "observed": "actual",
@@ -109,7 +131,15 @@
       "PoisonResist": 149,
       "PickupRadiusYards": 1,
       "Sockets": 3,
-      "inferredCurrentSeed": 3835143639
+      "inferredCurrentSeed": 3835143639,
+      "photographs": [
+        {
+          "originalUploadName": "image-1794631243904.jpg",
+          "sha256": "d9dfdbb6e0063fa43977de5c9696db5308fa8d2e517a63a1d00def61faf6e765",
+          "caption": "Photographed C, 443 INT, 738 displayed Armor",
+          "archivedInGitHub": false
+        }
+      ]
     },
     "modeledRelations": [
       {
