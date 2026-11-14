@@ -1,0 +1,16 @@
+name: Check precise Firebird predecessor seeds against three photos
+on:
+  push:
+    branches: [research/firebird-childseed-preimage]
+  workflow_dispatch:
+jobs:
+  check-parent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare all A roll orders and hero-class refinements with parent seeds
+        run: node research/check-firebird-preimages.mjs
