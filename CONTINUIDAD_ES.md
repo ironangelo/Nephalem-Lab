@@ -116,3 +116,21 @@ Para comparar **todos los afijos visibles de cada paso, incluidos los secundario
 5. Conservar resultados contradictorios como pruebas para mejorar el modelo. No borrarlos ni inventar resultados por conveniencia.
 
 **Sin nuevas operaciones, sin APK y sin gastar materiales para escribir esta continuidad.**
+
+
+## Nuevo caso (2026-11-14): Firebird's Eye de Kadala — pendiente de una operación real
+
+**Evidencia inicial (fotografía real):** fuente arcana `Firebird's Eye`, obtenida de Kadala, **nunca reforjada ni santificada**, con daño 346–425, +19% daño de habilidades de fuego, +705 INT, +686 VIT, +152 experiencia por muerte, +11 poder arcano máximo y +10% daño Magic Missile. La calidad exacta (normal/Ancient) no está establecida por la etiqueta visible. La seed interna de este drop **NO fue recuperada** desde la foto.
+
+**Objetivo Soulstone Firebird Twister:** fuente arcana *Primal natural*, priorizar `ArcanePowerOnCrit = 4`, probabilidad de golpe crítico y después INT / CDR / RCR / daño a élites; evitar secundarios de miedo/retroceso. Referencia: https://www.soulstone.gg/firebird-twister-wizard. El objeto actual no muestra ni APoC ni CHC, por lo que la Mística sola no lo perfecciona.
+
+**Nueva herramienta matemática probada en investigación:** `Convert Set Item` del Eye por un Wizard de su misma clase usa un paso RNG antes de elegir el objetivo y permite invertir directamente la seed de origen **si** conocemos la seed del objeto convertido:
+
+    seed_convertida = (1791398085 * seed_original + 666) mod 2^32
+    seed_original   = ((seed_convertida - 666) * 2319347213) mod 2^32
+
+El multiplicador `2319347213 = 0x8A3E6E0D` es el inverso multiplicativo de `0x6AC690C5` módulo 2³². La conversión cuesta **10 Forgotten Souls y 10 Death's Breaths**, cambia Eye a *otra* pieza Firebird y da calidad normal, no Ancient/Primal. **No es una receta Primal final**.
+
+**Prueba computacional separada:** se hizo un Convert sintético de Firebird's Eye con una seed temporal conocida y luego se ocultó esa seed; se recuperaron **24** posibles seeds del resultado por su descripción numérica y **una sola precursora exacta** al invertir C y verificar todos los afijos y valores. Caso sintético `3525123180 --C--> Firebird's Breast 3286999478` con regreso correcto a `3525123180`. **¡La prueba NO identifica la seed de la Eye real del usuario!** Ver https://github.com/ironangelo/Nephalem-Lab/actions/runs/43613931345 y código en https://github.com/ironangelo/Nephalem-Lab/tree/research/firebird-eye-kadala.
+
+**Siguiente paso propuesto, aún NO confirmado como ejecutado:** convertir **una sola vez** la Firebird's Eye actual usando `Convert Set Item`, fotografiar **toda** la descripción de la nueva pieza (nombre, stats primarios/secundarios, huecos y calidad), recuperar la seed del resultado y luego la de origen mediante la fórmula inversa; recién entonces buscar una ruta mínima al Eye Primal natural. Una sola conversión puede resultar insuficiente si los stats de su objeto convertido no identifican una seed única. **No inventar una receta ni seed antes de esa prueba.**
