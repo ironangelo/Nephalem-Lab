@@ -23,11 +23,11 @@ function validates(r){
 const queue=[{item:target.name,seed:key0,path:'',r:0,s:0,c:0}];
 const visited=new Set([target.name+'/'+key0]);
 let front=0,depth=0,solutions=[],primalTotal=0;
-while(front<queue.length&&depth<=13){
+while(front<queue.length&&depth<=11){
  const end=queue.length;let layer=0;
  for(;front<end;front++){
   const x=queue[front];if(x.path.length!==depth)throw Error('Invalid BFS layer');
-  if(x.path.length>=13)continue;
+  if(x.path.length>=12)continue;
   for(const op of ['R','S','C']){
    if(op==='C'&&!e.item(x.item).set_id)continue;
    let rr;try{rr=e.apply(x.item,x.seed,op);}catch{continue;}
@@ -38,7 +38,7 @@ while(front<queue.length&&depth<=13){
      const o={path,steps:path.length,reforges:x.r+1,converts:x.c,crucibles:x.s,seed:rr.seed,
       mystic:q.mystic,affixes:rr.affixes.map(a=>a.stem),lines:rr.lines.map(a=>({name:a.stem,value:a.value}))};
      solutions.push(o);
-     console.log('COMPLETE_MATCH',JSON.stringify(o));
+     if(solutions.length<=25)console.log('COMPLETE_MATCH',JSON.stringify(o));
     }
    }
    const nextKey=rr.item+'/'+rr.seed;
@@ -49,8 +49,9 @@ while(front<queue.length&&depth<=13){
   }
  }
  console.log('DEPTH',JSON.stringify({depth,layerSize:end-(depth===0?0:0),newNodes:layer,checked:front,queued:queue.length,primals:primalTotal,strict:solutions.length}));
- if(solutions.length){console.log('SHORTEST_RESULT',JSON.stringify({minOperations:solutions[0].steps,solutions:solutions.slice(0,40)}));break;}
+
  depth++;
  if(queue.length>1400000){console.log('STOP_MAX_QUEUE');break;}
 }
+const best=solutions.map(x=>({...x,materialWeight:x.reforges*9+x.crucibles+x.converts*3})).sort((a,b)=>a.materialWeight-b.materialWeight||a.steps-b.steps);console.log('SOLUTIONS_UP_TO_12_STEPS',JSON.stringify({processed:front,remaining:queue.length-front,total:solutions.length,minimumSteps:Math.min(...solutions.map(x=>x.steps)),bestMaterialWeighted:best.slice(0,30)}));
 console.log('SHORTEST_SEARCH_END',JSON.stringify({processed:front,remaining:queue.length-front,found:solutions.length}));
