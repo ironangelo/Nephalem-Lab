@@ -1,5 +1,8 @@
 # Nephalem Lab (research preview v0.4.1)
 
+> **¿Quieres continuar los experimentos? Empieza por [ESTADO_ACTUAL.md](ESTADO_ACTUAL.md).** Al 14 de noviembre de 2026 se han conseguido en Switch 2 tres Primals naturales a partir de recetas calculadas: **Firebird's Breast, Firebird's Eye y Deathwish**. La ruta Deathwish de rayo **SRRSSRSSSSSSSSSSSSSSSRR** ya terminó y el Primal está fotografiado; **NO hay pasos de Cubo pendientes**. En Myriam, **+1000 INT ya fue seleccionado para reroll**, pero **+8% daño contra élites no ha aparecido** tras 30 Forgotten Souls gastadas. No sugerir repetir Reforge ni Sanctify sobre esa espada. [Lección sobre cómo evaluar el costo/riesgo de la Mística](research/MYSTIC_COST_AND_ROUTE_SELECTION.md).
+
+
 
 > **Resultado real confirmado, 2026-11-14:** el usuario completó en Nintendo Switch 2 la ruta de 12 operaciones `SSSSCSSCCSSR` desde su Firebird's Breast de 443 INT. La fotografía tomada tras el último paso muestra exactamente los afijos finales previstos para el Primal natural. Ver [evidencia y límites](research/FIREBIRD_SOULSTONE_ROUTE.md). Las seeds siguen siendo inferidas, no extraídas de la memoria del juego.
 > **Bitácora en español:** [CONTINUIDAD_ES.md](CONTINUIDAD_ES.md) — resumen del CoE, Firebird, semillas de drops, pruebas, y ruta hacia el Primal con todos los resultados.
