@@ -20,6 +20,19 @@ const engine={
 test('deduplicates valid u32 candidates and never accepts invalid ones',()=>{
  assert.deepEqual(validSeeds([7,7,8,4294967295,-1,4294967296,'invalid']),[7,8,4294967295]);
 });
+test('keeps a 36,435-candidate scan and rejects implausibly large arrays',()=>{
+ const seeds=Array.from({length:36435},(_,i)=>i+1);
+ assert.equal(validSeeds(seeds).length,36435);
+ assert.throws(()=>validSeeds(Array.from({length:120001},(_,i)=>i)),/Invalid candidate list size/);
+});
+test('skips unsafe shared-route enumeration without discarding compatible candidates',()=>{
+ const seeds=Array.from({length:36435},(_,i)=>i+1);
+ const result=findSharedNaturalPrimalRoute(engine,sample,seeds,{goals:['Int'],allowed:['R']});
+ assert.equal(result.skipped,true);
+ assert.equal(result.found,false);
+ assert.match(result.reason,/36435 candidates/);
+});
+
 test('groups identical visible results regardless of hidden seed',()=>{
  const a=engine.apply(sample,1,'R'),b={...a,seed:99,from:88};
  assert.equal(visibleResultSignature(a),visibleResultSignature(b));
