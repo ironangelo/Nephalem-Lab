@@ -1,0 +1,27 @@
+name: Research Deathwish current Primal seed to Elite Damage primal
+on:
+  push:
+    branches: [research/deathwish-current-seed-1326569675]
+    paths:
+      - '.github/workflows/research-deathwish-current.yml'
+      - 'research/deathwish-current-primal-search.mjs'
+  workflow_dispatch:
+jobs:
+  search:
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [min-steps, balanced, souls-first]
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Find new natural Primal route from seed 1326569675
+        env:
+          MODE: ${{ matrix.mode }}
+          MAX_NODES: 1000000
+          MAX_STEPS: 29
+        run: node --max-old-space-size=5000 research/deathwish-current-primal-search.mjs
