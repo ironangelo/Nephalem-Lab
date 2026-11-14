@@ -250,5 +250,105 @@
     "Do not claim that base Armor was predicted",
     "Stop route at any unexplained game discrepancy",
     "Respect carried item identity after Convert Set Item"
-  ]
+  ],
+  "firebirdEyeKadala": {
+    "source": "Kadala",
+    "hero": "Wizard",
+    "status": "One real Convert Set Item from fresh source to Firebird Down photograph verified; routes are only simulations",
+    "originalEye": {
+      "item": "Firebird's Eye",
+      "untouchedByCubeOrMystic": true,
+      "observedStats": {
+        "damageMin": 346,
+        "damageMax": 425,
+        "fireSkillDamagePercent": 19,
+        "intelligence": 705,
+        "vitality": 686,
+        "experiencePerKill": 152,
+        "maxArcanePower": 11,
+        "magicMissileDamagePercent": 10
+      },
+      "inferredSeed": 4016194486
+    },
+    "realFirstConversion": {
+      "operation": "C",
+      "newItem": "Firebird's Down",
+      "screenshotArmor": 704,
+      "quality": "normal",
+      "observedStats": {
+        "intelligence": 425,
+        "vitality": 490,
+        "fireResistance": 148,
+        "thorns": 2621,
+        "sockets": 2,
+        "magicMissileDamagePercent": 10
+      },
+      "inferredSeed": 930643368,
+      "full32bitScan": true,
+      "numericCandidateSeeds": 123,
+      "fullyMatchingPredecessors": 1,
+      "photo": {
+        "originalUploadName": "image-1794673125122.jpg",
+        "sha256": "e1cd6e9e3a41dcadc13b4bd940aafd0378fe57ba46c1d3584de797af27de7cbe",
+        "archivedInGitHub": false
+      },
+      "githubTest": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43615140781"
+    },
+    "proposedNaturalPrimalRoutes": [
+      {
+        "ops": "RCSSSRSSR",
+        "steps": 9,
+        "reforges": 3,
+        "converts": 1,
+        "sanctifies": 5,
+        "forgottenSouls": 160,
+        "deathBreaths": 10,
+        "bountyMaterialsPerAct": 15,
+        "crucibles": 5,
+        "needsMystic": false,
+        "inferredPrimalSeed": 1318732109,
+        "expectedStats": {
+          "intelligence": 1000,
+          "arcanePowerOnCrit": 4,
+          "criticalHitChancePercent": 10,
+          "fireSkillDamagePercent": 20,
+          "maxArcanePower": 14,
+          "blindOnHitPercent": 2.59
+        }
+      },
+      {
+        "ops": "SSSSSRCSCR",
+        "steps": 10,
+        "reforges": 2,
+        "converts": 2,
+        "sanctifies": 6,
+        "forgottenSouls": 120,
+        "deathBreaths": 20,
+        "bountyMaterialsPerAct": 10,
+        "crucibles": 6,
+        "needsMystic": true,
+        "mystic": "Hydra Damage +15% -> Critical Hit Chance +10%",
+        "inferredPrimalSeed": 1980719662,
+        "expectedStatsBeforeMystic": {
+          "intelligence": 1000,
+          "arcanePowerOnCrit": 4,
+          "fireSkillDamagePercent": 20,
+          "maxArcanePower": 14,
+          "hydraDamagePercent": 15,
+          "goldPercent": 35
+        }
+      }
+    ],
+    "referenceRustVerifiedAllSteps": true,
+    "referenceRun": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43615878705",
+    "nextRealOperationExecuted": false,
+    "notes": [
+      "Seed is inferred from one real conversion, not directly read from console memory",
+      "Armor base 704 is observed, not simulated",
+      "D3Recipes cannot calculate source damage range from available numeric attributes",
+      "Source and result are different set pieces; current state is pants not source",
+      "Paths are conditional predictions and have not been performed in game",
+      "Cost excludes already spent 10 Forgotten Souls and 10 Death's Breaths from the single source conversion"
+    ]
+  }
 }
