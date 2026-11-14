@@ -24,3 +24,16 @@
 **Situación en consola al guardar esta nota:** ninguna operación sobre Zodiac confirmada aún. Pedir foto del primer Sanctify y comparar antes de recomendar encantamiento.
 
 No ejecutar scripts exhaustivos ni costosas reforjas hasta que exista una razón concreta para preferir Primal natural al santificado.
+
+## Comparación solicitada antes de gastar (14 nov 2026)
+
+El usuario quiere **estimar una ruta Primal natural desde ESTE drop** y saber si una primera santificación permite recuperar seed; todavía **no se ha santificado el Zodiac**.
+
+- **No existe cotización exacta de ruta Primal natural desde la fotografía original**, porque la stored seed 32-bit del drop no está recuperada. No inventar secuencias ni extrapolar costos exactos de Deathwish o Squirt.
+- **Ruta S funcional**: 1 Crucible, cero Reforges y cero Souls/materiales de actos en Cubo. Después reemplazar +7% AS por socket con Myriam. Secundario ideal 40% control no garantizado.
+- **Ruta natural mínima física**: 1 Reforge Legendary, 50 Souls + 5 materiales de cada acto, posibilidad sin garantía de Primal. La operación final debe ser Reforge (no Sanctify), porque S resulta santificado.
+- Si primero se elige **S y luego se desea natural en el MISMO objeto**, mínimo físico **S+R**, 1 Crucible, 50 Souls y 5 materiales de cada acto, pero la R destruirá el estado santificado y no tiene garantía de Primal.
+- **¿Una S recupera la seed por sí sola? NO de manera única conforme al método probado.** Los cuatro primarios fijos salen máximos independientemente de la seed; solo el secundario aleatorio/poder estacional aportan información, no suficientes para identificar inequívocamente el estado de 32 bits. Sí constituye una transición real útil y checkpoint, pero necesitaría observaciones posteriores para reconstrucción.
+- **Para estimar el costo natural antes de elegir**, preferible una **R diagnóstica** sobre el drop original y capturar todos los afijos. A diferencia del Squirt, los 4 primarios fijos del Zodiac tienen poca variación numérica, así que una sola R puede dejar varias seeds candidatas; podrían hacer falta más R enlazadas. NO garantizar unicidad con un solo Reforge.
+- Tasa aleatoria clásica de Primal ~1/400 por R: **400 R ×50 =20.000 Souls**, más **2.000 materiales por acto** en promedio si se busca a ciegas; esto **NO es** un presupuesto de Nephalem Lab, cuyo objetivo es optimizar desde seed recuperada y reducir drásticamente costo.
+- Decisión práctica: si importa la economía y se acepta una pieza santificada, preferir S + Mística y detenerse; para explorar la opción natural sin perder una santificada funcional, preferir conservarla y experimentar después con otra copia.
