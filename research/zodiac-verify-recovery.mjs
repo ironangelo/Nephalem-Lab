@@ -24,6 +24,7 @@ for(let pos=0;pos<buffer.length;pos+=8){
  if(sample.length<10)sample.push({parent,child,sanctify:{childSeed:ss.seed,secondary:sstem,affixes:ss.affixes.map(x=>x.stem)},reforgeNext:{childSeed:rr.seed,quality:rr.quality,stats:rr.lines.map(z=>[z.stem,z.value])}});
 }
 writeFileSync('/tmp/zodiac-recovered-candidates.json',JSON.stringify(matches));
+for(let k=0;k<matches.length;k+=80)console.log('ZODIAC_CANDIDATES_CHUNK',JSON.stringify({offset:k,items:matches.slice(k,k+80)}));
 const summaryGroups=map=>({outcomes:map.size,uniqueOutcomes:[...map.values()].filter(v=>v===1).length,largestGroup:Math.max(...map.values()),expectedRemaining:good?([...map.values()].reduce((t,v)=>t+v*v,0)/good):null});
 console.log('ZODIAC_NEXT_DIAGNOSTIC_INFORMATION',JSON.stringify({singleSanctify:summaryGroups(sOutcomeGroups),singleReforge:summaryGroups(rOutcomeGroups)}));
 console.log('ZODIAC_ACTUAL_REFORGE_SUMMARY',JSON.stringify({
