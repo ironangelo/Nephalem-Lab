@@ -71,3 +71,49 @@ const unique=validSeeds(selected).sort((a,b)=>a-b);
 console.log('LATEST_VERIFIED_VALUE_SEEDS',unique.length,'RAW',rawCandidates,'CHECKED',filtered);
 console.log('LATEST_SEEDS',JSON.stringify(unique.slice(0,2000)));
 console.log('FINISHED. Seed list contains value-roll matches only; verify affix selection/transition before trusting.');
+
+if(initial){
+ const firstHyps=generateRecoveryHypotheses(engine,item,initial,{maxHypotheses:128});
+ console.log('INITIAL_HYPOTHESES',firstHyps.length);
+ firstHyps.slice(0,10).forEach((h,i)=>console.log('ORIGINAL_HYP',i,JSON.stringify(h.constraints)));
+ const firstCandidates=[];
+ for(let offset=0;offset<firstHyps.length;offset+=32){
+  const chunk=firstHyps.slice(offset,offset+32);
+  w.set_pre_steps(item.armor?2:1);w.set_hyp_count(chunk.length);
+  chunk.forEach((h,idx)=>{w.set_hyp_length(idx,h.constraints.length);h.constraints.forEach(({m,r},j)=>w.set_hyp_constraint(idx,j,m,r));});
+  const values=[];
+  for(let start=0;start<total;start+=batch){
+   const n=w.scan_multi(start,Math.min(batch,total-start));
+   if(w.was_overflow())throw Error('Overflow in initial seed scanner');
+   for(let i=0;i<n;i++)values.push(w.result_at(i)>>>0);
+  }
+  for(const seed of new Set(values))if(chunk.some(h=>verifyHypothesis(engine,item,seed,h)))firstCandidates.push(seed);
+ }
+ const firstSeeds=validSeeds(firstCandidates).sort((a,b)=>a-b);
+ console.log('FIRST_VERIFIED_VALUE_SEEDS',firstSeeds.length);
+ const finalSeeds=new Set(unique),fams=latest.lines.map(l=>l.stem);
+ let qualityMatches=0,familyMatches=0,fullMatches=0,seedTransitionMatches=0;
+ const near=[],exact=[];
+ for(const seed of firstSeeds){
+  const r=engine.reforge(item,seed);
+  if(r.quality===latest.quality){
+   qualityMatches++;
+   const visible=new Set([...r.lines.map(l=>l.stem),...r.affixes.map(a=>a.stem)]);
+   if(fams.every(x=>visible.has(x))){
+    familyMatches++;
+    if(near.length<50)near.push({originalSeed:seed,newSeed:r.seed,quality:r.quality,lines:r.lines.map(({stem,value})=>[stem,value])});
+   }
+  }
+  if(finalSeeds.has(r.seed)){
+   seedTransitionMatches++;
+   exact.push({origin:seed,newSeed:r.seed,quality:r.quality,lines:r.lines.map(({stem,value})=>[stem,value])});
+  }
+  if(matchesObservation(r,latest)){
+   fullMatches++;
+   exact.push({original:seed,newSeed:r.seed,verified:true});
+  }
+ }
+ console.log('FIRST_TO_SECOND_DIAGNOSTICS',JSON.stringify({firstSeeds:firstSeeds.length,qualityMatches,familyMatches,fullMatches,seedTransitionMatches}));
+ console.log('AFFIX_FAMILY_MATCHES',JSON.stringify(near));
+ console.log('SEED_TRANSITIONS_FOUND',JSON.stringify(exact));
+}
