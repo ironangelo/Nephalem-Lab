@@ -1,6 +1,29 @@
 # Obsidian Ring of the Zodiac — seed real y rutas Primal naturales, 14-11-2026
 
-> **ESTADO REAL: DOS REFORGES DIAGNÓSTICAS HECHAS, NINGUNA SANCTIFY, NINGUNA MÍSTICA.** Las recetas Primal de abajo están **calculadas y reproducidas en simulador JS y Rust, NO EJECUTADAS EN SWITCH**. La próxima operación sugerida es la **primera S** desde la seed actual inferida `1805687870`. **No repetir las dos R diagnósticas.**
+> **ESTADO REAL ACTUAL: PRIMAL ANCIENT NATURAL CONSEGUIDO Y FOTOGRAFIADO EN SWITCH 2 (14-11-2026).** La ruta exacta `SRSSRSSRSSR` concluyó con los primarios y el secundario deseados. **NO VOLVER A SANTIFICAR NI REFORJAR.** Queda pendiente **Myriam: Attack Speed +7% → Socket (1)**, aún no confirmado.
+
+
+## VALIDACIÓN EN CONSOLA DE LA RUTA PRIMAL NATURAL (14-11-2026)
+
+**Fotografía del usuario:** `image-1794700880084.jpg`. Usuario indicó explícitamente: **"Listo!! Primal natural!!!"**. Imagen muestra marco rojo Primal, Obsidian Ring of the Zodiac, afijos naturales, sin indicador de Mística.
+
+| Atributo | Simulación final de `SRSSRSSRSSR` | Fotografía |
+|---|---:|---:|
+| Calidad | Primal natural | Primal natural, confirmado por usuario y marco rojo |
+| Attack Speed | +7% | +7.0% |
+| Critical Hit Chance | +6% | +6.0% |
+| Cooldown Reduction | +8% | +8.0% |
+| Resource Cost Reduction | +8% | +8.0% |
+| Reducción duración efectos de control | 40% | 40% |
+| Ignora pérdida de durabilidad | Presente | Presente |
+| Socket | Pendiente por Myriam | No aparece (pendiente) |
+
+- **Seed final inferida por simulación:** `548457781`; no se extrajo de memoria del juego. La foto valida todos los afijos y valores del objetivo.
+- **Ruta `SRSSRSSRSSR`: 11 operaciones modeladas = 7 S + 4 R**, costo fijo 7 Angelic Crucibles, 200 Forgotten Souls y 20 materiales de contratos de **cada** acto. Además hubo **2 R diagnósticas previas**, por lo que costo global de toda esta investigación del Zodiac: 7 Crucibles, 300 Forgotten Souls y 30 materiales por acto, sin contar Myriam.
+- Las dos R diagnósticas y la foto final son observaciones reales. **No hay fotos individuales de los 11 checkpoints intermedios**, por lo que no afirmar que se cotejó cada uno de ellos en consola, aunque el usuario confirma haber llegado al final.
+- **Próxima y única modificación aconsejada:** en Myriam, encantar el primario **Attack Speed +7%** para conseguir **Socket (1)** y colocar la gema legendaria correspondiente. Preservar CDR8%, RCR8%, CHC6%, reducción de control40%. El costo de la Mística es variable. El encantamiento todavía no está confirmado.
+- **NO volver al Cubo de Kanai para este anillo**. La receta ya se consumó. La opción santificada y las otras rutas de abajo son historia/alternativas no recomendadas desde el estado actual.
+
 
 ## Fotos y recuperación real
 
@@ -56,4 +79,4 @@ Las seeds se infirieron matemáticamente desde fotos de Switch, **nunca se leyer
 
 Si se quiere abandonar la investigación natural y equipar uno santificado económico: **solo #1 S** ya produce todos los primarios máximos, pero requiere Mística AS→socket y no garantiza 40% control. Ocupa el único cupo santificado. Si el usuario quiere la ruta natural más tarde sobre ese mismo anillo **NO ENCANTAR** anticipadamente, para evitar comprometer el estado o los afijos elegibles.
 
-**NINGÚN PASO DEL CHECKLIST SE HA HECHO EN LA CONSOLA TODAVÍA.** La segunda R diagnóstica sí está hecha. Confirmar foto del primer S antes de pasar al #2.
+**ACTUALIZACIÓN:** La ruta de 11 pasos ya terminó con Zodiac Primal natural real, confirmado por fotografía. Esta lista es histórica: no ejecutar nuevamente. Solo falta Myriam (AS7% → Socket1).
