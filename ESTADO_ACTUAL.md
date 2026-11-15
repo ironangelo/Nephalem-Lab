@@ -1,9 +1,9 @@
 # ESTADO ACTUAL — Nephalem Lab / Diablo III (Switch 2)
 
-**Corte: 14 de noviembre de 2026, Squirt's Necklace Primal natural obtenido en Switch 2, pendiente únicamente reroll de INT a CHC con Myriam.**
+**Corte: 14 de noviembre de 2026, Zodiac Primal natural exacto de Soulstone CONFIRMADO EN SWITCH 2 (pendiente Myriam AS→socket). Squirt Primal natural confirmado previamente (pendiente Myriam INT→CHC).**
 **Versión de continuidad prioritaria.** Si otra sección del repositorio dice que la ruta de Deathwish sigue pendiente o que «hay que hacer el paso 2», esa indicación ha quedado **superada**. Leer este archivo **antes** de continuar cualquier receta.
 
-> **Cuatro piezas Firebird Twister obtenidas como Primal mediante rutas planificadas y confirmadas por el usuario en Switch 2:** Firebird's Breast, Firebird's Eye, Deathwish y Squirt's Necklace. Las seeds son *inferidas matemáticamente*, nunca leídas directamente de la consola. No todos los estados intermedios cuentan con una fotografía independiente.
+> **Cinco piezas Firebird Twister obtenidas como Primal mediante rutas planificadas y confirmadas por el usuario en Switch 2:** Firebird's Breast, Firebird's Eye, Deathwish, Squirt's Necklace y Obsidian Ring of the Zodiac. Ver pendientes de la Mística por pieza. Las seeds son *inferidas matemáticamente*, nunca leídas directamente de la consola. No todos los estados intermedios cuentan con una fotografía independiente.
 
 ## Cuadro de estado
 
@@ -97,33 +97,20 @@ Para las tres rutas: Primal natural con fuego20%, socket1, CHD100%; INT1000 se p
 
 **Actualización definitiva — fotografía Primal final Squirt, 14-11-2026:** se completó la ruta de 20 operaciones. Paso #1 confirmado en `image-1794694749540.jpg`, resultado final #20 confirmado en `image-1794696009104.jpg`. Diferencia secundaria modelo+11.590 vs real+11.584 (se investigará después). El estado ya NO está en el checkpoint de rayo ni hay operaciones de Cubo pendientes. Ver [investigación actualizada](https://github.com/ironangelo/Nephalem-Lab/blob/research/squirts-two-drops-seed/research/SQUIRT_REAL_DROP_PRIMAL_ROUTE_2026-11-14.md).
 
-## Obsidian Ring of the Zodiac — 14-11-2026 (SEED ÚNICA RECUPERADA; RUTA PRIMAL CALCULADA)
+## Obsidian Ring of the Zodiac — 14-11-2026 — PRIMAL NATURAL CONFIRMADO
 
-> **ESTADO REAL VIGENTE EN SWITCH 2: DOS REFORGES DIAGNÓSTICAS REALIZADAS. LA ÚLTIMA ES NORMAL. NINGUNA SANTIFICACIÓN NI MÍSTICA ejecutada todavía en este anillo.** Se recuperó la seed inferida única `1805687870`. **PRÓXIMO PASO RECOMENDADO: #1 S sobre este Zodiac normal**, NO repetir las reforjas diagnósticas. Aún no se ha construido el Primal natural.
+> **ÚLTIMO ESTADO REAL: ZODIAC PRIMAL ANCIENT NATURAL CONSEGUIDO Y FOTOGRAFIADO EN SWITCH 2.** Usuario escribió "Listo!! Primal natural!!!", foto actual `image-1794700880084.jpg`. **NO más Reforges ni Sanctify en este anillo.** La ÚNICA modificación pendiente es **Mística: Attack Speed +7% → Socket (1)**, todavía NO confirmada. Ya están perfectos CHC6%, CDR8%, RCR8% y secundario control40%.
 
-**Fotos e inferencias confirmadas:**
-- Drop original normal (Kadala/GR no especificado): AS7%, CHC4,5%, CDR7%, RCR5%, resistencia arcana144, ignora pérdida de durabilidad. Seed pre-R1 inferida **`2279251711`**.
-- **Primera R real (Ancient confirmado explícitamente por usuario)**: AS6%, CHC5,5%, CDR5%, RCR6%, resistencia rayo206, ignora pérdida durabilidad. Seed post-R1 inferida **`1290971892`**. Con una sola foto el cálculo dejó 5.331 semillas candidatas tras dos barridos 2^32 y replay.
-- **Segunda R real, foto `image-1794699206969.jpg`**: AS7%, CHC5,5%, CDR7%, RCR7%, resistencia veneno147, ignora pérdida durabilidad. Calidad **normal según modelo** (no se ve texto calidad en foto). De los 5.331 valores posibles quedó **UNA coincidencia completa**, confirmada con JS y Rust original. Seed actual inferida **`1805687870`**. [Match exacto en GitHub Actions](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43653920818). [Verificación independiente Rust](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43654177004).
-- Las seeds nunca se leyeron de memoria de Switch; son inferencias consistentes con observaciones reales.
+**Proceso reproducido y estado de seed inferida:**
+- Drop original Zodiac normal: AS7%, CHC4.5%, CDR7%, RCR5%, resistencia arcana144, sin socket. Seed previa inferida `2279251711`.
+- Primera R diagnóstica real: Ancient (confirmado por usuario), AS6%, CHC5.5%, CDR5%, RCR6%, +206 resistencia rayo; seed inferida después R1 `1290971892`. Solo primera observación dejaba 5.331 seeds posibles.
+- Segunda R diagnóstica real, foto `image-1794699206969.jpg`: normal según JS/Rust, AS7%, CHC5.5%, CDR7%, RCR7%, +147 resistencia veneno; coincidencia única entre los 5.331 candidatos; seed inferida después R2 `1805687870`.
+- **Receta elegida y completada en Switch** `SRSSRSSRSSR`, 11 pasos: 7 Angelic Crucibles + 4 Reforge Legendary = 200 Forgotten Souls y 20 materiales de contratos por acto, sin contar las R diagnósticas.
+- **Resultado real final:** Zodiac **Primal natural**, AS7.0%, CHC6.0%, CDR8.0%, RCR8.0%, secundario **"Reduces duration of control effects by 40%"** y "Ignores Durability Loss". Coincide exactamente con el objetivo Soulstone para los afijos naturales. Falta socket vía Myriam (AS→socket).
+- Seed final **inferida** del modelo `548457781` (no leída directamente de Switch). Se confirmó con las dos fuentes de simulación JS y Rust D3Recipes, y con la foto real final. Los pasos internos #1-#11 fueron seguidos según la confirmación de llegada al resultado, pero no hay fotos de cada checkpoint individual; no afirmar cotejo visual de todos.
+- **Gasto total de toda la investigación Zodiac desde el drop original:** 6 Reforge = **300 Forgotten Souls** y **30 materiales de contratos de cada acto** (2 R diagnósticas + 4 R de receta), y **7 Crucibles**; Mística todavía pendiente y variable.
+- El anillo final es **Primal natural**, no ocupa el cupo de un santificado. No usar en él otro Crucible. La ruta de 1 Crucible era alternativa económica, pero no la elegida. No sugerir esa ruta ahora.
 
-**Objetivo Soulstone Firebird Twister:** Primal Ancient natural, **CDR8% natural, RCR8% natural, CHC6% natural y Attack Speed7% natural**; secundario ideal **40% reducción de duración de efectos de control**. Sólo después del Primal final usar Myriam para **Attack Speed7% → socket1**. Al anillo le corresponden cuatro primarios fijos, por lo que socket no nace como afijo natural del Primal.
+**Referencias y checkpoints históricos:** [Registro Zodiac completo](https://github.com/ironangelo/Nephalem-Lab/blob/research/zodiac-drop-seed/research/ZODIAC_REAL_SEED_PRIMAL_ROUTES_2026-11-14.md). [Búsqueda de rutas](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43654059863) / [validación independiente Rust](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43654177004).
 
-**Rutas calculadas desde la seed ACTUAL `1805687870` (ninguna ejecutada):**
-
-| Opción | Secuencia S/R | Pasos | R | S | Forgotten Souls | Contratos por acto | Secundario final |
-| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| **RECOMENDADA, exactamente todos los afijos Soulstone** | **`SRSSRSSRSSR`** | **11** | 4 | 7 | **200** | 20 | **CCReduction40%** |
-| Económica en Souls, no secundario exacto | `SRSSSRSSSSR` | 11 | 3 | 8 | **150** | 15 | FireResist210 |
-| Mínimo de pasos encontrado, no secundario exacto | `SSRSRRSRSR` | 10 | 5 | 5 | 250 | 25 | FireResist210 |
-| Souls mínimas encontradas (requiere muchos Crucibles) | `SSSSSSSSSSSSSSSSRSSSSSSSSR` | 26 | 2 | 24 | 100 | 10 | HealthGlobeBonus38625 |
-| Soulstone completo ahorrando Souls y gastando Crucibles | `SSSSSRSSSSSSSSSSRSSSSSSSSSR` | 27 | 3 | 24 | 150 | 15 | CCReduction40% |
-
-- Los totales **son incrementales** desde el estado actual; no incluyen las **dos R diagnósticas ya realizadas** (100 Souls, 10 materiales por acto) ni costo variable de Myriam.
-- La búsqueda exploró varios objetivos de costo, pero no garantiza óptimo matemático global. Las 5 recetas se reprodujeron completas e independientemente en **Rust D3Recipes @ 49fe284**: [GitHub Actions](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43654177004), además del buscador JS [Actions](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43654059863).
-- **Primer paso COMPARTIDO por todas las rutas: S sobre el Zodiac normal actual.** Predicción: **Santificado, AS7%, CHC6%, CDR8%, RCR8%, secundario +210 resistencia arcana y poder estacional aleatorio**, seed hija inferida `2069057367`. **NO usar Myriam aún** si se continuará hacia Primal natural. La santificación única también permitiría detenerse y equipar anillo santificado barato, asumiendo secundario no ideal. Se permite un solo santificado equipado simultáneamente.
-- **Receta recomendada exacta `SRSSRSSRSSR`:** último #11 R genera **Primal natural**, seed final inferida `548457781`, secundario CCReduction40%, primarios perfectos. Solo después Myriam AS→socket. Ningún paso de esa secuencia realizado todavía en consola.
-
-**Checklist con afijos y todas las 11 seeds intermedias:** [research/ZODIAC_REAL_SEED_PRIMAL_ROUTES_2026-11-14.md](https://github.com/ironangelo/Nephalem-Lab/blob/research/zodiac-drop-seed/research/ZODIAC_REAL_SEED_PRIMAL_ROUTES_2026-11-14.md).
-
-**Advertencia continuidad:** Las indicaciones anteriores de este chat de volver a reforjar el Zodiac Ancient ya quedaron superadas: el usuario completó efectivamente la segunda R y su resultado fue usado. No repetir la R ni inventar una nueva seed. Falta confirmar primera S en juego antes de completar los pasos.
+**Próximo paso al jugar:** Myriam → seleccionar **Attack Speed +7%** en este Zodiac, buscar **Socket 1**. No reemplazar CHC6, CDR8, RCR8 ni afectar secundario control40. Tras confirmar el socket en foto, actualizar Continuity.
