@@ -146,3 +146,15 @@ Para las tres rutas: Primal natural con fuego20%, socket1, CHD100%; INT1000 se p
 **Fuente guía:** https://www.soulstone.gg/firebird-twister-wizard y [Blizzard Angelic Crucibles](https://news.blizzard.com/en-us/article/23826543/diablo-iii-ptr-2-7-4-has-concluded).
 
 **Investigación detallada histórica:** https://github.com/ironangelo/Nephalem-Lab/blob/research/firebirds-down-drop-seed-2026-11-16/research/FIREBIRDS_DOWN_DIRECT_DROP_PRIMAL_2026-11-16.md
+
+## Firebird's Down segundo drop — 16-11-2026 (sin convertir ni reforjar)
+
+**Nuevo drop NORMAL distinto del anterior Firebird's Down santificado perfecto.** Foto `image-1794851878566.jpg`: armor base685, +422 INT, +96 ResistAll (primario), Sockets(2), +15% Spectral Blade Damage (Wizard Only), Gold/Health Pickup Radius+1 yarda, Level Requirement Reduced by28 (secundarios). Solo INT+2 sockets coinciden con meta Soulstone; faltan VIT y Armor adicional. No se arregla con un solo reroll.
+
+**Punto crítico del experimento:** la inversión original del primer drop falló a la primera S; **no asumir que los valores del segundo drop revelan una seed almacenada** ni prometer que una santificación identificará seed. **NO se hizo todavía C/S/R/Myriam sobre el segundo drop.** El primer Firebird Down SANTIFICADO perfecto se mantiene intacto y debe seguir usándose.
+
+**Estudio nuevo para minimizar costo:** `Convert Set Item (C)` en este segundo drop sería posible porque Firebird es set >2 piezas, consume **10 Forgotten Souls + 10 Death's Breaths**, cambia a **otra** pieza Firebird NORMAL, sin Ancient ni Primal. El tipo de pieza convertida y sus valores pueden servir de diagnóstico barato de nueva seed, pero **NO ha sido probado aún en consola**. Simulación JS sobre 8 casos y barrido 2^32 en uno: números dieron 2 seeds candidatas y la identidad Firebird convertida distinguió una; no garantiza unicidad en el caso real. Algunas piezas offhand necesitan mejorar el inversor. `R` diagnóstica costaría 50 Souls +5 bounty mats por acto, y S usaría Crucible sin garantía de identificar seed.
+
+**Condición de ahorro:** si los recursos no alcanzan ni para continuar (con C primero, regreso a pantalones + R final cuesta teóricamente un mínimo absoluto de **70 Souls** y **20 Death's Breaths** más 5 bounty mats por acto, y a menudo más), **NO tocar este segundo drop**. Si se acepta riesgo experimental de 10 Souls, **una sola C** y foto completa del nuevo objeto, luego detener para verificar/reconstruir seed y estimar ruta. No prometer receta Primal directa desde esta foto.
+
+**Investigación detallada y pruebas:** [Firebird second drop low-cost plan](https://github.com/ironangelo/Nephalem-Lab/blob/research/firebird-down-second-drop-probe-2026-11-16/research/FIREBIRD_DOWN_SECOND_DROP_LOW_COST_PLAN_2026-11-16.md). La meta sigue siendo Primal NATURAL Firebird Down con INT650, sockets2, Vit650, Armor adicional775 y secundario resistencia (hasta 1 primaria reemplazable legalmente por Myriam).
