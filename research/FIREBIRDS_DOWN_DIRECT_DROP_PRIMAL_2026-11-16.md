@@ -53,7 +53,7 @@ Se preparó motor `research/firebirds-down-31-candidate-route-search.mjs`, usand
 - `C` = Convert Set Item, consume 10 Forgotten Souls +10 Death's Breaths y CAMBIA a una pieza diferente del conjunto Firebird temporalmente.
 - Objetivo: terminar en **Firebird's Down Primal NATURAL**, con INT/Sockets fijos y DR/Vit ya naturales o con uno sustituible en Mística, preferiblemente resistencia como secundario.
 
-La búsqueda es heurística acotada, no garantiza mínimo absoluto ni valida en Switch los pasos propuestos. [Búsqueda preliminar para 31 semillas](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43918620963).
+**Resultados preliminares del buscador:** analizó hasta 30.000 estados por seed, pasos S/R/C y longitud máxima 21. Encontró al menos una ruta válida según modelo en **las 31 candidatas**. Entre las rutas más económicas encontradas para cada candidata, Forgotten Souls incrementales entre **50 y 120** (distribución: 1×50, 8×70, 8×80, 8×90, 5×100, 1×120). Los Crucibles y conversiones varían según seed; estas rutas todavía NO están verificadas por Rust ni Nintendo Switch y NO son óptimos matemáticos probados. **No se puede seleccionar ninguna ruta antes de identificar la seed con la primera S real.** [Búsqueda preliminar](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43918620963). [Todos los resultados JSON](https://github.com/ironangelo/Nephalem-Lab/blob/research/firebirds-down-drop-seed-2026-11-16/research/firebirds-down-31-preliminary-route-results.json).
 
 ## Estado en consola pendiente
 
