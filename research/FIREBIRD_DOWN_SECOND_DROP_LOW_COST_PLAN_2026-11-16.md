@@ -40,7 +40,7 @@ Prueba exhaustiva de una conversión sintética concreta:
 - A partir de cinco números resultantes, la búsqueda completa de **2^32 seeds** dio **2 valores**: `1791398751` y `3625671746`.
 - Al incorporar la identidad de la pieza convertida, solo `1791398751` se corresponde con Firebird's Plume; el segundo produciría Firebird's Breast en el modelo.
 - Fuente: [test JS](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43925375705), [barrido 2^32](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43925028640).
-- Rust independiente: [workflow en investigación](https://github.com/ironangelo/Nephalem-Lab/blob/research/firebird-down-second-drop-probe-2026-11-16/.github/workflows/research-firebird-second-drop-rust.yml).
+- **Rust independiente COMPLETADO:** [GitHub Actions Rust](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43925678388): las **8 conversiones sintéticas** de Firebird's Down obtuvieron **exactamente la misma pieza, seed hija, afijos y números** en el código original D3Recipes Rust que en nuestro JS. Aún NO es prueba del estado del segundo drop real en Switch.
 - **Nada de esto valida todavía un Convert real en Switch 2**. El motor modela C, pero el análogo anterior de drop falló; exigir primer checkpoint real antes de afirmar seed o ejecutar ruta larga.
 
 ## Propuesta condicionada por recursos
