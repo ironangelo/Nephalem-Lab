@@ -1,0 +1,25 @@
+name: Independent Rust validation of Firebird Convert Set Item
+on:
+  push:
+    branches: [research/firebird-down-second-drop-probe-2026-11-16]
+    paths:
+      - '.github/workflows/research-firebird-second-drop-rust.yml'
+      - 'research/firebirds-down-convert-rust-synthetic.rs'
+  workflow_dispatch:
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clone pinned D3Recipes source
+        run: |
+          git clone --depth 1 https://github.com/FNGarvin/d3recipes.git reference
+          cd reference
+          git fetch --depth 1 origin 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+          git checkout 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+      - name: Verify predicted synthetic Convert outputs with original Rust engine
+        run: |
+          cp research/firebirds-down-convert-rust-synthetic.rs reference/core/examples/fbdown_convert.rs
+          cd reference/core
+          cargo run --release --example fbdown_convert
