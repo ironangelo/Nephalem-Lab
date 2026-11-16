@@ -1,0 +1,19 @@
+name: Invert original Firebird Down drop values without Reforge
+on:
+  push:
+    branches: [research/firebirds-down-drop-seed-2026-11-16]
+    paths:
+      - '.github/workflows/research-firebirds-down-inverse.yml'
+      - 'research/firebirds-down-direct-inverse.mjs'
+  workflow_dispatch:
+jobs:
+  inverse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Produce 5-value original-drop seed constraints
+        run: node research/firebirds-down-direct-inverse.mjs
