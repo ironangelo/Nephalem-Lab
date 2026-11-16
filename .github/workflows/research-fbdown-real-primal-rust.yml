@@ -1,0 +1,30 @@
+name: Independently validate Firebird Down natural Primal routes in Rust
+on:
+  push:
+    branches: [research/firebirds-down-real-reforge-2026-11-16]
+    paths:
+      - '.github/workflows/research-fbdown-real-primal-rust.yml'
+      - 'research/firebirds-down-real-primal-rust-verify.rs'
+  workflow_dispatch:
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout pinned original D3Recipes
+        run: |
+          git clone --depth 1 https://github.com/FNGarvin/d3recipes.git reference
+          cd reference
+          git fetch --depth 1 origin 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+          git checkout 49fe28467db9ebbd096694d1408528b2c9ce5ea3
+      - name: Replay exact C/S/R checkpoints and Primal goals in independent Rust
+        run: |
+          cp research/firebirds-down-real-primal-rust-verify.rs reference/core/examples/fbdown_real_primals.rs
+          cd reference/core
+          cargo run --release --example fbdown_real_primals
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Replay all recipe checkpoints in JS for comparison
+        run: node research/firebirds-down-selected-checkpoints.mjs
