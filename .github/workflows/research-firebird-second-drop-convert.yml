@@ -1,0 +1,19 @@
+name: Test zero-risk simulated Firebird Down Convert diagnostic
+on:
+  push:
+    branches: [research/firebird-down-second-drop-probe-2026-11-16]
+    paths:
+      - '.github/workflows/research-firebird-second-drop-convert.yml'
+      - 'research/firebirds-down-second-drop-convert-diagnostic.mjs'
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Evaluate inverse of synthetic Convert Set Item results
+        run: node research/firebirds-down-second-drop-convert-diagnostic.mjs
