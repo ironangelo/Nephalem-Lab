@@ -1,0 +1,1028 @@
+{
+  "source": "Original Firebird's Down, 713 Armor, INT431 Regen4856 Electrocute11%, FireRes147 Exp195, 2Sockets",
+  "quality": "normal original drop no Cube transformations",
+  "candidateCount": 31,
+  "visibleSanctifyGroups": 29,
+  "caution": "The last natural secondary on Sanctify can be replaced by random seasonal orange power. Do not use it to distinguish seeds. Match all visible lines; model not yet console-validated on this item.",
+  "groups": [
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "Regen",
+          "Sockets"
+        ],
+        "secondary": "Gold",
+        "stats": [
+          [
+            "DR",
+            775
+          ],
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "Regen",
+            7185
+          ]
+        ]
+      },
+      "originalSeeds": [
+        174012896
+      ],
+      "predictedPostSSeeds": [
+        1028587260
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "GoldPickUpRadius",
+        "stats": [
+          [
+            "DR",
+            775
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        311905401
+      ],
+      "predictedPostSSeeds": [
+        3585442903
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "Skill_Wizard_SpectralBlade",
+          "Sockets"
+        ],
+        "secondary": "PoisonResist",
+        "stats": [
+          [
+            "DR",
+            775
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "PoisonResist",
+            210
+          ],
+          [
+            "Skill_Wizard_SpectralBlade",
+            0.15
+          ]
+        ]
+      },
+      "originalSeeds": [
+        634106963
+      ],
+      "predictedPostSSeeds": [
+        3508006596
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Regen",
+          "Skill_Wizard_ShockPulse",
+          "Sockets"
+        ],
+        "secondary": "KillLife",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ]
+        ]
+      },
+      "originalSeeds": [
+        638366710
+      ],
+      "predictedPostSSeeds": [
+        3756848459
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Skill_Wizard_MagicMissile",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "LightningResist",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "LightningResist",
+            210
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        692695830
+      ],
+      "predictedPostSSeeds": [
+        3152279938
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "ResistAll",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "Experience",
+        "stats": [
+          [
+            "Experience",
+            260
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        718337488
+      ],
+      "predictedPostSSeeds": [
+        2478456004
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "ResistAll",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "KillLife",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        793835586
+      ],
+      "predictedPostSSeeds": [
+        3734300028
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "ResistAll",
+          "Skill_Wizard_MagicMissile",
+          "Sockets"
+        ],
+        "secondary": "KillLife",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ]
+        ]
+      },
+      "originalSeeds": [
+        911099513
+      ],
+      "predictedPostSSeeds": [
+        3844152571
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "Skill_Wizard_ShockPulse",
+          "Sockets"
+        ],
+        "secondary": "Thorns",
+        "stats": [
+          [
+            "DR",
+            775
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ],
+          [
+            "Thorns",
+            3500
+          ]
+        ]
+      },
+      "originalSeeds": [
+        968847461
+      ],
+      "predictedPostSSeeds": [
+        1079616626
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Skill_Wizard_Electrocute",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "Experience",
+        "stats": [
+          [
+            "Experience",
+            260
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_Electrocute",
+            0.15
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        1029273403,
+        2891951512
+      ],
+      "predictedPostSSeeds": [
+        246620659,
+        1741012303
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Skill_Wizard_Electrocute",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "PhysicalResist",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "PhysicalResist",
+            210
+          ],
+          [
+            "Skill_Wizard_Electrocute",
+            0.15
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        1154150060
+      ],
+      "predictedPostSSeeds": [
+        1441992290
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "PhysicalResist",
+        "stats": [
+          [
+            "DR",
+            775
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "PhysicalResist",
+            210
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        1281849305
+      ],
+      "predictedPostSSeeds": [
+        1210435725
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "Skill_Wizard_ShockPulse",
+          "Sockets"
+        ],
+        "secondary": "Experience",
+        "stats": [
+          [
+            "DR",
+            775
+          ],
+          [
+            "Experience",
+            260
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ]
+        ]
+      },
+      "originalSeeds": [
+        1346910248
+      ],
+      "predictedPostSSeeds": [
+        620950373
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "ResistAll",
+          "Skill_Wizard_ShockPulse",
+          "Sockets"
+        ],
+        "secondary": "KillLife",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ]
+        ]
+      },
+      "originalSeeds": [
+        1695600893
+      ],
+      "predictedPostSSeeds": [
+        2562484142
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "ResistAll",
+          "Skill_Wizard_SpectralBlade",
+          "Sockets"
+        ],
+        "secondary": "KillLife",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Skill_Wizard_SpectralBlade",
+            0.15
+          ]
+        ]
+      },
+      "originalSeeds": [
+        2160764913
+      ],
+      "predictedPostSSeeds": [
+        736403806
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Regen",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "Gold",
+        "stats": [
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        2670941242
+      ],
+      "predictedPostSSeeds": [
+        3494726909
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Skill_Wizard_MagicMissile",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "Thorns",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ],
+          [
+            "Thorns",
+            3500
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        2672864298
+      ],
+      "predictedPostSSeeds": [
+        2646512280
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "ResistAll",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "Gold",
+        "stats": [
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        2723003190
+      ],
+      "predictedPostSSeeds": [
+        3169934215
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "Gold",
+        "stats": [
+          [
+            "DR",
+            775
+          ],
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        2864097127
+      ],
+      "predictedPostSSeeds": [
+        253968331
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "ColdResist",
+        "stats": [
+          [
+            "ColdResist",
+            210
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        2938604599
+      ],
+      "predictedPostSSeeds": [
+        2837691548
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "ResistAll",
+          "Skill_Wizard_ShockPulse",
+          "Sockets"
+        ],
+        "secondary": "Experience",
+        "stats": [
+          [
+            "Experience",
+            260
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ]
+        ]
+      },
+      "originalSeeds": [
+        3265178762
+      ],
+      "predictedPostSSeeds": [
+        2916639454
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Skill_Wizard_SpectralBlade",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "HitSlow",
+        "stats": [
+          [
+            "HitSlow",
+            0.0509
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_SpectralBlade",
+            0.15
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        3343454246
+      ],
+      "predictedPostSSeeds": [
+        3318060116
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Skill_Wizard_ShockPulse",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "Gold",
+        "stats": [
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        3415954544
+      ],
+      "predictedPostSSeeds": [
+        458781062
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "ResistAll",
+          "Sockets"
+        ],
+        "secondary": "Gold",
+        "stats": [
+          [
+            "DR",
+            775
+          ],
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ]
+        ]
+      },
+      "originalSeeds": [
+        3418403453
+      ],
+      "predictedPostSSeeds": [
+        2181593669
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Regen",
+          "ResistAll",
+          "Sockets"
+        ],
+        "secondary": "KillLife",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "ResistAll",
+            130
+          ]
+        ]
+      },
+      "originalSeeds": [
+        3576256914
+      ],
+      "predictedPostSSeeds": [
+        318919651
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Regen",
+          "Skill_Wizard_MagicMissile",
+          "Sockets"
+        ],
+        "secondary": "PoisonResist",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "PoisonResist",
+            210
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ]
+        ]
+      },
+      "originalSeeds": [
+        3767353434
+      ],
+      "predictedPostSSeeds": [
+        3672496513
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "ResistAll",
+          "Sockets"
+        ],
+        "secondary": "KillLife",
+        "stats": [
+          [
+            "DR",
+            775
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "ResistAll",
+            130
+          ]
+        ]
+      },
+      "originalSeeds": [
+        3903720956,
+        4245989982
+      ],
+      "predictedPostSSeeds": [
+        2136786142,
+        3268528494
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "DR",
+          "Int",
+          "Sockets",
+          "Vit"
+        ],
+        "secondary": "PoisonResist",
+        "stats": [
+          [
+            "DR",
+            775
+          ],
+          [
+            "Int",
+            650
+          ],
+          [
+            "PoisonResist",
+            210
+          ],
+          [
+            "Vit",
+            650
+          ]
+        ]
+      },
+      "originalSeeds": [
+        3942680837
+      ],
+      "predictedPostSSeeds": [
+        4183136985
+      ]
+    },
+    {
+      "visible": {
+        "primaries": [
+          "Int",
+          "Regen",
+          "Skill_Wizard_MagicMissile",
+          "Sockets"
+        ],
+        "secondary": "KillLife",
+        "stats": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ]
+        ]
+      },
+      "originalSeeds": [
+        3999807195
+      ],
+      "predictedPostSSeeds": [
+        1240527080
+      ]
+    }
+  ]
+}
