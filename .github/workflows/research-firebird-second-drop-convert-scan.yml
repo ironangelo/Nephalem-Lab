@@ -1,0 +1,22 @@
+name: Benchmark exact seed inversion after Convert Set Item (simulation only)
+on:
+  push:
+    branches: [research/firebird-down-second-drop-probe-2026-11-16]
+    paths:
+      - '.github/workflows/research-firebird-second-drop-convert-scan.yml'
+  workflow_dispatch:
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare Convert output constraints
+        run: node research/firebirds-down-convert-probe-invert.mjs
+      - name: Enumerate all 32 bit seeds for synthetic Convert target
+        run: |
+          gcc -O3 -march=native -std=c11 research/firebirds-down-convert-probe-invert.c -o /tmp/fbconvert-scan
+          /tmp/fbconvert-scan
