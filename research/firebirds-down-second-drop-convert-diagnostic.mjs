@@ -9,7 +9,7 @@ const e=new UniversalEngine(await loadGameData(),'Wizard',true);
 const from=e.item("Firebird's Down");
 for(const start of [1,8,42,46826983,1805687870,2279251711,3942680837,0xFFFFFFFE]){
  const x=e.convert(from,start),to=e.item(x.item);
- const obs={quality:'normal',lines:x.lines.filter(l=>l.stem!=='Power').map(l=>({stem:l.stem,attr:l.attr,value:l.value}))};
+ const obs={quality:'normal',lines:x.lines.map(l=>({stem:l.stem,attr:l.attr,value:l.value}))};
  let hypothesisCount=0,verifiedCount=0,error=null,foundFirst=-1;
  try{
   const hs=generateRecoveryHypotheses(e,to,obs,{maxHypotheses:4000});
