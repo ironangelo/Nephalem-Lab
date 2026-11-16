@@ -1,0 +1,2487 @@
+{
+  "photo": "Firebird's Down original drop 713 armor / INT431 / LifeRegen4856 / FireResist147 / XP195 / Sockets2 / Electrocute11",
+  "source": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43917545639",
+  "interpretation": "31 candidate stored seeds from direct five-numeric value inversion, unverified transition against console",
+  "candidates": [
+    {
+      "seed": 174012896,
+      "hypothesis": 1,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 1028587260,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "DR",
+          "Regen",
+          "Gold",
+          "Thorns"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "Thorns",
+            3500
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 4146839167,
+        "quality": "ancient",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "ResistAll",
+          "Vit",
+          "KillLife",
+          "GoldPickUpRadius"
+        ],
+        "values": [
+          [
+            "Int",
+            613
+          ],
+          [
+            "ResistAll",
+            121
+          ],
+          [
+            "Vit",
+            553
+          ],
+          [
+            "KillLife",
+            7348
+          ],
+          [
+            "GoldPickUpRadius",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 311905401,
+      "hypothesis": 3,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 3585442903,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "DR",
+          "Vit",
+          "GoldPickUpRadius",
+          "LightningResist"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ],
+          [
+            "LightningResist",
+            210
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 2401121626,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_SpectralBlade",
+          "Vit",
+          "ColdResist",
+          "KillLife"
+        ],
+        "values": [
+          [
+            "Int",
+            450
+          ],
+          [
+            "Skill_Wizard_SpectralBlade",
+            0.1
+          ],
+          [
+            "Vit",
+            471
+          ],
+          [
+            "ColdResist",
+            156
+          ],
+          [
+            "KillLife",
+            5877
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 634106963,
+      "hypothesis": 3,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 3508006596,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_SpectralBlade",
+          "DR",
+          "PoisonResist",
+          "Experience"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_SpectralBlade",
+            0.15
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "PoisonResist",
+            210
+          ],
+          [
+            "Experience",
+            260
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 2865470160,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "DR",
+          "LightningResist",
+          "GoldPickUpRadius"
+        ],
+        "values": [
+          [
+            "Int",
+            469
+          ],
+          [
+            "Vit",
+            470
+          ],
+          [
+            "DR",
+            578
+          ],
+          [
+            "LightningResist",
+            142
+          ],
+          [
+            "GoldPickUpRadius",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 638366710,
+      "hypothesis": 3,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 3756848459,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_ShockPulse",
+          "Regen",
+          "KillLife",
+          "Gold"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "Gold",
+            0.35
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 3475915977,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "Regen",
+          "PhysicalResist",
+          "KillLife"
+        ],
+        "values": [
+          [
+            "Int",
+            429
+          ],
+          [
+            "Vit",
+            480
+          ],
+          [
+            "Regen",
+            5202
+          ],
+          [
+            "PhysicalResist",
+            146
+          ],
+          [
+            "KillLife",
+            5650
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 692695830,
+      "hypothesis": 1,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 3152279938,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_MagicMissile",
+          "Vit",
+          "LightningResist",
+          "Experience"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "LightningResist",
+            210
+          ],
+          [
+            "Experience",
+            260
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 93397680,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Regen",
+          "ResistAll",
+          "Experience",
+          "Indestructible"
+        ],
+        "values": [
+          [
+            "Int",
+            473
+          ],
+          [
+            "Regen",
+            4861
+          ],
+          [
+            "ResistAll",
+            95
+          ],
+          [
+            "Experience",
+            141
+          ],
+          [
+            "Indestructible",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 718337488,
+      "hypothesis": 2,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 2478456004,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "ResistAll",
+          "Experience",
+          "KillLife"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Experience",
+            260
+          ],
+          [
+            "KillLife",
+            7725
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 3828035552,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_Electrocute",
+          "Vit",
+          "Experience",
+          "ColdResist"
+        ],
+        "values": [
+          [
+            "Int",
+            466
+          ],
+          [
+            "Skill_Wizard_Electrocute",
+            0.1
+          ],
+          [
+            "Vit",
+            450
+          ],
+          [
+            "Experience",
+            185
+          ],
+          [
+            "ColdResist",
+            153
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 793835586,
+      "hypothesis": 2,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 3734300028,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "ResistAll",
+          "KillLife",
+          "GoldPickUpRadius"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 1762889458,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "Skill_Wizard_MagicMissile",
+          "GoldPickUpRadius",
+          "FireResist"
+        ],
+        "values": [
+          [
+            "Int",
+            428
+          ],
+          [
+            "Vit",
+            429
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.13
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ],
+          [
+            "FireResist",
+            143
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 911099513,
+      "hypothesis": 3,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 3844152571,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "ResistAll",
+          "Skill_Wizard_MagicMissile",
+          "KillLife",
+          "Gold"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "Gold",
+            0.35
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 2331295295,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Regen",
+          "Vit",
+          "Thorns",
+          "FireResist"
+        ],
+        "values": [
+          [
+            "Int",
+            468
+          ],
+          [
+            "Regen",
+            4793
+          ],
+          [
+            "Vit",
+            416
+          ],
+          [
+            "Thorns",
+            2486
+          ],
+          [
+            "FireResist",
+            142
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 968847461,
+      "hypothesis": 3,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 1079616626,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "DR",
+          "Skill_Wizard_ShockPulse",
+          "Thorns",
+          "FireResist"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ],
+          [
+            "Thorns",
+            3500
+          ],
+          [
+            "FireResist",
+            210
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 1838342193,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "DR",
+          "Skill_Wizard_ShockPulse",
+          "GoldPickUpRadius",
+          "KillLife"
+        ],
+        "values": [
+          [
+            "Int",
+            478
+          ],
+          [
+            "DR",
+            584
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.12
+          ],
+          [
+            "GoldPickUpRadius",
+            1
+          ],
+          [
+            "KillLife",
+            5387
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 1029273403,
+      "hypothesis": 1,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 246620659,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "Skill_Wizard_Electrocute",
+          "Experience",
+          "GoldPickUpRadius"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "Skill_Wizard_Electrocute",
+            0.15
+          ],
+          [
+            "Experience",
+            260
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 3641189093,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "Skill_Wizard_MagicMissile",
+          "PoisonResist",
+          "Thorns"
+        ],
+        "values": [
+          [
+            "Int",
+            452
+          ],
+          [
+            "Vit",
+            489
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ],
+          [
+            "PoisonResist",
+            142
+          ],
+          [
+            "Thorns",
+            2822
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 1154150060,
+      "hypothesis": 2,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 1441992290,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "Skill_Wizard_Electrocute",
+          "PhysicalResist",
+          "Experience"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "Skill_Wizard_Electrocute",
+            0.15
+          ],
+          [
+            "PhysicalResist",
+            210
+          ],
+          [
+            "Experience",
+            260
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 4247945484,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "ResistAll",
+          "Experience",
+          "KillLife"
+        ],
+        "values": [
+          [
+            "Int",
+            452
+          ],
+          [
+            "Vit",
+            479
+          ],
+          [
+            "ResistAll",
+            100
+          ],
+          [
+            "Experience",
+            197
+          ],
+          [
+            "KillLife",
+            4926
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 1281849305,
+      "hypothesis": 3,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 1210435725,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "DR",
+          "PhysicalResist",
+          "Experience"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "PhysicalResist",
+            210
+          ],
+          [
+            "Experience",
+            260
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 4073999655,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_SpectralBlade",
+          "Vit",
+          "KillLife",
+          "LightningResist"
+        ],
+        "values": [
+          [
+            "Int",
+            458
+          ],
+          [
+            "Skill_Wizard_SpectralBlade",
+            0.11
+          ],
+          [
+            "Vit",
+            435
+          ],
+          [
+            "KillLife",
+            4709
+          ],
+          [
+            "LightningResist",
+            146
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 1346910248,
+      "hypothesis": 2,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 620950373,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_ShockPulse",
+          "DR",
+          "Experience",
+          "KillLife"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "Experience",
+            260
+          ],
+          [
+            "KillLife",
+            7725
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 1695444511,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_SpectralBlade",
+          "Vit",
+          "HitSlow",
+          "Experience"
+        ],
+        "values": [
+          [
+            "Int",
+            470
+          ],
+          [
+            "Skill_Wizard_SpectralBlade",
+            0.12
+          ],
+          [
+            "Vit",
+            484
+          ],
+          [
+            "HitSlow",
+            0.0325
+          ],
+          [
+            "Experience",
+            169
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 1695600893,
+      "hypothesis": 2,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 2562484142,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "ResistAll",
+          "Skill_Wizard_ShockPulse",
+          "KillLife",
+          "GoldPickUpRadius"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 3087529234,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_MagicMissile",
+          "Vit",
+          "ArcaneResist",
+          "GoldPickUpRadius"
+        ],
+        "values": [
+          [
+            "Int",
+            498
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.1
+          ],
+          [
+            "Vit",
+            466
+          ],
+          [
+            "ArcaneResist",
+            142
+          ],
+          [
+            "GoldPickUpRadius",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 2160764913,
+      "hypothesis": 1,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 736403806,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "ResistAll",
+          "Skill_Wizard_SpectralBlade",
+          "KillLife",
+          "Gold"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Skill_Wizard_SpectralBlade",
+            0.15
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "Gold",
+            0.35
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 174828304,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_MagicMissile",
+          "Vit",
+          "PhysicalResist",
+          "GoldPickUpRadius"
+        ],
+        "values": [
+          [
+            "Int",
+            432
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ],
+          [
+            "Vit",
+            471
+          ],
+          [
+            "PhysicalResist",
+            155
+          ],
+          [
+            "GoldPickUpRadius",
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 2670941242,
+      "hypothesis": 0,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 3494726909,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "Regen",
+          "Gold",
+          "ColdResist"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "ColdResist",
+            210
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 3649250761,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "Regen",
+          "LightningResist",
+          "KillLife"
+        ],
+        "values": [
+          [
+            "Int",
+            460
+          ],
+          [
+            "Vit",
+            429
+          ],
+          [
+            "Regen",
+            5502
+          ],
+          [
+            "LightningResist",
+            153
+          ],
+          [
+            "KillLife",
+            5008
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 2672864298,
+      "hypothesis": 2,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 2646512280,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_MagicMissile",
+          "Vit",
+          "Thorns",
+          "GoldPickUpRadius"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "Thorns",
+            3500
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 2347022915,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Regen",
+          "Vit",
+          "Thorns",
+          "Gold"
+        ],
+        "values": [
+          [
+            "Int",
+            500
+          ],
+          [
+            "Regen",
+            5189
+          ],
+          [
+            "Vit",
+            416
+          ],
+          [
+            "Thorns",
+            2511
+          ],
+          [
+            "Gold",
+            0.35
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 2723003190,
+      "hypothesis": 3,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 3169934215,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "ResistAll",
+          "Vit",
+          "Gold",
+          "Thorns"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "Thorns",
+            3500
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 3927240692,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_SpectralBlade",
+          "DR",
+          "Experience",
+          "ColdResist"
+        ],
+        "values": [
+          [
+            "Int",
+            448
+          ],
+          [
+            "Skill_Wizard_SpectralBlade",
+            0.12
+          ],
+          [
+            "DR",
+            581
+          ],
+          [
+            "Experience",
+            186
+          ],
+          [
+            "ColdResist",
+            160
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 2864097127,
+      "hypothesis": 3,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 253968331,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "DR",
+          "Gold",
+          "KillLife"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "KillLife",
+            7725
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 3761274470,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Regen",
+          "DR",
+          "FireResist",
+          "Thorns"
+        ],
+        "values": [
+          [
+            "Int",
+            491
+          ],
+          [
+            "Regen",
+            5266
+          ],
+          [
+            "DR",
+            588
+          ],
+          [
+            "FireResist",
+            149
+          ],
+          [
+            "Thorns",
+            2632
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 2891951512,
+      "hypothesis": 1,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 1741012303,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "Skill_Wizard_Electrocute",
+          "Experience",
+          "PhysicalResist"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "Skill_Wizard_Electrocute",
+            0.15
+          ],
+          [
+            "Experience",
+            260
+          ],
+          [
+            "PhysicalResist",
+            210
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 1505990782,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_MagicMissile",
+          "Vit",
+          "KillLife",
+          "PoisonResist"
+        ],
+        "values": [
+          [
+            "Int",
+            445
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.14
+          ],
+          [
+            "Vit",
+            489
+          ],
+          [
+            "KillLife",
+            5510
+          ],
+          [
+            "PoisonResist",
+            154
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 2938604599,
+      "hypothesis": 3,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 2837691548,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "DR",
+          "Vit",
+          "ColdResist",
+          "Experience"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "ColdResist",
+            210
+          ],
+          [
+            "Experience",
+            260
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 2406442044,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "Skill_Wizard_MagicMissile",
+          "GoldPickUpRadius",
+          "Gold"
+        ],
+        "values": [
+          [
+            "Int",
+            437
+          ],
+          [
+            "Vit",
+            435
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.13
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ],
+          [
+            "Gold",
+            0.35
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 3265178762,
+      "hypothesis": 1,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 2916639454,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_ShockPulse",
+          "ResistAll",
+          "Experience",
+          "KillLife"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Experience",
+            260
+          ],
+          [
+            "KillLife",
+            7725
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 4124267479,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_ShockPulse",
+          "DR",
+          "PoisonResist",
+          "Thorns"
+        ],
+        "values": [
+          [
+            "Int",
+            486
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.12
+          ],
+          [
+            "DR",
+            565
+          ],
+          [
+            "PoisonResist",
+            142
+          ],
+          [
+            "Thorns",
+            2598
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 3343454246,
+      "hypothesis": 0,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 3318060116,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_SpectralBlade",
+          "Vit",
+          "HitSlow",
+          "FireResist"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_SpectralBlade",
+            0.15
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "HitSlow",
+            0.0509
+          ],
+          [
+            "FireResist",
+            210
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 3861339469,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_MagicMissile",
+          "Regen",
+          "Gold",
+          "PhysicalResist"
+        ],
+        "values": [
+          [
+            "Int",
+            491
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.13
+          ],
+          [
+            "Regen",
+            5301
+          ],
+          [
+            "Gold",
+            0.32
+          ],
+          [
+            "PhysicalResist",
+            152
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 3415954544,
+      "hypothesis": 3,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        2297541338,
+        1444204450,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 458781062,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_ShockPulse",
+          "Vit",
+          "Gold",
+          "ArcaneResist"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.15
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "ArcaneResist",
+            210
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 1839326290,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Regen",
+          "Vit",
+          "LightningResist",
+          "Gold"
+        ],
+        "values": [
+          [
+            "Int",
+            454
+          ],
+          [
+            "Regen",
+            4908
+          ],
+          [
+            "Vit",
+            475
+          ],
+          [
+            "LightningResist",
+            158
+          ],
+          [
+            "Gold",
+            0.34
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 3418403453,
+      "hypothesis": 0,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 2181593669,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "ResistAll",
+          "DR",
+          "Gold",
+          "Experience"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "Gold",
+            0.35
+          ],
+          [
+            "Experience",
+            260
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 2785675339,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Regen",
+          "Vit",
+          "PhysicalResist",
+          "HitSlow"
+        ],
+        "values": [
+          [
+            "Int",
+            418
+          ],
+          [
+            "Regen",
+            5095
+          ],
+          [
+            "Vit",
+            499
+          ],
+          [
+            "PhysicalResist",
+            160
+          ],
+          [
+            "HitSlow",
+            0.022
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 3576256914,
+      "hypothesis": 0,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 318919651,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "ResistAll",
+          "Regen",
+          "KillLife",
+          "Experience"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "Experience",
+            260
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 1679215686,
+        "quality": "ancient",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_MagicMissile",
+          "ResistAll",
+          "KillLife",
+          "Gold"
+        ],
+        "values": [
+          [
+            "Int",
+            633
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.1
+          ],
+          [
+            "ResistAll",
+            127
+          ],
+          [
+            "KillLife",
+            6812
+          ],
+          [
+            "Gold",
+            0.34
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 3767353434,
+      "hypothesis": 0,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 3672496513,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_MagicMissile",
+          "Regen",
+          "PoisonResist",
+          "GoldPickUpRadius"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "PoisonResist",
+            210
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 2848064628,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Skill_Wizard_ShockPulse",
+          "Vit",
+          "HitSlow",
+          "KillLife"
+        ],
+        "values": [
+          [
+            "Int",
+            430
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.11
+          ],
+          [
+            "Vit",
+            494
+          ],
+          [
+            "HitSlow",
+            0.0491
+          ],
+          [
+            "KillLife",
+            5282
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 3903720956,
+      "hypothesis": 0,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        2972540929,
+        555585138
+      ],
+      "firstSanctify": {
+        "seed": 2136786142,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "DR",
+          "ResistAll",
+          "KillLife",
+          "Experience"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "Experience",
+            260
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 46285085,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "DR",
+          "Skill_Wizard_ShockPulse",
+          "FireResist",
+          "Thorns"
+        ],
+        "values": [
+          [
+            "Int",
+            493
+          ],
+          [
+            "DR",
+            560
+          ],
+          [
+            "Skill_Wizard_ShockPulse",
+            0.11
+          ],
+          [
+            "FireResist",
+            150
+          ],
+          [
+            "Thorns",
+            2563
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 3942680837,
+      "hypothesis": 1,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 4183136985,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "DR",
+          "PoisonResist",
+          "Gold"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Vit",
+            650
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "PoisonResist",
+            210
+          ],
+          [
+            "Gold",
+            0.35
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 1104586619,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Vit",
+          "ResistAll",
+          "Gold",
+          "Experience"
+        ],
+        "values": [
+          [
+            "Int",
+            444
+          ],
+          [
+            "Vit",
+            456
+          ],
+          [
+            "ResistAll",
+            97
+          ],
+          [
+            "Gold",
+            0.34
+          ],
+          [
+            "Experience",
+            161
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 3999807195,
+      "hypothesis": 1,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 1240527080,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Regen",
+          "Skill_Wizard_MagicMissile",
+          "KillLife",
+          "PhysicalResist"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "Regen",
+            7185
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.15
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "PhysicalResist",
+            210
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 866056989,
+        "quality": "normal",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "Regen",
+          "Skill_Wizard_MagicMissile",
+          "GoldPickUpRadius",
+          "PhysicalResist"
+        ],
+        "values": [
+          [
+            "Int",
+            487
+          ],
+          [
+            "Regen",
+            5064
+          ],
+          [
+            "Skill_Wizard_MagicMissile",
+            0.13
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ],
+          [
+            "PhysicalResist",
+            153
+          ]
+        ]
+      }
+    },
+    {
+      "seed": 4245989982,
+      "hypothesis": 1,
+      "originalAffixIds": [
+        3807807131,
+        1355452559,
+        1444204450,
+        2297541338,
+        555585138,
+        2972540929
+      ],
+      "firstSanctify": {
+        "seed": 3268528494,
+        "quality": "sanctified",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "DR",
+          "ResistAll",
+          "KillLife",
+          "Thorns"
+        ],
+        "values": [
+          [
+            "Int",
+            650
+          ],
+          [
+            "DR",
+            775
+          ],
+          [
+            "ResistAll",
+            130
+          ],
+          [
+            "KillLife",
+            7725
+          ],
+          [
+            "Thorns",
+            3500
+          ]
+        ]
+      },
+      "firstReforge": {
+        "seed": 2757069830,
+        "quality": "ancient",
+        "affixes": [
+          "Int",
+          "Sockets",
+          "ResistAll",
+          "Regen",
+          "GoldPickUpRadius",
+          "Gold"
+        ],
+        "values": [
+          [
+            "Int",
+            587
+          ],
+          [
+            "ResistAll",
+            124
+          ],
+          [
+            "Regen",
+            7129
+          ],
+          [
+            "GoldPickUpRadius",
+            2
+          ],
+          [
+            "Gold",
+            0.34
+          ]
+        ]
+      }
+    }
+  ]
+}
