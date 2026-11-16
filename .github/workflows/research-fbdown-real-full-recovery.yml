@@ -1,0 +1,28 @@
+name: Recover seed from real Firebird Down normal Reforge
+on:
+  push:
+    branches: [research/firebirds-down-real-reforge-2026-11-16]
+    paths:
+      - '.github/workflows/research-fbdown-real-full-recovery.yml'
+  workflow_dispatch:
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Derive exact observed numeric constraints
+        run: node research/firebirds-down-reforge-inverse.mjs
+      - name: Enumerate all 2^32 post-Reforge value seeds
+        run: |
+          gcc -O3 -march=native -std=c11 research/firebirds-down-real-child-scan.c -o /tmp/fbdown-child
+          /tmp/fbdown-child
+      - name: Invert all 2^32 parent seeds with observed normal quality
+        run: |
+          gcc -O3 -march=native -std=c11 research/firebirds-down-real-parent-scan.c -o /tmp/fbdown-parent
+          /tmp/fbdown-parent
+      - name: Replay exact Reforge with all six affixes, five stats, and draw count
+        run: node --max-old-space-size=4800 research/firebirds-down-real-verify.mjs
