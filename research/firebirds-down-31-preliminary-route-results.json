@@ -1,0 +1,4721 @@
+{
+  "source": "https://github.com/ironangelo/Nephalem-Lab/actions/runs/43918620963",
+  "note": "PRELIMINARY BOUNDED SEARCH from candidate seeds after first S; not validated in Nintendo Switch or upstream Rust. C operations change set item identity and must be tracked. Do not execute without checking first real Sanctify and rerunning exact candidate.",
+  "maxNodesPerOriginalSeed": 30000,
+  "maxSteps": 21,
+  "allCandidates": 31,
+  "foundAtLeastOne": 31,
+  "minimumSouls": 50,
+  "maximumCheapestSouls": 120,
+  "candidates": [
+    {
+      "seed": 174012896,
+      "afterFirstS": 1028587260,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 72,
+      "goals": 6,
+      "best": {
+        "mystic": {
+          "initialOriginalSeed": 174012896,
+          "afterFirstS": 1028587260,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SCSSSCSCCSSCR",
+          "score": 34,
+          "finalSeed": 888381143,
+          "materials": {
+            "operations": 13,
+            "reforges": 1,
+            "crucibles": 7,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "KillLife",
+                7725
+              ],
+              [
+                "Gold",
+                0.35
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "ResistAll",
+              "KillLife",
+              "Gold"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 174012896,
+          "afterFirstS": 1028587260,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SRSCCSSSR",
+          "score": 35,
+          "finalSeed": 3162832610,
+          "materials": {
+            "operations": 9,
+            "reforges": 2,
+            "crucibles": 5,
+            "conversions": 2,
+            "forgottenSouls": 120,
+            "bountiesPerAct": 10,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_MagicMissile",
+              "with": "Vit"
+            },
+            "resistance": [
+              "ArcaneResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_MagicMissile",
+                0.15
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "ArcaneResist",
+                210
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_MagicMissile",
+              "DR",
+              "ArcaneResist",
+              "GoldPickUpRadius"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 311905401,
+      "afterFirstS": 3585442903,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 78,
+      "goals": 6,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 311905401,
+          "afterFirstS": 3585442903,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSCCCSSSSSCCSR",
+          "score": 35,
+          "finalSeed": 3511237975,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 8,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [
+              "FireResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Thorns",
+                3500
+              ],
+              [
+                "FireResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_ShockPulse",
+              "Vit",
+              "Thorns",
+              "FireResist"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 311905401,
+          "afterFirstS": 3585442903,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SCCSCCSSSSSSCR",
+          "score": 35,
+          "finalSeed": 1525875535,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 8,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "PoisonResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "PoisonResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "GoldPickUpRadius",
+              "PoisonResist"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 311905401,
+          "afterFirstS": 3585442903,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSCCCCCCCR",
+          "score": 36,
+          "finalSeed": 755183818,
+          "materials": {
+            "operations": 11,
+            "reforges": 1,
+            "crucibles": 3,
+            "conversions": 7,
+            "forgottenSouls": 120,
+            "bountiesPerAct": 5,
+            "deathBreaths": 70
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_SpectralBlade",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_SpectralBlade",
+                0.15
+              ],
+              [
+                "Indestructible",
+                1
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_SpectralBlade",
+              "Indestructible",
+              "GoldPickUpRadius"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 634106963,
+      "afterFirstS": 3508006596,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 65,
+      "goals": 9,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 634106963,
+          "afterFirstS": 3508006596,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSRSSSSSR",
+          "score": 32,
+          "finalSeed": 205766036,
+          "materials": {
+            "operations": 10,
+            "reforges": 2,
+            "crucibles": 8,
+            "conversions": 0,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 10,
+            "deathBreaths": 0
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_SpectralBlade",
+              "with": "DR"
+            },
+            "resistance": [
+              "PoisonResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_SpectralBlade",
+                0.15
+              ],
+              [
+                "PoisonResist",
+                210
+              ],
+              [
+                "Gold",
+                0.35
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_SpectralBlade",
+              "PoisonResist",
+              "Gold"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 634106963,
+          "afterFirstS": 3508006596,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSCCCSCSSSCSR",
+          "score": 35,
+          "finalSeed": 3348381923,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 8,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_MagicMissile",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_MagicMissile",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_MagicMissile",
+              "Vit",
+              "GoldPickUpRadius",
+              "Experience"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 634106963,
+          "afterFirstS": 3508006596,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SCSSCSSSCSCCSSR",
+          "score": 36,
+          "finalSeed": 3117117325,
+          "materials": {
+            "operations": 15,
+            "reforges": 1,
+            "crucibles": 9,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "PoisonResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "KillLife",
+                7725
+              ],
+              [
+                "PoisonResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "KillLife",
+              "PoisonResist"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 638366710,
+      "afterFirstS": 3756848459,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 64,
+      "goals": 4,
+      "best": {
+        "mystic": {
+          "initialOriginalSeed": 638366710,
+          "afterFirstS": 3756848459,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSRSCCSR",
+          "score": 35,
+          "finalSeed": 2407510134,
+          "materials": {
+            "operations": 9,
+            "reforges": 2,
+            "crucibles": 5,
+            "conversions": 2,
+            "forgottenSouls": 120,
+            "bountiesPerAct": 10,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "ResistAll",
+              "Gold",
+              "Experience"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 638366710,
+          "afterFirstS": 3756848459,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SCSSRCCSR",
+          "score": 37,
+          "finalSeed": 3107625019,
+          "materials": {
+            "operations": 9,
+            "reforges": 2,
+            "crucibles": 4,
+            "conversions": 3,
+            "forgottenSouls": 130,
+            "bountiesPerAct": 10,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [
+              "PhysicalResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "PhysicalResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_ShockPulse",
+              "GoldPickUpRadius",
+              "PhysicalResist"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 692695830,
+      "afterFirstS": 3152279938,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 74,
+      "goals": 9,
+      "best": {
+        "mystic": {
+          "initialOriginalSeed": 692695830,
+          "afterFirstS": 3152279938,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SCSSSSSSSSSCSR",
+          "score": 29,
+          "finalSeed": 1597873918,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 11,
+            "conversions": 2,
+            "forgottenSouls": 70,
+            "bountiesPerAct": 5,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "Experience",
+                260
+              ],
+              [
+                "KillLife",
+                7725
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "ResistAll",
+              "Experience",
+              "KillLife"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 692695830,
+          "afterFirstS": 3152279938,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSCCSCSSSSSSSSSR",
+          "score": 33,
+          "finalSeed": 529351818,
+          "materials": {
+            "operations": 16,
+            "reforges": 1,
+            "crucibles": 12,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [
+              "FireResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "FireResist",
+                210
+              ],
+              [
+                "KillLife",
+                7725
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_ShockPulse",
+              "Vit",
+              "FireResist",
+              "KillLife"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 718337488,
+      "afterFirstS": 2478456004,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 77,
+      "goals": 9,
+      "best": {
+        "mystic": {
+          "initialOriginalSeed": 718337488,
+          "afterFirstS": 2478456004,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SCSCCCCSR",
+          "score": 30,
+          "finalSeed": 3498188070,
+          "materials": {
+            "operations": 9,
+            "reforges": 1,
+            "crucibles": 3,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "Thorns",
+                3500
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_ShockPulse",
+              "Vit",
+              "Gold",
+              "Thorns"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 718337488,
+          "afterFirstS": 2478456004,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSCSCCSCSSSSSR",
+          "score": 33,
+          "finalSeed": 923163529,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 9,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_Electrocute",
+              "with": "DR"
+            },
+            "resistance": [
+              "FireResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_Electrocute",
+                0.15
+              ],
+              [
+                "FireResist",
+                210
+              ],
+              [
+                "Thorns",
+                3500
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_Electrocute",
+              "FireResist",
+              "Thorns"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 793835586,
+      "afterFirstS": 3734300028,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 68,
+      "goals": 10,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 793835586,
+          "afterFirstS": 3734300028,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSSSSSSSSSSSR",
+          "score": 25,
+          "finalSeed": 3566453778,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 13,
+            "conversions": 0,
+            "forgottenSouls": 50,
+            "bountiesPerAct": 5,
+            "deathBreaths": 0
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_MagicMissile",
+              "with": "DR"
+            },
+            "resistance": [
+              "LightningResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_MagicMissile",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "LightningResist",
+                210
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_MagicMissile",
+              "Vit",
+              "LightningResist",
+              "Experience"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 793835586,
+          "afterFirstS": 3734300028,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSSCSSCSSR",
+          "score": 27,
+          "finalSeed": 4095204882,
+          "materials": {
+            "operations": 12,
+            "reforges": 1,
+            "crucibles": 9,
+            "conversions": 2,
+            "forgottenSouls": 70,
+            "bountiesPerAct": 5,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_Electrocute",
+              "with": "Vit"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_Electrocute",
+                0.15
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "Indestructible",
+                1
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_Electrocute",
+              "DR",
+              "Gold",
+              "Indestructible"
+            ]
+          }
+        },
+        "exact": {
+          "initialOriginalSeed": 793835586,
+          "afterFirstS": 3734300028,
+          "mode": "balanced",
+          "tier": "exact",
+          "path": "SSSSSSSSCSSSSSSCSCR",
+          "score": 36,
+          "finalSeed": 3933960453,
+          "materials": {
+            "operations": 19,
+            "reforges": 1,
+            "crucibles": 15,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "exact",
+            "mystic": null,
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "KillLife",
+                7725
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "KillLife",
+              "GoldPickUpRadius"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 911099513,
+      "afterFirstS": 3844152571,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 77,
+      "goals": 14,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 911099513,
+          "afterFirstS": 3844152571,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSSSSCSCSCSR",
+          "score": 30,
+          "finalSeed": 2241818231,
+          "materials": {
+            "operations": 13,
+            "reforges": 1,
+            "crucibles": 9,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [
+              "ColdResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "ColdResist",
+                210
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_ShockPulse",
+              "ColdResist",
+              "GoldPickUpRadius"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 911099513,
+          "afterFirstS": 3844152571,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SCCSSCSCSSSSSR",
+          "score": 33,
+          "finalSeed": 3032559163,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 9,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "REQ",
+                40
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_ShockPulse",
+              "GoldPickUpRadius",
+              "REQ"
+            ]
+          }
+        },
+        "exact": {
+          "initialOriginalSeed": 911099513,
+          "afterFirstS": 3844152571,
+          "mode": "balanced",
+          "tier": "exact",
+          "path": "SCCCSCSSSSSSCCR",
+          "score": 38,
+          "finalSeed": 2267333601,
+          "materials": {
+            "operations": 15,
+            "reforges": 1,
+            "crucibles": 8,
+            "conversions": 6,
+            "forgottenSouls": 110,
+            "bountiesPerAct": 5,
+            "deathBreaths": 60
+          },
+          "goal": {
+            "tier": "exact",
+            "mystic": null,
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Thorns",
+                3500
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "Vit",
+              "Thorns",
+              "Experience"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 968847461,
+      "afterFirstS": 1079616626,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 57,
+      "goals": 4,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 968847461,
+          "afterFirstS": 1079616626,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SCCSSCCSSSR",
+          "score": 30,
+          "finalSeed": 823978676,
+          "materials": {
+            "operations": 11,
+            "reforges": 1,
+            "crucibles": 6,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [
+              "FireResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "FireResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_ShockPulse",
+              "Vit",
+              "Gold",
+              "FireResist"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 1029273403,
+      "afterFirstS": 246620659,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 75,
+      "goals": 8,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 1029273403,
+          "afterFirstS": 246620659,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSCCCR",
+          "score": 23,
+          "finalSeed": 3730958773,
+          "materials": {
+            "operations": 6,
+            "reforges": 1,
+            "crucibles": 2,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [
+              "ArcaneResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ArcaneResist",
+                210
+              ],
+              [
+                "Thorns",
+                3500
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_ShockPulse",
+              "Vit",
+              "ArcaneResist",
+              "Thorns"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 1029273403,
+          "afterFirstS": 246620659,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSSRSR",
+          "score": 30,
+          "finalSeed": 4107135270,
+          "materials": {
+            "operations": 8,
+            "reforges": 2,
+            "crucibles": 6,
+            "conversions": 0,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 10,
+            "deathBreaths": 0
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "ResistAll",
+              "GoldPickUpRadius",
+              "Experience"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 1029273403,
+          "afterFirstS": 246620659,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SSSSSSSSCSCSSCR",
+          "score": 32,
+          "finalSeed": 244427835,
+          "materials": {
+            "operations": 15,
+            "reforges": 1,
+            "crucibles": 11,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "ColdResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ColdResist",
+                210
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "Vit",
+              "ColdResist",
+              "Experience"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 1154150060,
+      "afterFirstS": 1441992290,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 79,
+      "goals": 13,
+      "best": {
+        "exact+res": {
+          "initialOriginalSeed": 1154150060,
+          "afterFirstS": 1441992290,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SCSSCSRR",
+          "score": 34,
+          "finalSeed": 2453570212,
+          "materials": {
+            "operations": 8,
+            "reforges": 2,
+            "crucibles": 4,
+            "conversions": 2,
+            "forgottenSouls": 120,
+            "bountiesPerAct": 10,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "LightningResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "LightningResist",
+                210
+              ],
+              [
+                "Gold",
+                0.35
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "LightningResist",
+              "Gold"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 1154150060,
+          "afterFirstS": 1441992290,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSCCSSSSSSCSSSSR",
+          "score": 34,
+          "finalSeed": 4255666712,
+          "materials": {
+            "operations": 17,
+            "reforges": 1,
+            "crucibles": 13,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_SpectralBlade",
+              "with": "Vit"
+            },
+            "resistance": [
+              "FireResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Skill_Wizard_SpectralBlade",
+                0.15
+              ],
+              [
+                "FireResist",
+                210
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "Skill_Wizard_SpectralBlade",
+              "FireResist",
+              "Experience"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 1154150060,
+          "afterFirstS": 1441992290,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSCSSCSCSCCCR",
+          "score": 38,
+          "finalSeed": 1434815508,
+          "materials": {
+            "operations": 15,
+            "reforges": 1,
+            "crucibles": 8,
+            "conversions": 6,
+            "forgottenSouls": 110,
+            "bountiesPerAct": 5,
+            "deathBreaths": 60
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Regen",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Regen",
+                7185
+              ],
+              [
+                "Thorns",
+                3500
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Regen",
+              "Thorns",
+              "Experience"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 1281849305,
+      "afterFirstS": 1210435725,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 68,
+      "goals": 11,
+      "best": {
+        "mystic": {
+          "initialOriginalSeed": 1281849305,
+          "afterFirstS": 1210435725,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSCCSSCSCSCSR",
+          "score": 35,
+          "finalSeed": 2735086353,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 8,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "Vit"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "Experience",
+                260
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "ResistAll",
+              "Experience",
+              "GoldPickUpRadius"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 1281849305,
+          "afterFirstS": 1210435725,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SCSCSSSCCSCCR",
+          "score": 36,
+          "finalSeed": 1162789100,
+          "materials": {
+            "operations": 13,
+            "reforges": 1,
+            "crucibles": 6,
+            "conversions": 6,
+            "forgottenSouls": 110,
+            "bountiesPerAct": 5,
+            "deathBreaths": 60
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_Electrocute",
+              "with": "Vit"
+            },
+            "resistance": [
+              "FireResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_Electrocute",
+                0.15
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "KillLife",
+                7725
+              ],
+              [
+                "FireResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_Electrocute",
+              "DR",
+              "KillLife",
+              "FireResist"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 1346910248,
+      "afterFirstS": 620950373,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 67,
+      "goals": 9,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 1346910248,
+          "afterFirstS": 620950373,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSSSSCSSCSSSSR",
+          "score": 30,
+          "finalSeed": 3862712951,
+          "materials": {
+            "operations": 15,
+            "reforges": 1,
+            "crucibles": 12,
+            "conversions": 2,
+            "forgottenSouls": 70,
+            "bountiesPerAct": 5,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_MagicMissile",
+              "with": "DR"
+            },
+            "resistance": [
+              "LightningResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_MagicMissile",
+                0.15
+              ],
+              [
+                "KillLife",
+                7725
+              ],
+              [
+                "LightningResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_MagicMissile",
+              "KillLife",
+              "LightningResist"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 1346910248,
+          "afterFirstS": 620950373,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SSSCSCSSSCCR",
+          "score": 31,
+          "finalSeed": 3959916393,
+          "materials": {
+            "operations": 12,
+            "reforges": 1,
+            "crucibles": 7,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "ColdResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "KillLife",
+                7725
+              ],
+              [
+                "ColdResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "Vit",
+              "KillLife",
+              "ColdResist"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 1346910248,
+          "afterFirstS": 620950373,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSCSSCSSCCSSSCR",
+          "score": 37,
+          "finalSeed": 1214573771,
+          "materials": {
+            "operations": 16,
+            "reforges": 1,
+            "crucibles": 10,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_SpectralBlade",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_SpectralBlade",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "Thorns",
+                3500
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_SpectralBlade",
+              "Vit",
+              "GoldPickUpRadius",
+              "Thorns"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 1695600893,
+      "afterFirstS": 2562484142,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 67,
+      "goals": 8,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 1695600893,
+          "afterFirstS": 2562484142,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSCSSCCSSSSCR",
+          "score": 33,
+          "finalSeed": 2997369534,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 9,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [
+              "FireResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Experience",
+                260
+              ],
+              [
+                "FireResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_ShockPulse",
+              "Vit",
+              "Experience",
+              "FireResist"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 1695600893,
+          "afterFirstS": 2562484142,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSSSSSSSCSSSSSCSCR",
+          "score": 37,
+          "finalSeed": 1668850897,
+          "materials": {
+            "operations": 20,
+            "reforges": 1,
+            "crucibles": 16,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "Thorns",
+                3500
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "ResistAll",
+              "Thorns",
+              "Experience"
+            ]
+          }
+        },
+        "exact": {
+          "initialOriginalSeed": 1695600893,
+          "afterFirstS": 2562484142,
+          "mode": "balanced",
+          "tier": "exact",
+          "path": "SSCSCSCSSCSSCSSSR",
+          "score": 38,
+          "finalSeed": 3672291417,
+          "materials": {
+            "operations": 17,
+            "reforges": 1,
+            "crucibles": 11,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "exact",
+            "mystic": null,
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Thorns",
+                3500
+              ],
+              [
+                "Gold",
+                0.35
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "Thorns",
+              "Gold"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 2160764913,
+      "afterFirstS": 736403806,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 75,
+      "goals": 7,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 2160764913,
+          "afterFirstS": 736403806,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSSCSSCCCR",
+          "score": 30,
+          "finalSeed": 1204888102,
+          "materials": {
+            "operations": 11,
+            "reforges": 1,
+            "crucibles": 6,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Regen",
+              "with": "DR"
+            },
+            "resistance": [
+              "PhysicalResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Regen",
+                7185
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "PhysicalResist",
+                210
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Regen",
+              "Vit",
+              "PhysicalResist",
+              "Experience"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 2160764913,
+          "afterFirstS": 736403806,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSSCSSCCSSCSSCR",
+          "score": 38,
+          "finalSeed": 2927457216,
+          "materials": {
+            "operations": 17,
+            "reforges": 1,
+            "crucibles": 11,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "Vit"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "KillLife",
+                7725
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "ResistAll",
+              "DR",
+              "GoldPickUpRadius",
+              "KillLife"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 2670941242,
+      "afterFirstS": 3494726909,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 73,
+      "goals": 6,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 2670941242,
+          "afterFirstS": 3494726909,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SCCSSCSSCSSR",
+          "score": 31,
+          "finalSeed": 579143538,
+          "materials": {
+            "operations": 12,
+            "reforges": 1,
+            "crucibles": 7,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_MagicMissile",
+              "with": "DR"
+            },
+            "resistance": [
+              "LightningResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_MagicMissile",
+                0.15
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "LightningResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_MagicMissile",
+              "Gold",
+              "LightningResist"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 2670941242,
+          "afterFirstS": 3494726909,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSCSSSSSSSSSSSSSSCSR",
+          "score": 35,
+          "finalSeed": 3087174636,
+          "materials": {
+            "operations": 20,
+            "reforges": 1,
+            "crucibles": 17,
+            "conversions": 2,
+            "forgottenSouls": 70,
+            "bountiesPerAct": 5,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "ResistAll",
+              "Gold",
+              "Experience"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 2672864298,
+      "afterFirstS": 2646512280,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 74,
+      "goals": 12,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 2672864298,
+          "afterFirstS": 2646512280,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSSSSCSSCCCSR",
+          "score": 33,
+          "finalSeed": 1770860431,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 9,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Regen",
+              "with": "DR"
+            },
+            "resistance": [
+              "PhysicalResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Regen",
+                7185
+              ],
+              [
+                "Thorns",
+                3500
+              ],
+              [
+                "PhysicalResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Regen",
+              "Thorns",
+              "PhysicalResist"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 2672864298,
+          "afterFirstS": 2646512280,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SSSCSSSCCSSCSSR",
+          "score": 34,
+          "finalSeed": 3615178609,
+          "materials": {
+            "operations": 15,
+            "reforges": 1,
+            "crucibles": 10,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "ColdResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Experience",
+                260
+              ],
+              [
+                "ColdResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "Experience",
+              "ColdResist"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 2672864298,
+          "afterFirstS": 2646512280,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SCSSSSSCSCSCSSSR",
+          "score": 35,
+          "finalSeed": 3796925511,
+          "materials": {
+            "operations": 16,
+            "reforges": 1,
+            "crucibles": 11,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_SpectralBlade",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_SpectralBlade",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Experience",
+                260
+              ],
+              [
+                "Gold",
+                0.35
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_SpectralBlade",
+              "Vit",
+              "Experience",
+              "Gold"
+            ]
+          }
+        },
+        "exact": {
+          "initialOriginalSeed": 2672864298,
+          "afterFirstS": 2646512280,
+          "mode": "balanced",
+          "tier": "exact",
+          "path": "SSSSSSSCSSSSSSSSCSCR",
+          "score": 37,
+          "finalSeed": 1087262517,
+          "materials": {
+            "operations": 20,
+            "reforges": 1,
+            "crucibles": 16,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "exact",
+            "mystic": null,
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Experience",
+                260
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "Experience",
+              "GoldPickUpRadius"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 2723003190,
+      "afterFirstS": 3169934215,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 66,
+      "goals": 9,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 2723003190,
+          "afterFirstS": 3169934215,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SRR",
+          "score": 25,
+          "finalSeed": 168060279,
+          "materials": {
+            "operations": 3,
+            "reforges": 2,
+            "crucibles": 1,
+            "conversions": 0,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 10,
+            "deathBreaths": 0
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [
+              "PhysicalResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "PhysicalResist",
+                210
+              ],
+              [
+                "Thorns",
+                3500
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_ShockPulse",
+              "Vit",
+              "PhysicalResist",
+              "Thorns"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 2723003190,
+          "afterFirstS": 3169934215,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSSCCSSSSCSSCSR",
+          "score": 36,
+          "finalSeed": 323599437,
+          "materials": {
+            "operations": 17,
+            "reforges": 1,
+            "crucibles": 12,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "KillLife",
+                7725
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "ResistAll",
+              "Vit",
+              "GoldPickUpRadius",
+              "KillLife"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 2864097127,
+      "afterFirstS": 253968331,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 82,
+      "goals": 4,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 2864097127,
+          "afterFirstS": 253968331,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSCSCSSSCSCSR",
+          "score": 33,
+          "finalSeed": 889938824,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 9,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_MagicMissile",
+              "with": "DR"
+            },
+            "resistance": [
+              "PoisonResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_MagicMissile",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "PoisonResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_MagicMissile",
+              "Vit",
+              "GoldPickUpRadius",
+              "PoisonResist"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 2864097127,
+          "afterFirstS": 253968331,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSCSSSSSSSSCCSCSSR",
+          "score": 38,
+          "finalSeed": 1829819454,
+          "materials": {
+            "operations": 19,
+            "reforges": 1,
+            "crucibles": 14,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "ResistAll",
+              "GoldPickUpRadius",
+              "Experience"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 2891951512,
+      "afterFirstS": 1741012303,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 53,
+      "goals": 11,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 2891951512,
+          "afterFirstS": 1741012303,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSCSCCSCSSSR",
+          "score": 32,
+          "finalSeed": 3919556010,
+          "materials": {
+            "operations": 13,
+            "reforges": 1,
+            "crucibles": 8,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_MagicMissile",
+              "with": "DR"
+            },
+            "resistance": [
+              "FireResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_MagicMissile",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "FireResist",
+                210
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_MagicMissile",
+              "Vit",
+              "FireResist",
+              "GoldPickUpRadius"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 2891951512,
+          "afterFirstS": 1741012303,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SCCSSCSCCSCSR",
+          "score": 36,
+          "finalSeed": 2749074043,
+          "materials": {
+            "operations": 13,
+            "reforges": 1,
+            "crucibles": 6,
+            "conversions": 6,
+            "forgottenSouls": 110,
+            "bountiesPerAct": 5,
+            "deathBreaths": 60
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "ArcaneResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "ArcaneResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "Gold",
+              "ArcaneResist"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 2891951512,
+          "afterFirstS": 1741012303,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSSSSSCCSSCCSSSR",
+          "score": 37,
+          "finalSeed": 2498826889,
+          "materials": {
+            "operations": 18,
+            "reforges": 1,
+            "crucibles": 13,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Experience",
+                260
+              ],
+              [
+                "KillLife",
+                7725
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "ResistAll",
+              "Vit",
+              "Experience",
+              "KillLife"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 2938604599,
+      "afterFirstS": 2837691548,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 78,
+      "goals": 7,
+      "best": {
+        "mystic": {
+          "initialOriginalSeed": 2938604599,
+          "afterFirstS": 2837691548,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSSSSSSSSCCSSSR",
+          "score": 32,
+          "finalSeed": 305993356,
+          "materials": {
+            "operations": 17,
+            "reforges": 1,
+            "crucibles": 14,
+            "conversions": 2,
+            "forgottenSouls": 70,
+            "bountiesPerAct": 5,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_SpectralBlade",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_SpectralBlade",
+                0.15
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "Experience",
+                260
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_SpectralBlade",
+              "Gold",
+              "Experience"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 2938604599,
+          "afterFirstS": 2837691548,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSCSCSSSSSSSSSCSSR",
+          "score": 35,
+          "finalSeed": 3136648699,
+          "materials": {
+            "operations": 18,
+            "reforges": 1,
+            "crucibles": 14,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Regen",
+              "with": "DR"
+            },
+            "resistance": [
+              "PoisonResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Regen",
+                7185
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "KillLife",
+                7725
+              ],
+              [
+                "PoisonResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Regen",
+              "Vit",
+              "KillLife",
+              "PoisonResist"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 2938604599,
+          "afterFirstS": 2837691548,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SSCSCSSSSSSCSSCSSR",
+          "score": 37,
+          "finalSeed": 938040865,
+          "materials": {
+            "operations": 18,
+            "reforges": 1,
+            "crucibles": 13,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "LightningResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "LightningResist",
+                210
+              ],
+              [
+                "Thorns",
+                3500
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "LightningResist",
+              "Thorns"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 3265178762,
+      "afterFirstS": 2916639454,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 62,
+      "goals": 5,
+      "best": {
+        "exact": {
+          "initialOriginalSeed": 3265178762,
+          "afterFirstS": 2916639454,
+          "mode": "balanced",
+          "tier": "exact",
+          "path": "SSSSSSSSRR",
+          "score": 32,
+          "finalSeed": 339315102,
+          "materials": {
+            "operations": 10,
+            "reforges": 2,
+            "crucibles": 8,
+            "conversions": 0,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 10,
+            "deathBreaths": 0
+          },
+          "goal": {
+            "tier": "exact",
+            "mystic": null,
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Experience",
+                260
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "Vit",
+              "Experience",
+              "GoldPickUpRadius"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 3265178762,
+          "afterFirstS": 2916639454,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSSCSSSSSCSSSSSSR",
+          "score": 33,
+          "finalSeed": 684582314,
+          "materials": {
+            "operations": 18,
+            "reforges": 1,
+            "crucibles": 15,
+            "conversions": 2,
+            "forgottenSouls": 70,
+            "bountiesPerAct": 5,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "Vit"
+            },
+            "resistance": [
+              "PhysicalResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "PhysicalResist",
+                210
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_ShockPulse",
+              "DR",
+              "PhysicalResist",
+              "GoldPickUpRadius"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 3265178762,
+          "afterFirstS": 2916639454,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SCCCCSSCCSSR",
+          "score": 35,
+          "finalSeed": 2711466966,
+          "materials": {
+            "operations": 12,
+            "reforges": 1,
+            "crucibles": 5,
+            "conversions": 6,
+            "forgottenSouls": 110,
+            "bountiesPerAct": 5,
+            "deathBreaths": 60
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "Gold",
+                0.35
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "ResistAll",
+              "GoldPickUpRadius",
+              "Gold"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 3343454246,
+      "afterFirstS": 3318060116,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 70,
+      "goals": 10,
+      "best": {
+        "mystic": {
+          "initialOriginalSeed": 3343454246,
+          "afterFirstS": 3318060116,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSSSCSSCSSSSSSR",
+          "score": 32,
+          "finalSeed": 3292364271,
+          "materials": {
+            "operations": 17,
+            "reforges": 1,
+            "crucibles": 14,
+            "conversions": 2,
+            "forgottenSouls": 70,
+            "bountiesPerAct": 5,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "Indestructible",
+                1
+              ],
+              [
+                "HitSlow",
+                0.0509
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "ResistAll",
+              "Indestructible",
+              "HitSlow"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 3343454246,
+          "afterFirstS": 3318060116,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SCSCSSSSCSSSSSSR",
+          "score": 33,
+          "finalSeed": 995469958,
+          "materials": {
+            "operations": 16,
+            "reforges": 1,
+            "crucibles": 12,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Regen",
+              "with": "Vit"
+            },
+            "resistance": [
+              "PhysicalResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Regen",
+                7185
+              ],
+              [
+                "PhysicalResist",
+                210
+              ],
+              [
+                "Thorns",
+                3500
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "Regen",
+              "PhysicalResist",
+              "Thorns"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 3415954544,
+      "afterFirstS": 458781062,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 73,
+      "goals": 7,
+      "best": {
+        "mystic": {
+          "initialOriginalSeed": 3415954544,
+          "afterFirstS": 458781062,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSCSCCSSSCSSSSR",
+          "score": 34,
+          "finalSeed": 3422478539,
+          "materials": {
+            "operations": 15,
+            "reforges": 1,
+            "crucibles": 10,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_MagicMissile",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_MagicMissile",
+                0.15
+              ],
+              [
+                "Thorns",
+                3500
+              ],
+              [
+                "KillLife",
+                7725
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_MagicMissile",
+              "Thorns",
+              "KillLife"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 3415954544,
+          "afterFirstS": 458781062,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSSSSSSSSRSSR",
+          "score": 36,
+          "finalSeed": 1595326611,
+          "materials": {
+            "operations": 14,
+            "reforges": 2,
+            "crucibles": 12,
+            "conversions": 0,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 10,
+            "deathBreaths": 0
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [
+              "FireResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "FireResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_ShockPulse",
+              "Gold",
+              "FireResist"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 3418403453,
+      "afterFirstS": 2181593669,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 62,
+      "goals": 1,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 3418403453,
+          "afterFirstS": 2181593669,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSCSSCSSSCCSSSSCR",
+          "score": 38,
+          "finalSeed": 3591851423,
+          "materials": {
+            "operations": 17,
+            "reforges": 1,
+            "crucibles": 11,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_Electrocute",
+              "with": "DR"
+            },
+            "resistance": [
+              "PoisonResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_Electrocute",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "PoisonResist",
+                210
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_Electrocute",
+              "Vit",
+              "PoisonResist",
+              "GoldPickUpRadius"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 3576256914,
+      "afterFirstS": 318919651,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 81,
+      "goals": 9,
+      "best": {
+        "mystic": {
+          "initialOriginalSeed": 3576256914,
+          "afterFirstS": 318919651,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSSSCSSSSCCR",
+          "score": 31,
+          "finalSeed": 376754031,
+          "materials": {
+            "operations": 14,
+            "reforges": 1,
+            "crucibles": 10,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_Electrocute",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_Electrocute",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "Gold",
+                0.35
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_Electrocute",
+              "Vit",
+              "GoldPickUpRadius",
+              "Gold"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 3576256914,
+          "afterFirstS": 318919651,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSSCCSSSSSSSSSCR",
+          "score": 34,
+          "finalSeed": 2112385288,
+          "materials": {
+            "operations": 17,
+            "reforges": 1,
+            "crucibles": 13,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Regen",
+              "with": "DR"
+            },
+            "resistance": [
+              "LightningResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Regen",
+                7185
+              ],
+              [
+                "Indestructible",
+                1
+              ],
+              [
+                "LightningResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Regen",
+              "Indestructible",
+              "LightningResist"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 3576256914,
+          "afterFirstS": 318919651,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SSSCCCCSCSCR",
+          "score": 35,
+          "finalSeed": 1065154572,
+          "materials": {
+            "operations": 12,
+            "reforges": 1,
+            "crucibles": 5,
+            "conversions": 6,
+            "forgottenSouls": 110,
+            "bountiesPerAct": 5,
+            "deathBreaths": 60
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "PoisonResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "PoisonResist",
+                210
+              ],
+              [
+                "Gold",
+                0.35
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "Vit",
+              "PoisonResist",
+              "Gold"
+            ]
+          }
+        },
+        "exact": {
+          "initialOriginalSeed": 3576256914,
+          "afterFirstS": 318919651,
+          "mode": "balanced",
+          "tier": "exact",
+          "path": "SSCSSSSSSCSSSCSCSR",
+          "score": 37,
+          "finalSeed": 1040529125,
+          "materials": {
+            "operations": 18,
+            "reforges": 1,
+            "crucibles": 13,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "exact",
+            "mystic": null,
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "Gold",
+                0.35
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "GoldPickUpRadius",
+              "Gold"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 3767353434,
+      "afterFirstS": 3672496513,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 75,
+      "goals": 9,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 3767353434,
+          "afterFirstS": 3672496513,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SCSSSSSCSSSSR",
+          "score": 28,
+          "finalSeed": 1205015854,
+          "materials": {
+            "operations": 13,
+            "reforges": 1,
+            "crucibles": 10,
+            "conversions": 2,
+            "forgottenSouls": 70,
+            "bountiesPerAct": 5,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Regen",
+              "with": "DR"
+            },
+            "resistance": [
+              "PoisonResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Regen",
+                7185
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "PoisonResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Regen",
+              "Gold",
+              "PoisonResist"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 3767353434,
+          "afterFirstS": 3672496513,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SSSSSSSSCSSCSSCSSR",
+          "score": 35,
+          "finalSeed": 3825372391,
+          "materials": {
+            "operations": 18,
+            "reforges": 1,
+            "crucibles": 14,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "ColdResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ColdResist",
+                210
+              ],
+              [
+                "Thorns",
+                3500
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "Vit",
+              "ColdResist",
+              "Thorns"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 3767353434,
+          "afterFirstS": 3672496513,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSSSCSCSSSSSSSSCSR",
+          "score": 36,
+          "finalSeed": 2062574535,
+          "materials": {
+            "operations": 19,
+            "reforges": 1,
+            "crucibles": 15,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_Electrocute",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_Electrocute",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Thorns",
+                3500
+              ],
+              [
+                "KillLife",
+                7725
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_Electrocute",
+              "Vit",
+              "Thorns",
+              "KillLife"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 3903720956,
+      "afterFirstS": 2136786142,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 89,
+      "goals": 19,
+      "best": {
+        "mystic": {
+          "initialOriginalSeed": 3903720956,
+          "afterFirstS": 2136786142,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSCSSSSSSSCR",
+          "score": 28,
+          "finalSeed": 3086756222,
+          "materials": {
+            "operations": 13,
+            "reforges": 1,
+            "crucibles": 10,
+            "conversions": 2,
+            "forgottenSouls": 70,
+            "bountiesPerAct": 5,
+            "deathBreaths": 20
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Regen",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Regen",
+                7185
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Experience",
+                260
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Regen",
+              "Vit",
+              "Experience",
+              "GoldPickUpRadius"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 3903720956,
+          "afterFirstS": 2136786142,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SSSSSSCCCCR",
+          "score": 30,
+          "finalSeed": 1002902687,
+          "materials": {
+            "operations": 11,
+            "reforges": 1,
+            "crucibles": 6,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "ArcaneResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "ArcaneResist",
+                210
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "DR",
+              "ArcaneResist",
+              "GoldPickUpRadius"
+            ]
+          }
+        },
+        "mystic+res": {
+          "initialOriginalSeed": 3903720956,
+          "afterFirstS": 2136786142,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSCSSSSSCCCR",
+          "score": 32,
+          "finalSeed": 1657944726,
+          "materials": {
+            "operations": 13,
+            "reforges": 1,
+            "crucibles": 8,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_Electrocute",
+              "with": "DR"
+            },
+            "resistance": [
+              "LightningResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Skill_Wizard_Electrocute",
+                0.15
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "LightningResist",
+                210
+              ],
+              [
+                "HitSlow",
+                0.0509
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Skill_Wizard_Electrocute",
+              "Vit",
+              "LightningResist",
+              "HitSlow"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 3942680837,
+      "afterFirstS": 4183136985,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 68,
+      "goals": 8,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 3942680837,
+          "afterFirstS": 4183136985,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SSSCSCCSSSSCSSSR",
+          "score": 35,
+          "finalSeed": 3055006959,
+          "materials": {
+            "operations": 16,
+            "reforges": 1,
+            "crucibles": 11,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_ShockPulse",
+              "with": "DR"
+            },
+            "resistance": [
+              "PhysicalResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_ShockPulse",
+                0.15
+              ],
+              [
+                "HitSlow",
+                0.0509
+              ],
+              [
+                "PhysicalResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_ShockPulse",
+              "HitSlow",
+              "PhysicalResist"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 3942680837,
+          "afterFirstS": 4183136985,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SSSCSSSSCSSCSCSSR",
+          "score": 36,
+          "finalSeed": 111683503,
+          "materials": {
+            "operations": 17,
+            "reforges": 1,
+            "crucibles": 12,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "Skill_Wizard_MagicMissile",
+              "with": "DR"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_MagicMissile",
+                0.15
+              ],
+              [
+                "GoldPickUpRadius",
+                2
+              ],
+              [
+                "KillLife",
+                7725
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_MagicMissile",
+              "GoldPickUpRadius",
+              "KillLife"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 3999807195,
+      "afterFirstS": 1240527080,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 77,
+      "goals": 8,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 3999807195,
+          "afterFirstS": 1240527080,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SCCSSSSCSR",
+          "score": 27,
+          "finalSeed": 155607837,
+          "materials": {
+            "operations": 10,
+            "reforges": 1,
+            "crucibles": 6,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_SpectralBlade",
+              "with": "DR"
+            },
+            "resistance": [
+              "FireResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_SpectralBlade",
+                0.15
+              ],
+              [
+                "FireResist",
+                210
+              ],
+              [
+                "Thorns",
+                3500
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_SpectralBlade",
+              "FireResist",
+              "Thorns"
+            ]
+          }
+        },
+        "mystic": {
+          "initialOriginalSeed": 3999807195,
+          "afterFirstS": 1240527080,
+          "mode": "balanced",
+          "tier": "mystic",
+          "path": "SCSCCSSCCSSR",
+          "score": 33,
+          "finalSeed": 1729775351,
+          "materials": {
+            "operations": 12,
+            "reforges": 1,
+            "crucibles": 6,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "mystic",
+            "mystic": {
+              "replace": "ResistAll",
+              "with": "Vit"
+            },
+            "resistance": [],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "ResistAll",
+                130
+              ],
+              [
+                "KillLife",
+                7725
+              ],
+              [
+                "HitSlow",
+                0.0509
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "ResistAll",
+              "KillLife",
+              "HitSlow"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 3999807195,
+          "afterFirstS": 1240527080,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SCSSSCSCSSCSSSSSSSR",
+          "score": 38,
+          "finalSeed": 2596623332,
+          "materials": {
+            "operations": 19,
+            "reforges": 1,
+            "crucibles": 14,
+            "conversions": 4,
+            "forgottenSouls": 90,
+            "bountiesPerAct": 5,
+            "deathBreaths": 40
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "PhysicalResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "PhysicalResist",
+                210
+              ],
+              [
+                "KillLife",
+                7725
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "Vit",
+              "PhysicalResist",
+              "KillLife"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "seed": 4245989982,
+      "afterFirstS": 3268528494,
+      "mode": "balanced",
+      "nodes": 30000,
+      "primal": 62,
+      "goals": 7,
+      "best": {
+        "mystic+res": {
+          "initialOriginalSeed": 4245989982,
+          "afterFirstS": 3268528494,
+          "mode": "balanced",
+          "tier": "mystic+res",
+          "path": "SCCSSSSCSSSSSSSR",
+          "score": 33,
+          "finalSeed": 4274396227,
+          "materials": {
+            "operations": 16,
+            "reforges": 1,
+            "crucibles": 12,
+            "conversions": 3,
+            "forgottenSouls": 80,
+            "bountiesPerAct": 5,
+            "deathBreaths": 30
+          },
+          "goal": {
+            "tier": "mystic+res",
+            "mystic": {
+              "replace": "Skill_Wizard_Electrocute",
+              "with": "DR"
+            },
+            "resistance": [
+              "PhysicalResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "Skill_Wizard_Electrocute",
+                0.15
+              ],
+              [
+                "Gold",
+                0.35
+              ],
+              [
+                "PhysicalResist",
+                210
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "Vit",
+              "Skill_Wizard_Electrocute",
+              "Gold",
+              "PhysicalResist"
+            ]
+          }
+        },
+        "exact+res": {
+          "initialOriginalSeed": 4245989982,
+          "afterFirstS": 3268528494,
+          "mode": "balanced",
+          "tier": "exact+res",
+          "path": "SSSCSCCSSSSSCCSR",
+          "score": 37,
+          "finalSeed": 1041745922,
+          "materials": {
+            "operations": 16,
+            "reforges": 1,
+            "crucibles": 10,
+            "conversions": 5,
+            "forgottenSouls": 100,
+            "bountiesPerAct": 5,
+            "deathBreaths": 50
+          },
+          "goal": {
+            "tier": "exact+res",
+            "mystic": null,
+            "resistance": [
+              "ArcaneResist"
+            ],
+            "values": [
+              [
+                "Int",
+                650
+              ],
+              [
+                "DR",
+                775
+              ],
+              [
+                "Vit",
+                650
+              ],
+              [
+                "ArcaneResist",
+                210
+              ],
+              [
+                "Gold",
+                0.35
+              ]
+            ],
+            "affixes": [
+              "Int",
+              "Sockets",
+              "DR",
+              "Vit",
+              "ArcaneResist",
+              "Gold"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
