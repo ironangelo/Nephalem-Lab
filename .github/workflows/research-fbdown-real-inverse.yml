@@ -1,0 +1,19 @@
+name: Verify real Firebird's Down Reforge inverse hypotheses
+on:
+  push:
+    branches: [research/firebirds-down-real-reforge-2026-11-16]
+    paths:
+      - '.github/workflows/research-fbdown-real-inverse.yml'
+      - 'research/firebirds-down-reforge-inverse.mjs'
+  workflow_dispatch:
+jobs:
+  constraints:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Derive exactly observable Reforge stat constraints
+        run: node research/firebirds-down-reforge-inverse.mjs
