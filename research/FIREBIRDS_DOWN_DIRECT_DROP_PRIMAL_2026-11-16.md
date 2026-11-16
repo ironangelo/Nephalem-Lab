@@ -1,6 +1,19 @@
 # Firebird's Down — recuperación DIRECTA del drop original y búsqueda Primal Soulstone (16-11-2026)
 
-> **ESTADO REAL: PANTALONES ORIGINALES, NINGÚN REFORGE/SANCTIFY/CONVERT APLICADO.** Esta investigación es una simulación todavía sin checkpoint de consola sobre esta misma pieza. NO dar instrucciones de ruta larga sin identificar seed única.
+> **ESTADO REAL ACTUAL: 1 SANCTIFY EJECUTADO, FIREBIRD'S DOWN SANTIFICADO PERFECTO CONFIRMADO EN FOTO.** No ejecutar otra operación sobre esta pieza. **El primer checkpoint de la simulación NO coincidió con ninguna de las 31 seeds hipotéticas**: nunca se identificó una seed única; invalidar la aplicabilidad de las rutas preliminares.
+
+
+## RESULTADO REAL DESPUÉS DE PRIMER SANCTIFY (16-11-2026)
+
+Foto `image-1794850782626.jpg` de Switch 2:
+
+- Firebird's Down **SANTIFICADO** con **1534 Armor total**.
+- **INT +650**, **VIT +650**, **Armor adicional +775**, **Sockets (2)**, secundario **Arcane Resistance +210**.
+- Poder estacional Storm Armor (carga durante 30 s; descarga relámpago).
+- Estas cinco líneas ya cumplen **TODOS** los objetivos de Soulstone para pantalones. **NO Myriam, NO Reforge, NO más Sanctify.** Costó **1 Crucible**, cero Souls. Otros objetos del usuario son Primal naturales; este puede ocupar el único slot sanctified si no hay otro.
+- **FALLO EXPLÍCITO DE MODELO:** ninguna de las 31 candidatos hipotéticos del original produce la combinación de DR775 + VIT650 + ArcaneResist210 tras primer S. Las 31 seeds procedían de invertir `values()` sobre el drop normal y reproducían sus números, pero no fueron verificadas con transición real. Esta observación refuta su utilización como estado real para recetas futuras; **NO hay seed actual conocida** y **NO puede elegirse una de las rutas de 50–120 Forgotten Souls**. Posible diferencia entre generación loot original y entrada al Cubo; investigar antes de gastar.
+- **Interpretación:** se consiguió resultado funcional de equipo perfecto, pero **NO Primal natural** y el conocimiento de seed NO quedó validado. El intento de invertir drop por stats no puede presentarse como método fiable.
+- Para persistencia de equipo al terminar temporada, objetos santificados no se trasladan; natural Primal sí. Priorizar farming de material antes de volver a trabajar en este objeto.
 
 ## Observación del usuario — Nintendo Switch 2, Wizard
 
@@ -57,4 +70,4 @@ Se preparó motor `research/firebirds-down-31-candidate-route-search.mjs`, usand
 
 ## Estado en consola pendiente
 
-**NO se ha usado ni un Crucible ni una Reforge en estos pantalones desde la captura del usuario.** Próxima acción recomendada: **1 Sanctify del mismo pantalón, fotografía completa, NO Mística**. Después identificar seed por comparación de firmas y calcular/verificar ruta concreta (y afijos de cada paso), antes de más gastos.
+**SÍ SE UTILIZÓ UN ANGELIC CRUCIBLE y salió SANTIFICADO PERFECTO.** No continuar con ningún paso R/S/C ni Mística: resultado funcional final logrado. La primera transición real NO coincide con ninguna de las firmas modeladas; todas las rutas de seed de este documento son simulaciones históricas invalidadas para este objeto en su estado actual.
