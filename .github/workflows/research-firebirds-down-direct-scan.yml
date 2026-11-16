@@ -1,0 +1,26 @@
+name: Direct 32bit recovery from Firebird Down original drop
+on:
+  push:
+    branches: [research/firebirds-down-drop-seed-2026-11-16]
+    paths:
+      - '.github/workflows/research-firebirds-down-direct-scan.yml'
+      - 'research/firebirds-down-direct-scan.c'
+      - 'research/firebirds-down-verify-direct.mjs'
+  workflow_dispatch:
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build hypotheses for original drop numeric values
+        run: node research/firebirds-down-direct-inverse.mjs
+      - name: Scan all 2^32 candidate item seeds at no in-game material cost
+        run: |
+          gcc -O3 -march=native -std=c11 research/firebirds-down-direct-scan.c -o /tmp/fbdown-scan
+          /tmp/fbdown-scan | tee /tmp/firebirds-down-direct-scan.log
+      - name: Verify exact stored-seed candidates with JS engine
+        run: node research/firebirds-down-verify-direct.mjs
