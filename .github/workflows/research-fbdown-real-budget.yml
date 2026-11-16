@@ -1,0 +1,29 @@
+name: Exhaustive limited-budget Firebird Down recipes
+on:
+  push:
+    branches: [research/firebirds-down-real-reforge-2026-11-16]
+    paths:
+      - '.github/workflows/research-fbdown-real-budget.yml'
+  workflow_dispatch:
+jobs:
+  enumerate:
+    strategy:
+      fail-fast: false
+      matrix:
+        s: [0,1,2,3,4,5]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Search under 150 souls from confirmed Reforge seed
+        env:
+          MAX_S: ${{ matrix.s }}
+          MAX_SOULS: '150'
+          MAX_STEPS: '18'
+          MAX_R: '3'
+          MAX_C: '10'
+          MAX_NODES: '1500000'
+        run: node --max-old-space-size=4800 research/firebirds-down-material-budget-enumerator.mjs
