@@ -1,0 +1,29 @@
+name: Cheapest natural Primal Firebird Down from real recovered seed
+on:
+  push:
+    branches: [research/firebirds-down-real-reforge-2026-11-16]
+    paths:
+      - '.github/workflows/research-fbdown-real-routes.yml'
+  workflow_dispatch:
+jobs:
+  search:
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [balanced, fewest-steps, crucible-scarce, souls-scarce, no-crucibles]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Optimize natural Primal Firebird pants from recovered seed
+        env:
+          MODE: ${{ matrix.mode }}
+          MAX_NODES: '260000'
+          MAX_STEPS: '22'
+          MAX_R: '5'
+          MAX_C: '18'
+          MAX_S: '9'
+        run: node --max-old-space-size=4800 research/firebirds-down-real-route-search.mjs
