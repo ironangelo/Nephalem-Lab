@@ -114,3 +114,15 @@ Para las tres rutas: Primal natural con fuego20%, socket1, CHD100%; INT1000 se p
 **Referencias y checkpoints históricos:** [Registro Zodiac completo](https://github.com/ironangelo/Nephalem-Lab/blob/research/zodiac-drop-seed/research/ZODIAC_REAL_SEED_PRIMAL_ROUTES_2026-11-14.md). [Búsqueda de rutas](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43654059863) / [validación independiente Rust](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43654177004).
 
 **Próximo paso al jugar:** Myriam → seleccionar **Attack Speed +7%** en este Zodiac, buscar **Socket 1**. No reemplazar CHC6, CDR8, RCR8 ni afectar secundario control40. Tras confirmar el socket en foto, actualizar Continuity.
+
+## Aughild's Power — experimentos de herrero (15-11-2026)
+
+**Estado real:** Fabricación nueva de Aughild's Power desde Blacksmith usando **Wizard** (foto `image-1794798252531.jpg`, no modificada): 593 armor, +641 INT, +567 VIT, +114 All Resist, +7905 Thorns, +1 Gold/Health Pickup Radius, +11% Familiar Damage (Wizard Only). Es **normal**, no Ancient/Primal. En paralelo se conserva una Aughild anterior hecha por Necromancer (Bone Armor +11%).
+
+**Objetivo Soulstone para hombreras:** INT / CDR / RCR / (Life%, VIT o Armor); secundario cualquier resistencia. Con la pieza nueva no se pueden conseguir simultáneamente CDR y RCR mediante una única Mística. No mejorarla todavía.
+
+**Restricción documentada:** los sets fabricados por herrero como Aughild's Power **NO permiten Sanctify con Crucible ni Reforge/Convert Set Item en el Cubo**. Contrastar con Blizzard y prueba de jugador Switch (fuentes en investigación). Nuestro motor de seeds calcula transiciones del Cubo (R/S/P/C), **NO la siguiente fabricación directa de un set en herrero**. Con solo los afijos de la primera hombrera no se puede determinar responsablemente la semilla de la siguiente fabricación ni un número de crafts hasta un Primal. No inventar ruta "S/R" para Aughild. D3Recipes "Craft & upgrade" trata objeto raro + Hope of Cain, no sets fabricados.
+
+**Costo de cada fabricación Aughild's Power (Blizzard):** 30 Reusable Parts, 30 Arcane Dust, 50 Veiled Crystals, dos materiales específicos de contratos (1 de cada uno) y 72.000 oro; **0 Forgotten Souls y 0 Crucibles**. Si se sigue investigando RNG del herrero, documentar nueva serie de crafts consecutivos del Wizard con calidad, armor y todos los afijos, sin prometer que revelarían el próximo Primal. Ruta práctica: buscar al menos tres de cuatro primarios buenos (INT/CDR/RCR/Life-VIT-Armor) y corregir uno con Mística, aunque sea Ancient.
+
+**Investigación:** [research/AUGHILD_BLACKSMITH_CRAFT_SEED_EXPERIMENT_2026-11-15.md](https://github.com/ironangelo/Nephalem-Lab/blob/main/research/AUGHILD_BLACKSMITH_CRAFT_SEED_EXPERIMENT_2026-11-15.md).
