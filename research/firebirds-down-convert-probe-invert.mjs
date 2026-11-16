@@ -11,3 +11,13 @@ writeFileSync('/tmp/firebird-convert-probe-hypotheses.txt',textData);
 writeFileSync('/tmp/firebird-convert-probe-hypotheses.json',JSON.stringify(keep));
 console.log('FBDOWN_CONVERT_PROBE_SUMMARY',JSON.stringify({start,result:{item:result.item,seed:result.seed,quality:result.quality},hypotheses:keep.length,
  constraints:keep.map(h=>h.constraints),verifiedAtTrueChild:keep.filter(h=>verifyHypothesis(e,it,result.seed,h)).length}));
+
+const compatibleChildNames=seed=>{
+ const pool=e.items.filter(it=>it.set_id===from.set_id&&it.id!==from.id).sort((a,b)=>a.table_index-b.table_index);
+ const cls=e.classFor(from);
+ let total=pool.reduce((s,it)=>s+it.base_weight*it.class_weight[cls],0);
+ let n=Number(seed)%total;
+ for(const it of pool){n-=it.base_weight*it.class_weight[cls];if(n<0)return it.name;}
+ return pool.at(-1).name;
+};
+for(const x of [1791398751,3625671746])console.log('FBDOWN_CONVERT_TARGET_FILTER',JSON.stringify({candidate:x,predictedConvertedItem:compatibleChildNames(x),observed:result.item,compatible:compatibleChildNames(x)===result.item}));
