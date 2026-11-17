@@ -88,11 +88,19 @@ function recover(){
  if(recoverWorker){status('#recovery-status','La recuperación ya está ejecutándose.');return;}
  try{
   if(!drop)throw Error('Primero registra el drop original.');
-  const observed=observe($('#reforge-text').value,$('#reforge-quality').value);
-  if(observed.itemId!==drop.itemId)throw Error('La Reforge debe ser sobre el mismo objeto.');
-  if(!['normal','ancient'].includes(observed.quality))
-   throw Error('Para recuperar una seed necesitamos una Reforge normal o Ancient con valores numéricos, no Primal.');
+  const operation=$('#diagnostic-op').value;
+  const originalSource=item();
+  const convertedTarget=operation==='C'?engine.item($('#converted-item').value):originalSource;
+  if(!convertedTarget)throw Error('Selecciona el nombre exacto de la pieza resultante de Convert Set Item.');
+  const observed=observe($('#reforge-text').value,$('#reforge-quality').value,convertedTarget);
+  if(operation==='R'&&observed.itemId!==drop.itemId)
+   throw Error('La Reforge debe ser sobre el mismo objeto.');
+  if(operation==='C'&&(!originalSource.set_id||originalSource.set_id!==convertedTarget.set_id||originalSource.id===convertedTarget.id))
+   throw Error('Convert debe producir otra pieza del mismo conjunto.');
+  if(!['normal','ancient'].includes(observed.quality)||operation==='C'&&observed.quality!=='normal')
+   throw Error('Reforge requiere Normal o Ancient; Convert siempre es Normal.');
   if(pendingSeeds&&pendingSeeds.length){
+   if(operation!=='R')throw Error('El siguiente diagnóstico de semillas ambiguas debe ser una Reforge real; Convert en este estado necesita validación adicional.');
    // Zodiac and some other items need TWO genuine Reforges. Do not run a
    // second 2^32 scan: replay one Reforge for each previously recovered seed.
    const matches=[];
@@ -119,7 +127,9 @@ function recover(){
   }
   reforge=observed;
   $('#recover').disabled=true;
-  status('#recovery-status','Invirtiendo las posibles seeds numéricas y las transiciones reales de Reforge (dos barridos completos de 32 bits)…');
+  status('#recovery-status',operation==='C'?
+   'Invirtiendo los valores del Convert real y comprobando la relación modular de seeds (sin reforjar)…':
+   'Invirtiendo valores y transiciones de Reforge (dos barridos completos de 32 bits)…');
   recoverWorker=new Worker(new URL('./reforge-recovery-worker.js',import.meta.url),{type:'module'});
   recoverWorker.onmessage=e=>{
    const r=e.data;
@@ -132,8 +142,9 @@ function recover(){
     pendingSeeds=seed===null?uniqueCurr:null;
     $('#plan-route').disabled=seed===null;
     if(seed!==null){
+     if(operation==='C')$('#item').value=convertedTarget.name;
      status('#recovery-status','SEED ÚNICA IDENTIFICADA ✅\nOrigen inferido: '+r.solutions[0].parent+
-      '\nEstado ACTUAL después de Reforge: '+seed+
+      '\nEstado ACTUAL después de '+(operation==='C'?'Convert':'Reforge')+': '+seed+
       '\nCandidatas numéricas iniciales: '+r.postReforgeNumericCandidates+
       '. Solo una pareja reproduce exactamente la operación del Cubo.','success');
     }else if(pendingSeeds.length){
@@ -151,7 +162,9 @@ function recover(){
    recoverWorker?.terminate();recoverWorker=null;$('#recover').disabled=false;seed=null;
    $('#plan-route').disabled=true;status('#recovery-status','Error de recuperación: '+e.message,'error');
   };
-  recoverWorker.postMessage({type:'recover-reforge',gameData:data,hero:engine.hero,itemId:item().id,sourceObservation:drop,observation:reforge});
+  recoverWorker.postMessage({type:operation==='C'?'recover-convert':'recover-reforge',
+   gameData:data,hero:engine.hero,itemId:originalSource.id,
+   sourceObservation:drop,observation:reforge});
  }catch(err){status('#recovery-status','No se inició la recuperación: '+err.message,'error');}
 }
 function budgetOptions(){
@@ -229,6 +242,12 @@ async function boot(){
   $('#hero').onchange=()=>{engine=new UniversalEngine(data,Number($('#hero').value),true);resetItem()};
   $('#item').onchange=resetItem;$('#target-item').onchange=resetItem;
   $('#save-drop').onclick=saveDrop;$('#recover').onclick=recover;$('#plan-route').onclick=plan;
+  $('#diagnostic-op').onchange=()=>{
+   const convert=$('#diagnostic-op').value==='C';
+   $('#converted-item-box').style.display=convert?'flex':'none';
+   $('#reforge-quality').value='normal';
+   $('#reforge-quality').disabled=convert;
+  };
   $('#cancel-recover').onclick=()=>{recoverWorker?.terminate();recoverWorker=null;$('#recover').disabled=false;status('#recovery-status','Cancelado; el drop y el resultado ingresado permanecen en pantalla.')};
   $('#cancel-plan').onclick=()=>{plannerWorker?.terminate();plannerWorker=null;$('#plan-route').disabled=seed===null;status('#recipe-status','Búsqueda cancelada. No se gastó ningún recurso.')};
  }catch(err){status('#db-status','No se pudo cargar la aplicación: '+err.message,'error')}
