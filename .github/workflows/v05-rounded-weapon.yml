@@ -1,0 +1,14 @@
+name: V05 rounded tooltip regression (Deathwish)
+on:
+  push:
+    branches: [feature/web-lab-v05-e2e]
+    paths: ['.github/workflows/v05-rounded-weapon.yml','research/v05-rounded-deathwish-regression.mjs','src/v05-reforge-hypotheses.js','src/universal-recovery.js']
+  workflow_dispatch:
+jobs:
+  weapon:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node research/v05-rounded-deathwish-regression.mjs
