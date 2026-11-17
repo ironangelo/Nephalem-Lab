@@ -273,7 +273,7 @@ async function boot(){
   resetItem();
   status('#db-status',`Base cargada: ${data.items.length} objetos y ${data.affixes.length} afijos; motor de consola listo.`,'success');
   $('#hero').onchange=()=>{engine=new UniversalEngine(data,Number($('#hero').value),true);resetItem()};
-  $('#item').onchange=resetItem;$('#target-item').onchange=resetItem;
+  $('#item').onchange=()=>{$('#target-item').value=$('#item').value;resetItem()};$('#target-item').onchange=resetItem;
   $('#save-drop').onclick=saveDrop;$('#recover').onclick=recover;$('#plan-route').onclick=plan;
   $('#diagnostic-op').onchange=()=>{
    const convert=$('#diagnostic-op').value==='C';
