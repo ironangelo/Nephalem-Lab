@@ -16,12 +16,29 @@ function allowedFamilies(it){return observationAffixFamilies(engine,it)}
 function observe(text,quality='normal',it=item()){
  if(!it)throw Error('Objeto no encontrado en la base de datos.');
  const families=allowedFamilies(it);
- const parsed=parseObservationText(text,families);
- if(parsed.filter(x=>x.family!=='Sockets').length<2)throw Error('Registra suficientes atributos numéricos visibles.');
+ const extra=[];
+ const stripped=String(text).split(/\n/).filter(line=>{
+  const m=line.match(/^\s*([\w-]+)\s*[:=]\s*\+?(\d+)\s*[-–]\s*(\d+)\s*$/);
+  if(!m)return true;
+  const family=m[1],lo=Number(m[2]),hi=Number(m[3]);
+  if(hi<lo)throw Error('Rango de daño invertido en '+family);
+  const first=engine.candidateAffixes(it).find(a=>
+   a.label===family||a.label.startsWith(family+' '));
+  if(!first||first.formulas.length!==2)throw Error('No hay un grupo de dos tiradas numéricas para '+family);
+  const affix=engine.affixes[engine.variant(engine.idIndex.get(first.id),quality==='ancient'?2:1)];
+  extra.push({stem:family,attr:affix.formulas[0][0],value:lo},
+    {stem:family,attr:affix.formulas[1][0],value:hi-lo});
+  return false;
+ }).join('\n');
+ const offered=[...families];
+ if(it.formulas?.length)offered.push('Power');
+ const parsed=stripped.trim()?parseObservationText(stripped,offered):[];
+ if(parsed.filter(x=>x.family!=='Sockets').length+extra.length<2)
+  throw Error('Registra suficientes atributos numéricos visibles.');
  const lines=parsed.map(x=>({
    stem:x.family,attr:resolveObservationAttribute(engine,it,x.family),value:x.value
  }));
- return {itemId:it.id,quality,lines};
+ return {itemId:it.id,quality,lines:[...lines,...extra]};
 }
 function resetItem(){
  const it=item();if(!it)return;
