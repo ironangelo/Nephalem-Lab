@@ -1,0 +1,14 @@
+name: V05 photographed Reforge canonical fields
+on:
+  push:
+    branches: [feature/web-lab-v05-e2e]
+    paths: ['.github/workflows/v05-real-fields.yml','research/v05-real-reference-fields.mjs']
+  workflow_dispatch:
+jobs:
+  fields:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node research/v05-real-reference-fields.mjs
