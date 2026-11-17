@@ -126,9 +126,8 @@ u32 scan_parents(u32 start,u32 count){
    * families; exact replay resolves which count is correct. */
   const u32 startDraw=ancient?3u:2u;
   const u32 maxDraw=12u;
-  for(u32 n=ancient?2u:1u;n<=maxDraw;n++){
+  for(u32 n=startDraw;n<=maxDraw;n++){
    x=step(x);
-   if(n<startDraw)continue;
    u32 value=(u32)x;
    if(!childExists(value))continue;
    if(parentCount==RMAX){parentOverflow=1;return parentCount;}
