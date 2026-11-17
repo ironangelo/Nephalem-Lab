@@ -2,7 +2,7 @@ name: V05 four more genuine browser seed recoveries
 on:
   push:
     branches: [feature/web-lab-v05-e2e]
-    paths: ['.github/workflows/v05-four-recoveries.yml','research/v05-browser-four-recoveries.mjs']
+    paths: ['.github/workflows/v05-four-recoveries.yml','research/v05-browser-four-recoveries.mjs','src/v05-lab.js']
   workflow_dispatch:
 jobs:
   browser:
