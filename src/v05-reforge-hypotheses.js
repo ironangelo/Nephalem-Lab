@@ -14,7 +14,7 @@ function permutations(a){
 export function generateObservedReforgeHypotheses(engine,query,observation,{maxHypotheses=256}={}){
  const it=engine.item(query);
  if(!it)throw Error('Unknown item in Reforge inversion.');
- if(observation.quality!=='normal')throw Error('Only NORMAL Reforge outputs currently supported by this bidirectional solver.');
+ if(!['normal','ancient'].includes(observation.quality))throw Error('A numeric NORMAL or ANCIENT Reforge result is required.');
  const numeric=observation.lines.filter(l=>l.stem!=='Sockets');
  const power=numeric.filter(x=>x.stem==='Power');
  if(power.length!==it.formulas.length)throw Error('All inherent legendary power values must be supplied.');
@@ -30,7 +30,7 @@ export function generateObservedReforgeHypotheses(engine,query,observation,{maxH
   for(const a of pool){
    if(affixStem(a.label)!==g.stem)continue;
    const idx=engine.idIndex.get(a.id);
-   const fin=engine.affixes[engine.variant(idx,1)];
+   const fin=engine.affixes[engine.variant(idx,observation.quality==='ancient'?2:1)];
    if(fin.formulas.length!==g.lines.length)continue;
    const formulaAttrs=fin.formulas.map(([attr])=>Number(attr)).sort((a,b)=>a-b);
    const obsAttrs=g.lines.map(x=>Number(x.attr)).sort((a,b)=>a-b);
@@ -51,7 +51,7 @@ export function generateObservedReforgeHypotheses(engine,query,observation,{maxH
      (a.fixed_group_a===id||a.fixed_group_b===id)&&a.tier<=70)
      .sort((a,b)=>b.tier-a.tier)[0];
    if(!nonNumeric)return;
-   const newAff=engine.affixes[engine.variant(engine.idIndex.get(nonNumeric.id),1)];
+   const newAff=engine.affixes[engine.variant(engine.idIndex.get(nonNumeric.id),observation.quality==='ancient'?2:1)];
    fixed.push({a:newAff,g:{stem:affixStem(newAff.label),lines:[]}});
   }
   const prim=others.filter(x=>x.a.pick_kind===0),sec=others.filter(x=>x.a.pick_kind===1);
