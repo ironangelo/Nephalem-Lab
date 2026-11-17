@@ -1,6 +1,30 @@
 # Firebird's Down — REAL Reforge seed recovered, 16 November 2026
 
-> **STATE ON NINTENDO SWITCH 2:** exactly ONE real **Reforge Legendary** has been applied to the **second** Firebird's Down drop; it remains NORMAL. **NO additional S, C, R or Mystic after this photo.** The other Firebird's Down is already Sanctified with perfect stats, and MUST NOT be used in this experiment. We have recovered one current seed by exhaustive inversion and validated it in original Rust. All route checkpoints below are PREDICTIONS NOT YET PLAYED.
+> **FINAL STATE CONFIRMED ON NINTENDO SWITCH 2 (16-11-2026): FIREBIRD'S DOWN NATURAL PRIMAL ANCIENT OBTAINED.** User sent photo `image-1794877351236.jpg` matching exactly all predicted final affixes for route `CCRSCCSSCR`. **DO NOT REFORGE, CONVERT OR SANCTIFY.** One Mystic enchant only remains pending: Magic Missile +15% → Armor bonus +775. The OTHER Firebird's Down is Sanctified and was not used.
+
+## FINAL REAL NINTENDO SWITCH 2 CONFIRMATION — 16 November 2026
+
+**User says "Listo!!!" and supplies screenshot** `image-1794877351236.jpg` displaying the second **Firebird's Down as red-bordered NATURAL PRIMAL ANCIENT**, with the exact final output predicted by independent Rust and JS:
+
+| Property | Predicted after final R | Console screenshot |
+|---|---:|---:|
+| Quality | Natural Primal Ancient, not Sanctified | Red Primal border, no orange Sanctify power; confirmed |
+| Base Armor headline | Not predicted by item stat engine | **759 Armor** |
+| Intelligence | 650 | **+650** |
+| Vitality | 650 | **+650** |
+| Sockets | 2 | **2** |
+| Magic Missile Damage | +15% | **+15% (Wizard Only)** |
+| Lightning resistance | +210 | **+210** |
+| Pickup radius | +2 yards | **+2 yards** |
+| Additional flat Armor affix | NOT on natural item until Mystic | Not present — Mystic still pending |
+
+**Final seed predicted** `2401341781` (model-derived, not read from Switch). The complete recipe `CCRSCCSSCR` (5 Convert Set, 2 Reforge, 3 Angelic Crucibles) is now **confirmed as reaching the predicted final item** on this console, although individual intermediate steps were not separately photographed and cannot be claimed independently verified. Incremental cost since diagnostic Reforge: 150 Forgotten Souls, 50 Death's Breaths, 3 Crucibles, 10 Bounty Materials **of each act**, plus variable Mystic future cost. Already paid earlier: 50 Forgotten Souls +5 bounty materials per act for the real diagnostic Reforge. Total R/C material spent along experiment: 200 Souls, 50 Death's Breaths, 15 materials per act, 3 Crucibles.
+
+**IMMEDIATE NEXT STEP:** in Myriam, select ONLY +15% Magic Missile Damage and check list of available enchants. Seek **+775 bonus Armor**, preserving INT650, VIT650, sockets2, lightning resistance210 and +2 pickup radius. Since there is currently no enchant icon on Magic Missile, first Mystic has not been confirmed. No further cube operations. The number **759 Armor** printed in the headline is BASE Armor and is **NOT** the same as the +775 Armor affix expected from Mystic.
+
+**Prior warning superseded:** The historical sections below referring to first Convert as *future* are retained only as experiment history. **ALL R/S/C STEPS HAVE NOW BEEN COMPLETED per user's final photo, so NEVER instruct re-running #1 C.**
+
+---
 
 ## Real object photos and unique stored seed
 
@@ -42,7 +66,7 @@ Other weighted searches [GitHub Actions](https://github.com/ironangelo/Nephalem-
 
 ## RECOMMENDED checkpoint checklist: `CCRSCCSSCR`
 
-Legend: **C** = Convert Set Item (10 Forgotten Souls +10 Death's Breaths); **R** = Reforge Legendary (50 Forgotten Souls +5 each Act material); **S** = Sanctify (one Angelic Crucible). Sequence has **5 C, 2 R, 3 S**. **ONLY the old diagnostic R has actually happened**. The following ten steps are FUTURE until confirmed.
+Legend: **C** = Convert Set Item (10 Forgotten Souls +10 Death's Breaths); **R** = Reforge Legendary (50 Forgotten Souls +5 each Act material); **S** = Sanctify (one Angelic Crucible). Sequence has **5 C, 2 R, 3 S**. **UPDATE: All ten recipe operations are now completed; final screenshot confirms target outcome. The table is historical; DO NOT rerun.**
 
 | # | Operation | Predicted resulting set item | Quality | Seed after step (inferred) | Stat clue for photo |
 |---:|:---:|---|---|---:|---|
@@ -59,11 +83,11 @@ Legend: **C** = Convert Set Item (10 Forgotten Souls +10 Death's Breaths); **R**
 
 After final #10, **Myriam**: replace the *natural +15% Magic Missile skill damage primary* with **+775 bonus Armor**. Do NOT replace VIT, the resistance, sockets, INT. Check Myriam possible replacements and take Armor. Final goal matches Soulstone after Mystic. Do not apply Myriam before #10.
 
-**Independent verification:** [Original Rust D3Recipes and JS each reproduce all 10 checkpoints and final natural Primal quality](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43977902582). The first **in-game checkpoint has NOT happened yet**.
+**Independent verification:** [Original Rust D3Recipes and JS each reproduce all 10 checkpoints and final natural Primal quality](https://github.com/ironangelo/Nephalem-Lab/actions/runs/43977902582). **Final checkpoint is CONFIRMED by the user's in-game screenshot, though each intermediate checkpoint is not separately photographed.**
 
 **Important caveat for real game:** Converted Set recipe is designed to produce non-Ancient new pieces; it can remove Sanctified status from an input set item according to player reports (https://us.forums.blizzard.com/en/d3/t/sanctified-armor/54473). Some intermediate states use S→C; make sure the Cube actually accepts the item on Switch 2. If at any point the Cube rejects a recipe, or output differs, **stop**; do not continue blindly. Predicted seed is an internal inferred number, not visible on console. Prioritize the item NAME and exact stat lines as checkmarks.
 
-## SAFEST NEXT USER ACTION
+## HISTORICAL NEXT ACTION (OBSOLETE — DO NOT FOLLOW)
 
 - **DO NOT touch the other Firebird's Down with PERFECT Sanctify.**
 - On only THIS second normal `Firebird's Down` (675 Armor, INT460) do **ONE** Convert Set Item (`C`). Cost 10 Souls, 10 Death's Breaths.
