@@ -4,6 +4,9 @@ on:
     branches: [feature/web-lab-v05-e2e]
     paths: ['.github/workflows/v05-browser-test.yml', 'research/v05-browser-end-to-end.mjs', 'src/v05-lab.js', 'src/v05-budget-planner.js', 'src/reforge-recovery-worker.js','solver/scan.c','src/v05-reforge-hypotheses.js']
   workflow_dispatch:
+concurrency:
+  group: v05-browser-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   browser:
     runs-on: ubuntu-24.04
