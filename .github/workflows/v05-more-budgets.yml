@@ -1,0 +1,15 @@
+name: V05 historical budgets across three additional Primals
+on:
+  push:
+    branches: [feature/web-lab-v05-e2e]
+    paths: ['.github/workflows/v05-more-budgets.yml','research/v05-more-historical-route-budget.mjs']
+  workflow_dispatch:
+jobs:
+  budget:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --max-old-space-size=4800 research/v05-more-historical-route-budget.mjs
