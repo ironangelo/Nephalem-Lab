@@ -38,7 +38,7 @@ function matchesObserved(specs,values){if(specs.length!==values.length)return fa
  for(let i=0;i<specs.length;i++)if(specs[i][0]!==values[i].attr)return false;
  return true;
 }
-function modForFormula(fx,value){const sym=symbolicFormula(fx);if(!sym)return null;
+export function modForFormula(fx,value){const sym=symbolicFormula(fx);if(!sym)return null;
  if(sym.lo===null){return [value,value/100,value/1000].some(v=>Math.abs(v-sym.c)<0.0001)?{skip:true}:null;}
  const mod=sym.hi-sym.lo+1;for(const target of [value,value/100,value/1000]){const raw=(target-sym.c)/sym.a;const rem=Math.round(raw-sym.lo);
  if(Number.isInteger(mod)&&mod>=1&&Number.isFinite(rem)&&Math.abs(raw-sym.lo-rem)<0.0001&&rem>=0&&rem<mod)return {m:mod,r:rem};}
