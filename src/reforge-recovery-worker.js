@@ -12,6 +12,7 @@ import {verifyHypothesis} from './universal-recovery.js';
 import {generateObservedReforgeHypotheses} from './v05-reforge-hypotheses.js';
 import {matchesObservation} from './candidate-analysis.js';
 const TOTAL=4294967296,BATCH=6000000,CHUNK=32;
+const C_MULT=0x6AC690C5n,C_INV=0x8A3E6E0Dn,C_MASK=0xFFFFFFFFn;
 let cancelled=false;
 const progress=(message,extra={})=>self.postMessage({type:'progress',message,...extra});
 const verify=(engine,item,seed,hypotheses)=>hypotheses.some(h=>verifyHypothesis(engine,item,seed,h));
@@ -19,17 +20,26 @@ const enough=obs=>['normal','ancient'].includes(obs?.quality)&&Array.isArray(obs
  obs.lines.filter(x=>x.stem!=='Sockets'&&Number.isFinite(Number(x.value))).length>=4;
 self.onmessage=async({data:d})=>{
  if(d?.type==='cancel'){cancelled=true;return;}
- if(d?.type!=='recover-reforge')return;
+ if(!['recover-reforge','recover-convert'].includes(d?.type))return;
  cancelled=false;
  try{
   const engine=new UniversalEngine(d.gameData,d.hero,true);
   const item=engine.item(d.itemId);
   if(!item)throw Error('Unknown game item.');
-  const obs=d.observation;
-  if(!enough(obs))throw Error('Enter a NORMAL or ANCIENT Reforge result with at least four numeric affix values; use the full visible tooltip.');
-  if(obs.itemId!==item.id)throw Error('Reforge must preserve the original item identity.');
-  if(d.sourceObservation&&d.sourceObservation.itemId!==item.id)throw Error('Drop item and Reforge result must refer to the same item.');
-  const hypotheses=generateObservedReforgeHypotheses(engine,item,obs,{maxHypotheses:512});
+  const obs=d.observation,isConvert=d.type==='recover-convert';
+  const resultItem=isConvert?engine.item(obs.itemId):item;
+  if(!resultItem)throw Error('Unknown resulting object.');
+  if(!enough(obs))throw Error('Enter a complete normal/Ancient operation result with at least four numeric affix values.');
+  if(isConvert){
+   if(!item.set_id||item.set_id!==resultItem.set_id||item.id===resultItem.id)
+    throw Error('Convert Set Item must produce a DIFFERENT member of the SAME set.');
+   if(obs.quality!=='normal')throw Error('Convert Set Item produces normal-quality pieces.');
+   if(item.restricted_class>=0&&item.restricted_class!==engine.hero)
+    throw Error('Cross-class Convert seed inversion is not validated. Stop without spending more materials.');
+  }else if(obs.itemId!==item.id)throw Error('Reforge must preserve the original item identity.');
+  if(d.sourceObservation&&d.sourceObservation.itemId!==item.id)
+   throw Error('Original drop and Cube source item must agree.');
+  const hypotheses=generateObservedReforgeHypotheses(engine,resultItem,obs,{maxHypotheses:512});
   if(!hypotheses.length)throw Error('No numeric interpretation matches this Reforge result.');
   const resp=await fetch(new URL('../solver/scan.wasm',import.meta.url),{cache:'no-store'});
   if(!resp.ok)throw Error('The compiled bidirectional seed solver is missing.');
@@ -41,7 +51,7 @@ self.onmessage=async({data:d})=>{
   let verifiedNumeric=0,passes=0;
   for(let offset=0;offset<hypotheses.length;offset+=CHUNK){
    const hs=hypotheses.slice(offset,offset+CHUNK);
-   w.set_pre_steps(item.armor?2:1);
+   w.set_pre_steps(resultItem.armor?2:1);
    w.set_hyp_count(hs.length);
    hs.forEach((h,index)=>{
     w.set_hyp_length(index,h.constraints.length);
@@ -53,7 +63,7 @@ self.onmessage=async({data:d})=>{
     if(w.was_overflow())throw Error('Too many child candidates in one batch. Provide more of the visible Reforge stats.');
     for(let j=0;j<n;j++){
      const seed=w.result_at(j)>>>0;
-     if(!children.has(seed)&&verify(engine,item,seed,hs)){children.add(seed);verifiedNumeric++;}
+     if(!children.has(seed)&&verify(engine,resultItem,seed,hs)){children.add(seed);verifiedNumeric++;}
     }
     if(start%(BATCH*10)===0||start+BATCH>=TOTAL)
      progress('Step 1/2 · searching post-Reforge seeds',{
@@ -65,6 +75,25 @@ self.onmessage=async({data:d})=>{
   const valid=[...children];
   if(!valid.length)throw Error('No child seed reproduces this Reforge result. Check the numbers, percent signs, item class, or Mystic edits.');
   if(valid.length>120000)throw Error(`${valid.length} possible post-Reforge seeds: too many for a safe parent scan. A second genuine Reforge observation or more precise stat values are required.`);
+  if(isConvert){
+   // One-step MWC transition: child = (0x6AC690C5*parent+666) mod 2^32.
+   // 0x8A3E6E0D is the exact modular inverse of 0x6AC690C5.
+   if(((C_MULT*C_INV)&C_MASK)!==1n)throw Error('Internal modular inverse verification failed.');
+   const solutions=[];
+   for(const child of valid){
+    const parent=Number(((BigInt(child)-666n)*C_INV)&C_MASK);
+    const predicted=engine.convert(item,parent);
+    if(predicted.seed!==child||predicted.quality!=='normal'||predicted.itemId!==resultItem.id)continue;
+    if(!matchesObservation(predicted,obs))continue;
+    if(obs.lines.filter(x=>x.stem!=='Sockets').length<predicted.lines.length)continue;
+    solutions.push({parent,current:child,quality:'normal',draws:predicted.draws,
+     item:predicted.item,affixes:predicted.affixes.map(a=>a.stem)});
+   }
+   self.postMessage({type:'complete',solutions,postReforgeNumericCandidates:valid.length,
+    reconstruction:'bidirectional-real-convert',unique:solutions.length===1,
+    note:solutions.length===1?'Real Convert state uniquely inferred.':'Ambiguous Convert result; do not claim a seed.'});
+   return;
+  }
   w.set_child_count(valid.length);
   valid.forEach((seed,i)=>w.set_child_seed(i,seed));
   w.set_parent_quality(obs.quality==='ancient'?1:0);
