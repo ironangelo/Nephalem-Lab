@@ -3,7 +3,7 @@
    The solver *must* verify all matches by replaying the exact RNG values. */
 import {Rng,step} from './universal-engine.js';
 const MASK=0xFFFFFFFFn, U=4294967295;
-function symbolicFormula(hex){
+export function symbolicFormula(hex){
  const b=Uint8Array.from(hex.match(/../g).map(x=>parseInt(x,16))),dv=new DataView(b.buffer),st=[];
  for(let i=0;i<b.length;i+=8){const op=b[i];if(op===0)break;
   if(op===6)st.push({c:dv.getFloat32(i+4,true),a:0,lo:null,hi:null});
