@@ -15,7 +15,7 @@ jobs:
           persist-credentials: true
       - name: Build WASM with parent scanner
         run: |
-          clang --target=wasm32 -O3 -nostdlib -fno-builtin -Wl,--no-entry -Wl,--export-memory -Wl,--initial-memory=2097152 -o solver/scan.wasm solver/scan.c
+          clang --target=wasm32 -O3 -nostdlib -fno-builtin -Wl,--no-entry -Wl,--export-memory -Wl,--initial-memory=4194304 -o solver/scan.wasm solver/scan.c
           ls -l solver/scan.wasm
       - name: Commit branch-only browser binary
         run: |
