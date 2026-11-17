@@ -97,5 +97,11 @@ export function generateRecoveryHypotheses(engine,query,observation,{maxHypothes
 export function verifyHypothesis(engine,query,seed,hyp){const it=engine.item(query),a=hyp.affixIds.map(id=>engine.idIndex.get(id));
  if(a.some(x=>x===undefined))return false;
  const values=engine.values(it,seed,a,false);
- return hyp.stats.length===values.length&&hyp.stats.every((s,i)=>{if(values[i].attr!==s.attr)return false;const actual=values[i].value,want=Number(s.value);return [want,want/100,want/1000].some(v=>Math.abs(actual-v)<(Math.abs(actual)>1000?1.01:0.0001));});
+ return hyp.stats.length===values.length&&hyp.stats.every((s,i)=>{
+  if(values[i].attr!==s.attr)return false;
+  const actual=values[i].value,want=Number(s.value);
+  if(Number.isInteger(s.roundedPercentDigits)&&s.roundedPercentDigits>0)
+   return Math.abs(actual*100-want)<=0.5/Math.pow(10,s.roundedPercentDigits)+1e-7;
+  return [want,want/100,want/1000].some(v=>Math.abs(actual-v)<(Math.abs(actual)>1000?1.01:0.0001));
+ });
 }
