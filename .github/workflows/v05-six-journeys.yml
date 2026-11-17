@@ -1,0 +1,15 @@
+name: V05 six real Primal journeys
+on:
+  push:
+    branches: [feature/web-lab-v05-e2e]
+    paths: ['.github/workflows/v05-six-journeys.yml','research/v05-six-real-journeys-regression.mjs']
+  workflow_dispatch:
+jobs:
+  six:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node research/v05-six-real-journeys-regression.mjs

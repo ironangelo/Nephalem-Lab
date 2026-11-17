@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nephalem Lab 0.5 · Pruebas sin APK</title><link rel="stylesheet" href="./style.css">
+<style>
+:root{color-scheme:dark}body{background:#0d131c;color:#eaf0f7} .v05{max-width:1000px;margin:auto;padding:22px 15px 85px;font:15px/1.55 system-ui,sans-serif}
+h1{font-size:clamp(28px,5vw,44px);margin:8px 0;color:#fff}h2{font-size:21px;color:#fff;margin:0 0 8px}
+p{color:#bac6d5} .muted{color:#afc0d0;font-size:13px}.hint{border-left:3px solid #e7b467;background:#2c251c;padding:12px;border-radius:7px}
+.panel{border:1px solid #394759;background:#192230;border-radius:14px;padding:20px;margin:17px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:12px}
+label{display:flex;flex-direction:column;gap:5px;color:#c8d2df;font-size:13px}
+input,select,textarea{font:inherit;box-sizing:border-box;min-width:0;width:100%;background:#101a25;color:#fff;border:1px solid #53657a;border-radius:8px;padding:10px}
+textarea{min-height:130px;resize:vertical;font:14px/1.5 monospace}select[multiple]{min-height:145px}
+input[type=checkbox]{width:auto;min-width:17px;min-height:17px}
+.inline{display:flex;gap:9px;align-items:center;flex-direction:row}
+button{cursor:pointer;background:#dca85b;color:#171a20;font-weight:700;padding:11px 16px;border:0;border-radius:9px;margin:6px 6px 6px 0}
+button.alt{background:#30465f;color:#fff}button:disabled{opacity:.45;cursor:not-allowed}
+.status{white-space:pre-wrap;line-height:1.5;background:#111d2a;padding:13px;border-radius:8px;color:#e2e8f2;margin-top:12px}
+.success{border-left:4px solid #78d4a1}.error{border-left:4px solid #e58b81}
+.stat{background:#11212b;border:1px solid #2c4755;border-radius:11px;padding:12px}
+code{color:#eac58d} .steps{counter-reset:step}.step{border-top:1px solid #394759;padding:11px 2px}
+.step:first-child{border-top:0}.step input{margin-right:8px}.bad{color:#f1a49e}.good{color:#8ed6ab}
+a{color:#e7ba75} .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+@media(max-width:640px){.panel{padding:15px}.v05{padding:13px}}
+</style></head>
+<body><main class="v05">
+<header class="top"><a href="./index.html">◇ NEPHALEM LAB</a><span class="muted">WEB LAB · v0.5 EXPERIMENTAL</span></header>
+<h1>Del drop al Primal natural</h1><p>Prueba real del procedimiento bidireccional en el navegador. Sin APK. Cada predicción debe compararse con la Switch antes de gastar materiales.</p>
+<div class="hint">No ingreses una seed conocida: la calcularemos desde una Reforge real. Una coincidencia de números del drop <strong>no</strong> cuenta como identificación de seed.</div>
+<section class="panel"><h2>1. Identifica el objeto</h2>
+<div class="grid"><label>Clase <select id="hero"></select></label>
+<label>Objeto original <input list="item-list" id="item" value="Firebird's Down"><datalist id="item-list"></datalist></label>
+<label>Objeto final deseado <input list="item-list" id="target-item" value="Firebird's Down"></label>
+</div><div class="status" id="db-status">Cargando las tablas del juego…</div></section>
+<section class="panel"><h2>2. Registra el drop original</h2>
+<p class="muted">Una línea por atributo, por ejemplo <code>Int: 422</code>. La foto original es evidencia del objeto, no se usa falsamente como una seed de Reforge.</p>
+<textarea id="drop-text" spellcheck="false" placeholder="Int: 422&#10;ResistAll: 96&#10;Sockets: 2&#10;Skill_Wizard_SpectralBlade: 15"></textarea>
+<div><button id="save-drop">Guardar drop</button></div>
+<div class="status" id="drop-status">Todavía no registramos ningún drop.</div>
+</section>
+<section class="panel"><h2>3. Registra una transformación REAL del Cubo</h2>
+<p class="muted">Elige si hiciste Reforge o Convert Set Item. Ingresa todos los atributos numéricos, incluidos secundarios y sockets. Reforge cuesta 50 Souls y 5 materiales de cada acto; Convert cuesta 10 Souls y 10 Death's Breaths. Ninguna seed se presupone.</p>
+<div class="grid"><label>Operación observada<select id="diagnostic-op"><option value="R">Reforge Legendary</option><option value="C">Convert Set Item</option></select></label><label id="converted-item-box" style="display:none">Pieza resultante del set<input id="converted-item" list="item-list" placeholder="Firebird's Down"></label><label>Calidad del resultado<select id="reforge-quality"><option value="normal">Normal</option><option value="ancient">Ancient</option><option value="primal">Primal</option></select></label></div>
+<textarea id="reforge-text" spellcheck="false" placeholder="Int: 460&#10;ResistAll: 93&#10;Skill_Wizard_SpectralBlade: 14&#10;Gold: 33&#10;Thorns: 2748&#10;Sockets: 2"></textarea>
+<div><button id="recover">Reconstruir seed desde operación real</button><button class="alt" id="cancel-recover">Cancelar</button></div>
+<div class="status" id="recovery-status">Esperando la primera Reforge registrada.</div>
+</section>
+<section class="panel"><h2>4. Define el Primal que realmente quieres</h2>
+<p class="muted">Marca los afijos que deben estar en el Primal o que Myriam puede completar en una sola modificación. Por defecto, en Firebird's Down: INT, VIT, armadura adicional y 2 sockets.</p>
+<div class="grid"><label>Familias de afijos deseadas<select id="goals" multiple size="7"></select></label>
+<div><label class="inline"><input type="checkbox" id="allow-mystic" checked> Permitir un único cambio con Myriam</label>
+<label class="inline"><input type="checkbox" id="want-resist" checked> Exigir una resistencia elemental secundaria natural</label>
+<label class="inline"><input type="checkbox" id="allow-convert" checked> Permitir Convert Set Item</label>
+<p class="muted">La última operación para obtener Primal natural debe ser una Reforge real, no Sanctify.</p></div></div>
+</section>
+<section class="panel"><h2>5. Presupuesto y recetas</h2>
+<div class="grid">
+<label>Forgotten Souls disponibles <input id="budget-souls" type="number" min="0" value="150"></label>
+<label>Angelic Crucibles disponibles <input id="budget-crucibles" type="number" min="0" value="3"></label>
+<label>Death's Breaths disponibles <input id="budget-breaths" type="number" min="0" value="50"></label>
+<label>Materiales de contratos por acto <input id="budget-act" type="number" min="0" value="10"></label>
+<label>Máximo de pasos <input id="budget-steps" type="number" min="1" max="30" value="18"></label>
+<label>Estados a explorar (límite seguro) <input id="budget-nodes" type="number" min="1000" max="3000000" value="1500000"></label>
+</div>
+<div><button id="plan-route" disabled>Encontrar receta dentro del presupuesto</button><button class="alt" id="cancel-plan">Cancelar búsqueda</button></div>
+<div class="status" id="recipe-status">Primero hay que recuperar una seed única.</div>
+<div id="route-options"></div><div class="steps" id="recipe-steps"></div>
+</section>
+<footer class="muted">Laboratorio experimental. Simulador basado en D3Recipes; no modifica tus archivos de Diablo III. <a href="https://github.com/ironangelo/Nephalem-Lab">Código e investigación</a></footer>
+</main><script type="module" src="./src/v05-lab.js"></script>
+</body></html>

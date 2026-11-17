@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {UniversalEngine,loadGameData} from '../src/universal-engine.js';
+import {generateObservedReforgeHypotheses} from '../src/v05-reforge-hypotheses.js';
+import {verifyHypothesis,modForFormula,symbolicFormula} from '../src/universal-recovery.js';
+const e=new UniversalEngine(await loadGameData(),'Wizard',true);
+const it=e.item('Deathwish'),r=e.reforge(it,1184690904);
+const obs={quality:r.quality,itemId:r.itemId,lines:r.lines.map(x=>({stem:x.stem,attr:x.attr,value:x.value}))};
+let stun=obs.lines.find(x=>x.stem==='WeaponHitStun1h');
+assert(stun,'Expected chance-to-stun on Deathwish real R');
+const actual=stun.value;
+const af=r.affixes.find(x=>x.stem==='WeaponHitStun1h');
+const formula=e.affixes[e.idIndex.get(af.id)].formulas.find(([id])=>id===stun.attr)[1];
+const displayed=Number((actual*100).toFixed(1));
+stun.value=displayed;
+const hyps=generateObservedReforgeHypotheses(e,it,obs,{maxHypotheses:512});
+const matched=hyps.filter(h=>verifyHypothesis(e,it,r.seed,h));
+console.log('V05_ROUNDED_DEATHWISH',JSON.stringify({original:actual,displayed,hypotheses:hyps.length,matched:matched.length,
+ symbolic:symbolicFormula(formula),exact:modForFormula(formula,displayed),sample:matched.slice(0,2).map(x=>x.constraints)}));
+assert.equal(displayed,1.6,'This regression concerns the actual console 1.6% tooltip');
+assert(matched.length>0,'Displayed one-decimal 1.6% MUST NOT exclude its actual 1.56% state');

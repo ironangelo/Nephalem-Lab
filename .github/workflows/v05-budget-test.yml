@@ -1,0 +1,15 @@
+name: V05 real-gear material regression
+on:
+  push:
+    branches: [feature/web-lab-v05-e2e]
+    paths: ['.github/workflows/v05-budget-test.yml','research/v05-budget-regression.mjs','src/v05-budget-planner.js']
+  workflow_dispatch:
+jobs:
+  budget:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --max-old-space-size=4800 research/v05-budget-regression.mjs

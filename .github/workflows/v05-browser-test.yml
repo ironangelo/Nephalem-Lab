@@ -1,0 +1,37 @@
+name: V05 actual browser end-to-end from drop to Primal
+on:
+  push:
+    branches: [feature/web-lab-v05-e2e]
+    paths: ['.github/workflows/v05-browser-test.yml', 'research/v05-browser-end-to-end.mjs', 'src/v05-lab.js', 'src/v05-budget-planner.js', 'src/reforge-recovery-worker.js','solver/scan.c','src/v05-reforge-hypotheses.js']
+  workflow_dispatch:
+concurrency:
+  group: v05-browser-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Install Playwright chromium
+        run: |
+          npm install --no-save playwright@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Ensure browser WASM binary has the bidirectional scan
+        run: |
+          npm run build:wasm
+      - name: Start actual Nephalem Web Lab
+        run: |
+          python3 -m http.server 8080 --bind 127.0.0.1 > /tmp/nephalem-http.log 2>&1 &
+          sleep 2
+          curl --fail http://127.0.0.1:8080/lab-v05.html -o /dev/null
+      - name: Enter drop and real Reforge in the browser, recover seed and discover final recipe
+        run: node --max-old-space-size=4800 research/v05-browser-end-to-end.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v05-browser-step-by-step
+          path: /tmp/v05-browser-artifacts/
+          if-no-files-found: ignore

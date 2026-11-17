@@ -1,0 +1,16 @@
+name: V05 isolate WASM parent scanning
+on:
+  push:
+    branches: [feature/web-lab-v05-e2e]
+    paths: ['.github/workflows/v05-parent-audit.yml','research/v05-wasm-parent-audit.mjs','solver/scan.c']
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm run build:wasm
+      - run: node research/v05-wasm-parent-audit.mjs

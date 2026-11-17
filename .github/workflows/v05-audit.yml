@@ -1,0 +1,14 @@
+name: V05 baseline hypothesis audit
+on:
+  push:
+    branches: [feature/web-lab-v05-e2e]
+    paths: ['.github/workflows/v05-audit.yml','research/v05-recovery-hypothesis-audit.mjs','src/v05-reforge-hypotheses.js']
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node research/v05-recovery-hypothesis-audit.mjs

@@ -3,7 +3,7 @@
    The solver *must* verify all matches by replaying the exact RNG values. */
 import {Rng,step} from './universal-engine.js';
 const MASK=0xFFFFFFFFn, U=4294967295;
-function symbolicFormula(hex){
+export function symbolicFormula(hex){
  const b=Uint8Array.from(hex.match(/../g).map(x=>parseInt(x,16))),dv=new DataView(b.buffer),st=[];
  for(let i=0;i<b.length;i+=8){const op=b[i];if(op===0)break;
   if(op===6)st.push({c:dv.getFloat32(i+4,true),a:0,lo:null,hi:null});
@@ -38,7 +38,7 @@ function matchesObserved(specs,values){if(specs.length!==values.length)return fa
  for(let i=0;i<specs.length;i++)if(specs[i][0]!==values[i].attr)return false;
  return true;
 }
-function modForFormula(fx,value){const sym=symbolicFormula(fx);if(!sym)return null;
+export function modForFormula(fx,value){const sym=symbolicFormula(fx);if(!sym)return null;
  if(sym.lo===null){return [value,value/100,value/1000].some(v=>Math.abs(v-sym.c)<0.0001)?{skip:true}:null;}
  const mod=sym.hi-sym.lo+1;for(const target of [value,value/100,value/1000]){const raw=(target-sym.c)/sym.a;const rem=Math.round(raw-sym.lo);
  if(Number.isInteger(mod)&&mod>=1&&Number.isFinite(rem)&&Math.abs(raw-sym.lo-rem)<0.0001&&rem>=0&&rem<mod)return {m:mod,r:rem};}
@@ -97,5 +97,11 @@ export function generateRecoveryHypotheses(engine,query,observation,{maxHypothes
 export function verifyHypothesis(engine,query,seed,hyp){const it=engine.item(query),a=hyp.affixIds.map(id=>engine.idIndex.get(id));
  if(a.some(x=>x===undefined))return false;
  const values=engine.values(it,seed,a,false);
- return hyp.stats.length===values.length&&hyp.stats.every((s,i)=>{if(values[i].attr!==s.attr)return false;const actual=values[i].value,want=Number(s.value);return [want,want/100,want/1000].some(v=>Math.abs(actual-v)<(Math.abs(actual)>1000?1.01:0.0001));});
+ return hyp.stats.length===values.length&&hyp.stats.every((s,i)=>{
+  if(values[i].attr!==s.attr)return false;
+  const actual=values[i].value,want=Number(s.value);
+  if(Number.isInteger(s.roundedPercentDigits)&&s.roundedPercentDigits>0)
+   return Math.abs(actual*100-want)<=0.5/Math.pow(10,s.roundedPercentDigits)+1e-7;
+  return [want,want/100,want/1000].some(v=>Math.abs(actual-v)<(Math.abs(actual)>1000?1.01:0.0001));
+ });
 }

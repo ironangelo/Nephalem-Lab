@@ -69,3 +69,72 @@ u32 scan_multi(u32 start,u32 count){
 }
 __attribute__((export_name("scan")))
 u32 scan(u32 start,u32 count){hcount=1;ll[0]=one_len;return scan_multi(start,count);}
+
+/* v0.5 — exact PREDECESSOR scan for the observed Reforge output.
+ * Numeric candidate children come from scan_multi; a parent is accepted only
+ * if its MWC n-draw successor is in that candidate set. The JS engine must
+ * then replay the complete Reforge (quality, affix IDs, all visible values).
+ * This is not an original-drop numerical scan.
+ */
+#define CHILD_LIMIT 120000u
+#define CHILD_HASH_CAP 262144u
+static u32 children[CHILD_LIMIT], childN=0,childTable[CHILD_HASH_CAP],childUsed[CHILD_HASH_CAP];
+static u32 parents[RMAX],parentChild[RMAX],parentDraws[RMAX],parentCount=0,parentOverflow=0,desiredQuality=0;
+static u32 childHash(u32 n){return (n*2654435761u)>>(32-18);}
+static void buildChildHash(void){
+ for(u32 i=0;i<CHILD_HASH_CAP;i++)childUsed[i]=0;
+ for(u32 k=0;k<childN;k++){
+  u32 n=children[k],j=childHash(n);
+  while(childUsed[j]&&childTable[j]!=n)j=(j+1u)&(CHILD_HASH_CAP-1u);
+  childTable[j]=n;childUsed[j]=1;
+ }
+}
+static int childExists(u32 v){
+ u32 j=childHash(v);
+ while(childUsed[j]){if(childTable[j]==v)return 1;j=(j+1u)&(CHILD_HASH_CAP-1u);}return 0;
+}
+__attribute__((export_name("set_child_count")))
+void set_child_count(u32 n){childN=n<=CHILD_LIMIT?n:0;}
+__attribute__((export_name("set_child_seed")))
+void set_child_seed(u32 i,u32 value){if(i<childN)children[i]=value;}
+/* 0 = normal, 1 = Ancient, 2 = natural Primal */
+__attribute__((export_name("set_parent_quality")))
+void set_parent_quality(u32 quality){desiredQuality=quality;}
+__attribute__((export_name("parent_result_at")))
+u32 parent_result_at(u32 i){return i<parentCount?parents[i]:0;}
+__attribute__((export_name("parent_child_at")))
+u32 parent_child_at(u32 i){return i<parentCount?parentChild[i]:0;}
+__attribute__((export_name("parent_draws_at")))
+u32 parent_draws_at(u32 i){return i<parentCount?parentDraws[i]:0;}
+__attribute__((export_name("parent_was_overflow")))
+u32 parent_was_overflow(void){return parentOverflow;}
+__attribute__((export_name("scan_parents")))
+u32 scan_parents(u32 start,u32 count){
+ parentCount=parentOverflow=0;
+ if(!childN)return 0;
+ buildChildHash();
+ for(u64 k=start;k<(u64)start+(u64)count&&k<=0xffffffffULL;k++){
+  u64 x=step((666ULL<<32)|(u32)k);
+  const int ancient=((u32)x)<=429496729u;
+  if((desiredQuality==0&&ancient)||(desiredQuality!=0&&!ancient))continue;
+  if(ancient){
+   x=step(x);
+   const int primal=((u32)x)<=107374182u;
+   if((desiredQuality==1&&primal)||(desiredQuality==2&&!primal))continue;
+  }
+  /* Start after quality draw(s), scan possible draw counts for all item
+   * families; exact replay resolves which count is correct. */
+  const u32 startDraw=ancient?3u:2u;
+  const u32 maxDraw=12u;
+  for(u32 n=startDraw;n<=maxDraw;n++){
+   x=step(x);
+   u32 value=(u32)x;
+   if(!childExists(value))continue;
+   if(parentCount==RMAX){parentOverflow=1;return parentCount;}
+   parents[parentCount]=(u32)k;
+   parentChild[parentCount]=value;
+   parentDraws[parentCount++]=n;
+  }
+ }
+ return parentCount;
+}
