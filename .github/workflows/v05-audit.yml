@@ -2,7 +2,7 @@ name: V05 baseline hypothesis audit
 on:
   push:
     branches: [feature/web-lab-v05-e2e]
-    paths: ['.github/workflows/v05-audit.yml']
+    paths: ['.github/workflows/v05-audit.yml','research/v05-recovery-hypothesis-audit.mjs','src/v05-reforge-hypotheses.js']
   workflow_dispatch:
 jobs:
   audit:
