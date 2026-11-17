@@ -8,7 +8,8 @@
  * and child seed. One surviving pair is a model-inferred unique current seed.
  */
 import {UniversalEngine} from './universal-engine.js';
-import {generateRecoveryHypotheses,verifyHypothesis} from './universal-recovery.js';
+import {verifyHypothesis} from './universal-recovery.js';
+import {generateObservedReforgeHypotheses} from './v05-reforge-hypotheses.js';
 import {matchesObservation} from './candidate-analysis.js';
 const TOTAL=4294967296,BATCH=6000000,CHUNK=32;
 let cancelled=false;
@@ -28,7 +29,7 @@ self.onmessage=async({data:d})=>{
   if(!enough(obs))throw Error('Enter a NORMAL Reforge result with at least four numeric affix values; use the full visible tooltip.');
   if(obs.itemId!==item.id)throw Error('Reforge must preserve the original item identity.');
   if(d.sourceObservation&&d.sourceObservation.itemId!==item.id)throw Error('Drop item and Reforge result must refer to the same item.');
-  const hypotheses=generateRecoveryHypotheses(engine,item,obs,{maxHypotheses:512});
+  const hypotheses=generateObservedReforgeHypotheses(engine,item,obs,{maxHypotheses:512});
   if(!hypotheses.length)throw Error('No numeric interpretation matches this Reforge result.');
   const resp=await fetch(new URL('../solver/scan.wasm',import.meta.url),{cache:'no-store'});
   if(!resp.ok)throw Error('The compiled bidirectional seed solver is missing.');
