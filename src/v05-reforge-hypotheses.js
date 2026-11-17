@@ -15,19 +15,20 @@ function permutations(a){
 // Consider compatible RNG residues instead of treating it as exactly 1.60%.
 function possibleResidues(formula,displayed){
  const exact=modForFormula(formula,displayed);
- if(exact)return [{constraint:exact,roundedDigits:null}];
+ const out=exact?[{constraint:exact,roundedDigits:null}]:[];
  const decimal=String(displayed).split('.')[1];
- if(!decimal||decimal.length>2)return [];
+ if(!decimal||decimal.length>2)return out;
  const digits=decimal.length,halfUnit=0.5/Math.pow(10,digits);
  const sym=symbolicFormula(formula);
- if(!sym||sym.lo===null||sym.hi===null)return [];
+ if(!sym||sym.lo===null||sym.hi===null)return out;
  const modulus=sym.hi-sym.lo+1;
- if(!Number.isInteger(modulus)||modulus<1||modulus>5000)return [];
- const out=[];
+ if(!Number.isInteger(modulus)||modulus<1||modulus>5000)return out;
  for(let r=0;r<modulus;r++){
   const actual=sym.c+sym.a*(sym.lo+r);
-  if(actual>=0&&actual<=1&&Math.abs(actual*100-displayed)<=halfUnit+1e-7)
-   out.push({constraint:{m:modulus,r},roundedDigits:digits});
+  if(actual>=0&&actual<=1&&Math.abs(actual*100-displayed)<=halfUnit+1e-7 &&
+     !out.some(x=>x.constraint.m===modulus&&x.constraint.r===r)){
+    out.push({constraint:{m:modulus,r},roundedDigits:digits});
+  }
  }
  return out;
 }
