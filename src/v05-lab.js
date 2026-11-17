@@ -37,7 +37,7 @@ function unambiguousObservedAttribute(it,family,quality){
  }
 }
 
-function observe(text,quality='normal',it=item()){
+function observe(text,quality='normal',it=item(),initialDrop=false){
  if(!it)throw Error('Objeto no encontrado en la base de datos.');
  const families=allowedFamilies(it);
  const extra=[];
@@ -66,12 +66,12 @@ function observe(text,quality='normal',it=item()){
   const supplied=parsed.find(x=>x.family==='Power');
   if(supplied&&!fixedPower.some(x=>Math.abs(x.value-supplied.value)<0.0001))
    throw Error('El valor de poder legendario no coincide con los poderes fijos de este objeto.');
- }else if(it.formulas.length&&!parsed.some(x=>x.family==='Power'))
+ }else if(!initialDrop&&it.formulas.length&&!parsed.some(x=>x.family==='Power'))
   throw Error('Ingresa Power: porcentaje del poder legendario (por ejemplo, Power: 253 en Deathwish).');
  if(parsed.filter(x=>x.family!=='Sockets'&&x.family!=='Power').length+extra.length<2)
   throw Error('Registra suficientes atributos numéricos visibles.');
  const lines=parsed.filter(x=>!allPowersFixed||x.family!=='Power').map(x=>({
-   stem:x.family,attr:unambiguousObservedAttribute(it,x.family,quality),value:x.value
+   stem:x.family,attr:initialDrop?null:unambiguousObservedAttribute(it,x.family,quality),value:x.value
  }));
  return {itemId:it.id,quality,lines:[...lines,...extra,...(allPowersFixed?fixedPower:[])]};
 }
@@ -98,7 +98,7 @@ function resetItem(){
 function saveDrop(){
  try{
   if(recoverWorker)throw Error('Hay una recuperación en curso.');
-  drop=observe($('#drop-text').value);
+  drop=observe($('#drop-text').value,'normal',item(),true);
   reforge=null;seed=null;pendingSeeds=null;
   $('#recover').textContent='Reconstruir seed bidireccional';
   $('#plan-route').disabled=true;
