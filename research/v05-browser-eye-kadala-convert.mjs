@@ -11,7 +11,7 @@ try{
  await p.locator('#hero').selectOption({label:'Wizard'});
  await p.locator('#item').fill("Firebird's Eye");await p.locator('#item').dispatchEvent('change');
  // Original Kadala drop provides item identity, not a presumed Reforge seed.
- await p.locator('#drop-text').fill('Int: 705\nVit: 686\nExperience: 152\nMaxArcanePower: 11\nSkill_Wizard_MagicMissile: 10');
+ await p.locator('#drop-text').fill('Power: 19\\nInt: 705\nVit: 686\nExperience: 152\nMaxArcanePower: 11\nSkill_Wizard_MagicMissile: 10');
  await p.locator('#save-drop').click();
  console.log('EYE_DROP_STATUS',await p.locator('#drop-status').innerText());
  assert((await p.locator('#drop-status').innerText()).includes('guardado'),'Eye original drop must register');
