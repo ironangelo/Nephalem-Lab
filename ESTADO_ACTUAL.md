@@ -179,3 +179,13 @@ Para las tres rutas: Primal natural con fuego20%, socket1, CHD100%; INT1000 se p
 
 **Checklist histórico, evidencia y costos:** [Firebird Down Primal real confirmado](https://github.com/ironangelo/Nephalem-Lab/blob/research/firebirds-down-real-reforge-2026-11-16/research/FIREBIRDS_DOWN_REAL_REFORGE_PRIMAL_PLAN_2026-11-16.md).
 
+
+## RNG directo del herrero — investigación 17-11-2026
+
+**CONCLUSIÓN EN INVESTIGACIÓN (NO PREDICTOR GARANTIZADO):** Fabricar directamente sets Aughild/Crimson parece comportarse distinto de fabricar un RARO y mejorarlo en Cube. Testimonio experimentado u/Ambitious_Captain_36 y otros afirman que save scumming de SETS directos puede producir resultados variables, pero comentarios generales de otros jugadores discrepan. No hemos probado el rollback controlado del MISMO save en la Switch2 del usuario; falta evidencia del algoritmo de generación de semillas y dependencia de reloj.
+
+**REVERSA DE CÓDIGO REAL DE FORMATO DE PARTIDA:** `GoobyCorp/D3Edit/Research/decompiled/proto2/Items.proto` incluye `D3.Items.Generator.seed` (32 bits) en cada pieza; `Hero.proto` incluye `ConsoleRandomVendorSeed {item_slot_key,random_item_seed,random_item_carry=666}`. Ese 666 coincide con el modelo de RNG Kanai de `FNGarvin/d3recipes core/src/sim.rs` (MWC MULT 0x6AC690C5), pero la lista es explícitamente para *vendedores aleatorios de consola*, **NO prueba que Herrero forje según esa seed de vendedor**. D3Recipes NO modela fabricación directa del set; su Craft&Upgrade es RARO+Hope of Cain. Simulador antiguo benstepp/d3sim usa `Math.random()` y NO es código real Diablo3; NO inferir clock/sec.
+
+**MÉTODO DE PRUEBA PROPUESTO:** primero preservar/verificar guardado de Primal propios. Solo si rollback Switch 2 es seguro, repetir dos Aughild's Power desde MISMO estado guardado S0 (A1/A2), con 60s pausa (A3) y con fabricación de raro antes del set (A4), fotografiando atributos completos de ambos y condiciones. Determina secuencia fija vs dependencia de sesión/tiempo/RNG compartido; no prueba semilla por segundo sin más control. **NINGUNA duración fija de reloj y NÚMERO EXACTO DE CRAFTS garantizados** identificado. Si realmente es RNG variable + rollback seguro, repetir hasta primal natural es estrategia probabilística, no receta 100% en N finito. Nunca sacrificar o arriesgar progreso de Primals ya confirmados.
+
+**Informe y fuentes:** https://github.com/ironangelo/Nephalem-Lab/blob/main/research/BLACKSMITH_DIRECT_CRAFT_RNG_2026-11-17.md .
