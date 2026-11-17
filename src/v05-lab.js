@@ -1,5 +1,5 @@
 import {UniversalEngine,loadGameData,niceStem} from './universal-engine.js';
-import {observationAffixFamilies} from './universal-recovery.js';
+import {observationAffixFamilies,symbolicFormula} from './universal-recovery.js';
 import {parseObservationText} from './observation-import.js';
 import {resolveObservationAttribute} from './observation-model.js';
 import {matchesObservation} from './candidate-analysis.js';
@@ -34,12 +34,23 @@ function observe(text,quality='normal',it=item()){
  const offered=[...families];
  if(it.formulas?.length)offered.push('Power');
  const parsed=stripped.trim()?parseObservationText(stripped,offered):[];
- if(parsed.filter(x=>x.family!=='Sockets').length+extra.length<2)
+ const fixedPower=it.formulas.map(([attr,formula])=>{
+  const fx=symbolicFormula(formula);
+  return fx?.lo===null&&fx.a===0?{stem:'Power',attr,value:fx.c}:null;
+ });
+ const allPowersFixed=it.formulas.length>0&&fixedPower.every(Boolean);
+ if(allPowersFixed){
+  const supplied=parsed.find(x=>x.family==='Power');
+  if(supplied&&!fixedPower.some(x=>Math.abs(x.value-supplied.value)<0.0001))
+   throw Error('El valor de poder legendario no coincide con los poderes fijos de este objeto.');
+ }else if(it.formulas.length&&!parsed.some(x=>x.family==='Power'))
+  throw Error('Ingresa Power: porcentaje del poder legendario (por ejemplo, Power: 253 en Deathwish).');
+ if(parsed.filter(x=>x.family!=='Sockets'&&x.family!=='Power').length+extra.length<2)
   throw Error('Registra suficientes atributos numéricos visibles.');
- const lines=parsed.map(x=>({
+ const lines=parsed.filter(x=>!allPowersFixed||x.family!=='Power').map(x=>({
    stem:x.family,attr:resolveObservationAttribute(engine,it,x.family),value:x.value
  }));
- return {itemId:it.id,quality,lines:[...lines,...extra]};
+ return {itemId:it.id,quality,lines:[...lines,...extra,...(allPowersFixed?fixedPower:[])]};
 }
 function resetItem(){
  const it=item();if(!it)return;
