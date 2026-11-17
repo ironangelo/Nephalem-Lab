@@ -4,13 +4,34 @@
  * order is not RNG roll order, so enumerate primary/secondary permutations.
  * All hypotheses still require both 2^32 scans + exact Reforge replay.
  */
-import {modForFormula} from './universal-recovery.js';
+import {modForFormula,symbolicFormula} from './universal-recovery.js';
 import {affixStem} from './universal-engine.js';
 const U=4294967295;
 function permutations(a){
  if(a.length<=1)return [a];
  return a.flatMap((x,i)=>permutations([...a.slice(0,i),...a.slice(i+1)]).map(z=>[x,...z]));
 }
+// A Switch tooltip may show "1.6%" for an internal 1.56% roll.
+// Consider compatible RNG residues instead of treating it as exactly 1.60%.
+function possibleResidues(formula,displayed){
+ const exact=modForFormula(formula,displayed);
+ if(exact)return [{constraint:exact,roundedDigits:null}];
+ const decimal=String(displayed).split('.')[1];
+ if(!decimal||decimal.length>2)return [];
+ const digits=decimal.length,halfUnit=0.5/Math.pow(10,digits);
+ const sym=symbolicFormula(formula);
+ if(!sym||sym.lo===null||sym.hi===null)return [];
+ const modulus=sym.hi-sym.lo+1;
+ if(!Number.isInteger(modulus)||modulus<1||modulus>5000)return [];
+ const out=[];
+ for(let r=0;r<modulus;r++){
+  const actual=sym.c+sym.a*(sym.lo+r);
+  if(actual>=0&&actual<=1&&Math.abs(actual*100-displayed)<=halfUnit+1e-7)
+   out.push({constraint:{m:modulus,r},roundedDigits:digits});
+ }
+ return out;
+}
+
 export function generateObservedReforgeHypotheses(engine,query,observation,{maxHypotheses=256}={}){
  const it=engine.item(query);
  if(!it)throw Error('Unknown item in Reforge inversion.');
@@ -65,19 +86,30 @@ export function generateObservedReforgeHypotheses(engine,query,observation,{maxH
      return {attr,fx,stem:x.g.stem,observed:line?.value};
     }))
    ];
-   const constraints=[],stats=[];
-   let good=true;
+   let possibilities=[{constraints:[],stats:[]}];
    for(const x of specs){
-    if(x.observed===undefined){good=false;break}
-    const c=modForFormula(x.fx,Number(x.observed));if(!c){good=false;break;}
-    if(!c.skip)constraints.push(c);
-    stats.push({stem:x.stem,attr:Number(x.attr),value:Number(x.observed)});
+    if(x.observed===undefined){possibilities=[];break}
+    const variants=possibleResidues(x.fx,Number(x.observed));
+    if(!variants.length){possibilities=[];break}
+    const next=[];
+    for(const candidate of possibilities)for(const variant of variants){
+     if(next.length>=maxHypotheses*2)break;
+     next.push({
+      constraints:variant.constraint.skip?candidate.constraints:[...candidate.constraints,variant.constraint],
+      stats:[...candidate.stats,{stem:x.stem,attr:Number(x.attr),
+       value:Number(x.observed),roundedPercentDigits:variant.roundedDigits}]
+     });
+    }
+    possibilities=next;
+    if(!possibilities.length)break;
    }
-   if(!good||constraints.length<3||constraints.length>32)continue;
-   const key=JSON.stringify({constraints,ids:seq.map(x=>x.a.id)});
-   if(dedup.has(key))continue;dedup.add(key);
-   out.push({constraints,affixIds:seq.map(x=>x.a.id),stats});
-   if(out.length>=maxHypotheses)return;
+   for(const {constraints,stats} of possibilities){
+    if(constraints.length<3||constraints.length>32)continue;
+    const key=JSON.stringify({constraints,ids:seq.map(x=>x.a.id)});
+    if(dedup.has(key))continue;dedup.add(key);
+    out.push({constraints,affixIds:seq.map(x=>x.a.id),stats});
+    if(out.length>=maxHypotheses)return;
+   }
   }
  }
  function walk(i,chosen){
