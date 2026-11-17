@@ -76,11 +76,11 @@ u32 scan(u32 start,u32 count){hcount=1;ll[0]=one_len;return scan_multi(start,cou
  * then replay the complete Reforge (quality, affix IDs, all visible values).
  * This is not an original-drop numerical scan.
  */
-#define CHILD_LIMIT 8192u
-#define CHILD_HASH_CAP 32768u
+#define CHILD_LIMIT 120000u
+#define CHILD_HASH_CAP 262144u
 static u32 children[CHILD_LIMIT], childN=0,childTable[CHILD_HASH_CAP],childUsed[CHILD_HASH_CAP];
 static u32 parents[RMAX],parentChild[RMAX],parentDraws[RMAX],parentCount=0,parentOverflow=0,desiredQuality=0;
-static u32 childHash(u32 n){return (n*2654435761u)>>(32-15);}
+static u32 childHash(u32 n){return (n*2654435761u)>>(32-18);}
 static void buildChildHash(void){
  for(u32 i=0;i<CHILD_HASH_CAP;i++)childUsed[i]=0;
  for(u32 k=0;k<childN;k++){
