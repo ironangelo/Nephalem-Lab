@@ -2,8 +2,9 @@ import {UniversalEngine,loadGameData,niceStem} from './universal-engine.js';
 import {observationAffixFamilies} from './universal-recovery.js';
 import {parseObservationText} from './observation-import.js';
 import {resolveObservationAttribute} from './observation-model.js';
+import {matchesObservation} from './candidate-analysis.js';
 const $=s=>document.querySelector(s);
-let data,engine,drop=null,reforge=null,seed=null,recoverWorker=null,plannerWorker=null;
+let data,engine,drop=null,reforge=null,seed=null,recoverWorker=null,plannerWorker=null,pendingSeeds=null;
 const status=(id,text,kind='')=>{
  const el=$(id);el.textContent=text;el.className='status'+(kind?' '+kind:'');
 };
@@ -51,7 +52,8 @@ function resetItem(){
  $('#goals').innerHTML=families.map(stem=>`<option value="${stem}" ${defaults.includes(stem)?'selected':''}>${niceStem(stem)}</option>`).join('');
  $('#want-resist').checked=wanted.name==="Firebird's Down";
  $('#allow-convert').checked=!!it.set_id;
- drop=null;reforge=null;seed=null;
+ drop=null;reforge=null;seed=null;pendingSeeds=null;
+ $('#recover').textContent='Reconstruir seed bidireccional';
  $('#plan-route').disabled=true;
  $('#recipe-steps').replaceChildren();
  $('#route-options').replaceChildren();
@@ -63,7 +65,8 @@ function saveDrop(){
  try{
   if(recoverWorker)throw Error('Hay una recuperación en curso.');
   drop=observe($('#drop-text').value);
-  reforge=null;seed=null;
+  reforge=null;seed=null;pendingSeeds=null;
+  $('#recover').textContent='Reconstruir seed bidireccional';
   $('#plan-route').disabled=true;
   const named=drop.lines.map(x=>x.stem+':'+x.value).join(' · ');
   status('#drop-status',`Drop de ${item().name} guardado: ${named}.\nPróximo paso: una Reforge real del MISMO objeto. El drop no se usa para inventar un seed de salida.`,'success');
@@ -71,31 +74,66 @@ function saveDrop(){
  }catch(err){status('#drop-status','No se guardó el drop: '+err.message,'error')}
 }
 function recover(){
- if(recoverWorker){status('#recovery-status','La recuperación ya está ejecutándose.');return}
+ if(recoverWorker){status('#recovery-status','La recuperación ya está ejecutándose.');return;}
  try{
   if(!drop)throw Error('Primero registra el drop original.');
-  if($('#reforge-quality').value!=='normal')throw Error('La inversión bidireccional actual exige una Reforge NORMAL. Para Ancient/Primal se necesita otra ruta de diagnóstico; no inventaremos una seed.');
-  reforge=observe($('#reforge-text').value,$('#reforge-quality').value);
-  if(reforge.itemId!==drop.itemId)throw Error('Las dos observaciones tienen que ser del mismo objeto.');
+  const observed=observe($('#reforge-text').value,$('#reforge-quality').value);
+  if(observed.itemId!==drop.itemId)throw Error('La Reforge debe ser sobre el mismo objeto.');
+  if(!['normal','ancient'].includes(observed.quality))
+   throw Error('Para recuperar una seed necesitamos una Reforge normal o Ancient con valores numéricos, no Primal.');
+  if(pendingSeeds&&pendingSeeds.length){
+   // Zodiac and some other items need TWO genuine Reforges. Do not run a
+   // second 2^32 scan: replay one Reforge for each previously recovered seed.
+   const matches=[];
+   for(const former of pendingSeeds){
+    const result=engine.reforge(item(),former);
+    if(matchesObservation(result,observed))matches.push(result.seed);
+   }
+   const survivors=unique(matches);
+   if(!survivors.length){
+    status('#recovery-status','La siguiente Reforge ingresada no coincide con ninguna de las '+pendingSeeds.length+' seeds anteriores. Revisa la foto y sus atributos; conservamos todas las candidatas.','error');
+    return;
+   }
+   seed=survivors.length===1?survivors[0]:null;
+   pendingSeeds=seed===null?survivors:null;
+   $('#plan-route').disabled=seed===null;
+   if(seed===null){
+    status('#recovery-status',survivors.length+' seeds compatibles después de esta Reforge. Todavía necesitamos otra observación. No se ha inventado ninguna seed.');
+   }else{
+    $('#recover').textContent='Seed recuperada';
+    status('#recovery-status','SEED ÚNICA IDENTIFICADA ✅\nDespués de esta Reforge: '+seed+
+     '\nLa reconstrucción previa dejó varias candidatas y la nueva operación real las redujo a una. Ahora podemos buscar recetas.','success');
+   }
+   return;
+  }
+  reforge=observed;
   $('#recover').disabled=true;
-  status('#recovery-status','Comenzando barrido bidireccional de 32 bits; calculando posibles semillas de salida…');
+  status('#recovery-status','Invirtiendo las posibles seeds numéricas y las transiciones reales de Reforge (dos barridos completos de 32 bits)…');
   recoverWorker=new Worker(new URL('./reforge-recovery-worker.js',import.meta.url),{type:'module'});
   recoverWorker.onmessage=e=>{
    const r=e.data;
    if(r.type==='progress'){
-    status('#recovery-status',`${r.message} — ${(100*(r.checked||0)/(r.total||1)).toFixed(1)}% · ${r.found} candidatos\nEl juego no consume recursos durante esta búsqueda.`);
+    status('#recovery-status',r.message+' — '+(100*(r.checked||0)/(r.total||1)).toFixed(1)+'% · '+r.found+' candidatos.');
    }else if(r.type==='complete'){
     recoverWorker.terminate();recoverWorker=null;$('#recover').disabled=false;
-    seed=r.unique?r.solutions[0].current:null;
+    const uniqueCurr=unique(r.solutions.map(x=>x.current));
+    seed=uniqueCurr.length===1?uniqueCurr[0]:null;
+    pendingSeeds=seed===null?uniqueCurr:null;
     $('#plan-route').disabled=seed===null;
     if(seed!==null){
-     status('#recovery-status',`SEED ÚNICA IDENTIFICADA ✅\nOrigen inferido: ${r.solutions[0].parent}\nEstado ACTUAL tras Reforge: ${seed}\n${r.postReforgeNumericCandidates} coincidencias numéricas iniciales; 1 pareja válida al reproducir Reforge completa.\nSiguiente: comparar rutas dentro de tus materiales; verificar el primer checkpoint en tu Switch.`,'success');
+     status('#recovery-status','SEED ÚNICA IDENTIFICADA ✅\nOrigen inferido: '+r.solutions[0].parent+
+      '\nEstado ACTUAL después de Reforge: '+seed+
+      '\nCandidatas numéricas iniciales: '+r.postReforgeNumericCandidates+
+      '. Solo una pareja reproduce exactamente la operación del Cubo.','success');
+    }else if(pendingSeeds.length){
+     $('#recover').textContent='Filtrar usando la siguiente Reforge';
+     status('#recovery-status',pendingSeeds.length+' seeds todavía posibles. No hay un resultado único. Guarda esta Reforge, realiza una segunda R real si aceptas su costo, reemplaza el texto por los NUEVOS afijos y pulsa Filtrar. La app reproducirá el resultado para cada candidata, sin repetir el barrido completo.');
     }else{
-     status('#recovery-status',`Solo se encontraron ${r.solutions.length} parejas válidas. NO hay seed única. La app no permitirá calcular una receta hasta obtener otra observación verificable.`,'error');
+     status('#recovery-status','Ninguna seed pudo explicar esta Reforge completa. No gastes recursos: revisa los atributos y la clase.','error');
     }
    }else if(r.type==='error'){
     recoverWorker.terminate();recoverWorker=null;$('#recover').disabled=false;seed=null;
-    $('#plan-route').disabled=true;status('#recovery-status','Recuperación detenida sin gastar recursos: '+r.message,'error');
+    $('#plan-route').disabled=true;status('#recovery-status','Recuperación detenida: '+r.message,'error');
    }
   };
   recoverWorker.onerror=e=>{
@@ -103,7 +141,7 @@ function recover(){
    $('#plan-route').disabled=true;status('#recovery-status','Error de recuperación: '+e.message,'error');
   };
   recoverWorker.postMessage({type:'recover-reforge',gameData:data,hero:engine.hero,itemId:item().id,sourceObservation:drop,observation:reforge});
- }catch(err){status('#recovery-status','No se inició la recuperación: '+err.message,'error')}
+ }catch(err){status('#recovery-status','No se inició la recuperación: '+err.message,'error');}
 }
 function budgetOptions(){
  if(seed===null)throw Error('Falta una seed única recuperada.');
