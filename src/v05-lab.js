@@ -80,13 +80,19 @@ function resetItem(){
  if(!target())$('#target-item').value=it.name;
  const wanted=target()||it;
  const families=allowedFamilies(wanted);
- const defaults=wanted.name==="Firebird's Down"?['Int','Vit','DR','Sockets']:
- wanted.name==='Obsidian Ring of the Zodiac'?['CooldownReduction','Haste','CriticalChance','ResourceCostReduction']:
- wanted.name==='Firebird\'s Breast'?['Int','Vit','Sockets','DR']:[];
+ const presets={
+  "Firebird's Down":['Int','Vit','DR','Sockets'],
+  "Firebird's Breast":['Int','Vit','Life','Sockets'],
+  "Firebird's Eye":['Int','ArcanePowerOnCrit','CriticalChance'],
+  "Obsidian Ring of the Zodiac":['CooldownReduction','CriticalChance','ResourceCostReduction','Sockets'],
+  "Squirt's Necklace":['DamageBonusFire','CriticalD','CriticalChance','Sockets']
+ };
+ const defaults=presets[wanted.name]||[];
  $('#goals').innerHTML=families.map(stem=>`<option value="${stem}" ${defaults.includes(stem)?'selected':''}>${niceStem(stem)}</option>`).join('');
- $('#want-resist').checked=wanted.name==="Firebird's Down";
+ $('#want-resist').checked=["Firebird's Down","Firebird's Breast"].includes(wanted.name);
  $('#allow-convert').checked=!!it.set_id;
  drop=null;reforge=null;seed=null;pendingSeeds=null;
+ $('#diagnostic-op').value='R';$('#converted-item-box').style.display='none';$('#reforge-quality').disabled=false;
  $('#recover').textContent='Reconstruir seed bidireccional';
  $('#plan-route').disabled=true;
  $('#recipe-steps').replaceChildren();
@@ -103,8 +109,12 @@ function saveDrop(){
   $('#recover').textContent='Reconstruir seed bidireccional';
   $('#plan-route').disabled=true;
   const named=drop.lines.map(x=>x.stem+':'+x.value).join(' · ');
-  status('#drop-status',`Drop de ${item().name} guardado: ${named}.\nPróximo paso: una Reforge real del MISMO objeto. El drop no se usa para inventar un seed de salida.`,'success');
-  status('#recovery-status','Esperando el resultado de Reforge; aún no existe una seed confirmada.');
+  const canConvert=!!item().set_id&&data.items.some(x=>x.set_id===item().set_id&&x.id!==item().id);
+  const suggestion=canConvert?
+    'Puedes elegir Convert Set Item (10 Souls +10 Death’s Breaths, cambia de pieza y puede recuperar seed) o Reforge Legendary (50 Souls +5 materiales por acto, conserva la pieza). Ambas requieren comprobar el resultado REAL.':
+    'Siguiente diagnóstico posible: Reforge Legendary del MISMO objeto (50 Souls +5 materiales por acto).';
+  status('#drop-status',`Drop de ${item().name} guardado: ${named}.\n${suggestion}\nLos valores del drop NO son la seed.`,'success');
+  status('#recovery-status','Esperando el resultado de una operación real del Cubo; aún no hay seed confirmada.');
  }catch(err){status('#drop-status','No se guardó el drop: '+err.message,'error')}
 }
 function recover(){
