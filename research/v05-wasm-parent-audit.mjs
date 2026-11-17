@@ -20,5 +20,5 @@ for(const [itemName,parent] of [["Firebird's Down",2538758317],["Firebird's Brea
  console.log('V05_WASM_PARENT_UNIT',JSON.stringify({item:itemName,parent,child:result.seed,actualDraws:result.draws,count,hits,hs:hs.length,valueMatch,obsMatched}));
  assert(valueMatch>0,'Hypotheses must include actual child seed');
  assert(obsMatched,'Full tooltip must match original engine');
- assert(hits.some(h=>h.parent===parent&&h.child===result.seed),'WASM parent scan must find the known real Reforge transition');
+ assert(hits.some(h=>h.parent===parent&&h.child===result.seed&&h.draws===result.draws),'WASM must recover the exact parent, child AND draw count of the actual Reforge');
 }
