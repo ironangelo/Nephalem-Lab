@@ -2,7 +2,7 @@ name: V05 browser Firebird Eye Kadala Convert to Primal
 on:
   push:
     branches: [feature/web-lab-v05-e2e]
-    paths: ['.github/workflows/v05-eye-convert-browser.yml','research/v05-browser-eye-kadala-convert.mjs']
+    paths: ['.github/workflows/v05-eye-convert-browser.yml','research/v05-browser-eye-kadala-convert.mjs','src/v05-lab.js','src/reforge-recovery-worker.js']
   workflow_dispatch:
 jobs:
   eye:
