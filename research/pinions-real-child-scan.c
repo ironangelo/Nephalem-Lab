@@ -9,7 +9,8 @@
 #define MAXH 1024
 #define MAXD 32
 static uint32_t mods[MAXH][MAXD],rems[MAXH][MAXD];
-static int lens[MAXH],count,maxn,nfirst;\nstatic uint32_t firstM[MAXH],firstR[MAXH];
+static int lens[MAXH],count,maxn,nfirst;
+static uint32_t firstM[MAXH],firstR[MAXH];
 static inline uint64_t step(uint64_t x){return ((uint64_t)(uint32_t)x)*M+(x>>32);}
 int main(void){
  FILE*f=fopen("/tmp/pinions-r-constraints.txt","r");if(!f)return 2;
