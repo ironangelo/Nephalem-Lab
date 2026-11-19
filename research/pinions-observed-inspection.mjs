@@ -22,7 +22,19 @@ add('Int',500);add('Vit',478);add('FireResist',144);add('Experience',173);add('S
 console.log('PINIONS_OBSERVATION',JSON.stringify(ob));
 try{
  const h=generateObservedReforgeHypotheses(e,it,ob,{maxHypotheses:1024});
- console.log('PINIONS_HYPOTHESES',JSON.stringify({count:h.length,heads:h.slice(0,5)}));
+ console.log('PINIONS_HYPOTHESES',JSON.stringify({count:h.length,heads:h.slice(0,5),firstMods:[...new Set(h.map(x=>x.constraints[0]?.m))],fixedIDs:[...new Set(h.map(x=>x.affixIds.slice(0,2).join('-')))],order:h.reduce((a,x)=>(a[x.constraints[0]?.m]=(a[x.constraints[0]?.m]||0)+1,a),{})}));
 }catch(err){console.log('PINIONS_HYPOTHESES_ERROR',err.stack||String(err));}
 const obj=e.reforge(it,2538758317);
 console.log('PINIONS_MODEL_REFORGE_EXAMPLE',JSON.stringify({quality:obj.quality,seed:obj.seed,draws:obj.draws,affixes:obj.affixes.map(x=>x.stem),lines:obj.lines}));
+
+const obs2={...ob,quality:'ancient'};
+try{const hs=generateObservedReforgeHypotheses(e,it,obs2,{maxHypotheses:1024});
+ console.log('PINIONS_ANCIENT_HYPOTHESES',JSON.stringify({count:hs.length,firstMods:[...new Set(hs.map(x=>x.constraints[0]?.m))]}));
+}catch(err){console.log('PINIONS_ANCIENT_HYPOTHESES_ERROR',String(err));}
+const fs=it.fixed_slot_groups.filter(x=>x!==4294967295);
+for(const gid of fs){
+ const arr=e.groupMembers.get(gid)||[];
+ const sorted=arr.filter(i=>e.eligible(e.affixes[i],it,e.classFor(it),{skipLevel:true,skipQuality:true})&&e.affixes[i].tier<=70)
+ .sort((a,b)=>e.affixes[b].tier-e.affixes[a].tier).slice(0,10).map(i=>({id:e.affixes[i].id,label:e.affixes[i].label,tier:e.affixes[i].tier,upgrade:e.affixes[i].upgrades_to,formula:e.affixes[i].formulas}));
+ console.log('PINIONS_FIXED_ACTUAL_CHOICES',JSON.stringify({gid,top:sorted}));
+}
