@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-19",
+  "source": "Screenshot of single real Reforge of normal Firebird's Pinions, Wizard on Switch 2",
+  "photoDrop": "image-1795120731825.jpg",
+  "photoReforge": "image-1795120772810.jpg",
+  "originalPhoto": {
+    "name": "Firebird's Pinions",
+    "baseArmor": 1055,
+    "Int": 443,
+    "ResistAll": 100,
+    "DR": 386,
+    "Gold": 33,
+    "HealthGlobeBonus": 22751,
+    "ResourceCostReduction": 6,
+    "quality": "normal"
+  },
+  "reforgePhoto": {
+    "name": "Firebird's Pinions",
+    "baseArmor": 672,
+    "Int": 500,
+    "ResourceCostReduction": 8,
+    "Vit": 478,
+    "Skill_Wizard_Hydra": 12,
+    "FireResist": 144,
+    "Experience": 173,
+    "quality": "normal"
+  },
+  "diagnostics": {
+    "rawLinks": 636,
+    "normal": 0,
+    "seeds": 557,
+    "affixes": 78,
+    "allValues": 0,
+    "draws": 0,
+    "all32bitChildScanned": true,
+    "all32bitParentsScanned": true
+  },
+  "matches": [
+    {
+      "before": 3757624277,
+      "now": 1184275071,
+      "draws": 6,
+      "quality": "normal",
+      "affixes": [
+        "Int",
+        "ResourceCostReduction",
+        "Skill_Wizard_Hydra",
+        "Vit",
+        "Experience",
+        "FireResist"
+      ],
+      "stats": [
+        [
+          "Int",
+          500
+        ],
+        [
+          "ResourceCostReduction",
+          0.08
+        ],
+        [
+          "Skill_Wizard_Hydra",
+          0.12
+        ],
+        [
+          "Vit",
+          478
+        ],
+        [
+          "Experience",
+          173
+        ],
+        [
+          "FireResist",
+          144
+        ]
+      ]
+    }
+  ],
+  "independentConsoleRouteValidation": "NOT YET DONE - do not spend materials until first checkpoint confirmed"
+}
