@@ -1,0 +1,35 @@
+name: Recover unique Firebird Pinions real Reforge seed
+on:
+  push:
+    branches: [research/firebird-pinions-real-drop-reforge-2026-11-19]
+    paths:
+      - '.github/workflows/research-pinions-recover.yml'
+  workflow_dispatch:
+jobs:
+  recover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Derive value constraints from real R screenshot
+        run: node research/pinions-real-invert-prepare.mjs
+      - name: Scan 2^32 possible resulting item seeds
+        run: |
+          gcc -O3 -march=native -std=c11 research/pinions-real-child-scan.c -o /tmp/pinions-child
+          /tmp/pinions-child
+      - name: Scan 2^32 possible previous item seeds and normal Reforge RNG advances
+        run: |
+          gcc -O3 -march=native -std=c11 research/pinions-real-parent-scan.c -o /tmp/pinions-parent
+          /tmp/pinions-parent
+      - name: Replay all full normal Reforge signatures and obtain unique seed
+        run: node --max-old-space-size=4000 research/pinions-real-recovery-verify.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: firebird-pinions-recovery-19nov2026
+          path: |
+            /tmp/pinions-r-observation.json
+            /tmp/pinions-real-recovery.json
