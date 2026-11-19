@@ -9,7 +9,7 @@
 #define MAXH 1024
 #define MAXD 32
 static uint32_t mods[MAXH][MAXD],rems[MAXH][MAXD];
-static int lens[MAXH],count,maxn;
+static int lens[MAXH],count,maxn,nfirst;\nstatic uint32_t firstM[MAXH],firstR[MAXH];
 static inline uint64_t step(uint64_t x){return ((uint64_t)(uint32_t)x)*M+(x>>32);}
 int main(void){
  FILE*f=fopen("/tmp/pinions-r-constraints.txt","r");if(!f)return 2;
@@ -18,6 +18,10 @@ int main(void){
   int idx,n;if(fscanf(f,"%d%d",&idx,&n)!=2||idx!=i||n<1||n>MAXD)return 4;
   lens[i]=n;if(n>maxn)maxn=n;
   for(int j=0;j<n;j++)if(fscanf(f,"%" SCNu32 " %" SCNu32,&mods[i][j],&rems[i][j])!=2)return 5;
+  int found=0;
+  for(int k=0;k<nfirst;k++)if(firstM[k]==mods[i][0]&&firstR[k]==rems[i][0]){found=1;break;}
+  if(!found){firstM[nfirst]=mods[i][0];firstR[nfirst]=rems[i][0];nfirst++;}
+
  }
  fclose(f);
  FILE*out=fopen("/tmp/pinions-r-children.bin","wb");if(!out)return 6;
@@ -28,8 +32,11 @@ int main(void){
   x=((uint64_t)666<<32)|(uint32_t)x;
   uint32_t draws[MAXD];
   x=step(x);draws[0]=(uint32_t)x;
-  // Every real hypothesis has Int500 first (INT 208..500 -> %293=5).
-  if(draws[0]%293u!=5u)continue;
+  // Different legal affix tiers generate DIFFERENT first-moduli.
+  // Never hardcode only %293; the actual fixed tier70 INT uses %85.
+  int possible=0;
+  for(int k=0;k<nfirst;k++)if(draws[0]%firstM[k]==firstR[k]){possible=1;break;}
+  if(!possible)continue;
   first++;
   for(int j=1;j<maxn;j++){x=step(x);draws[j]=(uint32_t)x;}
   for(int h=0;h<count;h++){
@@ -41,6 +48,6 @@ int main(void){
   }
  }
  fclose(out);
- printf("PINIONS_CHILD_SWEEP scanned=4294967296 first=%" PRIu64 " children=%" PRIu64 " hypotheses=%d\n",first,hits,count);
+ printf("PINIONS_CHILD_SWEEP scanned=4294967296 first=%" PRIu64 " children=%" PRIu64 " hypotheses=%d firstConstraints=%d\n",first,hits,count,nfirst);
  return 0;
 }
