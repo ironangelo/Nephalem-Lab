@@ -15,7 +15,16 @@ const observation={itemId:item.id,quality:'normal',lines:[
  get('Vit',478),get('Skill_Wizard_Hydra',12),
  get('FireResist',144),get('Experience',173)
 ]};
-const hypotheses=generateObservedReforgeHypotheses(e,item,observation,{maxHypotheses:1024});
+const allHypotheses=generateObservedReforgeHypotheses(e,item,observation,{maxHypotheses:1024});
+// The first two fixed affixes must be selected at their maximum eligible tier
+// by _fixed(), independently of the source RNG seed. An arbitrary low-tier
+// candidate is a numeric false positive and should not be scanned.
+const fixture=e.reforge(item,2538758317);
+if(fixture.quality!=='normal')throw Error('Fixed-slot reference seed not normal');
+const fixedIds=fixture.affixes.slice(0,2).map(a=>a.id);
+const hypotheses=allHypotheses.filter(h=>h.affixIds[0]===fixedIds[0]&&h.affixIds[1]===fixedIds[1]);
+console.log('PINIONS_FIXED_HYPOTHESIS_FILTER',JSON.stringify({all:allHypotheses.length,actual: hypotheses.length,fixedIds}));
+if(!hypotheses.length)throw Error('No legal normal fixed-slot hypotheses; do not scan arbitrary tiers');
 if(!hypotheses.length)throw Error('No hypotheses compatible with real observed tooltip.');
 writeFileSync('/tmp/pinions-r-constraints.txt',[
  String(hypotheses.length),
