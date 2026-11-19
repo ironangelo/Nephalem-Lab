@@ -4,6 +4,7 @@ on:
     branches: [research/firebird-pinions-real-drop-reforge-2026-11-19]
     paths:
       - '.github/workflows/research-pinions-recover.yml'
+      - 'research/pinions-real-child-scan.c'
   workflow_dispatch:
 jobs:
   recover:
