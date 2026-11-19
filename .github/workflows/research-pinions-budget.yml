@@ -1,0 +1,25 @@
+name: Optimize Firebird Pinions natural Primal from real recovered seed
+on:
+  push:
+    branches: [research/firebird-pinions-real-drop-reforge-2026-11-19]
+    paths:
+      - '.github/workflows/research-pinions-budget.yml'
+      - 'research/pinions-real-confirmed.json'
+  workflow_dispatch:
+jobs:
+  budgets:
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [cheap,balanced,extra,no_crucibles,no_mystic]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Search material-constrained natural Primal Pinions recipes
+        env:
+          COST_PROFILE: ${{ matrix.profile }}
+        run: node --max-old-space-size=5000 research/pinions-real-budget-routes.mjs
