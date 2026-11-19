@@ -1,0 +1,15 @@
+name: Diagnose real Firebird Pinions drop Reforge
+on:
+  push:
+    branches: [research/firebird-pinions-real-drop-reforge-2026-11-19]
+    paths: ['.github/workflows/research-pinions-inspect.yml']
+  workflow_dispatch:
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node research/pinions-observed-inspection.mjs
