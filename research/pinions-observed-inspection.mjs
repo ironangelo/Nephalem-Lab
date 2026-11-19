@@ -18,7 +18,7 @@ const add=(stem,v,formulaIndex=0)=>{
  const idx=e.idIndex.get(aff.id),f=e.affixes[e.variant(idx,1)];
  ob.lines.push({stem,attr:f.formulas[formulaIndex]?.[0],value:v});
 };
-add('Int',500);add('Vit',478);add('FireResist',144);add('Experience',173);add('Skill_Wizard_Hydra',12);add('Power',8);
+add('Int',500);add('Vit',478);add('FireResist',144);add('Experience',173);add('Skill_Wizard_Hydra',12);add('ResourceCostReduction',8);
 console.log('PINIONS_OBSERVATION',JSON.stringify(ob));
 try{
  const h=generateObservedReforgeHypotheses(e,it,ob,{maxHypotheses:1024});
