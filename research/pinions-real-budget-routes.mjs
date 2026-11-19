@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {UniversalEngine,loadGameData} from '../src/universal-engine.js';
 import {searchBudgetPrimal} from '../src/v05-budget-planner.js';
-const recovery=JSON.parse(readFileSync('/tmp/pinions-real-recovery.json','utf8'));
+const recovery=JSON.parse(readFileSync('research/pinions-real-confirmed.json','utf8'));
 if(recovery.matches.length!==1){
  console.log('PINIONS_ROUTE_NOT_SAFE',JSON.stringify({reason:'Current Reforge seed is not unique.',count:recovery.matches.length}));
  process.exit(0);
